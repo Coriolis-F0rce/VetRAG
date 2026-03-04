@@ -1,0 +1,5698 @@
+{
+  "total_breeds": 100,
+  "successful": 100,
+  "failed": 0,
+  "processing_date": "2026-02-06 14:15:01",
+  "data": [
+    {
+      "breed": {
+        "chinese_name": "德国牧羊犬",
+        "english_name": "German Shepherd Dog",
+        "akc_group": "Herding Group",
+        "origin": "德国",
+        "original_purpose": "牧羊、护卫、工作犬",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "30-40",
+          "female": "22-32"
+        },
+        "average_height_cm": {
+          "male": "60-65",
+          "female": "55-60"
+        },
+        "life_expectancy": "9-13年",
+        "coat_type": "双层被毛，外层直硬，内层浓密",
+        "coat_colors": [
+          "黑色与棕褐色",
+          "纯黑色",
+          "黑银色",
+          "黑红色"
+        ],
+        "primary_traits": [
+          "忠诚",
+          "勇敢",
+          "聪明",
+          "警觉",
+          "服从性高",
+          "工作能力强"
+        ],
+        "energy_level": 9,
+        "intelligence_rank": 9,
+        "trainability": 10,
+        "with_family": "非常忠诚和保护性强，适合作为家庭伴侣",
+        "with_children": "通常友好，但需要早期社会化训练",
+        "with_other_dogs": "可能对其他犬只有支配倾向，需要适当社交",
+        "daily_exercise_minutes": 120,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，每周梳理2-3次，换毛期需更频繁",
+        "shedding_level": 8,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "肘关节发育不良",
+          "退行性脊髓病",
+          "胃扭转"
+        ],
+        "suitability_assessment": "适合有经验的主人，需要大量运动、训练和社交，不适合公寓生活",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种标准",
+          "兽医临床数据",
+          "犬类行为学研究"
+        ]
+      },
+      "breed_name": "德国牧羊犬",
+      "processed_date": "2026-02-06 13:48:58"
+    },
+    {
+      "breed": {
+        "chinese_name": "拉布拉多寻回犬",
+        "english_name": "Labrador Retriever",
+        "akc_group": "Sporting Group",
+        "origin": "加拿大纽芬兰",
+        "original_purpose": "协助渔民捕鱼、寻回猎物",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "29-36",
+          "female": "25-32"
+        },
+        "average_height_cm": {
+          "male": "57-62",
+          "female": "55-60"
+        },
+        "life_expectancy": "10-12年",
+        "coat_type": "短毛、双层被毛",
+        "coat_colors": [
+          "黑色",
+          "巧克力色",
+          "黄色"
+        ],
+        "primary_traits": [
+          "友善",
+          "外向",
+          "聪明",
+          "忠诚",
+          "精力充沛"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 9,
+        "with_family": "极佳的家庭伴侣，非常亲人和忠诚",
+        "with_children": "与儿童相处融洽，耐心且温和",
+        "with_other_dogs": "通常友好，社交性好",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "每周梳理1-2次，换毛期需增加频率",
+        "shedding_level": 7,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "肘关节发育不良",
+          "肥胖",
+          "眼部疾病"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要充足运动和训练，不适合长时间独处",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类行为学研究",
+          "兽医健康指南"
+        ]
+      },
+      "breed_name": "拉布拉多寻回犬",
+      "processed_date": "2026-02-06 13:49:14"
+    },
+    {
+      "breed": {
+        "chinese_name": "金毛寻回犬",
+        "english_name": "Golden Retriever",
+        "akc_group": "Sporting Group",
+        "origin": "英国",
+        "original_purpose": "寻回水禽",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "29-34",
+          "female": "25-29"
+        },
+        "average_height_cm": {
+          "male": "56-61",
+          "female": "51-56"
+        },
+        "life_expectancy": "10-12年",
+        "coat_type": "双层被毛，外层防水，内层浓密",
+        "coat_colors": [
+          "金色",
+          "浅金色",
+          "深金色"
+        ],
+        "primary_traits": [
+          "友善",
+          "忠诚",
+          "聪明",
+          "温顺",
+          "活泼"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 8,
+        "trainability": 9,
+        "with_family": "极佳的家庭伴侣，非常亲人和忠诚",
+        "with_children": "非常适合儿童，耐心且温和",
+        "with_other_dogs": "通常友好，社交良好",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，需要每周梳理2-3次",
+        "shedding_level": 7,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "肘关节发育不良",
+          "心脏病",
+          "眼部疾病",
+          "癌症"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要充足运动和社交，不适合公寓生活",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类行为学资料",
+          "兽医健康指南"
+        ]
+      },
+      "breed_name": "金毛寻回犬",
+      "processed_date": "2026-02-06 13:49:29"
+    },
+    {
+      "breed": {
+        "chinese_name": "杜宾犬",
+        "english_name": "Doberman Pinscher",
+        "akc_group": "工作犬组",
+        "origin": "德国",
+        "original_purpose": "护卫、警犬、伴侣犬",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "34-45",
+          "female": "27-41"
+        },
+        "average_height_cm": {
+          "male": "66-72",
+          "female": "61-68"
+        },
+        "life_expectancy": "10-13年",
+        "coat_type": "短毛、平滑、紧密",
+        "coat_colors": [
+          "黑色",
+          "红色",
+          "蓝色",
+          "浅黄褐色"
+        ],
+        "primary_traits": [
+          "忠诚",
+          "勇敢",
+          "警觉",
+          "聪明",
+          "精力充沛"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 9,
+        "trainability": 9,
+        "with_family": "对家庭成员极其忠诚，是优秀的护卫犬和伴侣犬",
+        "with_children": "在适当社会化后能与儿童友好相处，但需监督互动",
+        "with_other_dogs": "早期社会化后能与其他犬只相处，但可能对同性犬有支配倾向",
+        "daily_exercise_minutes": 90,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周梳理一次即可",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "扩张型心肌病",
+          "冯·维勒布兰德病",
+          "髋关节发育不良",
+          "颈椎病"
+        ],
+        "suitability_assessment": "适合有经验的犬主，需要充足的运动、训练和社会化，不适合公寓生活",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "世界犬业联盟（FCI）",
+          "专业兽医资料"
+        ]
+      },
+      "breed_name": "杜宾犬",
+      "processed_date": "2026-02-06 13:49:45"
+    },
+    {
+      "breed": {
+        "chinese_name": "罗威纳犬",
+        "english_name": "Rottweiler",
+        "akc_group": "工作犬组",
+        "origin": "德国",
+        "original_purpose": "牧牛、护卫、拖曳货物",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "45-60",
+          "female": "35-48"
+        },
+        "average_height_cm": {
+          "male": "61-69",
+          "female": "56-63"
+        },
+        "life_expectancy": "8-10年",
+        "coat_type": "双层被毛，外层粗糙，内层柔软",
+        "coat_colors": [
+          "黑色带铁锈色或红褐色斑纹"
+        ],
+        "primary_traits": [
+          "忠诚",
+          "勇敢",
+          "自信",
+          "保护性强",
+          "聪明",
+          "力量大"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 9,
+        "trainability": 8,
+        "with_family": "对家庭成员极其忠诚，是优秀的家庭护卫犬",
+        "with_children": "在适当社会化后能与儿童友好相处，但需监督互动",
+        "with_other_dogs": "可能对其他犬只有支配倾向，需要早期社会化",
+        "daily_exercise_minutes": 90,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周梳理一次即可",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "肘关节发育不良",
+          "心脏病",
+          "胃扭转"
+        ],
+        "suitability_assessment": "适合有经验的犬主，需要充足运动、严格训练和早期社会化，不适合新手或公寓生活",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "专业兽医资料"
+        ]
+      },
+      "breed_name": "罗威纳犬",
+      "processed_date": "2026-02-06 13:50:02"
+    },
+    {
+      "breed": {
+        "chinese_name": "比利时马林诺斯犬",
+        "english_name": "Belgian Malinois",
+        "akc_group": "牧羊犬组",
+        "origin": "比利时",
+        "original_purpose": "牧羊、护卫、工作犬",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "25-30",
+          "female": "20-25"
+        },
+        "average_height_cm": {
+          "male": "61-66",
+          "female": "56-61"
+        },
+        "life_expectancy": "12-14年",
+        "coat_type": "短而直的双层被毛",
+        "coat_colors": [
+          "浅黄褐色",
+          "红褐色",
+          "黑色面具"
+        ],
+        "primary_traits": [
+          "高能量",
+          "高度忠诚",
+          "聪明",
+          "警觉",
+          "工作驱动强"
+        ],
+        "energy_level": 10,
+        "intelligence_rank": 9,
+        "trainability": 9,
+        "with_family": "对家庭忠诚，但需要早期社会化",
+        "with_children": "适合有经验的家庭，需监督互动",
+        "with_other_dogs": "可能对其他犬只有支配性，需适当社交",
+        "daily_exercise_minutes": 120,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周梳理一次",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "肘关节发育不良",
+          "进行性视网膜萎缩"
+        ],
+        "suitability_assessment": "适合活跃、有经验的犬主，需要大量运动和智力刺激，不适合新手或久坐家庭",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "兽医和繁殖专家共识"
+        ]
+      },
+      "breed_name": "比利时马林诺斯犬",
+      "processed_date": "2026-02-06 13:50:18"
+    },
+    {
+      "breed": {
+        "chinese_name": "边境牧羊犬",
+        "english_name": "Border Collie",
+        "akc_group": "Herding Group",
+        "origin": "英国/苏格兰边境地区",
+        "original_purpose": "牧羊工作犬",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "14-20",
+          "female": "12-19"
+        },
+        "average_height_cm": {
+          "male": "48-56",
+          "female": "46-53"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层粗糙，内层柔软",
+        "coat_colors": [
+          "黑色和白色",
+          "红色和白色",
+          "蓝色和白色",
+          "陨石色",
+          "三色",
+          "貂色"
+        ],
+        "primary_traits": [
+          "高智商",
+          "精力充沛",
+          "工作驱动强",
+          "敏捷",
+          "忠诚",
+          "敏感"
+        ],
+        "energy_level": 10,
+        "intelligence_rank": 10,
+        "trainability": 10,
+        "with_family": "对家庭成员忠诚，但可能更专注于工作或活动",
+        "with_children": "适合有经验的家庭，需要监督和适当社交",
+        "with_other_dogs": "通常友好，但可能有牧羊本能",
+        "daily_exercise_minutes": 120,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，每周梳理1-2次",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "进行性视网膜萎缩",
+          "癫痫",
+          "柯利眼异常"
+        ],
+        "suitability_assessment": "适合活跃、有经验的养犬者，能提供大量运动和智力刺激；不适合久坐生活方式或新手",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "兽医专业资料",
+          "犬类行为学研究"
+        ]
+      },
+      "breed_name": "边境牧羊犬",
+      "processed_date": "2026-02-06 13:50:36"
+    },
+    {
+      "breed": {
+        "chinese_name": "澳大利亚牧羊犬",
+        "english_name": "Australian Shepherd",
+        "akc_group": "Herding Group",
+        "origin": "United States",
+        "original_purpose": "牧羊犬，用于驱赶和管理牲畜",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "25-32",
+          "female": "18-25"
+        },
+        "average_height_cm": {
+          "male": "51-58",
+          "female": "46-53"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层中等长度、直或波浪状，内层浓密",
+        "coat_colors": [
+          "黑色",
+          "蓝色陨石色",
+          "红色",
+          "红色陨石色",
+          "三色组合"
+        ],
+        "primary_traits": [
+          "高智商",
+          "精力充沛",
+          "忠诚",
+          "工作驱动强",
+          "适应性强"
+        ],
+        "energy_level": 9,
+        "intelligence_rank": 9,
+        "trainability": 9,
+        "with_family": "非常忠诚和亲密的家庭伴侣，需要大量互动",
+        "with_children": "通常友好，但需监督与幼儿互动，因其精力旺盛",
+        "with_other_dogs": "通常良好，但早期社会化很重要",
+        "daily_exercise_minutes": 120,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，每周梳理2-3次，换毛期需更频繁",
+        "shedding_level": 7,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "眼部疾病（如白内障）",
+          "癫痫",
+          "多药耐药性基因突变（MDR1）"
+        ],
+        "suitability_assessment": "适合活跃家庭或工作环境，需要大量运动和智力刺激，不适合久坐生活方式",
+        "knowledge_sources": [
+          "American Kennel Club (AKC)",
+          "Australian Shepherd Club of America (ASCA)",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "澳大利亚牧羊犬",
+      "processed_date": "2026-02-06 13:50:53"
+    },
+    {
+      "breed": {
+        "chinese_name": "柯利犬",
+        "english_name": "Collie",
+        "akc_group": "Herding Group",
+        "origin": "苏格兰",
+        "original_purpose": "牧羊犬",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "27-34",
+          "female": "23-29"
+        },
+        "average_height_cm": {
+          "male": "61-66",
+          "female": "56-61"
+        },
+        "life_expectancy": "12-14年",
+        "coat_type": "双层被毛，外层毛粗糙，内层毛柔软浓密",
+        "coat_colors": [
+          "貂色与白色",
+          "三色（黑、白、棕）",
+          "蓝陨石色"
+        ],
+        "primary_traits": [
+          "聪明",
+          "忠诚",
+          "温和",
+          "警觉",
+          "适应性强"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 8,
+        "trainability": 9,
+        "with_family": "非常友好，是优秀的家庭伴侣",
+        "with_children": "通常与儿童相处融洽，但需适当监督",
+        "with_other_dogs": "通常友好，社会化后表现良好",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "中等至高，需定期梳理以防止打结",
+        "shedding_level": 6,
+        "common_health_issues": [
+          "柯利眼异常",
+          "进行性视网膜萎缩",
+          "髋关节发育不良"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要定期运动和智力刺激，不适合长时间独处",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类行为学资料",
+          "兽医健康指南"
+        ]
+      },
+      "breed_name": "柯利犬",
+      "processed_date": "2026-02-06 13:51:09"
+    },
+    {
+      "breed": {
+        "chinese_name": "喜乐蒂牧羊犬",
+        "english_name": "Shetland Sheepdog",
+        "akc_group": "牧羊犬组",
+        "origin": "苏格兰设得兰群岛",
+        "original_purpose": "牧羊、看护农场",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "6-12",
+          "female": "6-12"
+        },
+        "average_height_cm": {
+          "male": "33-41",
+          "female": "33-41"
+        },
+        "life_expectancy": "12-14年",
+        "coat_type": "双层被毛，外层长而直，内层浓密柔软",
+        "coat_colors": [
+          "貂色",
+          "三色",
+          "蓝陨石色",
+          "黑白色"
+        ],
+        "primary_traits": [
+          "聪明",
+          "忠诚",
+          "警觉",
+          "敏感",
+          "善于学习"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 9,
+        "trainability": 9,
+        "with_family": "非常亲家庭，忠诚且保护性强",
+        "with_children": "通常友好，但需早期社会化，适合有礼貌的儿童",
+        "with_other_dogs": "通常友好，但可能对陌生犬只保持警惕",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": true,
+        "grooming_needs": "中等至高，需定期梳理以防打结",
+        "shedding_level": 7,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "眼部疾病（如进行性视网膜萎缩）",
+          "甲状腺功能减退",
+          "皮肤过敏"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要精神刺激和日常锻炼，不适合长时间独处",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "喜乐蒂牧羊犬",
+      "processed_date": "2026-02-06 13:51:26"
+    },
+    {
+      "breed": {
+        "chinese_name": "伯恩山犬",
+        "english_name": "Bernese Mountain Dog",
+        "akc_group": "工作犬组",
+        "origin": "瑞士",
+        "original_purpose": "农场工作犬，用于拉车、牧牛和看护农场",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "40-50",
+          "female": "35-45"
+        },
+        "average_height_cm": {
+          "male": "64-70",
+          "female": "58-66"
+        },
+        "life_expectancy": "7-10年",
+        "coat_type": "双层被毛，外层长而略呈波浪状，内层浓密",
+        "coat_colors": [
+          "黑色",
+          "白色",
+          "铁锈色"
+        ],
+        "primary_traits": [
+          "忠诚",
+          "温和",
+          "沉稳",
+          "适应力强",
+          "工作意愿高"
+        ],
+        "energy_level": 6,
+        "intelligence_rank": 7,
+        "trainability": 7,
+        "with_family": "极佳的家庭伴侣，非常忠诚和亲昵",
+        "with_children": "通常与儿童相处融洽，但需监督互动",
+        "with_other_dogs": "通常友好，但需适当社交",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "每周梳理2-3次，换毛期需更频繁",
+        "shedding_level": 8,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "肘关节发育不良",
+          "癌症",
+          "胃扭转"
+        ],
+        "suitability_assessment": "适合有经验的犬主，需要充足空间和定期运动，不适合公寓生活",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "伯恩山犬",
+      "processed_date": "2026-02-06 13:51:42"
+    },
+    {
+      "breed": {
+        "chinese_name": "大瑞士山地犬",
+        "english_name": "Greater Swiss Mountain Dog",
+        "akc_group": "Working Group",
+        "origin": "Switzerland",
+        "original_purpose": "Draft work, herding, guarding",
+        "size_category": "Large",
+        "average_weight_kg": {
+          "male": "59-64",
+          "female": "45-54"
+        },
+        "average_height_cm": {
+          "male": "65-72",
+          "female": "60-68"
+        },
+        "life_expectancy": "10-12 years",
+        "coat_type": "Double coat, short to medium length",
+        "coat_colors": [
+          "Black with rust and white markings"
+        ],
+        "primary_traits": [
+          "Calm",
+          "Confident",
+          "Loyal",
+          "Protective",
+          "Hardworking"
+        ],
+        "energy_level": 6,
+        "intelligence_rank": 7,
+        "trainability": 7,
+        "with_family": "Excellent family companion, very affectionate",
+        "with_children": "Good with children, gentle and patient",
+        "with_other_dogs": "Generally good with proper socialization",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "Moderate, weekly brushing, more during shedding seasons",
+        "shedding_level": 7,
+        "common_health_issues": [
+          "Hip dysplasia",
+          "Elbow dysplasia",
+          "Bloat",
+          "Epilepsy"
+        ],
+        "suitability_assessment": "Best suited for active families with space, requires regular exercise and training",
+        "knowledge_sources": [
+          "American Kennel Club (AKC)",
+          "Fédération Cynologique Internationale (FCI)",
+          "Greater Swiss Mountain Dog Club of America"
+        ]
+      },
+      "breed_name": "大瑞士山地犬",
+      "processed_date": "2026-02-06 13:51:57"
+    },
+    {
+      "breed": {
+        "chinese_name": "圣伯纳犬",
+        "english_name": "Saint Bernard",
+        "akc_group": "Working Group",
+        "origin": "瑞士",
+        "original_purpose": "高山救援犬",
+        "size_category": "巨型犬",
+        "average_weight_kg": {
+          "male": "64-82",
+          "female": "54-64"
+        },
+        "average_height_cm": {
+          "male": "70-90",
+          "female": "65-80"
+        },
+        "life_expectancy": "8-10年",
+        "coat_type": "双层被毛，有短毛和长毛两种类型",
+        "coat_colors": [
+          "白色带红色或棕色斑块",
+          "红色带白色斑块"
+        ],
+        "primary_traits": [
+          "温和",
+          "忠诚",
+          "勇敢",
+          "耐心",
+          "体型巨大"
+        ],
+        "energy_level": 4,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "极佳，非常忠诚和温和",
+        "with_children": "优秀，耐心且保护性强",
+        "with_other_dogs": "良好，但需适当社交",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，需定期梳理",
+        "shedding_level": 7,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "肘关节发育不良",
+          "胃扭转",
+          "心脏病"
+        ],
+        "suitability_assessment": "适合有经验的主人，需要充足空间和适度运动，不适合公寓生活",
+        "knowledge_sources": [
+          "AKC",
+          "FCI",
+          "专业犬类书籍"
+        ]
+      },
+      "breed_name": "圣伯纳犬",
+      "processed_date": "2026-02-06 13:52:12"
+    },
+    {
+      "breed": {
+        "chinese_name": "纽芬兰犬",
+        "english_name": "Newfoundland",
+        "akc_group": "工作犬组",
+        "origin": "加拿大",
+        "original_purpose": "水上救援、拖网、伴侣犬",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "64-70",
+          "female": "50-55"
+        },
+        "average_height_cm": {
+          "male": "71-76",
+          "female": "66-71"
+        },
+        "life_expectancy": "8-10年",
+        "coat_type": "双层被毛，外层粗硬防水，内层柔软浓密",
+        "coat_colors": [
+          "黑色",
+          "棕色",
+          "兰西尔色（黑白相间）",
+          "灰色"
+        ],
+        "primary_traits": [
+          "温和友善",
+          "忠诚勇敢",
+          "善于游泳",
+          "力量强大",
+          "耐心稳重"
+        ],
+        "energy_level": 5,
+        "intelligence_rank": 7,
+        "trainability": 8,
+        "with_family": "极佳的家庭伴侣，非常忠诚和保护",
+        "with_children": "与儿童相处极好，以耐心和温柔著称",
+        "with_other_dogs": "通常友好，但需适当社交",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "每周梳理2-3次，换毛期需更频繁",
+        "shedding_level": 7,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "肘关节发育不良",
+          "心脏病（如主动脉瓣下狭窄）",
+          "胃扭转"
+        ],
+        "suitability_assessment": "适合有足够空间和时间的家庭，需要定期游泳或适度运动，不适合公寓生活",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "犬种标准资料"
+        ]
+      },
+      "breed_name": "纽芬兰犬",
+      "processed_date": "2026-02-06 13:52:28"
+    },
+    {
+      "breed": {
+        "chinese_name": "大白熊犬",
+        "english_name": "Great Pyrenees",
+        "akc_group": "Working Group",
+        "origin": "法国",
+        "original_purpose": "保护羊群免受捕食者侵害",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "50-60",
+          "female": "40-50"
+        },
+        "average_height_cm": {
+          "male": "70-80",
+          "female": "65-75"
+        },
+        "life_expectancy": "10-12年",
+        "coat_type": "双层被毛，外层长而粗糙，内层柔软浓密",
+        "coat_colors": [
+          "白色",
+          "白色带灰色或棕褐色斑块"
+        ],
+        "primary_traits": [
+          "保护性强",
+          "独立",
+          "温和",
+          "忠诚",
+          "警觉"
+        ],
+        "energy_level": 5,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常忠诚和温和，适合家庭生活",
+        "with_children": "通常很好，但需监督，因其体型较大",
+        "with_other_dogs": "通常友好，但可能对其他狗有保护性",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "高，需要定期梳理以防止打结",
+        "shedding_level": 8,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "肘关节发育不良",
+          "胃扭转",
+          "眼部问题"
+        ],
+        "suitability_assessment": "适合有经验的主人，需要充足空间和定期梳理，不适合公寓生活",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类行为学资料",
+          "兽医健康指南"
+        ]
+      },
+      "breed_name": "大白熊犬",
+      "processed_date": "2026-02-06 13:52:44"
+    },
+    {
+      "breed": {
+        "chinese_name": "阿拉斯加雪橇犬",
+        "english_name": "Alaskan Malamute",
+        "akc_group": "工作犬组",
+        "origin": "美国阿拉斯加",
+        "original_purpose": "拉雪橇、负重运输",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "38-56",
+          "female": "34-50"
+        },
+        "average_height_cm": {
+          "male": "63-71",
+          "female": "58-66"
+        },
+        "life_expectancy": "10-14年",
+        "coat_type": "双层被毛，外层粗糙，内层浓密",
+        "coat_colors": [
+          "灰色",
+          "黑色",
+          "红色",
+          "白色",
+          "貂色"
+        ],
+        "primary_traits": [
+          "强壮",
+          "耐力强",
+          "独立",
+          "友好",
+          "忠诚"
+        ],
+        "energy_level": 9,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常友好，是忠诚的家庭伴侣",
+        "with_children": "通常友好，但需监督与幼儿互动",
+        "with_other_dogs": "可能对其他同性犬有支配倾向，需社会化训练",
+        "daily_exercise_minutes": 120,
+        "apartment_friendly": false,
+        "grooming_needs": "每周梳理2-3次，换毛期需更频繁",
+        "shedding_level": 8,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "白内障",
+          "甲状腺功能减退",
+          "软骨发育不良"
+        ],
+        "suitability_assessment": "适合有经验的主人，需要大量运动和空间，不适合公寓生活",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "阿拉斯加雪橇犬",
+      "processed_date": "2026-02-06 13:53:00"
+    },
+    {
+      "breed": {
+        "chinese_name": "西伯利亚雪橇犬（哈士奇）",
+        "english_name": "Siberian Husky",
+        "akc_group": "Working Group",
+        "origin": "西伯利亚",
+        "original_purpose": "拉雪橇、长途运输",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "20-27",
+          "female": "16-23"
+        },
+        "average_height_cm": {
+          "male": "53-60",
+          "female": "51-56"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层直而粗糙，内层柔软浓密",
+        "coat_colors": [
+          "黑色",
+          "灰色",
+          "红色",
+          "沙色",
+          "白色",
+          "杂色"
+        ],
+        "primary_traits": [
+          "精力充沛",
+          "独立性强",
+          "友善",
+          "耐力好",
+          "爱嚎叫"
+        ],
+        "energy_level": 9,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常友善，但可能独立",
+        "with_children": "通常友好，但需监督",
+        "with_other_dogs": "通常友好，有群居本能",
+        "daily_exercise_minutes": 120,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，需定期梳理",
+        "shedding_level": 8,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "眼部问题（如白内障）",
+          "皮肤病"
+        ],
+        "suitability_assessment": "适合活跃家庭，需大量运动和训练，不适合新手或公寓生活",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类行为学资料",
+          "兽医健康指南"
+        ]
+      },
+      "breed_name": "西伯利亚雪橇犬（哈士奇）",
+      "processed_date": "2026-02-06 13:53:16"
+    },
+    {
+      "breed": {
+        "chinese_name": "萨摩耶犬",
+        "english_name": "Samoyed",
+        "akc_group": "Working Group",
+        "origin": "西伯利亚",
+        "original_purpose": "放牧驯鹿、拉雪橇、守护",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "20-30",
+          "female": "16-23"
+        },
+        "average_height_cm": {
+          "male": "53-60",
+          "female": "48-53"
+        },
+        "life_expectancy": "12-14年",
+        "coat_type": "双层被毛，外层毛长而直，内层毛浓密柔软",
+        "coat_colors": [
+          "白色",
+          "奶油色",
+          "饼干色"
+        ],
+        "primary_traits": [
+          "友善",
+          "活泼",
+          "聪明",
+          "适应力强",
+          "爱叫"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常友好，适合家庭生活",
+        "with_children": "通常很好，但需监督与幼儿互动",
+        "with_other_dogs": "通常友好，但可能对其他犬类有支配倾向",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "高，需定期梳理以防止打结",
+        "shedding_level": 8,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "糖尿病",
+          "进行性视网膜萎缩",
+          "青光眼"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要大量运动和梳理，不适合公寓生活",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "萨摩耶犬",
+      "processed_date": "2026-02-06 13:53:32"
+    },
+    {
+      "breed": {
+        "chinese_name": "拳师犬",
+        "english_name": "Boxer",
+        "akc_group": "工作犬组",
+        "origin": "德国",
+        "original_purpose": "斗牛犬、护卫犬、工作犬",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "30-32",
+          "female": "25-27"
+        },
+        "average_height_cm": {
+          "male": "57-63",
+          "female": "53-59"
+        },
+        "life_expectancy": "10-12年",
+        "coat_type": "短毛、光滑",
+        "coat_colors": [
+          "浅黄褐色",
+          "虎斑色",
+          "白色（允许但有限制）"
+        ],
+        "primary_traits": [
+          "忠诚",
+          "活泼",
+          "勇敢",
+          "警惕",
+          "友善"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 7,
+        "with_family": "非常忠诚和亲昵，是优秀的家庭伴侣",
+        "with_children": "通常与儿童相处良好，但需要监督和适当社会化",
+        "with_other_dogs": "在适当社交后通常能与其他狗相处，但可能对同性有支配倾向",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周刷毛一次即可",
+        "shedding_level": 4,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "心脏病（如主动脉瓣狭窄）",
+          "甲状腺功能减退",
+          "癌症（如淋巴瘤）",
+          "过敏"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要充足运动和训练，不适合公寓生活，需注意健康问题",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "世界犬业联盟（FCI）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "拳师犬",
+      "processed_date": "2026-02-06 13:53:48"
+    },
+    {
+      "breed": {
+        "chinese_name": "杜高犬",
+        "english_name": "Dogo Argentino",
+        "akc_group": "Working Group",
+        "origin": "Argentina",
+        "original_purpose": "大型狩猎犬，用于捕猎野猪、美洲狮等大型猎物",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "40-45",
+          "female": "35-40"
+        },
+        "average_height_cm": {
+          "male": "62-68",
+          "female": "60-65"
+        },
+        "life_expectancy": "10-12年",
+        "coat_type": "短毛，平滑",
+        "coat_colors": [
+          "纯白色"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "忠诚",
+          "强壮",
+          "保护性强",
+          "需要早期社会化"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "对家庭成员忠诚，但需要经验丰富的饲养者",
+        "with_children": "在适当社会化下可相处，但需监督，不适合幼儿",
+        "with_other_dogs": "可能对其他犬只有攻击性，需要谨慎社交",
+        "daily_exercise_minutes": 90,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周刷毛即可",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "耳聋",
+          "髋关节发育不良",
+          "皮肤问题"
+        ],
+        "suitability_assessment": "适合有经验、活跃的饲养者，需要大量运动、训练和早期社会化，不适合新手或公寓生活",
+        "knowledge_sources": [
+          "American Kennel Club (AKC)",
+          "Fédération Cynologique Internationale (FCI)",
+          "专业犬类行为学资料"
+        ]
+      },
+      "breed_name": "杜高犬",
+      "processed_date": "2026-02-06 13:54:05"
+    },
+    {
+      "breed": {
+        "chinese_name": "英国可卡犬",
+        "english_name": "English Cocker Spaniel",
+        "akc_group": "Sporting Group",
+        "origin": "英国",
+        "original_purpose": "狩猎犬，主要用于猎捕林地鸟类（如丘鹬）",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "13-16",
+          "female": "12-15"
+        },
+        "average_height_cm": {
+          "male": "39-41",
+          "female": "38-40"
+        },
+        "life_expectancy": "12-14年",
+        "coat_type": "中等长度，丝质，平坦或略有波浪",
+        "coat_colors": [
+          "黑色",
+          "肝色",
+          "红色",
+          "金色",
+          "柠檬色",
+          "杂色（如黑白、肝白）"
+        ],
+        "primary_traits": [
+          "活泼",
+          "友善",
+          "忠诚",
+          "适应性强",
+          "嗅觉灵敏"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 8,
+        "trainability": 7,
+        "with_family": "非常友好，是优秀的家庭伴侣犬",
+        "with_children": "通常与儿童相处融洽，但需监督互动",
+        "with_other_dogs": "通常友好，但早期社会化很重要",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": true,
+        "grooming_needs": "高，需要定期梳理和修剪",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "进行性视网膜萎缩",
+          "髋关节发育不良",
+          "耳部感染",
+          "家族性肾病"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要定期运动和梳理，不适合长时间独处",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "兽医临床指南"
+        ]
+      },
+      "breed_name": "英国可卡犬",
+      "processed_date": "2026-02-06 13:54:21"
+    },
+    {
+      "breed": {
+        "chinese_name": "美国可卡犬",
+        "english_name": "American Cocker Spaniel",
+        "akc_group": "Sporting Group",
+        "origin": "美国",
+        "original_purpose": "猎鸟犬，主要用于狩猎鹌鹑等小型鸟类",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "11-13",
+          "female": "10-12"
+        },
+        "average_height_cm": {
+          "male": "36-39",
+          "female": "34-37"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层毛中等长度、丝滑，内层毛柔软浓密",
+        "coat_colors": [
+          "黑色",
+          "棕色",
+          "红色",
+          "奶油色",
+          "杂色（如黑白、棕白）"
+        ],
+        "primary_traits": [
+          "友善",
+          "活泼",
+          "聪明",
+          "适应性强",
+          "情感丰富"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 8,
+        "trainability": 7,
+        "with_family": "非常友好，是优秀的家庭伴侣犬",
+        "with_children": "通常与儿童相处融洽，但需监督互动",
+        "with_other_dogs": "一般友好，但早期社会化很重要",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": true,
+        "grooming_needs": "高，需要定期梳理和修剪",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "耳部感染",
+          "眼部疾病（如白内障）",
+          "髋关节发育不良",
+          "皮肤过敏"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要定期美容和运动，不适合忽视护理的主人",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类行为学资料",
+          "兽医健康指南"
+        ]
+      },
+      "breed_name": "美国可卡犬",
+      "processed_date": "2026-02-06 13:54:38"
+    },
+    {
+      "breed": {
+        "chinese_name": "史宾格犬",
+        "english_name": "English Springer Spaniel",
+        "akc_group": "Sporting Group",
+        "origin": "英国",
+        "original_purpose": "狩猎、寻回",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "20-25",
+          "female": "18-23"
+        },
+        "average_height_cm": {
+          "male": "48-51",
+          "female": "46-48"
+        },
+        "life_expectancy": "12-14年",
+        "coat_type": "中等长度、双层、防水",
+        "coat_colors": [
+          "黑色与白色",
+          "肝色与白色",
+          "三色"
+        ],
+        "primary_traits": [
+          "友善",
+          "活跃",
+          "聪明",
+          "忠诚",
+          "适应性强"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 8,
+        "trainability": 8,
+        "with_family": "优秀，非常亲人和忠诚",
+        "with_children": "良好，适合有孩子的家庭，但需监督",
+        "with_other_dogs": "良好，社交化后友好",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，需定期梳理和修剪",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "耳部感染",
+          "眼部问题",
+          "癫痫"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要充足运动和训练，不适合久坐生活方式",
+        "knowledge_sources": [
+          "AKC官网",
+          "犬类百科全书",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "史宾格犬",
+      "processed_date": "2026-02-06 13:54:53"
+    },
+    {
+      "breed": {
+        "chinese_name": "波音达犬",
+        "english_name": "Pointer",
+        "akc_group": "Sporting Group",
+        "origin": "英国",
+        "original_purpose": "狩猎指示犬，用于定位并指示鸟类等猎物位置",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "25-34",
+          "female": "20-30"
+        },
+        "average_height_cm": {
+          "male": "63-71",
+          "female": "58-66"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "短而光滑的被毛",
+        "coat_colors": [
+          "柠檬色",
+          "橙色",
+          "肝色",
+          "黑色",
+          "白色",
+          "杂色"
+        ],
+        "primary_traits": [
+          "精力充沛",
+          "嗅觉敏锐",
+          "指示猎物能力强",
+          "忠诚",
+          "友善"
+        ],
+        "energy_level": 9,
+        "intelligence_rank": 8,
+        "trainability": 8,
+        "with_family": "非常友好，适合家庭生活",
+        "with_children": "通常与儿童相处良好，但需监督互动",
+        "with_other_dogs": "通常友好，但可能对小型宠物有狩猎本能",
+        "daily_exercise_minutes": 90,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周梳理一次即可",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "甲状腺功能减退",
+          "耳部感染"
+        ],
+        "suitability_assessment": "适合活跃家庭或狩猎爱好者，需要大量运动和训练，不适合公寓生活",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类行为学资料",
+          "兽医健康数据库"
+        ]
+      },
+      "breed_name": "波音达犬",
+      "processed_date": "2026-02-06 13:55:09"
+    },
+    {
+      "breed": {
+        "chinese_name": "威玛猎犬",
+        "english_name": "Weimaraner",
+        "akc_group": "Sporting Group",
+        "origin": "德国",
+        "original_purpose": "大型猎物狩猎（如野猪、鹿、熊）",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "32-40",
+          "female": "25-35"
+        },
+        "average_height_cm": {
+          "male": "61-69",
+          "female": "56-64"
+        },
+        "life_expectancy": "10-13年",
+        "coat_type": "短毛、光滑、紧密",
+        "coat_colors": [
+          "灰色",
+          "银灰色",
+          "鼠灰色"
+        ],
+        "primary_traits": [
+          "高能量",
+          "聪明",
+          "忠诚",
+          "独立",
+          "敏感"
+        ],
+        "energy_level": 9,
+        "intelligence_rank": 9,
+        "trainability": 8,
+        "with_family": "非常忠诚，但需要大量关注和运动，适合活跃家庭",
+        "with_children": "通常友好，但需监督，因精力旺盛可能不小心撞倒幼儿",
+        "with_other_dogs": "可能对其他狗有支配倾向，早期社会化很重要",
+        "daily_exercise_minutes": 90,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周刷毛一次即可",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "胃扭转",
+          "髋关节发育不良",
+          "甲状腺功能减退",
+          "眼部问题"
+        ],
+        "suitability_assessment": "适合活跃、有经验的养犬者，需要大量运动和心智刺激，不适合久坐生活方式或新手",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "Weimaraner Club of America",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "威玛猎犬",
+      "processed_date": "2026-02-06 13:55:25"
+    },
+    {
+      "breed": {
+        "chinese_name": "维兹拉犬",
+        "english_name": "Vizsla",
+        "akc_group": "Sporting Group",
+        "origin": "匈牙利",
+        "original_purpose": "狩猎伴侣，用于指示和寻回猎物",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "25-30",
+          "female": "20-25"
+        },
+        "average_height_cm": {
+          "male": "56-61",
+          "female": "53-58"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "短而光滑的单层被毛",
+        "coat_colors": [
+          "金锈色",
+          "黄褐色"
+        ],
+        "primary_traits": [
+          "精力充沛",
+          "忠诚",
+          "聪明",
+          "敏感",
+          "善于社交"
+        ],
+        "energy_level": 9,
+        "intelligence_rank": 8,
+        "trainability": 8,
+        "with_family": "非常亲密和忠诚，需要大量陪伴",
+        "with_children": "通常友好，但需要监督和适当社交",
+        "with_other_dogs": "通常友好，但早期社交很重要",
+        "daily_exercise_minutes": 90,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周梳理一次即可",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "癫痫",
+          "甲状腺功能减退",
+          "过敏"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要大量运动和智力刺激，不适合长时间独处",
+        "knowledge_sources": [
+          "American Kennel Club (AKC)",
+          "Vizsla Club of America",
+          "Fédération Cynologique Internationale (FCI)"
+        ]
+      },
+      "breed_name": "维兹拉犬",
+      "processed_date": "2026-02-06 13:55:40"
+    },
+    {
+      "breed": {
+        "chinese_name": "切萨皮克湾寻回犬",
+        "english_name": "Chesapeake Bay Retriever",
+        "akc_group": "Sporting Group",
+        "origin": "美国",
+        "original_purpose": "水上寻回，主要用于在寒冷、恶劣的切萨皮克湾水域中寻回水禽",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "29-36",
+          "female": "25-32"
+        },
+        "average_height_cm": {
+          "male": "58-66",
+          "female": "53-61"
+        },
+        "life_expectancy": "10-13年",
+        "coat_type": "双层被毛，外层粗糙、油性，内层浓密、羊毛状，防水",
+        "coat_colors": [
+          "棕色",
+          "枯草色",
+          "枯草色带棕色斑纹"
+        ],
+        "primary_traits": [
+          "坚韧",
+          "独立",
+          "忠诚",
+          "保护性强",
+          "适应寒冷水域"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 8,
+        "trainability": 7,
+        "with_family": "忠诚、保护性强，适合有经验的家庭",
+        "with_children": "通常良好，但需早期社会化，可能更适合较大儿童",
+        "with_other_dogs": "可能对其他狗有支配性，需早期社会化",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，需定期梳理以去除死毛，保持被毛防水性",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "进行性视网膜萎缩",
+          "胃扭转"
+        ],
+        "suitability_assessment": "适合活跃、有经验的家庭，需要大量运动和训练，不适合公寓生活或新手主人",
+        "knowledge_sources": [
+          "American Kennel Club (AKC)",
+          "Chesapeake Bay Retriever Club",
+          "兽医和犬类行为学资料"
+        ]
+      },
+      "breed_name": "切萨皮克湾寻回犬",
+      "processed_date": "2026-02-06 13:55:58"
+    },
+    {
+      "breed": {
+        "chinese_name": "平毛寻回犬",
+        "english_name": "Flat-Coated Retriever",
+        "akc_group": "Sporting Group",
+        "origin": "英国",
+        "original_purpose": "水禽寻回犬",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "27-36",
+          "female": "25-32"
+        },
+        "average_height_cm": {
+          "male": "58-61",
+          "female": "56-59"
+        },
+        "life_expectancy": "10-12年",
+        "coat_type": "平直、浓密、光滑",
+        "coat_colors": [
+          "黑色",
+          "肝色"
+        ],
+        "primary_traits": [
+          "友善",
+          "活泼",
+          "聪明",
+          "忠诚",
+          "适应性强"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 8,
+        "trainability": 8,
+        "with_family": "非常友好，是优秀的家庭伴侣",
+        "with_children": "通常很好，但需要监督与幼童互动",
+        "with_other_dogs": "通常友好，社交化良好时表现佳",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，每周梳理2-3次",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "癌症（如肉瘤）",
+          "眼疾",
+          "癫痫"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要充足运动和训练，不适合久坐生活方式",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类行为学资料",
+          "兽医健康数据库"
+        ]
+      },
+      "breed_name": "平毛寻回犬",
+      "processed_date": "2026-02-06 13:56:13"
+    },
+    {
+      "breed": {
+        "chinese_name": "卷毛寻回犬",
+        "english_name": "Curly-Coated Retriever",
+        "akc_group": "Sporting Group",
+        "origin": "England",
+        "original_purpose": "Waterfowl retrieving",
+        "size_category": "Large",
+        "average_weight_kg": {
+          "male": "36-41",
+          "female": "32-36"
+        },
+        "average_height_cm": {
+          "male": "67-69",
+          "female": "64-66"
+        },
+        "life_expectancy": "10-12 years",
+        "coat_type": "Dense, tight curls",
+        "coat_colors": [
+          "Black",
+          "Liver"
+        ],
+        "primary_traits": [
+          "Intelligent",
+          "Confident",
+          "Independent",
+          "Loyal",
+          "Energetic"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 8,
+        "trainability": 7,
+        "with_family": "Loyal and affectionate with family members",
+        "with_children": "Good with older children, supervision recommended with younger ones",
+        "with_other_dogs": "Generally good, early socialization important",
+        "daily_exercise_minutes": 90,
+        "apartment_friendly": false,
+        "grooming_needs": "Moderate, regular brushing to prevent matting",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "Hip dysplasia",
+          "Progressive retinal atrophy",
+          "Exercise-induced collapse"
+        ],
+        "suitability_assessment": "Best for active families or individuals with experience in dog training, requiring regular exercise and mental stimulation",
+        "knowledge_sources": [
+          "American Kennel Club (AKC)",
+          "The Curly-Coated Retriever Club of America",
+          "Fédération Cynologique Internationale (FCI)"
+        ]
+      },
+      "breed_name": "卷毛寻回犬",
+      "processed_date": "2026-02-06 13:56:34"
+    },
+    {
+      "breed": {
+        "chinese_name": "爱尔兰雪达犬",
+        "english_name": "Irish Setter",
+        "akc_group": "Sporting Group",
+        "origin": "爱尔兰",
+        "original_purpose": "猎鸟犬，主要用于定位和指示猎物",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "27-32",
+          "female": "24-29"
+        },
+        "average_height_cm": {
+          "male": "65-68",
+          "female": "61-65"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "中等长度，丝质，平直或略有波浪",
+        "coat_colors": [
+          "栗红色",
+          "桃花心木色"
+        ],
+        "primary_traits": [
+          "精力充沛",
+          "友善",
+          "聪明",
+          "独立",
+          "优雅"
+        ],
+        "energy_level": 9,
+        "intelligence_rank": 8,
+        "trainability": 7,
+        "with_family": "非常友好，是优秀的家庭伴侣",
+        "with_children": "通常很好，但需要监督，因其精力旺盛",
+        "with_other_dogs": "通常友好，但早期社会化很重要",
+        "daily_exercise_minutes": 90,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，需要定期梳理以防止打结",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "胃扭转",
+          "进行性视网膜萎缩",
+          "甲状腺功能减退"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要大量运动和训练，不适合久坐生活方式或公寓生活",
+        "knowledge_sources": [
+          "American Kennel Club (AKC)",
+          "Irish Setter Club of America",
+          "兽医和犬类行为学资料"
+        ]
+      },
+      "breed_name": "爱尔兰雪达犬",
+      "processed_date": "2026-02-06 13:56:50"
+    },
+    {
+      "breed": {
+        "chinese_name": "英国雪达犬",
+        "english_name": "English Setter",
+        "akc_group": "Sporting Group",
+        "origin": "英国",
+        "original_purpose": "狩猎犬，用于定位和指示鸟类（如鹌鹑、松鸡）",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "25-36",
+          "female": "20-32"
+        },
+        "average_height_cm": {
+          "male": "65-68",
+          "female": "61-65"
+        },
+        "life_expectancy": "10-12年",
+        "coat_type": "中等长度，丝质，平坦或略有波浪",
+        "coat_colors": [
+          "白色带黑色、橙色、柠檬色或肝色斑纹（通常为斑点或斑块）"
+        ],
+        "primary_traits": [
+          "优雅",
+          "友善",
+          "精力充沛",
+          "聪明",
+          "适应性强"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 8,
+        "trainability": 7,
+        "with_family": "非常友好，忠诚，是优秀的家庭伴侣",
+        "with_children": "通常很好，温和耐心，但需监督与幼儿互动",
+        "with_other_dogs": "通常友好，社交化后表现良好",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，需每周梳理2-3次以防止打结，定期修剪",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "耳部感染",
+          "甲状腺功能减退",
+          "进行性视网膜萎缩"
+        ],
+        "suitability_assessment": "适合活跃家庭或猎人，需要充足运动和社交，不适合久坐生活方式或小公寓",
+        "knowledge_sources": [
+          "American Kennel Club (AKC)",
+          "The Kennel Club (UK)",
+          "Fédération Cynologique Internationale (FCI)",
+          "专业犬类书籍和兽医资源"
+        ]
+      },
+      "breed_name": "英国雪达犬",
+      "processed_date": "2026-02-06 13:57:06"
+    },
+    {
+      "breed": {
+        "chinese_name": "戈登雪达犬",
+        "english_name": "Gordon Setter",
+        "akc_group": "Sporting Group",
+        "origin": "Scotland",
+        "original_purpose": "Bird hunting, specifically for grouse and other game birds",
+        "size_category": "Large",
+        "average_weight_kg": {
+          "male": "25-36",
+          "female": "20-32"
+        },
+        "average_height_cm": {
+          "male": "61-69",
+          "female": "58-66"
+        },
+        "life_expectancy": "10-12 years",
+        "coat_type": "Medium-length, silky, with feathering on legs, ears, chest, and tail",
+        "coat_colors": [
+          "Black and tan"
+        ],
+        "primary_traits": [
+          "Loyal",
+          "Intelligent",
+          "Energetic",
+          "Alert",
+          "Independent"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 8,
+        "trainability": 7,
+        "with_family": "Devoted and affectionate with family members, but may be reserved with strangers",
+        "with_children": "Good with children if socialized early, but supervision is recommended due to size and energy",
+        "with_other_dogs": "Generally good with other dogs if socialized, but may show dominance",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "Moderate to high; requires regular brushing to prevent matting and occasional trimming",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "Hip dysplasia",
+          "Bloat (gastric torsion)",
+          "Progressive retinal atrophy (PRA)",
+          "Hypothyroidism"
+        ],
+        "suitability_assessment": "Best suited for active families or individuals with experience in dog training, who can provide ample exercise and mental stimulation. Not ideal for apartment living or first-time owners.",
+        "knowledge_sources": [
+          "American Kennel Club (AKC)",
+          "The Kennel Club (UK)",
+          "Gordon Setter Club of America",
+          "Veterinary breed guides"
+        ]
+      },
+      "breed_name": "戈登雪达犬",
+      "processed_date": "2026-02-06 13:57:22"
+    },
+    {
+      "breed": {
+        "chinese_name": "布列塔尼犬",
+        "english_name": "Brittany",
+        "akc_group": "Sporting Group",
+        "origin": "法国",
+        "original_purpose": "猎鸟犬",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "14-18",
+          "female": "13-17"
+        },
+        "average_height_cm": {
+          "male": "48-51",
+          "female": "47-50"
+        },
+        "life_expectancy": "12-14年",
+        "coat_type": "中等长度、平坦或略有波浪",
+        "coat_colors": [
+          "橙色与白色",
+          "肝色与白色",
+          "三色（橙色、肝色与白色）"
+        ],
+        "primary_traits": [
+          "精力充沛",
+          "聪明",
+          "友善",
+          "适应性强",
+          "易于训练"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 8,
+        "trainability": 9,
+        "with_family": "非常友好，是优秀的家庭伴侣",
+        "with_children": "通常很好，但需要监督与年幼儿童互动",
+        "with_other_dogs": "通常友好，社会化良好时表现佳",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "每周梳理1-2次，定期修剪",
+        "shedding_level": 4,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "癫痫",
+          "甲状腺功能减退",
+          "白内障"
+        ],
+        "suitability_assessment": "适合活跃家庭或猎人，需要大量运动和智力刺激，不适合久坐生活方式",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "兽医健康数据库"
+        ]
+      },
+      "breed_name": "布列塔尼犬",
+      "processed_date": "2026-02-06 13:57:36"
+    },
+    {
+      "breed": {
+        "chinese_name": "德国短毛指示犬",
+        "english_name": "German Shorthaired Pointer",
+        "akc_group": "Sporting Group",
+        "origin": "德国",
+        "original_purpose": "多功能猎犬，用于指示、追踪和寻回陆地及水禽猎物",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "25-32",
+          "female": "20-27"
+        },
+        "average_height_cm": {
+          "male": "58-64",
+          "female": "53-59"
+        },
+        "life_expectancy": "12-14年",
+        "coat_type": "短而密的单层被毛，质地粗糙",
+        "coat_colors": [
+          "肝色",
+          "肝色与白色结合",
+          "肝色斑点",
+          "肝色斑块"
+        ],
+        "primary_traits": [
+          "精力充沛",
+          "聪明",
+          "忠诚",
+          "适应性强",
+          "友善",
+          "狩猎本能强"
+        ],
+        "energy_level": 9,
+        "intelligence_rank": 8,
+        "trainability": 8,
+        "with_family": "非常友好和忠诚，是优秀的家庭伴侣",
+        "with_children": "通常与儿童相处良好，但需要监督和适当社交",
+        "with_other_dogs": "通常与其他狗相处良好，尤其是从小社交",
+        "daily_exercise_minutes": 90,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周刷毛一次即可",
+        "shedding_level": 4,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "肘关节发育不良",
+          "进行性视网膜萎缩",
+          "胃扭转"
+        ],
+        "suitability_assessment": "适合活跃家庭或猎人，需要大量运动和智力刺激，不适合久坐生活方式或公寓生活",
+        "knowledge_sources": [
+          "American Kennel Club (AKC)",
+          "Fédération Cynologique Internationale (FCI)",
+          "专业犬类行为学和兽医资料"
+        ]
+      },
+      "breed_name": "德国短毛指示犬",
+      "processed_date": "2026-02-06 13:57:53"
+    },
+    {
+      "breed": {
+        "chinese_name": "德国刚毛指示犬",
+        "english_name": "German Wirehaired Pointer",
+        "akc_group": "Sporting Group",
+        "origin": "德国",
+        "original_purpose": "多用途猎犬，用于指示、追踪和寻回猎物，适应各种地形和气候",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "27-32",
+          "female": "25-29"
+        },
+        "average_height_cm": {
+          "male": "61-68",
+          "female": "56-63"
+        },
+        "life_expectancy": "12-14年",
+        "coat_type": "刚毛、粗糙、防水，有浓密的底毛",
+        "coat_colors": [
+          "肝色与白色混合",
+          "肝色斑点",
+          "肝色与白色斑纹"
+        ],
+        "primary_traits": [
+          "精力充沛",
+          "聪明",
+          "忠诚",
+          "适应性强",
+          "独立",
+          "勇敢"
+        ],
+        "energy_level": 9,
+        "intelligence_rank": 8,
+        "trainability": 7,
+        "with_family": "忠诚且保护性强，适合活跃家庭，需要充分社交以避免过度警惕",
+        "with_children": "通常友好，但需监督与幼儿互动，因其精力旺盛可能无意中撞倒小孩",
+        "with_other_dogs": "通常能与其他狗相处，但早期社交很重要，可能对同性犬有支配倾向",
+        "daily_exercise_minutes": 90,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，每周梳理1-2次，定期修剪和拔毛以维持被毛健康",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "眼部疾病（如白内障）",
+          "甲状腺功能减退",
+          "皮肤过敏"
+        ],
+        "suitability_assessment": "适合活跃的户外爱好者或猎人，需要大量运动和智力刺激，不适合久坐生活方式或公寓生活",
+        "knowledge_sources": [
+          "American Kennel Club (AKC)",
+          "Fédération Cynologique Internationale (FCI)",
+          "专业犬类繁殖和兽医资料"
+        ]
+      },
+      "breed_name": "德国刚毛指示犬",
+      "processed_date": "2026-02-06 13:58:11"
+    },
+    {
+      "breed": {
+        "chinese_name": "约克夏梗",
+        "english_name": "Yorkshire Terrier",
+        "akc_group": "玩具犬组",
+        "origin": "英国",
+        "original_purpose": "捕鼠",
+        "size_category": "玩具犬",
+        "average_weight_kg": {
+          "male": "1.8-3.2",
+          "female": "1.8-3.2"
+        },
+        "average_height_cm": {
+          "male": "18-23",
+          "female": "18-23"
+        },
+        "life_expectancy": "13-16年",
+        "coat_type": "丝质长毛",
+        "coat_colors": [
+          "钢蓝色与棕褐色"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "自信",
+          "活泼",
+          "忠诚",
+          "警觉"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 8,
+        "trainability": 6,
+        "with_family": "非常亲密，但可能对陌生人警惕",
+        "with_children": "适合有年长儿童的家庭，需监督与幼儿互动",
+        "with_other_dogs": "可与其他狗相处，但可能表现出梗犬的支配性",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "高，需要每日梳理和定期专业美容",
+        "shedding_level": 1,
+        "common_health_issues": [
+          "髌骨脱位",
+          "气管塌陷",
+          "低血糖",
+          "牙齿问题",
+          "眼部疾病"
+        ],
+        "suitability_assessment": "适合公寓生活，需要主人投入时间进行美容和社交训练，不适合长时间独处。",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "约克夏梗",
+      "processed_date": "2026-02-06 13:58:26"
+    },
+    {
+      "breed": {
+        "chinese_name": "杰克罗素梗",
+        "english_name": "Jack Russell Terrier",
+        "akc_group": "梗犬组",
+        "origin": "英国",
+        "original_purpose": "猎狐、捕鼠",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "6-8",
+          "female": "5-7"
+        },
+        "average_height_cm": {
+          "male": "25-30",
+          "female": "23-28"
+        },
+        "life_expectancy": "13-16年",
+        "coat_type": "短毛、粗糙或光滑",
+        "coat_colors": [
+          "白色为主，带黑色、棕色或棕褐色斑纹"
+        ],
+        "primary_traits": [
+          "精力充沛",
+          "勇敢",
+          "聪明",
+          "独立",
+          "活泼好动"
+        ],
+        "energy_level": 9,
+        "intelligence_rank": 8,
+        "trainability": 7,
+        "with_family": "忠诚、亲昵，但需要早期社会化训练",
+        "with_children": "适合与较大儿童相处，需监督互动",
+        "with_other_dogs": "可能对其他犬只有支配欲，需适当社交",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "低至中等，每周梳理1-2次",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髌骨脱位",
+          "白内障",
+          "耳部感染",
+          "皮肤过敏"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要大量运动和智力刺激，不适合新手养犬者",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类行为学资料",
+          "兽医健康指南"
+        ]
+      },
+      "breed_name": "杰克罗素梗",
+      "processed_date": "2026-02-06 13:58:41"
+    },
+    {
+      "breed": {
+        "chinese_name": "西高地白梗",
+        "english_name": "West Highland White Terrier",
+        "akc_group": "Terrier Group",
+        "origin": "苏格兰",
+        "original_purpose": "捕猎小型害兽（如老鼠、狐狸）",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "7-10",
+          "female": "6-7"
+        },
+        "average_height_cm": {
+          "male": "25-28",
+          "female": "23-26"
+        },
+        "life_expectancy": "12-16年",
+        "coat_type": "双层被毛，外层硬质、直毛，内层柔软",
+        "coat_colors": [
+          "白色"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "独立",
+          "活泼",
+          "忠诚",
+          "警觉"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 8,
+        "trainability": 6,
+        "with_family": "对家庭忠诚，适合作为伴侣犬",
+        "with_children": "与儿童相处良好，但需监督互动",
+        "with_other_dogs": "可能对其他犬只有支配倾向，需早期社会化",
+        "daily_exercise_minutes": 45,
+        "apartment_friendly": true,
+        "grooming_needs": "需要定期梳理和修剪，每月专业美容建议",
+        "shedding_level": 2,
+        "common_health_issues": [
+          "皮肤过敏",
+          "髌骨脱位",
+          "Legg-Calvé-Perthes病",
+          "颅下颌骨病"
+        ],
+        "suitability_assessment": "适合活跃家庭或单身人士，需要适度运动和定期美容，不适合长时间独处",
+        "knowledge_sources": [
+          "American Kennel Club (AKC)",
+          "The Kennel Club (UK)",
+          "West Highland White Terrier Club of America",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "西高地白梗",
+      "processed_date": "2026-02-06 13:58:56"
+    },
+    {
+      "breed": {
+        "chinese_name": "苏格兰梗",
+        "english_name": "Scottish Terrier",
+        "akc_group": "梗犬组",
+        "origin": "苏格兰",
+        "original_purpose": "捕猎小型害兽（如狐狸、獾、老鼠）",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "8.5-10.5",
+          "female": "8-10"
+        },
+        "average_height_cm": {
+          "male": "25-28",
+          "female": "25-28"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层刚硬粗糙，内层柔软浓密",
+        "coat_colors": [
+          "黑色",
+          "小麦色",
+          "斑纹色"
+        ],
+        "primary_traits": [
+          "独立自信",
+          "勇敢果断",
+          "忠诚警惕",
+          "固执倔强",
+          "领地意识强"
+        ],
+        "energy_level": 6,
+        "intelligence_rank": 7,
+        "trainability": 5,
+        "with_family": "对家庭成员忠诚，但可能较为独立，需要早期社会化",
+        "with_children": "适合有年长儿童的家庭，需监督与幼儿互动",
+        "with_other_dogs": "可能对其他犬只有支配欲，需谨慎社交",
+        "daily_exercise_minutes": 45,
+        "apartment_friendly": true,
+        "grooming_needs": "每周梳理2-3次，定期专业修剪，需手工拔毛维护被毛质地",
+        "shedding_level": 2,
+        "common_health_issues": [
+          "冯·维勒布兰德病",
+          "苏格兰梗痉挛症",
+          "髌骨脱位",
+          "膀胱结石",
+          "皮肤过敏"
+        ],
+        "suitability_assessment": "适合有经验的养犬者，能接受其独立性格和定期美容需求；不适合多宠物家庭或寻求高度服从性的新手",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）品种标准",
+          "英国养犬俱乐部（KC）品种指南",
+          "兽医遗传学数据库",
+          "犬种历史文献"
+        ]
+      },
+      "breed_name": "苏格兰梗",
+      "processed_date": "2026-02-06 13:59:13"
+    },
+    {
+      "breed": {
+        "chinese_name": "凯恩梗",
+        "english_name": "Cairn Terrier",
+        "akc_group": "梗犬组",
+        "origin": "苏格兰",
+        "original_purpose": "捕猎小型害兽（如狐狸、獾、老鼠）",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "6-7.5",
+          "female": "6-7.5"
+        },
+        "average_height_cm": {
+          "male": "25-30",
+          "female": "25-30"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层粗糙，内层柔软",
+        "coat_colors": [
+          "红色",
+          "小麦色",
+          "灰色",
+          "黑色",
+          "斑纹色"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "活泼",
+          "好奇",
+          "独立",
+          "忠诚"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常忠诚，适合家庭生活，但需要早期社会化",
+        "with_children": "适合与较大儿童相处，需监督与幼儿互动",
+        "with_other_dogs": "可能对其他狗有支配欲，需适当社交",
+        "daily_exercise_minutes": 45,
+        "apartment_friendly": true,
+        "grooming_needs": "中等，需定期梳理和手剥被毛",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髌骨脱位",
+          "白内障",
+          "过敏",
+          "肝门静脉分流"
+        ],
+        "suitability_assessment": "适合活跃家庭，能提供日常锻炼和训练，适合有梗犬经验的主人",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "兽医临床指南"
+        ]
+      },
+      "breed_name": "凯恩梗",
+      "processed_date": "2026-02-06 13:59:29"
+    },
+    {
+      "breed": {
+        "chinese_name": "边境梗",
+        "english_name": "Border Terrier",
+        "akc_group": "梗犬组",
+        "origin": "英国",
+        "original_purpose": "狩猎狐狸、獾等小型害兽",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "5.9-7.1",
+          "female": "5.1-6.4"
+        },
+        "average_height_cm": {
+          "male": "33-38",
+          "female": "28-36"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层粗硬，内层柔软",
+        "coat_colors": [
+          "红色",
+          "小麦色",
+          "蓝棕褐色",
+          "灰褐色"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "精力充沛",
+          "适应性强",
+          "忠诚",
+          "独立"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常忠诚，是优秀的家庭伴侣",
+        "with_children": "通常友好，但需监督与幼儿互动",
+        "with_other_dogs": "可能对其他犬只有支配倾向，需社会化训练",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": true,
+        "grooming_needs": "每周梳理1-2次，每年手剥被毛2-3次",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "心脏问题",
+          "癫痫",
+          "过敏"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要充足运动和训练，不适合新手主人",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "犬类健康数据库"
+        ]
+      },
+      "breed_name": "边境梗",
+      "processed_date": "2026-02-06 13:59:44"
+    },
+    {
+      "breed": {
+        "chinese_name": "万能梗",
+        "english_name": "Airedale Terrier",
+        "akc_group": "Terrier Group",
+        "origin": "英国",
+        "original_purpose": "狩猎水獭、狐狸等小型动物，以及作为护卫犬",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "25-30",
+          "female": "20-25"
+        },
+        "average_height_cm": {
+          "male": "58-61",
+          "female": "56-59"
+        },
+        "life_expectancy": "10-13年",
+        "coat_type": "双层被毛，外层刚硬、浓密，内层柔软",
+        "coat_colors": [
+          "黑色与棕褐色相间"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "独立",
+          "聪明",
+          "精力充沛",
+          "忠诚"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 8,
+        "trainability": 7,
+        "with_family": "忠诚且保护性强，适合有经验的家庭",
+        "with_children": "与儿童相处良好，但需监督互动",
+        "with_other_dogs": "可能对其他犬只有支配倾向，需社会化训练",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，需定期梳理和修剪",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "皮肤过敏",
+          "甲状腺功能减退"
+        ],
+        "suitability_assessment": "适合活跃、有经验的养犬者，需要充足的运动和训练，不适合公寓生活",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类行为学资料",
+          "兽医健康指南"
+        ]
+      },
+      "breed_name": "万能梗",
+      "processed_date": "2026-02-06 13:59:58"
+    },
+    {
+      "breed": {
+        "chinese_name": "牛头梗",
+        "english_name": "Bull Terrier",
+        "akc_group": "Terrier Group",
+        "origin": "英国",
+        "original_purpose": "斗犬和伴侣犬",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "25-30",
+          "female": "20-25"
+        },
+        "average_height_cm": {
+          "male": "45-55",
+          "female": "40-50"
+        },
+        "life_expectancy": "10-14年",
+        "coat_type": "短毛、平滑",
+        "coat_colors": [
+          "白色",
+          "黑色",
+          "虎斑色",
+          "三色"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "精力充沛",
+          "忠诚",
+          "固执",
+          "活泼"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "对家庭忠诚，但需要早期社会化训练",
+        "with_children": "适合有经验家庭，需监督与儿童互动",
+        "with_other_dogs": "可能对其他犬类有攻击性，需谨慎社交",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周刷毛一次",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "心脏问题",
+          "肾脏疾病",
+          "皮肤过敏",
+          "耳部感染"
+        ],
+        "suitability_assessment": "适合有经验、能提供充足运动和训练的犬主，不适合新手或公寓生活",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类行为学资料",
+          "兽医健康指南"
+        ]
+      },
+      "breed_name": "牛头梗",
+      "processed_date": "2026-02-06 14:00:13"
+    },
+    {
+      "breed": {
+        "chinese_name": "斯塔福郡斗牛梗",
+        "english_name": "Staffordshire Bull Terrier",
+        "akc_group": "Terrier Group",
+        "origin": "英国",
+        "original_purpose": "斗牛、斗犬、伴侣犬",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "13-17",
+          "female": "11-15"
+        },
+        "average_height_cm": {
+          "male": "36-41",
+          "female": "33-38"
+        },
+        "life_expectancy": "12-14年",
+        "coat_type": "短毛、平滑",
+        "coat_colors": [
+          "红色",
+          "浅黄褐色",
+          "白色",
+          "黑色",
+          "蓝色",
+          "斑纹色"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "忠诚",
+          "精力充沛",
+          "友善",
+          "顽皮"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常忠诚和亲密的家庭伴侣",
+        "with_children": "通常与儿童相处良好，但需要适当社会化",
+        "with_other_dogs": "可能对其他狗有攻击性，需要早期社会化",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": true,
+        "grooming_needs": "低维护，每周刷毛一次",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "白内障",
+          "皮肤过敏"
+        ],
+        "suitability_assessment": "适合有经验的犬主，需要充足的运动和坚定、一致的训练",
+        "knowledge_sources": [
+          "AKC",
+          "UKC",
+          "FCI",
+          "专业犬类书籍"
+        ]
+      },
+      "breed_name": "斯塔福郡斗牛梗",
+      "processed_date": "2026-02-06 14:00:28"
+    },
+    {
+      "breed": {
+        "chinese_name": "贝灵顿梗",
+        "english_name": "Bedlington Terrier",
+        "akc_group": "梗犬组",
+        "origin": "英国",
+        "original_purpose": "捕猎小型害兽（如鼠、兔）",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "7.7-10.4",
+          "female": "7.7-10.4"
+        },
+        "average_height_cm": {
+          "male": "41-44",
+          "female": "38-41"
+        },
+        "life_expectancy": "12-16年",
+        "coat_type": "卷曲、柔软、羊毛状",
+        "coat_colors": [
+          "蓝色",
+          "肝色",
+          "沙色",
+          "蓝与棕",
+          "肝与棕",
+          "沙与棕"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "敏捷",
+          "聪明",
+          "温和",
+          "忠诚"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 8,
+        "trainability": 7,
+        "with_family": "非常友好，是优秀的家庭伴侣",
+        "with_children": "通常良好，但需监督与幼童互动",
+        "with_other_dogs": "可能对其他狗有支配倾向，需社会化训练",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": true,
+        "grooming_needs": "高，需定期修剪和梳理",
+        "shedding_level": 2,
+        "common_health_issues": [
+          "铜中毒症",
+          "视网膜发育不良",
+          "髌骨脱位",
+          "肾脏疾病"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要定期运动和美容护理，不适合新手主人",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "英国养犬俱乐部（KC）",
+          "犬类健康信息数据库"
+        ]
+      },
+      "breed_name": "贝灵顿梗",
+      "processed_date": "2026-02-06 14:00:44"
+    },
+    {
+      "breed": {
+        "chinese_name": "爱尔兰梗",
+        "english_name": "Irish Terrier",
+        "akc_group": "梗犬组",
+        "origin": "爱尔兰",
+        "original_purpose": "捕猎害兽、看家护院",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "12-13",
+          "female": "11-12"
+        },
+        "average_height_cm": {
+          "male": "46-48",
+          "female": "45-47"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "刚毛、粗糙、浓密",
+        "coat_colors": [
+          "红色",
+          "小麦色",
+          "红褐色"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "忠诚",
+          "活泼",
+          "独立",
+          "警觉"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "对家庭非常忠诚，是优秀的伴侣犬",
+        "with_children": "适合与年长儿童相处，需早期社会化",
+        "with_other_dogs": "可能对其他犬只有支配欲，需适当社交",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，需要定期梳理和偶尔修剪",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "白内障",
+          "皮肤过敏"
+        ],
+        "suitability_assessment": "适合有养犬经验、能提供充足运动和坚定训练的家庭",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "犬类健康数据库"
+        ]
+      },
+      "breed_name": "爱尔兰梗",
+      "processed_date": "2026-02-06 14:00:58"
+    },
+    {
+      "breed": {
+        "chinese_name": "威尔士梗",
+        "english_name": "Welsh Terrier",
+        "akc_group": "Terrier Group",
+        "origin": "威尔士",
+        "original_purpose": "狩猎狐狸、獾等小型猎物",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "9-10",
+          "female": "9-10"
+        },
+        "average_height_cm": {
+          "male": "38-39",
+          "female": "38-39"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层刚硬，内层柔软",
+        "coat_colors": [
+          "黑色与棕褐色",
+          "黑色与灰色"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "活泼",
+          "独立",
+          "忠诚",
+          "警觉"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "对家庭忠诚，但可能固执，需要耐心训练",
+        "with_children": "适合有经验的家庭，需监督与儿童互动",
+        "with_other_dogs": "可能对其他狗有攻击性，需早期社会化",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": true,
+        "grooming_needs": "中等，需定期梳理和修剪",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "过敏",
+          "甲状腺功能减退",
+          "髋关节发育不良"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要充足运动和训练，不适合新手主人",
+        "knowledge_sources": [
+          "American Kennel Club (AKC)",
+          "The Kennel Club (UK)",
+          "Welsh Terrier Club of America"
+        ]
+      },
+      "breed_name": "威尔士梗",
+      "processed_date": "2026-02-06 14:01:13"
+    },
+    {
+      "breed": {
+        "chinese_name": "澳大利亚梗",
+        "english_name": "Australian Terrier",
+        "akc_group": "梗犬组",
+        "origin": "澳大利亚",
+        "original_purpose": "捕猎小型害兽（如老鼠、蛇）和看护农场",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "6.5",
+          "female": "6.5"
+        },
+        "average_height_cm": {
+          "male": "25",
+          "female": "25"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层粗糙、直且浓密，内层柔软",
+        "coat_colors": [
+          "蓝色和棕褐色",
+          "纯沙色",
+          "纯红色"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "活泼",
+          "忠诚",
+          "警惕",
+          "适应性强"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "对家庭忠诚，是优秀的伴侣犬",
+        "with_children": "适合与儿童相处，但需监督互动",
+        "with_other_dogs": "可能对其他狗有支配欲，早期社会化很重要",
+        "daily_exercise_minutes": 45,
+        "apartment_friendly": true,
+        "grooming_needs": "每周梳理2-3次，定期修剪",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "糖尿病",
+          "髌骨脱位",
+          "甲状腺功能减退"
+        ],
+        "suitability_assessment": "适合活跃家庭或单身人士，需要适度运动和训练，不适合作为第一只犬的新手主人",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "澳大利亚梗犬俱乐部",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "澳大利亚梗",
+      "processed_date": "2026-02-06 14:01:28"
+    },
+    {
+      "breed": {
+        "chinese_name": "诺福克梗",
+        "english_name": "Norfolk Terrier",
+        "akc_group": "梗犬组",
+        "origin": "英国",
+        "original_purpose": "捕猎小型害兽",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "5-6",
+          "female": "5-6"
+        },
+        "average_height_cm": {
+          "male": "25-26",
+          "female": "25-26"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层毛，外层刚硬，内层柔软",
+        "coat_colors": [
+          "红色",
+          "小麦色",
+          "黑褐色",
+          "灰色"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "活泼",
+          "忠诚",
+          "适应性强"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 8,
+        "trainability": 7,
+        "with_family": "非常友好，适合家庭生活",
+        "with_children": "良好，但需监督与年幼儿童互动",
+        "with_other_dogs": "一般友好，可能对其他犬只有领地意识",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": true,
+        "grooming_needs": "中等，需定期梳理和修剪",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "眼部问题",
+          "心脏疾病"
+        ],
+        "suitability_assessment": "适合活跃家庭或单身人士，需要适度运动和社交化训练",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "诺福克梗",
+      "processed_date": "2026-02-06 14:01:42"
+    },
+    {
+      "breed": {
+        "chinese_name": "诺维奇梗",
+        "english_name": "Norwich Terrier",
+        "akc_group": "梗犬组",
+        "origin": "英国",
+        "original_purpose": "捕鼠和狩猎小型害兽",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "5-6",
+          "female": "5-6"
+        },
+        "average_height_cm": {
+          "male": "25-26",
+          "female": "25-26"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层硬质，内层柔软",
+        "coat_colors": [
+          "红色",
+          "小麦色",
+          "黑褐色",
+          "灰色"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "活泼",
+          "忠诚",
+          "适应性强",
+          "独立"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常友好，适合家庭生活",
+        "with_children": "良好，但需监督与年幼儿童互动",
+        "with_other_dogs": "一般，可能对其他狗有支配倾向",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": true,
+        "grooming_needs": "中等，需定期梳理和修剪",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "眼部问题",
+          "心脏疾病"
+        ],
+        "suitability_assessment": "适合活跃家庭或单身人士，需要适度运动和训练，不适合长时间独处",
+        "knowledge_sources": [
+          "AKC官网",
+          "犬类百科全书",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "诺维奇梗",
+      "processed_date": "2026-02-06 14:01:56"
+    },
+    {
+      "breed": {
+        "chinese_name": "贵宾犬（玩具型）",
+        "english_name": "Toy Poodle",
+        "akc_group": "非运动犬组",
+        "origin": "法国",
+        "original_purpose": "伴侣犬、表演犬",
+        "size_category": "玩具型",
+        "average_weight_kg": {
+          "male": "2.5-4",
+          "female": "2.5-4"
+        },
+        "average_height_cm": {
+          "male": "25-28",
+          "female": "25-28"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "卷曲、浓密、单层被毛",
+        "coat_colors": [
+          "白色",
+          "黑色",
+          "杏色",
+          "银色",
+          "蓝色",
+          "棕色",
+          "红色",
+          "奶油色",
+          "花色"
+        ],
+        "primary_traits": [
+          "聪明",
+          "活泼",
+          "优雅",
+          "忠诚",
+          "适应性强",
+          "低过敏原"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 9,
+        "trainability": 9,
+        "with_family": "非常亲密，适合作为家庭伴侣",
+        "with_children": "适合与温和的年长儿童相处，需监督与幼儿互动",
+        "with_other_dogs": "通常友好，但可能对其他犬只有支配倾向",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "高，需要定期修剪和梳理",
+        "shedding_level": 1,
+        "common_health_issues": [
+          "髌骨脱位",
+          "进行性视网膜萎缩",
+          "癫痫",
+          "气管塌陷",
+          "牙科问题"
+        ],
+        "suitability_assessment": "适合公寓生活，需要定期美容和社交训练，是优秀的伴侣犬，适合活跃的家庭或个人",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "贵宾犬（玩具型）",
+      "processed_date": "2026-02-06 14:02:12"
+    },
+    {
+      "breed": {
+        "chinese_name": "博美犬",
+        "english_name": "Pomeranian",
+        "akc_group": "玩具犬组",
+        "origin": "德国",
+        "original_purpose": "伴侣犬",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "1.8-2.5",
+          "female": "1.8-2.5"
+        },
+        "average_height_cm": {
+          "male": "18-22",
+          "female": "18-22"
+        },
+        "life_expectancy": "12-16年",
+        "coat_type": "双层被毛，外层长而直，内层柔软浓密",
+        "coat_colors": [
+          "橙色",
+          "红色",
+          "奶油色",
+          "黑色",
+          "棕色",
+          "蓝色",
+          "白色",
+          "杂色"
+        ],
+        "primary_traits": [
+          "活泼",
+          "聪明",
+          "警惕",
+          "自信",
+          "忠诚",
+          "有时固执"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 8,
+        "trainability": 7,
+        "with_family": "非常亲密，适合作为家庭伴侣",
+        "with_children": "适合有年长儿童的家庭，需监督与幼儿互动",
+        "with_other_dogs": "通常友好，但可能对其他犬只表现出支配行为",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "高，需定期梳理以防止打结",
+        "shedding_level": 6,
+        "common_health_issues": [
+          "髌骨脱位",
+          "气管塌陷",
+          "牙齿问题",
+          "心脏疾病",
+          "眼部问题"
+        ],
+        "suitability_assessment": "适合公寓生活，需要适度运动和定期美容，适合有经验的犬主",
+        "knowledge_sources": [
+          "美国养犬俱乐部",
+          "国际犬业联合会",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "博美犬",
+      "processed_date": "2026-02-06 14:02:29"
+    },
+    {
+      "breed": {
+        "chinese_name": "吉娃娃",
+        "english_name": "Chihuahua",
+        "akc_group": "玩具犬组",
+        "origin": "墨西哥",
+        "original_purpose": "伴侣犬",
+        "size_category": "玩具犬",
+        "average_weight_kg": {
+          "male": "1.5-3",
+          "female": "1.5-3"
+        },
+        "average_height_cm": {
+          "male": "15-23",
+          "female": "15-23"
+        },
+        "life_expectancy": "12-20年",
+        "coat_type": "短毛或长毛",
+        "coat_colors": [
+          "黑色",
+          "白色",
+          "棕色",
+          "奶油色",
+          "蓝色",
+          "巧克力色",
+          "金色",
+          "银色",
+          "虎斑色",
+          "混合色"
+        ],
+        "primary_traits": [
+          "体型小巧",
+          "忠诚",
+          "警惕",
+          "活泼",
+          "勇敢",
+          "有时固执"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 6,
+        "trainability": 5,
+        "with_family": "非常亲密，但可能对陌生人警惕",
+        "with_children": "适合有经验的家庭，需监督与幼儿互动",
+        "with_other_dogs": "可能对其他犬只表现出支配性或攻击性，需社会化训练",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "短毛型低维护，长毛型需定期梳理",
+        "shedding_level": 4,
+        "common_health_issues": [
+          "髌骨脱位",
+          "心脏问题",
+          "低血糖",
+          "牙齿问题",
+          "眼部疾病"
+        ],
+        "suitability_assessment": "适合公寓生活，需要温和训练和社交化，适合有经验的犬主",
+        "knowledge_sources": [
+          "美国养犬俱乐部",
+          "世界犬业联盟",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "吉娃娃",
+      "processed_date": "2026-02-06 14:02:44"
+    },
+    {
+      "breed": {
+        "chinese_name": "马尔济斯犬",
+        "english_name": "Maltese",
+        "akc_group": "Toy Group",
+        "origin": "地中海地区（如马耳他）",
+        "original_purpose": "伴侣犬",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "1.8-3.2",
+          "female": "1.8-3.2"
+        },
+        "average_height_cm": {
+          "male": "20-25",
+          "female": "20-25"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "长、丝质、直毛",
+        "coat_colors": [
+          "白色"
+        ],
+        "primary_traits": [
+          "活泼",
+          "友善",
+          "忠诚",
+          "警觉",
+          "适应性强"
+        ],
+        "energy_level": 5,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常亲密，适合家庭生活",
+        "with_children": "适合与温和的儿童相处，需监督",
+        "with_other_dogs": "通常友好，但可能对其他犬类有领地意识",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "高，需要每日梳理和定期专业美容",
+        "shedding_level": 1,
+        "common_health_issues": [
+          "牙齿问题",
+          "泪痕",
+          "低血糖",
+          "髌骨脱位",
+          "心脏问题"
+        ],
+        "suitability_assessment": "适合公寓生活，作为伴侣犬，适合有经验的宠物主人，需要高维护美容和社交化训练。",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类行为学资料",
+          "兽医健康指南"
+        ]
+      },
+      "breed_name": "马尔济斯犬",
+      "processed_date": "2026-02-06 14:02:59"
+    },
+    {
+      "breed": {
+        "chinese_name": "西施犬",
+        "english_name": "Shih Tzu",
+        "akc_group": "Toy Group",
+        "origin": "China",
+        "original_purpose": "Companion dog",
+        "size_category": "Small",
+        "average_weight_kg": {
+          "male": "4.5-7.5",
+          "female": "4.5-7.5"
+        },
+        "average_height_cm": {
+          "male": "20-28",
+          "female": "20-28"
+        },
+        "life_expectancy": "10-16 years",
+        "coat_type": "Long, flowing double coat",
+        "coat_colors": [
+          "Gold",
+          "White",
+          "Black",
+          "Brindle",
+          "Liver",
+          "Blue",
+          "Silver",
+          "Combinations"
+        ],
+        "primary_traits": [
+          "Affectionate",
+          "Friendly",
+          "Alert",
+          "Playful",
+          "Loyal"
+        ],
+        "energy_level": 4,
+        "intelligence_rank": 6,
+        "trainability": 5,
+        "with_family": "Excellent",
+        "with_children": "Good (with supervision)",
+        "with_other_dogs": "Good",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "High (daily brushing required)",
+        "shedding_level": 2,
+        "common_health_issues": [
+          "Brachycephalic syndrome",
+          "Eye problems (e.g., corneal ulcers)",
+          "Dental issues",
+          "Hip dysplasia",
+          "Patellar luxation"
+        ],
+        "suitability_assessment": "Ideal for apartment living and families seeking a low-energy, affectionate companion; requires regular grooming and moderate exercise.",
+        "knowledge_sources": [
+          "American Kennel Club (AKC)",
+          "Fédération Cynologique Internationale (FCI)",
+          "Veterinary medical resources"
+        ]
+      },
+      "breed_name": "西施犬",
+      "processed_date": "2026-02-06 14:03:14"
+    },
+    {
+      "breed": {
+        "chinese_name": "北京犬",
+        "english_name": "Pekingese",
+        "akc_group": "Toy Group",
+        "origin": "中国",
+        "original_purpose": "宫廷伴侣犬，象征皇权与吉祥",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "3.2-5.4",
+          "female": "3.2-5.4"
+        },
+        "average_height_cm": {
+          "male": "15-23",
+          "female": "15-23"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层长毛，外层毛粗硬，内层毛柔软浓密",
+        "coat_colors": [
+          "金色",
+          "红色",
+          "黑色",
+          "白色",
+          "奶油色",
+          "杂色"
+        ],
+        "primary_traits": [
+          "独立自信",
+          "忠诚勇敢",
+          "高傲优雅",
+          "适应性强",
+          "警惕性高"
+        ],
+        "energy_level": 3,
+        "intelligence_rank": 6,
+        "trainability": 5,
+        "with_family": "对家庭成员忠诚，但可能偏爱特定主人",
+        "with_children": "适合有礼貌的儿童，需监督互动",
+        "with_other_dogs": "可能对其他犬只表现出支配欲，需适当社交",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "高，需每日梳理以防止打结",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "呼吸问题（短头颅综合征）",
+          "眼部疾病（如角膜溃疡）",
+          "皮肤褶皱感染",
+          "椎间盘疾病",
+          "心脏问题"
+        ],
+        "suitability_assessment": "适合公寓生活，适合经验丰富的犬主，需要定期美容和健康监测，不适合剧烈运动或炎热环境",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "兽医专业资料",
+          "犬种历史文献"
+        ]
+      },
+      "breed_name": "北京犬",
+      "processed_date": "2026-02-06 14:03:30"
+    },
+    {
+      "breed": {
+        "chinese_name": "巴哥犬",
+        "english_name": "Pug",
+        "akc_group": "玩具犬组",
+        "origin": "中国",
+        "original_purpose": "伴侣犬",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "6-9",
+          "female": "6-8"
+        },
+        "average_height_cm": {
+          "male": "25-30",
+          "female": "25-28"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "短毛、光滑",
+        "coat_colors": [
+          "银色",
+          "杏色",
+          "黑色",
+          "黄褐色"
+        ],
+        "primary_traits": [
+          "友善",
+          "活泼",
+          "忠诚",
+          "适应性强",
+          "表情丰富"
+        ],
+        "energy_level": 5,
+        "intelligence_rank": 6,
+        "trainability": 5,
+        "with_family": "极佳的家庭伴侣，非常亲人和忠诚",
+        "with_children": "通常与儿童相处良好，但需监督互动",
+        "with_other_dogs": "通常友好，但可能对其他犬只有领地意识",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "每周梳理一次，定期清洁面部褶皱",
+        "shedding_level": 7,
+        "common_health_issues": [
+          "呼吸问题",
+          "眼部疾病",
+          "皮肤褶皱感染",
+          "肥胖",
+          "髋关节发育不良"
+        ],
+        "suitability_assessment": "适合公寓生活，适合新手养犬者，需要定期清洁和适度运动",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类健康数据库",
+          "繁殖专家共识"
+        ]
+      },
+      "breed_name": "巴哥犬",
+      "processed_date": "2026-02-06 14:03:45"
+    },
+    {
+      "breed": {
+        "chinese_name": "法国斗牛犬",
+        "english_name": "French Bulldog",
+        "akc_group": "非运动犬组",
+        "origin": "法国",
+        "original_purpose": "伴侣犬",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "11-13",
+          "female": "9-11"
+        },
+        "average_height_cm": {
+          "male": "27-30",
+          "female": "25-28"
+        },
+        "life_expectancy": "10-12年",
+        "coat_type": "短毛",
+        "coat_colors": [
+          "虎斑色",
+          "奶油色",
+          "白色",
+          "黑色",
+          "黄褐色"
+        ],
+        "primary_traits": [
+          "友善",
+          "适应性强",
+          "安静",
+          "忠诚",
+          "短鼻结构"
+        ],
+        "energy_level": 4,
+        "intelligence_rank": 6,
+        "trainability": 5,
+        "with_family": "非常友好，是优秀的家庭伴侣",
+        "with_children": "通常友好，但需监督与幼儿互动",
+        "with_other_dogs": "通常友好，但可能对其他犬只有支配倾向",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "低维护，每周梳理一次即可",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "短头犬呼吸道综合征",
+          "髋关节发育不良",
+          "皮肤病",
+          "眼部问题",
+          "脊柱疾病"
+        ],
+        "suitability_assessment": "适合公寓生活，运动需求低，但需注意呼吸和过热问题，适合新手主人",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "兽医临床指南"
+        ]
+      },
+      "breed_name": "法国斗牛犬",
+      "processed_date": "2026-02-06 14:03:59"
+    },
+    {
+      "breed": {
+        "chinese_name": "意大利灵缇",
+        "english_name": "Italian Greyhound",
+        "akc_group": "Toy Group",
+        "origin": "Italy",
+        "original_purpose": "伴侣犬、猎捕小型猎物",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "3.6-4.5",
+          "female": "3.2-4.1"
+        },
+        "average_height_cm": {
+          "male": "33-38",
+          "female": "33-38"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "短而光滑的单层被毛",
+        "coat_colors": [
+          "黑色",
+          "蓝色",
+          "奶油色",
+          "红色",
+          "黄褐色",
+          "白色",
+          "斑纹色"
+        ],
+        "primary_traits": [
+          "优雅",
+          "敏感",
+          "活泼",
+          "忠诚",
+          "适应性强"
+        ],
+        "energy_level": 6,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常亲密，适合作为家庭伴侣",
+        "with_children": "适合与温和的儿童相处，需监督",
+        "with_other_dogs": "通常友好，但可能对其他犬类有竞争意识",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "低维护，偶尔梳理即可",
+        "shedding_level": 2,
+        "common_health_issues": [
+          "牙齿问题",
+          "骨折风险",
+          "眼部疾病",
+          "皮肤敏感"
+        ],
+        "suitability_assessment": "适合公寓生活，需要温和训练和适度运动，不适合寒冷气候",
+        "knowledge_sources": [
+          "AKC",
+          "FCI",
+          "专业犬类书籍"
+        ]
+      },
+      "breed_name": "意大利灵缇",
+      "processed_date": "2026-02-06 14:04:14"
+    },
+    {
+      "breed": {
+        "chinese_name": "蝴蝶犬",
+        "english_name": "Papillon",
+        "akc_group": "玩具犬组",
+        "origin": "法国/比利时",
+        "original_purpose": "伴侣犬",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "3.2-4.5",
+          "female": "3.2-4.5"
+        },
+        "average_height_cm": {
+          "male": "20-28",
+          "female": "20-28"
+        },
+        "life_expectancy": "13-16年",
+        "coat_type": "长毛、丝质",
+        "coat_colors": [
+          "白色为主，搭配黑色、棕色、红色等斑块"
+        ],
+        "primary_traits": [
+          "聪明",
+          "活泼",
+          "友善",
+          "警觉",
+          "优雅"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 8,
+        "trainability": 8,
+        "with_family": "非常亲密，是优秀的家庭伴侣",
+        "with_children": "适合与温和的儿童相处，需监督互动",
+        "with_other_dogs": "通常友好，但可能对大型犬警惕",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "中等，需定期梳理防止打结",
+        "shedding_level": 4,
+        "common_health_issues": [
+          "髌骨脱位",
+          "牙齿问题",
+          "进行性视网膜萎缩"
+        ],
+        "suitability_assessment": "适合公寓生活，适合初次养犬者，需要适度运动和社交化训练",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "兽医临床数据"
+        ]
+      },
+      "breed_name": "蝴蝶犬",
+      "processed_date": "2026-02-06 14:04:28"
+    },
+    {
+      "breed": {
+        "chinese_name": "布鲁塞尔格里芬犬",
+        "english_name": "Brussels Griffon",
+        "akc_group": "玩具犬组",
+        "origin": "比利时",
+        "original_purpose": "捕鼠、伴侣犬",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "3.5-5.5",
+          "female": "3.5-5.5"
+        },
+        "average_height_cm": {
+          "male": "18-20",
+          "female": "18-20"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "粗毛型或光滑型",
+        "coat_colors": [
+          "红色",
+          "黑色",
+          "黑色与棕褐色",
+          "米色"
+        ],
+        "primary_traits": [
+          "警觉",
+          "自信",
+          "忠诚",
+          "活泼",
+          "表情丰富"
+        ],
+        "energy_level": 6,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常亲密，适合作为家庭伴侣",
+        "with_children": "适合与温和的年长儿童相处，需监督",
+        "with_other_dogs": "通常友好，但可能对其他犬只有支配倾向",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "粗毛型需定期梳理，光滑型维护较少",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髌骨脱位",
+          "呼吸问题",
+          "眼部疾病",
+          "牙齿问题"
+        ],
+        "suitability_assessment": "适合公寓生活，需要适度运动和社交训练，是忠诚的伴侣犬",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "布鲁塞尔格里芬犬",
+      "processed_date": "2026-02-06 14:04:43"
+    },
+    {
+      "breed": {
+        "chinese_name": "日本狆",
+        "english_name": "Japanese Chin",
+        "akc_group": "Toy Group",
+        "origin": "Japan",
+        "original_purpose": "Companion dog",
+        "size_category": "Toy",
+        "average_weight_kg": {
+          "male": "2-4",
+          "female": "2-4"
+        },
+        "average_height_cm": {
+          "male": "20-25",
+          "female": "20-25"
+        },
+        "life_expectancy": "10-12 years",
+        "coat_type": "Long, straight, silky",
+        "coat_colors": [
+          "Black and white",
+          "Red and white",
+          "Lemon and white",
+          "Sable and white"
+        ],
+        "primary_traits": [
+          "Affectionate",
+          "Gentle",
+          "Alert",
+          "Intelligent",
+          "Playful"
+        ],
+        "energy_level": 4,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "Excellent companion, bonds closely with family",
+        "with_children": "Good with gentle, older children; may be sensitive to rough handling",
+        "with_other_dogs": "Generally good, especially with proper socialization",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "Moderate to high; requires regular brushing to prevent mats",
+        "shedding_level": 4,
+        "common_health_issues": [
+          "Patellar luxation",
+          "Heart murmurs",
+          "Eye problems (e.g., cataracts)",
+          "Respiratory issues due to brachycephalic face"
+        ],
+        "suitability_assessment": "Ideal for apartment living and families seeking a low-energy, affectionate companion; requires gentle handling and regular grooming.",
+        "knowledge_sources": [
+          "American Kennel Club (AKC)",
+          "Fédération Cynologique Internationale (FCI)",
+          "Veterinary breed guides"
+        ]
+      },
+      "breed_name": "日本狆",
+      "processed_date": "2026-02-06 14:04:59"
+    },
+    {
+      "breed": {
+        "chinese_name": "中国冠毛犬",
+        "english_name": "Chinese Crested",
+        "akc_group": "玩具犬组",
+        "origin": "中国",
+        "original_purpose": "伴侣犬、捕鼠",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "2.3-5.4",
+          "female": "2.3-5.4"
+        },
+        "average_height_cm": {
+          "male": "28-33",
+          "female": "28-33"
+        },
+        "life_expectancy": "13-15年",
+        "coat_type": "无毛型（皮肤裸露）或有毛型（粉扑型）",
+        "coat_colors": [
+          "多种颜色和斑纹组合"
+        ],
+        "primary_traits": [
+          "活泼",
+          "警觉",
+          "友善",
+          "情感丰富",
+          "适应性强"
+        ],
+        "energy_level": 6,
+        "intelligence_rank": 7,
+        "trainability": 7,
+        "with_family": "非常亲密，适合作为家庭伴侣",
+        "with_children": "与温和的孩子相处良好，需监督互动",
+        "with_other_dogs": "通常友好，但可能对陌生犬只警惕",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "无毛型需皮肤护理（防晒、保湿），有毛型需定期梳理",
+        "shedding_level": 1,
+        "common_health_issues": [
+          "牙齿问题",
+          "皮肤敏感",
+          "眼部疾病",
+          "髌骨脱位"
+        ],
+        "suitability_assessment": "适合公寓生活，需要温和训练和定期社交，适合有经验的犬主",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "兽医临床指南"
+        ]
+      },
+      "breed_name": "中国冠毛犬",
+      "processed_date": "2026-02-06 14:05:14"
+    },
+    {
+      "breed": {
+        "chinese_name": "曼彻斯特梗（玩具型）",
+        "english_name": "Toy Manchester Terrier",
+        "akc_group": "玩具犬组",
+        "origin": "英国",
+        "original_purpose": "捕鼠、伴侣犬",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "2.7-3.6",
+          "female": "2.7-3.6"
+        },
+        "average_height_cm": {
+          "male": "25-30",
+          "female": "25-30"
+        },
+        "life_expectancy": "15-17年",
+        "coat_type": "短毛、光滑",
+        "coat_colors": [
+          "黑色与棕褐色"
+        ],
+        "primary_traits": [
+          "警觉",
+          "活泼",
+          "忠诚",
+          "独立",
+          "优雅"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 8,
+        "trainability": 7,
+        "with_family": "对家庭成员忠诚，但可能对陌生人警惕",
+        "with_children": "适合有礼貌的儿童，需监督互动",
+        "with_other_dogs": "可与其他狗相处，但可能有支配倾向",
+        "daily_exercise_minutes": 45,
+        "apartment_friendly": true,
+        "grooming_needs": "低维护，每周梳理一次即可",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髌骨脱位",
+          "眼部问题",
+          "冯·维勒布兰德病"
+        ],
+        "suitability_assessment": "适合活跃家庭或单身人士，需要适度运动和早期社会化训练",
+        "knowledge_sources": [
+          "美国犬业俱乐部（AKC）",
+          "英国犬业俱乐部（KC）",
+          "犬类健康信息数据库"
+        ]
+      },
+      "breed_name": "曼彻斯特梗（玩具型）",
+      "processed_date": "2026-02-06 14:05:30"
+    },
+    {
+      "breed": {
+        "chinese_name": "骑士查理王小猎犬",
+        "english_name": "Cavalier King Charles Spaniel",
+        "akc_group": "玩具犬组",
+        "origin": "英国",
+        "original_purpose": "伴侣犬",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "5.9-8.2",
+          "female": "5.4-7.7"
+        },
+        "average_height_cm": {
+          "male": "30-33",
+          "female": "30-33"
+        },
+        "life_expectancy": "9-14年",
+        "coat_type": "丝质长毛",
+        "coat_colors": [
+          "布伦海姆色",
+          "三色",
+          "黑色与棕褐色",
+          "红宝石色"
+        ],
+        "primary_traits": [
+          "友善",
+          "温顺",
+          "适应性强",
+          "活泼",
+          "忠诚"
+        ],
+        "energy_level": 5,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "极佳的家庭伴侣，非常亲人和依赖主人",
+        "with_children": "通常与儿童相处良好，但需监督互动",
+        "with_other_dogs": "通常友好，适合多宠物家庭",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "中等，需定期梳理以防止打结",
+        "shedding_level": 4,
+        "common_health_issues": [
+          "二尖瓣疾病",
+          "髋关节发育不良",
+          "髌骨脱位",
+          "干眼症"
+        ],
+        "suitability_assessment": "适合公寓生活，是理想的家庭伴侣犬，尤其适合寻求温顺、友好宠物的家庭。",
+        "knowledge_sources": [
+          "美国养犬俱乐部",
+          "世界犬业联盟",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "骑士查理王小猎犬",
+      "processed_date": "2026-02-06 14:05:47"
+    },
+    {
+      "breed": {
+        "chinese_name": "柴犬",
+        "english_name": "Shiba Inu",
+        "akc_group": "Non-Sporting Group",
+        "origin": "日本",
+        "original_purpose": "狩猎小型猎物（如鸟类、兔子）",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "8-11",
+          "female": "7-9"
+        },
+        "average_height_cm": {
+          "male": "38-41",
+          "female": "35-38"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层毛粗硬，内层毛柔软",
+        "coat_colors": [
+          "赤色",
+          "黑色与黄褐色",
+          "芝麻色",
+          "白色"
+        ],
+        "primary_traits": [
+          "独立",
+          "警惕",
+          "忠诚",
+          "勇敢",
+          "爱干净"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 8,
+        "trainability": 6,
+        "with_family": "对家庭成员忠诚，但可能较为独立",
+        "with_children": "适合有经验的家庭，需监督与儿童互动",
+        "with_other_dogs": "可能对其他狗有支配倾向，需社会化训练",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": true,
+        "grooming_needs": "中等，每周梳理1-2次，换毛期需更频繁",
+        "shedding_level": 8,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "髌骨脱位",
+          "过敏",
+          "青光眼"
+        ],
+        "suitability_assessment": "适合有经验的养犬者，需要耐心训练和充足运动，不适合新手或非常活跃的家庭",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "日本犬保存会",
+          "兽医临床数据"
+        ]
+      },
+      "breed_name": "柴犬",
+      "processed_date": "2026-02-06 14:06:03"
+    },
+    {
+      "breed": {
+        "chinese_name": "松狮犬",
+        "english_name": "Chow Chow",
+        "akc_group": "Non-Sporting Group",
+        "origin": "中国",
+        "original_purpose": "狩猎、护卫、拉车",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "25-32",
+          "female": "20-27"
+        },
+        "average_height_cm": {
+          "male": "48-56",
+          "female": "46-51"
+        },
+        "life_expectancy": "8-12年",
+        "coat_type": "双层被毛，外层粗糙，内层柔软",
+        "coat_colors": [
+          "红色",
+          "黑色",
+          "蓝色",
+          "肉桂色",
+          "奶油色"
+        ],
+        "primary_traits": [
+          "独立",
+          "忠诚",
+          "警惕",
+          "固执",
+          "安静"
+        ],
+        "energy_level": 4,
+        "intelligence_rank": 6,
+        "trainability": 5,
+        "with_family": "对家庭成员忠诚，但可能冷漠或独立",
+        "with_children": "需从小社会化，可能不适合年幼儿童",
+        "with_other_dogs": "可能对其他犬只有攻击性，需谨慎社交",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "高，需定期梳理以防止打结",
+        "shedding_level": 7,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "眼睑内翻",
+          "皮肤问题",
+          "甲状腺功能减退"
+        ],
+        "suitability_assessment": "适合有经验的犬主，能提供坚定领导和定期梳理，不适合新手或活跃家庭",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "世界犬业联盟（FCI）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "松狮犬",
+      "processed_date": "2026-02-06 14:06:18"
+    },
+    {
+      "breed": {
+        "chinese_name": "斗牛犬",
+        "english_name": "Bulldog",
+        "akc_group": "非运动犬组",
+        "origin": "英国",
+        "original_purpose": "斗牛运动",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "23-25",
+          "female": "18-23"
+        },
+        "average_height_cm": {
+          "male": "31-40",
+          "female": "31-40"
+        },
+        "life_expectancy": "8-10年",
+        "coat_type": "短毛、平滑",
+        "coat_colors": [
+          "白色",
+          "红色",
+          "浅黄褐色",
+          "斑纹",
+          "花色"
+        ],
+        "primary_traits": [
+          "忠诚",
+          "温和",
+          "勇敢",
+          "固执",
+          "低能量"
+        ],
+        "energy_level": 3,
+        "intelligence_rank": 5,
+        "trainability": 4,
+        "with_family": "极佳的家庭伴侣，非常忠诚和亲切",
+        "with_children": "通常与儿童相处良好，但需监督互动",
+        "with_other_dogs": "可能对其他狗有攻击性，尤其是同性别",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "低维护，每周梳理一次即可",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "呼吸问题",
+          "皮肤感染",
+          "髋关节发育不良",
+          "眼部问题",
+          "中暑风险"
+        ],
+        "suitability_assessment": "适合公寓生活，适合初次养犬者，但需注意健康问题和训练耐心",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "英国养犬俱乐部（KC）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "斗牛犬",
+      "processed_date": "2026-02-06 14:06:33"
+    },
+    {
+      "breed": {
+        "chinese_name": "沙皮犬",
+        "english_name": "Shar Pei",
+        "akc_group": "非运动犬组",
+        "origin": "中国",
+        "original_purpose": "狩猎、护卫、斗犬",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "20-27",
+          "female": "18-25"
+        },
+        "average_height_cm": {
+          "male": "46-51",
+          "female": "44-48"
+        },
+        "life_expectancy": "8-12年",
+        "coat_type": "短毛、粗糙、直立",
+        "coat_colors": [
+          "黑色",
+          "红色",
+          "奶油色",
+          "蓝色",
+          "巧克力色",
+          "淡紫色"
+        ],
+        "primary_traits": [
+          "独立",
+          "忠诚",
+          "警惕",
+          "固执",
+          "皮肤褶皱"
+        ],
+        "energy_level": 5,
+        "intelligence_rank": 6,
+        "trainability": 4,
+        "with_family": "忠诚但可能独立，需要早期社会化",
+        "with_children": "适合有经验家庭，需监督与儿童互动",
+        "with_other_dogs": "可能对其他狗有攻击性，需谨慎社交",
+        "daily_exercise_minutes": 45,
+        "apartment_friendly": true,
+        "grooming_needs": "低维护，但需注意皮肤褶皱清洁",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "皮肤褶皱感染",
+          "眼睑内翻",
+          "髋关节发育不良",
+          "淀粉样变性"
+        ],
+        "suitability_assessment": "适合有经验的犬主，能提供早期社会化、温和训练和定期皮肤护理的家庭",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "世界犬业联盟（FCI）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "沙皮犬",
+      "processed_date": "2026-02-06 14:06:50"
+    },
+    {
+      "breed": {
+        "chinese_name": "比熊犬",
+        "english_name": "Bichon Frise",
+        "akc_group": "Non-Sporting Group",
+        "origin": "地中海地区（西班牙/法国）",
+        "original_purpose": "伴侣犬、表演犬",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "3-5",
+          "female": "3-5"
+        },
+        "average_height_cm": {
+          "male": "23-30",
+          "female": "23-30"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层毛，外层卷曲蓬松，内层柔软致密",
+        "coat_colors": [
+          "白色"
+        ],
+        "primary_traits": [
+          "活泼",
+          "友善",
+          "适应性强",
+          "聪明",
+          "爱玩耍"
+        ],
+        "energy_level": 6,
+        "intelligence_rank": 8,
+        "trainability": 7,
+        "with_family": "极佳的家庭伴侣，情感丰富且忠诚",
+        "with_children": "通常友好，适合有年长儿童的家庭",
+        "with_other_dogs": "通常友好，社会化后表现良好",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "高，需要定期梳理和专业修剪",
+        "shedding_level": 2,
+        "common_health_issues": [
+          "髌骨脱位",
+          "白内障",
+          "过敏",
+          "膀胱结石"
+        ],
+        "suitability_assessment": "适合公寓生活，需要定期美容和适度运动，是优秀的家庭伴侣犬",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "兽医临床常见疾病指南"
+        ]
+      },
+      "breed_name": "比熊犬",
+      "processed_date": "2026-02-06 14:07:05"
+    },
+    {
+      "breed": {
+        "chinese_name": "拉萨犬",
+        "english_name": "Lhasa Apso",
+        "akc_group": "非运动犬组",
+        "origin": "中国西藏",
+        "original_purpose": "寺庙守卫犬，用于警戒和警报",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "5-8",
+          "female": "5-8"
+        },
+        "average_height_cm": {
+          "male": "25-28",
+          "female": "25-28"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层长而直，内层柔软浓密",
+        "coat_colors": [
+          "金色",
+          "蜂蜜色",
+          "沙色",
+          "深灰色",
+          "黑色",
+          "白色",
+          "棕色"
+        ],
+        "primary_traits": [
+          "警觉",
+          "独立",
+          "忠诚",
+          "勇敢",
+          "有时固执"
+        ],
+        "energy_level": 5,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "对家庭成员忠诚，但可能对陌生人保持警惕",
+        "with_children": "适合与温和的年长儿童相处，需监督与幼儿互动",
+        "with_other_dogs": "可与其他狗相处，但早期社会化很重要",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "高，需要每日梳理以防止打结",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "进行性视网膜萎缩",
+          "髋关节发育不良",
+          "肾脏问题",
+          "皮肤过敏"
+        ],
+        "suitability_assessment": "适合有经验的养犬者，能提供定期梳理和适度运动；不适合忙碌或缺乏耐心的人",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "犬类健康基金会"
+        ]
+      },
+      "breed_name": "拉萨犬",
+      "processed_date": "2026-02-06 14:07:22"
+    },
+    {
+      "breed": {
+        "chinese_name": "西藏梗",
+        "english_name": "Tibetan Terrier",
+        "akc_group": "非运动犬组",
+        "origin": "中国西藏",
+        "original_purpose": "伴侣犬、守护寺庙和家庭",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "9-11",
+          "female": "8-10"
+        },
+        "average_height_cm": {
+          "male": "36-41",
+          "female": "33-38"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层长而直，内层柔软浓密",
+        "coat_colors": [
+          "白色",
+          "黑色",
+          "金色",
+          "灰色",
+          "三色",
+          "双色"
+        ],
+        "primary_traits": [
+          "忠诚",
+          "警惕",
+          "适应性强",
+          "友善",
+          "独立"
+        ],
+        "energy_level": 6,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常忠诚和亲密的伴侣，对家庭成员充满感情",
+        "with_children": "通常友好，但需监督与幼儿互动",
+        "with_other_dogs": "通常能友好相处，但可能对陌生犬只保持警惕",
+        "daily_exercise_minutes": 45,
+        "apartment_friendly": true,
+        "grooming_needs": "高，需要定期梳理以防止打结",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "进行性视网膜萎缩",
+          "白内障"
+        ],
+        "suitability_assessment": "适合家庭饲养，适应公寓生活，但需要定期梳理和适度运动，适合有耐心和时间的饲主",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "犬类品种标准资料"
+        ]
+      },
+      "breed_name": "西藏梗",
+      "processed_date": "2026-02-06 14:07:38"
+    },
+    {
+      "breed": {
+        "chinese_name": "西藏猎犬",
+        "english_name": "Tibetan Spaniel",
+        "akc_group": "非运动犬组",
+        "origin": "中国西藏",
+        "original_purpose": "寺院守护犬、伴侣犬",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "4-7",
+          "female": "4-7"
+        },
+        "average_height_cm": {
+          "male": "25-26",
+          "female": "24-25"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层毛中等长度、丝滑，内层毛柔软浓密",
+        "coat_colors": [
+          "金色",
+          "奶油色",
+          "黑色",
+          "黑白相间",
+          "三色"
+        ],
+        "primary_traits": [
+          "警觉",
+          "独立",
+          "忠诚",
+          "友善",
+          "适应性强"
+        ],
+        "energy_level": 5,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常忠诚和亲密的伴侣，适合家庭生活",
+        "with_children": "与温和的孩子相处良好，但需监督互动",
+        "with_other_dogs": "通常能与其他狗友好相处，社会化良好时更佳",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "每周梳理2-3次，定期修剪脚毛和耳部清洁",
+        "shedding_level": 4,
+        "common_health_issues": [
+          "进行性视网膜萎缩",
+          "髌骨脱位",
+          "心脏问题"
+        ],
+        "suitability_assessment": "适合公寓生活，是优秀的伴侣犬，适合初次养犬者，但需要适度的运动和社交",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "犬类健康基金会"
+        ]
+      },
+      "breed_name": "西藏猎犬",
+      "processed_date": "2026-02-06 14:07:55"
+    },
+    {
+      "breed": {
+        "chinese_name": "芬兰狐狸犬",
+        "english_name": "Finnish Spitz",
+        "akc_group": "Non-Sporting Group",
+        "origin": "芬兰",
+        "original_purpose": "狩猎鸟类和小型猎物，特别是松鸡",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "12-13",
+          "female": "10-11"
+        },
+        "average_height_cm": {
+          "male": "44-50",
+          "female": "39-45"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层毛直而粗糙，内层绒毛柔软浓密",
+        "coat_colors": [
+          "金红色",
+          "红褐色"
+        ],
+        "primary_traits": [
+          "活泼",
+          "独立",
+          "警觉",
+          "吠叫频繁",
+          "忠诚"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "对家庭成员忠诚友善，但可能对陌生人保持警惕",
+        "with_children": "适合与儿童相处，但需监督互动",
+        "with_other_dogs": "通常能与其他狗相处，但可能表现出支配性",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，每周梳理1-2次，换毛期需更频繁",
+        "shedding_level": 7,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "癫痫",
+          "眼部问题"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要充足运动和训练，吠叫较多可能不适合公寓生活",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "兽医健康数据库"
+        ]
+      },
+      "breed_name": "芬兰狐狸犬",
+      "processed_date": "2026-02-06 14:08:10"
+    },
+    {
+      "breed": {
+        "chinese_name": "挪威猎鹿犬",
+        "english_name": "Norwegian Elkhound",
+        "akc_group": "猎犬组",
+        "origin": "挪威",
+        "original_purpose": "狩猎麋鹿、熊等大型猎物，追踪和围困猎物",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "25",
+          "female": "22"
+        },
+        "average_height_cm": {
+          "male": "52",
+          "female": "49"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层粗糙、直且防水，内层柔软浓密",
+        "coat_colors": [
+          "灰色",
+          "银灰色",
+          "黑色"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "独立",
+          "忠诚",
+          "警觉",
+          "耐力强"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "对家庭忠诚，是优秀的护卫犬和伴侣犬",
+        "with_children": "通常友好，但需早期社会化，适合有经验家庭",
+        "with_other_dogs": "可能对其他犬只有支配倾向，需适当社交",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，每周梳理1-2次，换毛期需更频繁",
+        "shedding_level": 7,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "进行性视网膜萎缩",
+          "甲状腺功能减退"
+        ],
+        "suitability_assessment": "适合活跃家庭或户外爱好者，需要充足运动和训练，不适合公寓生活",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "挪威猎鹿犬",
+      "processed_date": "2026-02-06 14:08:26"
+    },
+    {
+      "breed": {
+        "chinese_name": "秋田犬",
+        "english_name": "Akita",
+        "akc_group": "Working Group",
+        "origin": "日本",
+        "original_purpose": "猎熊、护卫犬",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "45-59",
+          "female": "32-45"
+        },
+        "average_height_cm": {
+          "male": "66-71",
+          "female": "61-66"
+        },
+        "life_expectancy": "10-13年",
+        "coat_type": "双层被毛，外层粗硬，内层柔软浓密",
+        "coat_colors": [
+          "红色",
+          "白色",
+          "虎斑色",
+          "芝麻色"
+        ],
+        "primary_traits": [
+          "忠诚",
+          "勇敢",
+          "独立",
+          "领地意识强",
+          "安静"
+        ],
+        "energy_level": 6,
+        "intelligence_rank": 7,
+        "trainability": 5,
+        "with_family": "对家庭成员极其忠诚，但可能对陌生人冷淡",
+        "with_children": "需从小社会化，适合有经验家庭，不适合幼儿",
+        "with_other_dogs": "可能对其他犬只有攻击性，特别是同性犬",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "每周梳理2-3次，换毛期需更频繁",
+        "shedding_level": 8,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "甲状腺功能减退",
+          "进行性视网膜萎缩",
+          "胃扭转"
+        ],
+        "suitability_assessment": "适合有经验的犬主，需要坚定、一致的训练和充分社会化，不适合新手或公寓生活",
+        "knowledge_sources": [
+          "AKC标准",
+          "日本犬保存会",
+          "兽医临床资料"
+        ]
+      },
+      "breed_name": "秋田犬",
+      "processed_date": "2026-02-06 14:08:42"
+    },
+    {
+      "breed": {
+        "chinese_name": "美国爱斯基摩犬",
+        "english_name": "American Eskimo Dog",
+        "akc_group": "非运动犬组",
+        "origin": "美国",
+        "original_purpose": "伴侣犬、表演犬、看门犬",
+        "size_category": "小型至中型",
+        "average_weight_kg": {
+          "male": "9-14",
+          "female": "9-14"
+        },
+        "average_height_cm": {
+          "male": "38-48",
+          "female": "38-48"
+        },
+        "life_expectancy": "13-15年",
+        "coat_type": "双层被毛，外层直而粗糙，内层浓密柔软",
+        "coat_colors": [
+          "纯白色"
+        ],
+        "primary_traits": [
+          "聪明",
+          "警惕",
+          "友善",
+          "活泼",
+          "忠诚"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 8,
+        "trainability": 8,
+        "with_family": "非常忠诚和亲密的伴侣，适合家庭生活",
+        "with_children": "通常与儿童相处良好，但需监督互动",
+        "with_other_dogs": "社会化良好时可与其他狗相处，但可能对陌生狗有警惕性",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": true,
+        "grooming_needs": "中等至高，需定期梳理以防止打结",
+        "shedding_level": 6,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "进行性视网膜萎缩",
+          "白内障"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要定期运动和智力刺激，不适合长时间独处",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "美国爱斯基摩犬俱乐部",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "美国爱斯基摩犬",
+      "processed_date": "2026-02-06 14:08:58"
+    },
+    {
+      "breed": {
+        "chinese_name": "荷兰毛狮犬",
+        "english_name": "Keeshond",
+        "akc_group": "非运动犬组",
+        "origin": "荷兰",
+        "original_purpose": "伴侣犬、看门犬",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "18-20",
+          "female": "16-18"
+        },
+        "average_height_cm": {
+          "male": "43-46",
+          "female": "41-44"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层毛长而直，内层毛厚密",
+        "coat_colors": [
+          "灰色",
+          "黑色",
+          "奶油色"
+        ],
+        "primary_traits": [
+          "友好",
+          "警觉",
+          "聪明",
+          "适应性强"
+        ],
+        "energy_level": 6,
+        "intelligence_rank": 8,
+        "trainability": 7,
+        "with_family": "非常友好，是优秀的家庭伴侣",
+        "with_children": "通常很好，但需监督与幼儿互动",
+        "with_other_dogs": "通常友好，社会化良好时表现佳",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": true,
+        "grooming_needs": "中等，需定期梳理以防止打结",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "心脏病",
+          "眼部问题"
+        ],
+        "suitability_assessment": "适合家庭生活，适应公寓，需适度运动和定期梳理",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类百科全书",
+          "兽医资料"
+        ]
+      },
+      "breed_name": "荷兰毛狮犬",
+      "processed_date": "2026-02-06 14:09:13"
+    },
+    {
+      "breed": {
+        "chinese_name": "葡萄牙水犬",
+        "english_name": "Portuguese Water Dog",
+        "akc_group": "Working Group",
+        "origin": "葡萄牙",
+        "original_purpose": "协助渔民捕鱼、传递物品、驱赶鱼群、看守船只",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "19-27",
+          "female": "16-23"
+        },
+        "average_height_cm": {
+          "male": "50-57",
+          "female": "43-52"
+        },
+        "life_expectancy": "10-14年",
+        "coat_type": "卷曲或波浪状单层被毛，防水",
+        "coat_colors": [
+          "黑色",
+          "白色",
+          "棕色",
+          "黑白相间",
+          "棕白相间"
+        ],
+        "primary_traits": [
+          "聪明",
+          "精力充沛",
+          "忠诚",
+          "适应性强",
+          "善于游泳"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 9,
+        "trainability": 8,
+        "with_family": "非常忠诚和亲密的家庭伴侣，需要大量关注和互动",
+        "with_children": "通常友好且耐心，适合有孩子的家庭，但需监督互动",
+        "with_other_dogs": "通常友好，但早期社会化很重要",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "高，需要定期梳理和修剪，以防止毛发打结",
+        "shedding_level": 2,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "进行性视网膜萎缩",
+          "GM1神经节苷脂贮积症"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要大量运动和智力刺激，不适合久坐生活方式或公寓生活",
+        "knowledge_sources": [
+          "American Kennel Club (AKC)",
+          "Fédération Cynologique Internationale (FCI)",
+          "Portuguese Water Dog Club of America"
+        ]
+      },
+      "breed_name": "葡萄牙水犬",
+      "processed_date": "2026-02-06 14:09:30"
+    },
+    {
+      "breed": {
+        "chinese_name": "标准贵宾犬",
+        "english_name": "Standard Poodle",
+        "akc_group": "Non-Sporting Group",
+        "origin": "德国",
+        "original_purpose": "水猎犬",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "20-32",
+          "female": "20-27"
+        },
+        "average_height_cm": {
+          "male": "45-60",
+          "female": "45-60"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "卷曲、浓密、单层被毛",
+        "coat_colors": [
+          "白色",
+          "黑色",
+          "杏色",
+          "银色",
+          "蓝色",
+          "棕色"
+        ],
+        "primary_traits": [
+          "聪明",
+          "活跃",
+          "优雅",
+          "忠诚",
+          "易于训练"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 9,
+        "trainability": 9,
+        "with_family": "非常友好，适合家庭生活",
+        "with_children": "通常友好，但需监督与幼儿互动",
+        "with_other_dogs": "通常友好，社会化良好时表现佳",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": true,
+        "grooming_needs": "高，需定期修剪和梳理",
+        "shedding_level": 1,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "进行性视网膜萎缩",
+          "胃扭转"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要定期运动和智力刺激，低过敏原性使其适合过敏者",
+        "knowledge_sources": [
+          "AKC官网",
+          "犬类百科全书",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "标准贵宾犬",
+      "processed_date": "2026-02-06 14:09:45"
+    },
+    {
+      "breed": {
+        "chinese_name": "比格犬",
+        "english_name": "Beagle",
+        "akc_group": "猎犬组",
+        "origin": "英国",
+        "original_purpose": "狩猎小型猎物（如兔子）",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "10-11",
+          "female": "9-10"
+        },
+        "average_height_cm": {
+          "male": "36-41",
+          "female": "33-38"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "短毛、平滑",
+        "coat_colors": [
+          "三色（黑、棕、白）",
+          "柠檬色",
+          "红色",
+          "巧克力色"
+        ],
+        "primary_traits": [
+          "友好",
+          "好奇",
+          "精力充沛",
+          "嗅觉灵敏",
+          "独立性强"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常友好，适合家庭生活",
+        "with_children": "通常与儿童相处良好，但需监督",
+        "with_other_dogs": "通常友好，适合多犬家庭",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": true,
+        "grooming_needs": "低维护，每周梳理一次即可",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "肥胖",
+          "耳部感染",
+          "髋关节发育不良",
+          "癫痫"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要充足运动和训练，不适合长时间独处",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类行为学资料",
+          "兽医健康指南"
+        ]
+      },
+      "breed_name": "比格犬",
+      "processed_date": "2026-02-06 14:10:01"
+    },
+    {
+      "breed": {
+        "chinese_name": "巴吉度猎犬",
+        "english_name": "Basset Hound",
+        "akc_group": "Hound Group",
+        "origin": "法国",
+        "original_purpose": "追踪小型猎物（如兔子和獾）",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "23-29",
+          "female": "20-27"
+        },
+        "average_height_cm": {
+          "male": "30-38",
+          "female": "28-36"
+        },
+        "life_expectancy": "10-12年",
+        "coat_type": "短毛、光滑、紧密",
+        "coat_colors": [
+          "三色（黑、白、棕）",
+          "柠檬色和白色",
+          "红棕色和白色"
+        ],
+        "primary_traits": [
+          "嗅觉极其灵敏",
+          "性格温和、友善",
+          "独立性强",
+          "叫声低沉",
+          "身体低矮、腿短"
+        ],
+        "energy_level": 4,
+        "intelligence_rank": 5,
+        "trainability": 3,
+        "with_family": "非常友好，适合家庭生活",
+        "with_children": "通常温和，但需监督与幼儿互动",
+        "with_other_dogs": "通常友好，但可能对其他犬类有支配倾向",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "低维护，每周刷毛一次",
+        "shedding_level": 4,
+        "common_health_issues": [
+          "耳部感染",
+          "肥胖",
+          "关节问题（如髋关节发育不良）",
+          "眼部问题（如青光眼）"
+        ],
+        "suitability_assessment": "适合有耐心、能提供适度锻炼的家庭，不适合追求高服从性或活跃户外活动的饲养者",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类行为学资料",
+          "兽医健康指南"
+        ]
+      },
+      "breed_name": "巴吉度猎犬",
+      "processed_date": "2026-02-06 14:10:18"
+    },
+    {
+      "breed": {
+        "chinese_name": "寻血猎犬",
+        "english_name": "Bloodhound",
+        "akc_group": "猎犬组",
+        "origin": "比利时",
+        "original_purpose": "追踪气味，用于狩猎和搜救",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "41-50",
+          "female": "36-45"
+        },
+        "average_height_cm": {
+          "male": "64-72",
+          "female": "58-66"
+        },
+        "life_expectancy": "10-12年",
+        "coat_type": "短而密的被毛",
+        "coat_colors": [
+          "黑色和棕褐色",
+          "肝色和棕褐色",
+          "红色"
+        ],
+        "primary_traits": [
+          "出色的嗅觉能力",
+          "温和友善",
+          "独立固执",
+          "追踪本能强"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 8,
+        "trainability": 5,
+        "with_family": "非常忠诚和温和，适合家庭生活",
+        "with_children": "通常友好，但需监督与幼儿互动",
+        "with_other_dogs": "通常友好，但可能对其他犬只有支配倾向",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "每周梳理一次，定期清洁耳朵和皮肤褶皱",
+        "shedding_level": 4,
+        "common_health_issues": [
+          "胃扭转",
+          "耳部感染",
+          "皮肤褶皱皮炎",
+          "髋关节发育不良"
+        ],
+        "suitability_assessment": "适合有经验的犬主，需要充足的运动和耐心训练，不适合公寓生活",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "寻血猎犬",
+      "processed_date": "2026-02-06 14:10:33"
+    },
+    {
+      "breed": {
+        "chinese_name": "腊肠犬",
+        "english_name": "Dachshund",
+        "akc_group": "猎犬组",
+        "origin": "德国",
+        "original_purpose": "猎獾、追踪小型猎物",
+        "size_category": "小型犬",
+        "average_weight_kg": {
+          "male": "7-15",
+          "female": "7-15"
+        },
+        "average_height_cm": {
+          "male": "20-27",
+          "female": "20-27"
+        },
+        "life_expectancy": "12-16年",
+        "coat_type": "短毛、长毛或刚毛",
+        "coat_colors": [
+          "红色",
+          "黑色与棕褐色",
+          "巧克力色与棕褐色",
+          "野猪色",
+          "斑纹色",
+          "双色",
+          "花色"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "独立",
+          "好奇心强",
+          "忠诚",
+          "固执"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 8,
+        "trainability": 6,
+        "with_family": "非常忠诚，适合家庭生活，但需要早期社会化",
+        "with_children": "与温和的儿童相处良好，但需监督互动",
+        "with_other_dogs": "可能对其他犬只有支配倾向，需适当社交",
+        "daily_exercise_minutes": 30,
+        "apartment_friendly": true,
+        "grooming_needs": "短毛型低维护，长毛和刚毛型需定期梳理",
+        "shedding_level": 4,
+        "common_health_issues": [
+          "椎间盘疾病",
+          "肥胖",
+          "牙齿问题",
+          "眼部疾病"
+        ],
+        "suitability_assessment": "适合有经验的养犬者，需要耐心训练和适度运动，不适合长时间独处",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "腊肠犬",
+      "processed_date": "2026-02-06 14:10:49"
+    },
+    {
+      "breed": {
+        "chinese_name": "罗德西亚背脊犬",
+        "english_name": "Rhodesian Ridgeback",
+        "akc_group": "猎犬组",
+        "origin": "南非",
+        "original_purpose": "狩猎大型猎物（如狮子）、护卫和伴侣犬",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "36-41",
+          "female": "32-36"
+        },
+        "average_height_cm": {
+          "male": "63-69",
+          "female": "61-66"
+        },
+        "life_expectancy": "10-12年",
+        "coat_type": "短毛、光滑、浓密",
+        "coat_colors": [
+          "浅小麦色",
+          "红小麦色"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "忠诚",
+          "独立",
+          "保护性强",
+          "背脊特征（沿脊柱反向生长的毛发）"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "对家庭忠诚，但需要早期社会化",
+        "with_children": "适合有经验的家庭，需监督与儿童互动",
+        "with_other_dogs": "可能对其他犬只有支配倾向，需适当社交",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周梳理一次即可",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "甲状腺功能减退",
+          "皮样窦"
+        ],
+        "suitability_assessment": "适合有经验的犬主，需要充足运动、坚定训练和早期社会化，不适合新手或公寓生活",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬类联合会（FCI）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "罗德西亚背脊犬",
+      "processed_date": "2026-02-06 14:11:05"
+    },
+    {
+      "breed": {
+        "chinese_name": "奥达猎犬",
+        "english_name": "Otterhound",
+        "akc_group": "Hound Group",
+        "origin": "英国",
+        "original_purpose": "水獭狩猎",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "36-54",
+          "female": "29-45"
+        },
+        "average_height_cm": {
+          "male": "67-71",
+          "female": "61-66"
+        },
+        "life_expectancy": "10-13年",
+        "coat_type": "粗糙、防水双层被毛",
+        "coat_colors": [
+          "黑色",
+          "灰色",
+          "小麦色",
+          "蓝色",
+          "肝色",
+          "混合色"
+        ],
+        "primary_traits": [
+          "独立",
+          "友善",
+          "精力充沛",
+          "嗅觉敏锐",
+          "游泳能力强"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "忠诚、温和，适合家庭生活",
+        "with_children": "通常友好，但需监督互动",
+        "with_other_dogs": "一般友好，但可能对其他动物有狩猎本能",
+        "daily_exercise_minutes": 90,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，需定期梳理以防止打结",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "胃扭转",
+          "耳部感染"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要大量运动和空间，不适合公寓生活，需耐心训练",
+        "knowledge_sources": [
+          "AKC犬种标准",
+          "犬类百科全书",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "奥达猎犬",
+      "processed_date": "2026-02-06 14:11:21"
+    },
+    {
+      "breed": {
+        "chinese_name": "英国猎狐犬",
+        "english_name": "English Foxhound",
+        "akc_group": "猎犬组",
+        "origin": "英国",
+        "original_purpose": "群体狩猎狐狸",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "30-34",
+          "female": "29-32"
+        },
+        "average_height_cm": {
+          "male": "58-64",
+          "female": "56-61"
+        },
+        "life_expectancy": "10-13年",
+        "coat_type": "短而密的双层被毛",
+        "coat_colors": [
+          "黑色、白色和棕褐色组合",
+          "三色",
+          "双色"
+        ],
+        "primary_traits": [
+          "耐力强",
+          "嗅觉敏锐",
+          "群居性强",
+          "独立",
+          "精力充沛"
+        ],
+        "energy_level": 9,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "对家庭成员友好但可能更专注于狩猎本能，需要社会化训练",
+        "with_children": "通常温和，但因其体型和精力，需在监督下与儿童互动",
+        "with_other_dogs": "极佳，因传统用于群体狩猎，善于与其他狗相处",
+        "daily_exercise_minutes": 120,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周刷毛一次即可",
+        "shedding_level": 4,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "耳部感染",
+          "肥胖相关疾病"
+        ],
+        "suitability_assessment": "适合有经验的犬主，需要大量运动和空间，不适合公寓生活；适合狩猎、追踪活动或乡村环境",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "英国养犬俱乐部（The Kennel Club）",
+          "犬类品种标准参考"
+        ]
+      },
+      "breed_name": "英国猎狐犬",
+      "processed_date": "2026-02-06 14:11:37"
+    },
+    {
+      "breed": {
+        "chinese_name": "美国猎狐犬",
+        "english_name": "American Foxhound",
+        "akc_group": "猎犬组",
+        "origin": "美国",
+        "original_purpose": "猎狐",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "29-34",
+          "female": "27-32"
+        },
+        "average_height_cm": {
+          "male": "56-64",
+          "female": "53-61"
+        },
+        "life_expectancy": "10-13年",
+        "coat_type": "短毛、硬质",
+        "coat_colors": [
+          "黑色、白色和棕褐色组合",
+          "白色和棕褐色",
+          "白色和黑色",
+          "白色"
+        ],
+        "primary_traits": [
+          "耐力强",
+          "独立",
+          "友善",
+          "声音洪亮",
+          "运动需求高"
+        ],
+        "energy_level": 9,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "对家庭成员友善，但可能因狩猎本能而分心",
+        "with_children": "通常友好，但需监督与幼儿互动",
+        "with_other_dogs": "通常友好，适合群居",
+        "daily_exercise_minutes": 90,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周刷毛一次",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "耳部感染",
+          "血小板功能障碍"
+        ],
+        "suitability_assessment": "适合有经验的犬主，需要大量运动和空间，不适合公寓生活",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "犬类品种标准资料",
+          "兽医健康数据库"
+        ]
+      },
+      "breed_name": "美国猎狐犬",
+      "processed_date": "2026-02-06 14:11:53"
+    },
+    {
+      "breed": {
+        "chinese_name": "哈利犬",
+        "english_name": "Harrier",
+        "akc_group": "Hound Group",
+        "origin": "英国",
+        "original_purpose": "猎兔",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "22-27",
+          "female": "20-25"
+        },
+        "average_height_cm": {
+          "male": "48-53",
+          "female": "46-51"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "短毛、平滑",
+        "coat_colors": [
+          "三色（黑、白、棕）",
+          "柠檬色与白色",
+          "红色与白色"
+        ],
+        "primary_traits": [
+          "友善",
+          "精力充沛",
+          "嗅觉灵敏",
+          "独立",
+          "声音洪亮"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常友好，适合家庭生活",
+        "with_children": "通常与儿童相处良好，但需监督互动",
+        "with_other_dogs": "通常友好，适合群居",
+        "daily_exercise_minutes": 90,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周梳理一次即可",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "耳部感染",
+          "眼部问题"
+        ],
+        "suitability_assessment": "适合活跃家庭或猎犬爱好者，需要大量运动和空间，不适合公寓生活",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类百科全书",
+          "兽医健康数据库"
+        ]
+      },
+      "breed_name": "哈利犬",
+      "processed_date": "2026-02-06 14:12:07"
+    },
+    {
+      "breed": {
+        "chinese_name": "挪威猎麋犬",
+        "english_name": "Norwegian Elkhound",
+        "akc_group": "猎犬组",
+        "origin": "挪威",
+        "original_purpose": "狩猎麋鹿、熊等大型猎物",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "23-27",
+          "female": "20-25"
+        },
+        "average_height_cm": {
+          "male": "52-55",
+          "female": "49-52"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "双层被毛，外层粗糙，内层柔软浓密",
+        "coat_colors": [
+          "灰色",
+          "黑色",
+          "银灰色"
+        ],
+        "primary_traits": [
+          "勇敢",
+          "独立",
+          "忠诚",
+          "警觉",
+          "耐力强"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "对家庭忠诚，但可能较独立",
+        "with_children": "通常友好，但需监督与幼儿互动",
+        "with_other_dogs": "通常能相处，但可能有领地意识",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，需定期梳理",
+        "shedding_level": 7,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "进行性视网膜萎缩",
+          "皮脂腺炎"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要充足运动和训练，不适合公寓生活",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "兽医健康数据库"
+        ]
+      },
+      "breed_name": "挪威猎麋犬",
+      "processed_date": "2026-02-06 14:12:22"
+    },
+    {
+      "breed": {
+        "chinese_name": "阿富汗猎犬",
+        "english_name": "Afghan Hound",
+        "akc_group": "猎犬组",
+        "origin": "阿富汗",
+        "original_purpose": "在崎岖山地中狩猎大型猎物，如豹和羚羊",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "27",
+          "female": "23"
+        },
+        "average_height_cm": {
+          "male": "68-74",
+          "female": "63-69"
+        },
+        "life_expectancy": "12-14年",
+        "coat_type": "长而丝滑的被毛",
+        "coat_colors": [
+          "黑色",
+          "奶油色",
+          "红色",
+          "蓝色",
+          "银色",
+          "斑纹色",
+          "多种组合"
+        ],
+        "primary_traits": [
+          "优雅高贵",
+          "独立自主",
+          "运动能力强",
+          "视觉敏锐",
+          "有时固执"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 6,
+        "trainability": 5,
+        "with_family": "忠诚但可能保持距离，适合有经验的家庭",
+        "with_children": "对温和、尊重的儿童友好，但需监督",
+        "with_other_dogs": "通常能与其他犬类相处，但可能有狩猎本能",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "高，需要定期梳理以防止打结",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "白内障",
+          "甲状腺功能减退",
+          "过敏"
+        ],
+        "suitability_assessment": "适合活跃、有经验的犬主，能提供充足运动和细心美容；不适合新手或公寓生活",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "世界犬业联盟（FCI）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "阿富汗猎犬",
+      "processed_date": "2026-02-06 14:12:38"
+    },
+    {
+      "breed": {
+        "chinese_name": "灵缇",
+        "english_name": "Greyhound",
+        "akc_group": "Hound",
+        "origin": "古埃及或中东地区",
+        "original_purpose": "狩猎和赛跑",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "27-40",
+          "female": "27-34"
+        },
+        "average_height_cm": {
+          "male": "71-76",
+          "female": "68-71"
+        },
+        "life_expectancy": "10-14年",
+        "coat_type": "短而光滑",
+        "coat_colors": [
+          "黑色",
+          "白色",
+          "红色",
+          "蓝色",
+          "浅黄褐色",
+          "斑纹",
+          "多种组合"
+        ],
+        "primary_traits": [
+          "速度极快",
+          "温和安静",
+          "独立",
+          "低能量室内犬",
+          "对家庭忠诚"
+        ],
+        "energy_level": 6,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常友好和忠诚",
+        "with_children": "通常温和，但需监督，因体型大可能意外撞倒儿童",
+        "with_other_dogs": "通常友好，但可能追逐小型动物",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": true,
+        "grooming_needs": "低维护，每周刷毛一次",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "胃扭转",
+          "骨癌",
+          "牙周病",
+          "对麻醉敏感"
+        ],
+        "suitability_assessment": "适合活跃家庭或公寓生活，需要定期运动但室内安静，不适合有小型宠物的家庭。",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬类联合会（FCI）",
+          "兽医专业资料"
+        ]
+      },
+      "breed_name": "灵缇",
+      "processed_date": "2026-02-06 14:12:55"
+    },
+    {
+      "breed": {
+        "chinese_name": "萨路基猎犬",
+        "english_name": "Saluki",
+        "akc_group": "猎犬组",
+        "origin": "中东地区（古埃及/波斯）",
+        "original_purpose": "视觉狩猎（追捕羚羊、野兔等）",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "20-30",
+          "female": "16-25"
+        },
+        "average_height_cm": {
+          "male": "58-71",
+          "female": "56-69"
+        },
+        "life_expectancy": "12-14年",
+        "coat_type": "光滑或羽状（耳朵、尾巴、腿部有饰毛）",
+        "coat_colors": [
+          "白色",
+          "奶油色",
+          "浅黄褐色",
+          "金色",
+          "红色",
+          "灰色",
+          "三色",
+          "黑色与棕褐色"
+        ],
+        "primary_traits": [
+          "优雅敏捷",
+          "独立安静",
+          "忠诚敏感",
+          "视觉敏锐",
+          "奔跑速度快"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "对家庭成员忠诚但可能较矜持，需要温和相处",
+        "with_children": "适合与温和的年长儿童相处，需监督互动",
+        "with_other_dogs": "通常能与其他狗相处，但可能追逐小型动物",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "每周梳理1-2次，羽状饰毛需额外护理",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "心脏病",
+          "甲状腺功能减退",
+          "进行性视网膜萎缩",
+          "髋关节发育不良"
+        ],
+        "suitability_assessment": "适合有经验的养犬者，需要大量运动和安全围栏，不适合公寓生活",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "犬类遗传健康数据库"
+        ]
+      },
+      "breed_name": "萨路基猎犬",
+      "processed_date": "2026-02-06 14:13:12"
+    },
+    {
+      "breed": {
+        "chinese_name": "惠比特犬",
+        "english_name": "Whippet",
+        "akc_group": "猎犬组",
+        "origin": "英国",
+        "original_purpose": "赛跑、捕猎小型猎物",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "10-13",
+          "female": "9-12"
+        },
+        "average_height_cm": {
+          "male": "47-51",
+          "female": "44-47"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "短而光滑",
+        "coat_colors": [
+          "黑色",
+          "白色",
+          "蓝色",
+          "红色",
+          "斑纹",
+          "虎斑",
+          "多种颜色组合"
+        ],
+        "primary_traits": [
+          "优雅",
+          "敏捷",
+          "温和",
+          "安静",
+          "忠诚",
+          "适应性强"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常友好，是优秀的家庭伴侣犬",
+        "with_children": "通常与儿童相处融洽，但需监督互动",
+        "with_other_dogs": "通常友好，尤其与其他惠比特犬相处良好",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": true,
+        "grooming_needs": "低维护，每周梳理一次即可",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "心脏病",
+          "眼部问题",
+          "过敏",
+          "关节问题"
+        ],
+        "suitability_assessment": "适合活跃家庭、公寓生活者及初次养犬者，需要定期运动和精神刺激",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "英国养犬俱乐部（KC）",
+          "犬类健康基金会"
+        ]
+      },
+      "breed_name": "惠比特犬",
+      "processed_date": "2026-02-06 14:13:28"
+    },
+    {
+      "breed": {
+        "chinese_name": "爱尔兰猎狼犬",
+        "english_name": "Irish Wolfhound",
+        "akc_group": "猎犬组",
+        "origin": "爱尔兰",
+        "original_purpose": "狩猎狼和大型猎物",
+        "size_category": "巨型犬",
+        "average_weight_kg": {
+          "male": "54.5-81.8",
+          "female": "40.9-68.2"
+        },
+        "average_height_cm": {
+          "male": "81-86",
+          "female": "76-81"
+        },
+        "life_expectancy": "6-8年",
+        "coat_type": "粗糙、刚毛",
+        "coat_colors": [
+          "灰色",
+          "斑纹色",
+          "红色",
+          "黑色",
+          "纯白色",
+          "小麦色"
+        ],
+        "primary_traits": [
+          "温和",
+          "忠诚",
+          "勇敢",
+          "体型巨大",
+          "运动能力强"
+        ],
+        "energy_level": 6,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "非常友好和忠诚",
+        "with_children": "通常温和，但需监督以避免意外伤害",
+        "with_other_dogs": "通常友好，但需适当社交",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "中等，需定期梳理",
+        "shedding_level": 4,
+        "common_health_issues": [
+          "心脏病",
+          "骨癌",
+          "胃扭转",
+          "髋关节发育不良"
+        ],
+        "suitability_assessment": "适合有经验的主人，需要大空间和适度运动，不适合公寓生活",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类健康数据库",
+          "专业兽医资料"
+        ]
+      },
+      "breed_name": "爱尔兰猎狼犬",
+      "processed_date": "2026-02-06 14:13:42"
+    },
+    {
+      "breed": {
+        "chinese_name": "苏格兰猎鹿犬",
+        "english_name": "Scottish Deerhound",
+        "akc_group": "猎犬组",
+        "origin": "苏格兰",
+        "original_purpose": "猎鹿",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "40-50",
+          "female": "35-45"
+        },
+        "average_height_cm": {
+          "male": "76-81",
+          "female": "71-76"
+        },
+        "life_expectancy": "8-11年",
+        "coat_type": "粗糙、刚毛",
+        "coat_colors": [
+          "蓝灰色",
+          "灰色",
+          "斑纹色",
+          "黄褐色",
+          "红色",
+          "沙色"
+        ],
+        "primary_traits": [
+          "温和",
+          "忠诚",
+          "独立",
+          "安静",
+          "运动能力强"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 6,
+        "trainability": 5,
+        "with_family": "非常友好",
+        "with_children": "友好，但需监督",
+        "with_other_dogs": "通常友好",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "中等",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "心脏病",
+          "胃扭转",
+          "骨癌"
+        ],
+        "suitability_assessment": "适合有经验的主人，需要大量运动和空间，不适合公寓生活。",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "犬类百科全书",
+          "兽医资料"
+        ]
+      },
+      "breed_name": "苏格兰猎鹿犬",
+      "processed_date": "2026-02-06 14:13:56"
+    },
+    {
+      "breed": {
+        "chinese_name": "法老王猎犬",
+        "english_name": "Pharaoh Hound",
+        "akc_group": "猎犬组",
+        "origin": "马耳他",
+        "original_purpose": "狩猎兔子和小型猎物",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "20-25",
+          "female": "18-23"
+        },
+        "average_height_cm": {
+          "male": "56-63",
+          "female": "53-61"
+        },
+        "life_expectancy": "12-14年",
+        "coat_type": "短而光滑",
+        "coat_colors": [
+          "红褐色",
+          "黄褐色",
+          "栗色"
+        ],
+        "primary_traits": [
+          "优雅",
+          "敏捷",
+          "独立",
+          "敏感",
+          "忠诚"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "对家庭成员忠诚，但可能保留独立性格",
+        "with_children": "适合有经验的家庭，需监督与儿童互动",
+        "with_other_dogs": "通常友好，但需适当社交",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周梳理一次",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "过敏",
+          "髋关节发育不良",
+          "耳部感染"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要充足运动和耐心训练，不适合新手主人",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "兽医数据库"
+        ]
+      },
+      "breed_name": "法老王猎犬",
+      "processed_date": "2026-02-06 14:14:11"
+    },
+    {
+      "breed": {
+        "chinese_name": "伊维萨猎犬",
+        "english_name": "Ibizan Hound",
+        "akc_group": "猎犬组",
+        "origin": "西班牙伊维萨岛",
+        "original_purpose": "狩猎兔子和小型猎物",
+        "size_category": "中型犬",
+        "average_weight_kg": {
+          "male": "20-25",
+          "female": "19-23"
+        },
+        "average_height_cm": {
+          "male": "66-72",
+          "female": "60-67"
+        },
+        "life_expectancy": "12-14年",
+        "coat_type": "短毛或刚毛",
+        "coat_colors": [
+          "白色",
+          "红色",
+          "栗色",
+          "白色与红色或栗色相间"
+        ],
+        "primary_traits": [
+          "优雅敏捷",
+          "独立性强",
+          "视觉敏锐",
+          "安静温和",
+          "对家庭忠诚"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "对家庭成员忠诚，但可能较为独立",
+        "with_children": "与儿童相处良好，但需监督互动",
+        "with_other_dogs": "通常能与其他狗和平相处，但可能对小型宠物有狩猎本能",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周梳理一次即可",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "过敏",
+          "癫痫",
+          "髋关节发育不良",
+          "眼部问题"
+        ],
+        "suitability_assessment": "适合活跃家庭，需要充足运动空间和耐心训练，不适合公寓生活或新手主人",
+        "knowledge_sources": [
+          "美国养犬俱乐部（AKC）",
+          "国际犬业联合会（FCI）",
+          "专业犬类行为学资料"
+        ]
+      },
+      "breed_name": "伊维萨猎犬",
+      "processed_date": "2026-02-06 14:14:27"
+    },
+    {
+      "breed": {
+        "chinese_name": "阿沙瓦犬",
+        "english_name": "Azawakh",
+        "akc_group": "猎犬组",
+        "origin": "西非（马里、尼日尔、布基纳法索）",
+        "original_purpose": "狩猎、护卫、伴侣",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "20-25",
+          "female": "15-20"
+        },
+        "average_height_cm": {
+          "male": "64-74",
+          "female": "60-70"
+        },
+        "life_expectancy": "12-15年",
+        "coat_type": "短毛、光滑",
+        "coat_colors": [
+          "沙色",
+          "红色",
+          "蓝色",
+          "黑色",
+          "斑纹",
+          "白色斑纹"
+        ],
+        "primary_traits": [
+          "优雅",
+          "独立",
+          "忠诚",
+          "警惕",
+          "敏捷",
+          "耐力强"
+        ],
+        "energy_level": 8,
+        "intelligence_rank": 7,
+        "trainability": 6,
+        "with_family": "对家庭成员忠诚，但可能对陌生人冷淡",
+        "with_children": "适合有经验的家庭，需监督与儿童互动",
+        "with_other_dogs": "可能对其他犬只有支配倾向，需社会化训练",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "低维护，每周梳理一次即可",
+        "shedding_level": 3,
+        "common_health_issues": [
+          "髋关节发育不良",
+          "甲状腺功能减退",
+          "过敏"
+        ],
+        "suitability_assessment": "适合有经验的犬主，需要充足的运动和社交训练，不适合公寓生活",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "犬类健康数据库"
+        ]
+      },
+      "breed_name": "阿沙瓦犬",
+      "processed_date": "2026-02-06 14:14:43"
+    },
+    {
+      "breed": {
+        "chinese_name": "苏俄猎狼犬",
+        "english_name": "Borzoi",
+        "akc_group": "猎犬组",
+        "origin": "俄罗斯",
+        "original_purpose": "猎狼、追逐大型猎物",
+        "size_category": "大型犬",
+        "average_weight_kg": {
+          "male": "34-48",
+          "female": "27-41"
+        },
+        "average_height_cm": {
+          "male": "71-79",
+          "female": "66-74"
+        },
+        "life_expectancy": "10-12年",
+        "coat_type": "长而丝滑的被毛，有饰毛",
+        "coat_colors": [
+          "白色",
+          "金色",
+          "红色",
+          "灰色",
+          "黑色",
+          "虎斑色",
+          "多种组合色"
+        ],
+        "primary_traits": [
+          "优雅高贵",
+          "独立安静",
+          "视觉猎犬",
+          "奔跑速度快",
+          "温和但保留狩猎本能"
+        ],
+        "energy_level": 7,
+        "intelligence_rank": 6,
+        "trainability": 5,
+        "with_family": "忠诚但可能独立，适合平静家庭环境",
+        "with_children": "对温和的儿童友好，但需监督互动",
+        "with_other_dogs": "通常能与其他犬相处，但可能追逐小型动物",
+        "daily_exercise_minutes": 60,
+        "apartment_friendly": false,
+        "grooming_needs": "每周梳理2-3次，定期修剪",
+        "shedding_level": 5,
+        "common_health_issues": [
+          "胃扭转",
+          "心脏病",
+          "甲状腺功能减退",
+          "眼部问题"
+        ],
+        "suitability_assessment": "适合有经验的主人，需要安全围栏和充足运动空间，不适合公寓生活",
+        "knowledge_sources": [
+          "AKC品种标准",
+          "FCI品种描述",
+          "兽医临床资料"
+        ]
+      },
+      "breed_name": "苏俄猎狼犬",
+      "processed_date": "2026-02-06 14:15:00"
+    }
+  ]
+}

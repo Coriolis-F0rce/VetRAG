@@ -1,0 +1,688 @@
+[
+  {
+    "behavior": {
+      "name": "腹部暴露行为",
+      "category": "社交沟通",
+      "description": "犬只侧卧或仰卧，露出腹部区域",
+      "antecedents": "在社交互动中，如遇到其他犬只、人类或特定刺激时",
+      "consequences": "可能引发对方的安抚、互动或停止威胁行为",
+      "meaning": "可能表示信任、顺从或请求安抚，但不一定表示\"认错\"",
+      "evaluation": "正常社交行为，常见于犬类互动中",
+      "function": "缓解社交紧张、建立信任或请求互动",
+      "intervention_level": "无/观察",
+      "resource": "犬行为学中的社交信号理论（如Turid Rugaas的平静信号理论）"
+    }
+  },
+  {
+    "behavior": {
+      "name": "舔舐行为（社交性舔舐）",
+      "category": "社交沟通",
+      "description": "犬只快速、轻柔地用舌头接触人类或同类嘴角区域",
+      "antecedents": "与熟悉的人类或同类近距离互动时，特别是在平静、友好的社交场景中",
+      "consequences": "通常引发接收方的积极回应，如抚摸、互动或食物分享",
+      "meaning": "可能表示友好、恭顺或安抚意图，可能是幼犬乞食行为的延续",
+      "evaluation": "在正常社交互动中常见，属于犬类典型社交行为，通常无害",
+      "function": "维持社会纽带、表达顺从、寻求关注或资源",
+      "intervention_level": "无/观察",
+      "resource": "犬行为学中关于幼犬行为延续理论、社交信号研究（如Turid Rugaas的安抚信号理论）"
+    }
+  },
+  {
+    "behavior": {
+      "name": "柔和凝视/眯眼",
+      "category": "社交沟通",
+      "description": "犬在放松状态下眼神柔和，可能伴随眨眼",
+      "antecedents": "社交互动中，面对熟悉或友好的对象，处于放松环境",
+      "consequences": "可能促进友好互动，减少对方威胁感",
+      "meaning": "可能表达无威胁的友好意图",
+      "evaluation": "正常社交行为，符合犬类沟通模式",
+      "function": "传递友好信号，维持社交和谐",
+      "intervention_level": "无/观察",
+      "resource": "犬类肢体语言理论，Turid Rugaas的平静信号研究"
+    }
+  },
+  {
+    "behavior": {
+      "name": "玩耍鞠躬",
+      "category": "社交沟通",
+      "description": "犬只前肢趴地，臀部翘起，尾巴摇动",
+      "antecedents": "在社交互动中，当犬只处于兴奋状态并希望发起游戏时",
+      "consequences": "可能引发其他犬只或人类的游戏回应，或若无回应则可能停止该行为",
+      "meaning": "可能表示游戏邀请，意图发起互动",
+      "evaluation": "正常犬只社交行为，常见于健康犬只的日常互动中",
+      "function": "发起社交游戏，促进互动",
+      "intervention_level": "无/观察",
+      "resource": "犬行为学中的社交信号理论，参考研究者如Patricia McConnell、John Bradshaw"
+    }
+  },
+  {
+    "behavior": {
+      "name": "摩擦行为",
+      "category": "社交沟通",
+      "description": "犬用头、颈或身体侧面摩擦人或物体表面",
+      "antecedents": "接触特定人或物体时",
+      "consequences": "在目标上留下自身气味",
+      "meaning": "可能进行气味交换，标记所有权或寻求安慰",
+      "evaluation": "正常社交行为，常见于健康犬只",
+      "function": "气味标记与社交互动",
+      "intervention_level": "无/观察",
+      "resource": "犬类行为学中的气味标记理论"
+    }
+  },
+  {
+    "behavior": {
+      "name": "社交嗅闻",
+      "category": "社交沟通",
+      "description": "犬只互相嗅闻臀部、生殖器及口鼻部位的行为",
+      "antecedents": "犬只初次相遇或社交互动时",
+      "consequences": "获取对方信息素，可能影响后续互动行为",
+      "meaning": "可能用于获取对方性别、健康状况、情绪等信息，类似人类的握手寒暄",
+      "evaluation": "正常社交行为，在犬类互动中普遍存在",
+      "function": "信息交换",
+      "intervention_level": "无/观察",
+      "resource": "犬类信息素交流理论，基于动物行为学研究（如Temple Grandin等研究者）"
+    }
+  },
+  {
+    "behavior": {
+      "name": "撇头/转头",
+      "category": "社交沟通",
+      "description": "犬将头部快速转向一侧，避开与另一犬或人的直接对视或接触。",
+      "antecedents": "当犬感知到轻微压力、不适或威胁时，例如被另一犬或人直视、接近过快、环境嘈杂、资源被靠近等。",
+      "consequences": "可能缓解犬的紧张情绪，向对方传递安抚信号，避免冲突升级。",
+      "meaning": "可能表达轻微不适或压力，是一种试图安抚对方或自我调节的行为。",
+      "evaluation": "在犬类社交互动中常见，属于正常行为范围，有助于犬在压力情境下进行非对抗性沟通。",
+      "function": "作为安定信号（Calming Signal），用于减少社交冲突、缓解紧张或表达回避意图。",
+      "intervention_level": "无/观察",
+      "resource": "Turid Rugaas的安定信号理论（Calming Signals）"
+    }
+  },
+  {
+    "behavior": {
+      "name": "舔鼻",
+      "category": "社交沟通",
+      "description": "舌头快速伸出舔舐鼻头，通常仅1-2次",
+      "antecedents": "在轻微压力或冲突情境下",
+      "consequences": "",
+      "meaning": "可能是一种自我安抚信号，用于缓解压力或冲突",
+      "evaluation": "正常范围，常见于犬类社交互动中",
+      "function": "安定信号",
+      "intervention_level": "低/自我调节",
+      "resource": "犬行为学中的安定信号理论，如Turid Rugaas的研究"
+    }
+  },
+  {
+    "behavior": {
+      "name": "压力性哈欠",
+      "category": "情绪表达",
+      "description": "犬在非疲倦状态下打哈欠，通常伴随紧张或兴奋情境，如训练或被责备时。",
+      "antecedents": "紧张或兴奋情境，如训练、被责备时。",
+      "consequences": "可能释放压力，缓解自身或对方情绪。",
+      "meaning": "可能是一种安定信号，用于缓解自身或对方的紧张情绪。",
+      "evaluation": "在犬类行为中属于正常范围，常见于社交互动中。",
+      "function": "释放压力，缓解自身或对方情绪。",
+      "intervention_level": "无/观察",
+      "resource": "安定信号理论（Turid Rugaas）"
+    }
+  },
+  {
+    "behavior": {
+      "name": "僵住",
+      "category": "情绪表达",
+      "description": "身体突然完全停止运动，肌肉紧绷",
+      "antecedents": "警觉或警告情境，如感知到潜在威胁或刺激",
+      "consequences": "可能发展为攻击或逃跑反应",
+      "meaning": "可能是高度警觉或即将做出反应（攻击或逃跑）的前兆",
+      "evaluation": "在警觉情境下属于正常范围，但需注意频率和强度",
+      "function": "作为应对潜在威胁的防御机制",
+      "intervention_level": "观察",
+      "resource": "犬行为学中的警觉和应激反应理论，如研究者Patricia McConnell或Stanley Coren的工作"
+    }
+  },
+  {
+    "behavior": {
+      "name": "低吼",
+      "category": "社交沟通",
+      "description": "从喉咙深处发出的持续性低沉声音",
+      "antecedents": "对方接近、威胁、资源争夺、疼痛或不适等触发不安或恐惧的情境",
+      "consequences": "可能促使对方停止当前行为，或导致冲突升级",
+      "meaning": "可能表达不安、恐惧或威胁，作为明确警告要求对方停止当前行为",
+      "evaluation": "在威胁或压力情境下属于正常犬类沟通行为，但需结合整体行为评估是否过度或异常",
+      "function": "警告和威慑，以预防潜在冲突",
+      "intervention_level": "中/需要管理",
+      "resource": "犬行为学理论，如Turid Rugaas的平静信号理论；研究者包括Patricia McConnell、Ian Dunbar"
+    }
+  },
+  {
+    "behavior": {
+      "name": "龇牙",
+      "category": "社交沟通",
+      "description": "上唇卷起，露出门齿及犬齿，可能伴随低吼声",
+      "antecedents": "当犬感到威胁、恐惧、资源被侵犯或处于防御状态时",
+      "consequences": "可能阻止威胁源接近，或引发冲突升级",
+      "meaning": "可能表示防御性或攻击性意图，是一种明确的威胁信号",
+      "evaluation": "在威胁情境下属于正常警告行为，但需注意频率和强度是否异常",
+      "function": "警告潜在威胁，避免直接冲突",
+      "intervention_level": "中/需要管理",
+      "resource": "犬行为学中的威胁信号理论；研究者：Roger Abrantes, Patricia McConnell"
+    }
+  },
+  {
+    "behavior": {
+      "name": "尾巴高举僵硬（伴或不伴颤动）",
+      "category": "社交沟通",
+      "description": "尾巴高举不动或轻微颤动，身体僵硬",
+      "antecedents": "高度关注、自信或潜在攻击性，需结合整体判断",
+      "consequences": "",
+      "meaning": "可能表示警觉、自信或威胁",
+      "evaluation": "正常范围，但需结合整体行为判断",
+      "function": "",
+      "intervention_level": "观察",
+      "resource": "犬行为学基础理论"
+    }
+  },
+  {
+    "behavior": {
+      "name": "水平放松尾姿",
+      "category": "情绪表达",
+      "description": "尾巴自然水平延伸，可能轻微摆动",
+      "antecedents": "处于平和状态",
+      "consequences": "",
+      "meaning": "可能表示平静或放松",
+      "evaluation": "正常范围",
+      "function": "",
+      "intervention_level": "无/观察",
+      "resource": "犬类肢体语言理论"
+    }
+  },
+  {
+    "behavior": {
+      "name": "中等高度摇摆",
+      "category": "社交沟通",
+      "description": "尾巴以中等高度、放松状态摆动",
+      "antecedents": "社交互动，如遇到熟悉的人、狗或其他动物",
+      "consequences": "可能促进友好互动或减少冲突",
+      "meaning": "可能表示友好或高兴，是常见的友好问候信号",
+      "evaluation": "正常行为，在社交场景中常见",
+      "function": "传达友好意图，促进社交联系",
+      "intervention_level": "无/观察",
+      "resource": "犬行为学理论，如Turid Rugaas的平静信号理论"
+    }
+  },
+  {
+    "behavior": {
+      "name": "快速摇尾（臀部摇摆）",
+      "category": "情绪表达",
+      "description": "尾巴高速摇摆，带动整个臀部扭动",
+      "antecedents": "与主人重逢、准备玩耍、获得食物奖励等积极刺激场景",
+      "consequences": "",
+      "meaning": "可能表示极度兴奋和快乐",
+      "evaluation": "正常犬类行为，属于积极情绪表达的正常范围",
+      "function": "社交沟通中的积极信号传递",
+      "intervention_level": "无/观察",
+      "resource": "犬类肢体语言研究（如Turid Rugaas的平静信号理论）、动物行为学基础理论"
+    }
+  },
+  {
+    "behavior": {
+      "name": "夹尾",
+      "category": "情绪表达",
+      "description": "尾巴紧贴腹部下方",
+      "antecedents": "可能由威胁、压力、陌生环境或社交冲突等触发",
+      "consequences": "可能减少社交互动或引发回避行为",
+      "meaning": "可能表示强烈的不安全感、恐惧或顺从",
+      "evaluation": "在应激或威胁情境下属于正常范围，但频繁出现可能提示长期焦虑",
+      "function": "社交信号，表达屈服或回避意图",
+      "intervention_level": "中/需要管理",
+      "resource": "犬行为学中的恐惧-焦虑-应激模型，参考研究者如Roger Mugford、Patricia McConnell"
+    }
+  },
+  {
+    "behavior": {
+      "name": "耳前竖",
+      "category": "生物本能",
+      "description": "耳朵向前竖起并转动以捕捉声音",
+      "antecedents": "前方出现目标或声音刺激",
+      "consequences": "",
+      "meaning": "可能表示警觉或好奇，高度关注前方目标",
+      "evaluation": "正常犬类行为，属于听觉定向反应",
+      "function": "增强听觉感知，定位声源",
+      "intervention_level": "无/观察",
+      "resource": "犬类行为学基础理论、听觉定向行为研究"
+    }
+  },
+  {
+    "behavior": {
+      "name": "耳朵后贴（飞机耳）",
+      "category": "情绪表达",
+      "description": "耳朵向后平贴于头部两侧",
+      "antecedents": "恐惧、顺从或极高兴的情境",
+      "consequences": "",
+      "meaning": "可能表示恐惧、顺从，或在极高兴时出现的友好姿态",
+      "evaluation": "正常犬类情绪表达行为，需结合其他身体语言综合判断",
+      "function": "社交沟通中的情绪信号传递",
+      "intervention_level": "观察",
+      "resource": "犬类身体语言理论、Turid Rugaas的平静信号理论"
+    }
+  },
+  {
+    "behavior": {
+      "name": "鲸鱼眼",
+      "category": "情绪表达",
+      "description": "头部保持不动，眼睛斜向转动，露出眼白",
+      "antecedents": "感到压力、不适，试图避免直接冲突",
+      "consequences": "",
+      "meaning": "可能表示紧张或焦虑",
+      "evaluation": "在压力情境下常见，属于正常情绪反应范围",
+      "function": "社交回避",
+      "intervention_level": "低/自我调节",
+      "resource": "犬行为学中的压力信号理论，如Turid Rugaas的平静信号研究"
+    }
+  },
+  {
+    "behavior": {
+      "name": "定向搜索行为",
+      "category": "生物本能",
+      "description": "犬抬头、嗅闻空气，目光锁定特定目标",
+      "antecedents": "环境中出现未知气味、声音或视觉刺激，如远处动物、食物源或潜在威胁",
+      "consequences": "可能引发进一步探索、追踪、吠叫或回避行为",
+      "meaning": "可能表示犬在评估环境中的潜在资源或威胁，基于感官输入进行信息收集",
+      "evaluation": "正常范围，属于犬类自然探索和生存本能的一部分，常见于户外或新环境中",
+      "function": "环境监测和资源定位",
+      "intervention_level": "无/观察",
+      "resource": "基于犬类行为学理论，如John Bradshaw的犬类认知研究，强调嗅觉和视觉在犬探索行为中的作用"
+    }
+  },
+  {
+    "behavior": {
+      "name": "跟踪/潜行",
+      "category": "生物本能",
+      "description": "身体压低，缓慢无声地接近目标",
+      "antecedents": "目标出现（如猎物、移动物体或感兴趣的对象）",
+      "consequences": "可能接近目标以观察、捕猎或互动",
+      "meaning": "可能表示捕猎本能、好奇心或谨慎接近",
+      "evaluation": "在犬类中常见，属于正常捕食序列的一部分，但需结合整体行为评估",
+      "function": "捕猎或探索行为",
+      "intervention_level": "观察、低/自我调节",
+      "resource": "捕食行为理论（如Coppinger等）、犬类行为学（如Overall）"
+    }
+  },
+  {
+    "behavior": {
+      "name": "追逐行为",
+      "category": "生物本能",
+      "description": "犬高速奔跑追赶移动物体，如球、车辆或其他动物",
+      "antecedents": "移动物体出现，如球被抛出、车辆行驶或动物奔跑",
+      "consequences": "可能捕获物体、追逐失败或引发其他行为",
+      "meaning": "可能源于捕食本能、游戏需求或探索行为",
+      "evaluation": "在安全环境下，适度追逐属于正常犬类行为；若追逐危险物体或失控，需关注",
+      "function": "满足本能需求、锻炼或社交互动",
+      "intervention_level": "中/需要管理",
+      "resource": "犬行为学理论，如捕食序列；研究者包括John Bradshaw"
+    }
+  },
+  {
+    "behavior": {
+      "name": "扑抓",
+      "category": "生物本能",
+      "description": "犬用前肢和嘴扑向并抓住目标",
+      "antecedents": "目标物移动或具有吸引力，如玩具、猎物或移动物体",
+      "consequences": "成功抓住目标或目标逃脱",
+      "meaning": "可能源于捕猎本能或游戏行为",
+      "evaluation": "在游戏或捕猎情境中属于正常行为，但需注意目标选择和环境安全",
+      "function": "捕猎、游戏或资源获取",
+      "intervention_level": "观察、低/自我调节",
+      "resource": "犬行为学中的捕猎行为理论，参考研究者如John Bradshaw"
+    }
+  },
+  {
+    "behavior": {
+      "name": "咬住并摇晃",
+      "category": "生物本能",
+      "description": "犬用嘴咬住目标物体，并通过猛烈摇晃头部来施加力量",
+      "antecedents": "当犬接触到玩具或其他可咬物体时，可能触发此行为",
+      "consequences": "可能导致物体损坏或玩耍互动",
+      "meaning": "可能源于捕猎本能，用于模拟捕杀猎物或作为玩耍行为",
+      "evaluation": "在玩耍场景中属于正常行为，但需监控以避免过度或针对不当目标",
+      "function": "释放能量、满足本能需求或进行社交互动",
+      "intervention_level": "观察、低/自我调节",
+      "resource": "基于犬类行为学理论，如捕猎序列（predatory sequence）和玩耍行为研究"
+    }
+  },
+  {
+    "behavior": {
+      "name": "撕咬并吞咽",
+      "category": "生物本能",
+      "description": "犬用牙齿撕裂物体（如食物或猎物）并随后吞咽的过程",
+      "antecedents": "面对食物或猎物时",
+      "consequences": "食物或猎物被消耗，可能满足饥饿或捕食需求",
+      "meaning": "可能反映饥饿、捕食本能或资源获取行为",
+      "evaluation": "在正常进食或捕食情境下属于正常行为，但过度或在不适当对象上出现可能需关注",
+      "function": "满足营养需求或本能捕食",
+      "intervention_level": "无/观察",
+      "resource": "基于动物行为学理论，如Konrad Lorenz的捕食行为研究"
+    }
+  },
+  {
+    "behavior": {
+      "name": "资源守护行为",
+      "category": "生物本能",
+      "description": "当犬只感知到其拥有的资源（如食物、玩具）可能被剥夺时，表现出身体僵硬、低吼、快速摄食、侧身遮挡等可观察行为。",
+      "antecedents": "在资源（如食物碗、玩具）旁出现潜在威胁（如人或其他动物靠近）。",
+      "consequences": "可能成功保护资源，但也可能引发冲突或加剧守护行为。",
+      "meaning": "可能反映了犬只对资源价值的认知和防御本能，旨在防止资源被剥夺。",
+      "evaluation": "在犬类行为中属于常见本能反应，但过度或攻击性表现可能超出正常范围，需结合具体情境评估。",
+      "function": "保护有价值的资源免受剥夺。",
+      "intervention_level": "中/需要管理",
+      "resource": "基于犬行为学中的资源守护理论，参考研究者如Ian Dunbar、Patricia McConnell的相关研究。"
+    }
+  },
+  {
+    "behavior": {
+      "name": "埋藏行为",
+      "category": "生物本能",
+      "description": "犬用鼻子和前爪刨地，将食物或玩具等物品掩盖起来",
+      "antecedents": "当犬获得食物、玩具或其他物品时，特别是在资源充足或环境中有其他犬存在的情况下",
+      "consequences": "物品被部分或完全掩盖，可能被遗忘或后续被挖掘出来",
+      "meaning": "可能源自储存多余食物的本能，用于保护资源以备将来使用",
+      "evaluation": "正常犬类行为，常见于许多犬种，特别是在资源丰富的环境中",
+      "function": "资源储存和保护",
+      "intervention_level": "无/观察",
+      "resource": "犬类本能行为理论，Konrad Lorenz的动物行为学研究"
+    }
+  },
+  {
+    "behavior": {
+      "name": "排便前转圈",
+      "category": "生物本能",
+      "description": "犬只在排便前在原地转圈，可能伴随踏平草地或检查环境的行为。",
+      "antecedents": "排便需求触发，通常在草地或户外环境中。",
+      "consequences": "排便行为随后发生。",
+      "meaning": "可能是踏平草地、检查环境安全的本能残留，用于准备排便区域。",
+      "evaluation": "正常行为，常见于犬类，符合生物本能。",
+      "function": "准备排便环境，可能涉及领地标记或安全确认。",
+      "intervention_level": "无/观察",
+      "resource": "犬行为学中的本能行为理论，基于研究者如John Bradshaw或Patricia McConnell的共识。"
+    }
+  },
+  {
+    "behavior": {
+      "name": "地面抓挠行为",
+      "category": "生物本能",
+      "description": "犬在排便后，用后腿向后刨地，留下抓痕和地面扰动",
+      "antecedents": "排便行为完成后",
+      "consequences": "通过足部腺体释放气味标记，同时留下视觉痕迹",
+      "meaning": "可能是一种领地标记行为，通过气味和视觉信号强化领地宣示",
+      "evaluation": "正常犬类行为，常见于多种犬种，属于本能性标记行为",
+      "function": "领地标记与信息传递",
+      "intervention_level": "无/观察",
+      "resource": "犬类行为学中的标记行为理论；研究者：Raymond Coppinger, John Bradshaw等关于犬类本能行为的研究"
+    }
+  },
+  {
+    "behavior": {
+      "name": "抬腿排尿",
+      "category": "生物本能",
+      "description": "犬只抬起后腿，对垂直物体（如树木、柱子、墙壁）排尿，尿液通常呈喷射状，位置较高",
+      "antecedents": "进入新环境、遇到其他犬只的气味标记、领地边界、社交互动后、性成熟（公犬常见）",
+      "consequences": "在垂直表面留下气味标记，气味可能更持久、位置更高，影响其他犬只的行为",
+      "meaning": "可能用于气味标记以宣告存在、划定领地、传递社交信息（如性别、健康状况）或响应环境刺激",
+      "evaluation": "正常范围：公犬性成熟后的常见行为，尤其在户外标记时；异常情况：过度频繁、在室内发生、伴随焦虑或攻击性",
+      "function": "气味标记",
+      "intervention_level": "无/观察",
+      "resource": "犬行为学中的气味标记理论（如R. Coppinger, J. Bradshaw的研究）、领地行为研究"
+    }
+  },
+  {
+    "behavior": {
+      "name": "气味标记行为",
+      "category": "社交沟通",
+      "description": "犬只在散步过程中，频繁地在不同地点（如树木、电线杆、墙角等）少量排尿，通常伴随嗅闻行为。",
+      "antecedents": "在户外散步时，遇到其他犬只留下的气味标记区域（如尿液、粪便气味）。",
+      "consequences": "覆盖或叠加自身气味信息于原有标记上，可能影响后续其他犬只对该区域的“阅读”。",
+      "meaning": "可能是一种社交沟通行为，旨在“阅读”环境中其他犬只留下的化学信息（如性别、健康状况、社会地位），并通过自身标记“回复”或声明存在。",
+      "evaluation": "在犬类行为学中，气味标记是常见的正常社交行为，尤其在未绝育公犬中更为频繁，但绝育犬和母犬也可能有此行为。若不影响健康或造成过度焦虑，通常视为正常范围。",
+      "function": "信息交换与领地/社交状态宣示。",
+      "intervention_level": "无/观察",
+      "resource": "犬类化学通讯理论（如 pheromone communication），参考研究者：John Bradshaw、Patricia McConnell 等对犬类社交行为的论述。"
+    }
+  },
+  {
+    "behavior": {
+      "name": "筑巢行为",
+      "category": "生物本能",
+      "description": "犬在准备休息前，用前爪刨抓睡眠区域的垫子或地面，并可能伴随转圈动作",
+      "antecedents": "准备睡觉或休息时",
+      "consequences": "",
+      "meaning": "可能源自祖先踏平草丛、整理睡眠区域的本能行为",
+      "evaluation": "正常犬类行为，在适度范围内无需干预",
+      "function": "整理睡眠区域，创造舒适的休息环境",
+      "intervention_level": "无/观察",
+      "resource": "犬类本能行为理论，Konrad Lorenz的动物行为学研究"
+    }
+  },
+  {
+    "behavior": {
+      "name": "自我舔舐",
+      "category": "生物本能",
+      "description": "犬安静地舔舐自己的毛发、爪部等身体部位",
+      "antecedents": "毛发脏污、皮肤瘙痒、身体不适、无聊或焦虑时",
+      "consequences": "清洁毛发、缓解瘙痒、自我安抚",
+      "meaning": "可能为正常清洁行为，若过度可能预示焦虑或皮肤病",
+      "evaluation": "正常清洁行为，但需观察频率和持续时间是否在正常范围内",
+      "function": "自我清洁、皮肤护理、自我安抚",
+      "intervention_level": "观察、低/自我调节",
+      "resource": "犬行为学基础理论、动物行为学共识"
+    }
+  },
+  {
+    "behavior": {
+      "name": "追逐行为",
+      "category": "生物本能",
+      "description": "犬只主动追逐其他犬只或移动物体，如玩具、车辆或动物，表现为快速奔跑、定向移动和视觉追踪。",
+      "antecedents": "在开放或封闭环境中，出现快速移动的刺激物，如其他犬只奔跑、玩具被抛出或滚动、车辆经过等。",
+      "consequences": "可能包括捕获目标、游戏互动、能量消耗，或导致过度兴奋、冲突或危险情况（如追逐车辆）。",
+      "meaning": "可能源于捕食本能、游戏动机或社交互动需求，用于释放能量或建立社交联系。",
+      "evaluation": "在适度、可控的游戏中属于正常行为；若频繁、不可控或针对危险目标（如车辆），可能超出正常范围。",
+      "function": "释放能量、满足本能需求、促进社交或游戏互动。",
+      "intervention_level": "观察、低/自我调节",
+      "resource": "基于动物行为学理论，参考研究者如John Bradshaw和Ian Dunbar对犬类本能和游戏行为的研究。"
+    }
+  },
+  {
+    "behavior": {
+      "name": "拔河游戏",
+      "category": "社交沟通",
+      "description": "犬与人类或其他犬只通过拉扯玩具或绳索进行互动，表现为咬住物体并施加力量，伴随身体移动和可能的低吼声。",
+      "antecedents": "玩具或绳索被提供，犬处于兴奋或游戏状态，人类或其他犬只参与互动。",
+      "consequences": "犬可能获得玩具控制权、增强社交联系或释放能量；若管理不当，可能导致资源守卫或过度兴奋。",
+      "meaning": "可能表达社交互动需求、建立信任或练习捕猎本能。",
+      "evaluation": "在适度控制下属于正常游戏行为，常见于幼犬和成年犬；需避免过度竞争或攻击性。",
+      "function": "促进社交技能、能量消耗和服从训练。",
+      "intervention_level": "低/自我调节",
+      "resource": "基于犬行为学理论，如Ian Dunbar的社交化研究和Patricia McConnell的沟通理论。"
+    }
+  },
+  {
+    "behavior": {
+      "name": "模拟捕食游戏",
+      "category": "生物本能",
+      "description": "犬模拟捕食序列，包括扑、咬和摇晃动作，但自我限制咬合力以避免伤害。",
+      "antecedents": "在玩耍或互动场景中，如与主人、其他犬或玩具互动时触发。",
+      "consequences": "可能增强犬的社交技能、满足本能需求，或作为能量释放方式。",
+      "meaning": "可能表达犬的玩耍欲望、捕食本能或社交互动需求。",
+      "evaluation": "在正常范围内，常见于幼犬和成年犬的玩耍行为，若过度或伴随攻击性则需关注。",
+      "function": "满足本能、社交学习或娱乐。",
+      "intervention_level": "低/自我调节",
+      "resource": "基于犬行为学理论，如Patricia McConnell和Ian Dunbar的研究。"
+    }
+  },
+  {
+    "behavior": {
+      "name": "游戏性吠叫与扑跳",
+      "category": "社交沟通",
+      "description": "高频、短促的吠叫，伴随弹跳式扑向玩伴",
+      "antecedents": "与玩伴（人或犬）互动时，特别是在游戏开始或进行中",
+      "consequences": "可能引发玩伴的回应性游戏行为，如追逐或互动",
+      "meaning": "可能表达兴奋、邀请游戏或维持社交互动",
+      "evaluation": "在游戏场景中属于正常犬类行为，但需注意频率和强度是否过度",
+      "function": "社交邀请与互动维持",
+      "intervention_level": "观察、低/自我调节",
+      "resource": "犬类行为学中的游戏行为理论（如Bekoff的研究）、社交沟通理论"
+    }
+  },
+  {
+    "behavior": {
+      "name": "踱步",
+      "category": "情绪表达",
+      "description": "犬在固定路线上反复、无目的地行走",
+      "antecedents": "内心冲突、无法放松的表现",
+      "consequences": "",
+      "meaning": "可能表示焦虑或刻板行为",
+      "evaluation": "在焦虑或压力情境下常见，但持续或加剧可能超出正常范围",
+      "function": "",
+      "intervention_level": "中/需要管理",
+      "resource": "基于犬行为学中焦虑和刻板行为理论，如研究者Temple Grandin或Karen Overall的工作"
+    }
+  },
+  {
+    "behavior": {
+      "name": "过度舔舐/啃咬（自身）",
+      "category": "情绪表达",
+      "description": "犬反复舔舐或啃咬自身特定部位（如爪子）的行为",
+      "antecedents": "可能由过敏、疼痛、压力或无聊等触发",
+      "consequences": "可能导致皮肤损伤、感染或行为强化",
+      "meaning": "可能源于医学问题（如过敏、疼痛）或情绪问题（如焦虑、压力释放的转移行为）",
+      "evaluation": "超出正常梳理范围，需评估医学和情绪因素",
+      "function": "可能作为缓解不适或压力的自我调节机制",
+      "intervention_level": "中/需要管理",
+      "resource": "基于犬行为学中的压力转移理论和医学-行为关联研究（如Overall, 2013）"
+    }
+  },
+  {
+    "behavior": {
+      "name": "刻板行为/强迫症",
+      "category": "情绪表达",
+      "description": "无外部触发地反复追逐尾巴或光影",
+      "antecedents": "可能源于无聊、压力或神经性问题",
+      "consequences": "",
+      "meaning": "可能表示犬只处于无聊、压力状态或存在神经性问题",
+      "evaluation": "超出正常范围，属于异常行为",
+      "function": "",
+      "intervention_level": "中/需要管理",
+      "resource": "犬行为学中的刻板行为和强迫症理论，如研究者Karen Overall的相关研究"
+    }
+  },
+  {
+    "behavior": {
+      "name": "破坏性行为（独处时）",
+      "category": "情绪表达",
+      "description": "犬只在独处时表现出撕咬家具、挖门等破坏性行为",
+      "antecedents": "犬只被单独留在家中或环境中缺乏人类陪伴",
+      "consequences": "家具损坏、门框损伤等财产破坏",
+      "meaning": "可能反映分离焦虑或无聊导致的压力过大、精力无处发泄",
+      "evaluation": "在独处时出现破坏性行为属于异常行为，需要评估犬只的焦虑水平和环境丰富度",
+      "function": "可能作为缓解焦虑或消耗多余精力的方式",
+      "intervention_level": "中/需要管理",
+      "resource": "分离焦虑理论、犬只行为学（如Patricia McConnell、Ian Dunbar的研究）"
+    }
+  },
+  {
+    "behavior": {
+      "name": "食欲异常（厌食症/异食癖）",
+      "category": "情绪表达",
+      "description": "犬只出现食欲显著改变，包括拒绝进食（厌食症）或摄入非食物物质如土壤、粪便等（异食癖）。",
+      "antecedents": "压力事件（如环境变化、分离焦虑、社交冲突）、医学问题（需先排除）、营养缺乏或行为习得。",
+      "consequences": "体重下降、营养不良、胃肠道问题（如异物阻塞）、行为问题加剧。",
+      "meaning": "可能反映压力、焦虑、无聊或潜在医学状况，需结合具体情境分析。",
+      "evaluation": "超出正常范围，属于行为问题，需评估医学和情境因素。",
+      "function": "可能作为应对压力的方式（如压力性拒食），或探索/自我刺激行为（如异食癖）。",
+      "intervention_level": "中/需要管理",
+      "resource": "基于动物行为学理论（如压力反应模型）、研究者如John Bradshaw、Karen Overall的临床观察。"
+    }
+  },
+  {
+    "behavior": {
+      "name": "警觉吠叫",
+      "category": "生物本能",
+      "description": "急促、洪亮、有停顿的吠叫",
+      "antecedents": "感知到潜在威胁或异常情况（如陌生人接近、异常声响）",
+      "consequences": "可能引起注意、警告同伴或驱赶威胁",
+      "meaning": "可能表示犬只感知到环境中的潜在威胁，试图发出警报",
+      "evaluation": "在感知威胁时属于正常行为，但频繁或过度吠叫可能需关注",
+      "function": "警报功能，用于警告同伴或主人",
+      "intervention_level": "观察",
+      "resource": "犬行为学中的警报行为理论（如Scott & Fuller, 1965）"
+    }
+  },
+  {
+    "behavior": {
+      "name": "需求吠叫",
+      "category": "社交沟通",
+      "description": "犬只对着人发出有目的性的吠叫，可能伴随注视目标物，如玩具、食物或门。",
+      "antecedents": "犬只看到或感知到目标物（如玩具、食物、门），并希望获取或外出。",
+      "consequences": "可能获得目标物或外出机会，或未得到回应而停止吠叫。",
+      "meaning": "可能表示犬只在请求获取物品、食物或外出玩耍。",
+      "evaluation": "在犬类社交沟通中常见，但过度吠叫可能影响生活，需评估频率和情境。",
+      "function": "通过吠叫传达需求，以获取资源或关注。",
+      "intervention_level": "中/需要管理",
+      "resource": "基于犬行为学理论，如Ian Dunbar和Patricia McConnell的研究，强调犬类沟通和需求表达。"
+    }
+  },
+  {
+    "behavior": {
+      "name": "玩耍吠叫",
+      "category": "社交沟通",
+      "description": "犬在玩耍时发出高亢、短促、有节奏的吠叫声，通常伴随兴奋的身体语言如摇尾、跳跃或玩耍姿势。",
+      "antecedents": "与其他犬或人类进行互动游戏时，如追逐、拉扯玩具或模拟打斗。",
+      "consequences": "可能维持或增强玩耍互动，促进社交联系。",
+      "meaning": "可能表达兴奋和邀请继续玩耍的意图，类似于人类在游戏中的笑声。",
+      "evaluation": "在玩耍情境下属于正常行为，符合犬类社交沟通的自然模式。",
+      "function": "促进社交互动和游戏维持。",
+      "intervention_level": "无/观察",
+      "resource": "犬行为学中的社交信号理论，参考研究者如Patricia McConnell和Stanley Coren对犬类沟通的研究。"
+    }
+  },
+  {
+    "behavior": {
+      "name": "焦虑吠叫",
+      "category": "情绪表达",
+      "description": "单调、重复的吠叫声，可能伴随哀鸣声",
+      "antecedents": "压力情境，如分离、环境变化、噪音或社交隔离",
+      "consequences": "可能引起主人关注或环境变化，但通常无法缓解焦虑",
+      "meaning": "可能表达紧张、孤独或不安的情绪",
+      "evaluation": "在压力情境下属于正常情绪反应，但频繁或持续发生可能表明适应不良",
+      "function": "情绪释放或寻求关注",
+      "intervention_level": "中/需要管理",
+      "resource": "分离焦虑理论（如Overall, 1997）、犬情绪表达研究（如Horowitz, 2009）"
+    }
+  },
+  {
+    "behavior": {
+      "name": "哀鸣/呜咽",
+      "category": "社交沟通",
+      "description": "高音调、连续的声音",
+      "antecedents": "",
+      "consequences": "",
+      "meaning": "可能表示兴奋、期待、焦虑、疼痛或屈服",
+      "evaluation": "正常范围取决于频率、强度和情境",
+      "function": "沟通需求或情绪状态",
+      "intervention_level": "观察",
+      "resource": "犬行为学理论，如Turid Rugaas的平静信号理论"
+    }
+  },
+  {
+    "behavior": {
+      "name": "嚎叫",
+      "category": "社交沟通",
+      "description": "犬发出长而悠远的声音，通常持续数秒至数十秒，音调相对稳定，可传播较远距离。",
+      "antecedents": "听到特定声音（如警笛、其他犬的嚎叫）、长时间独处、感知到远处同类或人类活动。",
+      "consequences": "可能引发其他犬的回应嚎叫、吸引人类注意、缓解孤独感或传达位置信息。",
+      "meaning": "可能用于远程沟通、回应环境刺激、表达分离焦虑或维持群体联系。",
+      "evaluation": "在犬类中属于正常行为，尤其在特定触发条件下；但频繁或过度的嚎叫可能提示潜在问题（如焦虑、环境不适）。",
+      "function": "联络与群体协调",
+      "intervention_level": "观察、低/自我调节",
+      "resource": "犬行为学中的沟通理论（如Bekoff, 2001）、分离焦虑研究（如Overall, 1997）、狼群行为类比（如Mech, 1970）"
+    }
+  }
+]
