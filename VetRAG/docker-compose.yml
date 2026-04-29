@@ -1,0 +1,57 @@
+version: "3.9"
+
+services:
+  vetrag-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vetrag-api
+    ports:
+      - "8000:8000"
+    environment:
+      - CHROMA_PERSIST_DIR=/app/chroma_db
+      - CHROMA_COLLECTION_NAME=veterinary_rag
+      - BGE_MODEL_NAME=BAAI/bge-large-zh-v1.5
+      - HF_ENDPOINT=https://hf-mirror.com
+      - LOG_LEVEL=INFO
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      # Qwen 模型路径（挂载宿主机目录时取消注释）
+      # - QWEN3_FINETUNED_PATH=/app/models/qwen3-finetuned
+    volumes:
+      # 模型文件（取消注释并修改为实际路径）
+      # - /path/to/your/models:/app/models
+      # 向量数据库持久化
+      - ./chroma_db:/app/chroma_db
+      # 日志持久化
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/stats"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # ============================================================
+  # 可选：Jupyter Notebook（用于调试和交互式探索）
+  # ============================================================
+  vetrag-notebook:
+    image: jupyter/scipy-notebook:latest
+    container_name: vetrag-notebook
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_TOKEN=vetrag
+      - HF_ENDPOINT=https://hf-mirror.com
+    volumes:
+      - ./notebooks:/home/jovyan/work
+      - ./src:/home/jovyan/work/src:ro
+      - ./data:/home/jovyan/work/data:ro
+    restart: unless-stopped
+    depends_on:
+      - vetrag-api
+
+networks:
+  default:
+    name: vetrag-network

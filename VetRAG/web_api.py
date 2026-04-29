@@ -7,20 +7,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 import uvicorn
 
-# 添加项目根目录到路径
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, current_dir)
 
-from rag_interface import RAGInterface
-
-# ========== 配置 ==========
-CHROMA_DIR = os.path.join(current_dir, "chroma_db")
-MODEL_PATH = r"D:\Backup\PythonProject2\VetRAG\models_finetuned\qwen3-finetuned"
-# =========================
+from src.rag_interface import RAGInterface
+from src.core.config import CHROMA_PERSIST_DIR, QWEN3_FINETUNED_PATH, SYSTEM_PROMPT_VET
 
 rag = RAGInterface(
-    chroma_persist_dir=CHROMA_DIR,
-    generator_model_path=MODEL_PATH
+    chroma_persist_dir=CHROMA_PERSIST_DIR,
+    generator_model_path=str(QWEN3_FINETUNED_PATH)
 )
 
 app = FastAPI(title="兽医RAG API")
@@ -76,15 +71,7 @@ async def stream(question: str, top_k: int = 3, threshold: float = 0.5):
         context_parts.append(f"[相关文档] {content}")
     context = "\n\n".join(context_parts)
 
-    system_msg = (
-        "你是一个专业的兽医助手，同时也需要以温暖、共情的态度回答宠物主人的情感困惑。\n"
-        "要求：\n"
-        "1. 回答应简洁、清晰，直接针对问题，不要添加无关信息。\n"
-        "2. 不要输出参考资料中的原始格式（如 JSON、代码块、Markdown 表格）。\n"
-        "3. 不要添加免责声明、来源说明或注释。\n"
-        "4. 回答应使用自然、流畅的段落，每段不超过 3 句话。\n"
-        "5. 如果参考资料与问题不甚相关，请从你的语料库中进行适当分析，不要自行编造。"
-    )
+    system_msg = SYSTEM_PROMPT_VET
     prompt = rag.generator.build_chat_prompt(
         system=system_msg,
         user=question,

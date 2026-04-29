@@ -1,0 +1,47 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*.egg-info
+dist
+build
+*.egg
+.eggs
+*.so
+
+# 测试
+.pytest_cache
+.coverage
+htmlcov/
+.coverage.*
+tests/
+pytest.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 环境
+.env
+.env.local
+*.log
+
+# 模型（大文件不打包进镜像）
+models/
+models_finetuned/
+chroma_db/
+logs/
+
+# 文档（不影响运行）
+*.md
+docs/
+
+# 其他
+temp/
+terminals/
+.DS_Store

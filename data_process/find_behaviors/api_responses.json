@@ -1,0 +1,1575 @@
+{
+  "total_processed": 49,
+  "successful": 49,
+  "failed": 0,
+  "results": [
+    {
+      "id": "1",
+      "original_name": "1. 主动露腹：犬只侧卧或仰卧，露出腹部。 - [社交/顺从] - (通常表示信任、屈服或请求安抚，非绝对“认错”)",
+      "response": {
+        "id": "1f9767c4-851d-4295-b457-d22fff584025",
+        "object": "chat.completion",
+        "created": 1770348040,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"腹部暴露行为\",\n        \"category\": \"社交沟通\",\n        \"description\": \"犬只侧卧或仰卧，露出腹部区域\",\n        \"antecedents\": \"在社交互动中，如遇到其他犬只、人类或特定刺激时\",\n        \"consequences\": \"可能引发对方的安抚、互动或停止威胁行为\",\n        \"meaning\": \"可能表示信任、顺从或请求安抚，但不一定表示\\\"认错\\\"\",\n        \"evaluation\": \"正常社交行为，常见于犬类互动中\",\n        \"function\": \"缓解社交紧张、建立信任或请求互动\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"犬行为学中的社交信号理论（如Turid Rugaas的平静信号理论）\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 335,
+          "completion_tokens": 178,
+          "total_tokens": 513,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 207
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "2",
+      "original_name": "2. 舔舐（对人/同类嘴角）：快速轻柔地舔。 - [社交/亲和] - (幼犬乞食行为的延续，表示友好、恭顺或安抚)",
+      "response": {
+        "id": "cead4c7d-bd09-4c22-9765-726cf895593f",
+        "object": "chat.completion",
+        "created": 1770348048,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"舔舐行为（社交性舔舐）\",\n        \"category\": \"社交沟通\",\n        \"description\": \"犬只快速、轻柔地用舌头接触人类或同类嘴角区域\",\n        \"antecedents\": \"与熟悉的人类或同类近距离互动时，特别是在平静、友好的社交场景中\",\n        \"consequences\": \"通常引发接收方的积极回应，如抚摸、互动或食物分享\",\n        \"meaning\": \"可能表示友好、恭顺或安抚意图，可能是幼犬乞食行为的延续\",\n        \"evaluation\": \"在正常社交互动中常见，属于犬类典型社交行为，通常无害\",\n        \"function\": \"维持社会纽带、表达顺从、寻求关注或资源\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"犬行为学中关于幼犬行为延续理论、社交信号研究（如Turid Rugaas的安抚信号理论）\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 334,
+          "completion_tokens": 208,
+          "total_tokens": 542,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 206
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "3",
+      "original_name": "3. 柔和凝视/眯眼：放松状态下眼神柔和，可能伴随眨眼。 - [社交/友好] - (表达无威胁的友好意图)",
+      "response": {
+        "id": "c0ee2a05-4390-4410-b368-d4c1c5323d6e",
+        "object": "chat.completion",
+        "created": 1770348059,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"柔和凝视/眯眼\",\n        \"category\": \"社交沟通\",\n        \"description\": \"犬在放松状态下眼神柔和，可能伴随眨眼\",\n        \"antecedents\": \"社交互动中，面对熟悉或友好的对象，处于放松环境\",\n        \"consequences\": \"可能促进友好互动，减少对方威胁感\",\n        \"meaning\": \"可能表达无威胁的友好意图\",\n        \"evaluation\": \"正常社交行为，符合犬类沟通模式\",\n        \"function\": \"传递友好信号，维持社交和谐\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"犬类肢体语言理论，Turid Rugaas的平静信号研究\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 327,
+          "completion_tokens": 159,
+          "total_tokens": 486,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 199
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "4",
+      "original_name": "4. 玩耍鞠躬：前肢趴地，臀部翘起，尾巴摇动。 - [社交/游戏邀请] - (经典的“来玩吧”信号，可能伴随兴奋的吠叫)",
+      "response": {
+        "id": "90b52430-0e14-43ff-8e76-b15a9bdaba61",
+        "object": "chat.completion",
+        "created": 1770348067,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"玩耍鞠躬\",\n        \"category\": \"社交沟通\",\n        \"description\": \"犬只前肢趴地，臀部翘起，尾巴摇动\",\n        \"antecedents\": \"在社交互动中，当犬只处于兴奋状态并希望发起游戏时\",\n        \"consequences\": \"可能引发其他犬只或人类的游戏回应，或若无回应则可能停止该行为\",\n        \"meaning\": \"可能表示游戏邀请，意图发起互动\",\n        \"evaluation\": \"正常犬只社交行为，常见于健康犬只的日常互动中\",\n        \"function\": \"发起社交游戏，促进互动\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"犬行为学中的社交信号理论，参考研究者如Patricia McConnell、John Bradshaw\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 337,
+          "completion_tokens": 181,
+          "total_tokens": 518,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 209
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "5",
+      "original_name": "5. 蹭蹭：用头、颈或身体侧面蹭人或物体。 - [社交/气味标记] - (进行气味交换，将自身气味标记在目标上，表示“这是我的”或寻求安慰)",
+      "response": {
+        "id": "cf99ce89-6491-400d-b2a1-c135cfd5eb39",
+        "object": "chat.completion",
+        "created": 1770348076,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"摩擦行为\",\n        \"category\": \"社交沟通\",\n        \"description\": \"犬用头、颈或身体侧面摩擦人或物体表面\",\n        \"antecedents\": \"接触特定人或物体时\",\n        \"consequences\": \"在目标上留下自身气味\",\n        \"meaning\": \"可能进行气味交换，标记所有权或寻求安慰\",\n        \"evaluation\": \"正常社交行为，常见于健康犬只\",\n        \"function\": \"气味标记与社交互动\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"犬类行为学中的气味标记理论\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 340,
+          "completion_tokens": 141,
+          "total_tokens": 481,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 212
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "6",
+      "original_name": "6. 社交嗅闻：互相嗅闻臀部、生殖器及口鼻部位。 - [社交/信息交换] - (犬类的“握手寒暄”，通过信息素获取对方性别、健康状况、情绪等信息)",
+      "response": {
+        "id": "004e5ad6-1699-47be-abed-48ce74d9b434",
+        "object": "chat.completion",
+        "created": 1770348084,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"社交嗅闻\",\n        \"category\": \"社交沟通\",\n        \"description\": \"犬只互相嗅闻臀部、生殖器及口鼻部位的行为\",\n        \"antecedents\": \"犬只初次相遇或社交互动时\",\n        \"consequences\": \"获取对方信息素，可能影响后续互动行为\",\n        \"meaning\": \"可能用于获取对方性别、健康状况、情绪等信息，类似人类的握手寒暄\",\n        \"evaluation\": \"正常社交行为，在犬类互动中普遍存在\",\n        \"function\": \"信息交换\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"犬类信息素交流理论，基于动物行为学研究（如Temple Grandin等研究者）\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 341,
+          "completion_tokens": 168,
+          "total_tokens": 509,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 213
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "7",
+      "original_name": "1. 撇头/转头：将头快速转向一侧，避开直接对视或接触。 - [安定信号] - (表达轻微不适、压力，试图 calming 对方)",
+      "response": {
+        "id": "bd183389-4d7c-40aa-ab8d-4713cdd51f25",
+        "object": "chat.completion",
+        "created": 1770348092,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"撇头/转头\",\n        \"category\": \"社交沟通\",\n        \"description\": \"犬将头部快速转向一侧，避开与另一犬或人的直接对视或接触。\",\n        \"antecedents\": \"当犬感知到轻微压力、不适或威胁时，例如被另一犬或人直视、接近过快、环境嘈杂、资源被靠近等。\",\n        \"consequences\": \"可能缓解犬的紧张情绪，向对方传递安抚信号，避免冲突升级。\",\n        \"meaning\": \"可能表达轻微不适或压力，是一种试图安抚对方或自我调节的行为。\",\n        \"evaluation\": \"在犬类社交互动中常见，属于正常行为范围，有助于犬在压力情境下进行非对抗性沟通。\",\n        \"function\": \"作为安定信号（Calming Signal），用于减少社交冲突、缓解紧张或表达回避意图。\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"Turid Rugaas的安定信号理论（Calming Signals）\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 332,
+          "completion_tokens": 229,
+          "total_tokens": 561,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 204
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "8",
+      "original_name": "2. 舔鼻：舌头快速伸出舔舐鼻头，通常仅1-2次。 - [安定信号] - (在轻微压力或冲突情境下的自我安抚信号)",
+      "response": {
+        "id": "0e6facc9-4d2d-4b60-9c82-0a9389dd2256",
+        "object": "chat.completion",
+        "created": 1770348104,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"behavior\": {\n    \"name\": \"舔鼻\",\n    \"category\": \"社交沟通\",\n    \"description\": \"舌头快速伸出舔舐鼻头，通常仅1-2次\",\n    \"antecedents\": \"在轻微压力或冲突情境下\",\n    \"consequences\": \"\",\n    \"meaning\": \"可能是一种自我安抚信号，用于缓解压力或冲突\",\n    \"evaluation\": \"正常范围，常见于犬类社交互动中\",\n    \"function\": \"安定信号\",\n    \"intervention_level\": \"低/自我调节\",\n    \"resource\": \"犬行为学中的安定信号理论，如Turid Rugaas的研究\"\n  }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 334,
+          "completion_tokens": 142,
+          "total_tokens": 476,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 206
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "9",
+      "original_name": "3. 打哈欠（非疲倦时）：在紧张或兴奋情境下（如训练、被责备时）打哈欠。 - [安定信号] - (释放压力，缓解自身或对方情绪)",
+      "response": {
+        "id": "24d9c907-6daa-4e39-8c5e-9fce34723ace",
+        "object": "chat.completion",
+        "created": 1770348111,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"压力性哈欠\",\n        \"category\": \"情绪表达\",\n        \"description\": \"犬在非疲倦状态下打哈欠，通常伴随紧张或兴奋情境，如训练或被责备时。\",\n        \"antecedents\": \"紧张或兴奋情境，如训练、被责备时。\",\n        \"consequences\": \"可能释放压力，缓解自身或对方情绪。\",\n        \"meaning\": \"可能是一种安定信号，用于缓解自身或对方的紧张情绪。\",\n        \"evaluation\": \"在犬类行为中属于正常范围，常见于社交互动中。\",\n        \"function\": \"释放压力，缓解自身或对方情绪。\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"安定信号理论（Turid Rugaas）\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 339,
+          "completion_tokens": 179,
+          "total_tokens": 518,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 211
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "10",
+      "original_name": "4. 定格/僵住：身体突然完全停止运动，肌肉紧绷。 - [警觉/警告] - (高度警觉或即将做出反应（攻击或逃跑）的前兆，需高度注意)",
+      "response": {
+        "id": "85fcb96d-9a47-4a9e-aedf-67c6da5d29d6",
+        "object": "chat.completion",
+        "created": 1770348120,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"behavior\": {\n    \"name\": \"僵住\",\n    \"category\": \"情绪表达\",\n    \"description\": \"身体突然完全停止运动，肌肉紧绷\",\n    \"antecedents\": \"警觉或警告情境，如感知到潜在威胁或刺激\",\n    \"consequences\": \"可能发展为攻击或逃跑反应\",\n    \"meaning\": \"可能是高度警觉或即将做出反应（攻击或逃跑）的前兆\",\n    \"evaluation\": \"在警觉情境下属于正常范围，但需注意频率和强度\",\n    \"function\": \"作为应对潜在威胁的防御机制\",\n    \"intervention_level\": \"观察\",\n    \"resource\": \"犬行为学中的警觉和应激反应理论，如研究者Patricia McConnell或Stanley Coren的工作\"\n  }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 337,
+          "completion_tokens": 162,
+          "total_tokens": 499,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 209
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "11",
+      "original_name": "5. 低吼：从喉咙深处发出的持续性低沉声音。 - [明确警告] - (表达不安、恐惧、威胁，要求对方停止当前行为。**切勿惩罚**)",
+      "response": {
+        "id": "33cd79f4-1c7f-4836-a222-c3236e0df308",
+        "object": "chat.completion",
+        "created": 1770348129,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"behavior\": {\n    \"name\": \"低吼\",\n    \"category\": \"社交沟通\",\n    \"description\": \"从喉咙深处发出的持续性低沉声音\",\n    \"antecedents\": \"对方接近、威胁、资源争夺、疼痛或不适等触发不安或恐惧的情境\",\n    \"consequences\": \"可能促使对方停止当前行为，或导致冲突升级\",\n    \"meaning\": \"可能表达不安、恐惧或威胁，作为明确警告要求对方停止当前行为\",\n    \"evaluation\": \"在威胁或压力情境下属于正常犬类沟通行为，但需结合整体行为评估是否过度或异常\",\n    \"function\": \"警告和威慑，以预防潜在冲突\",\n    \"intervention_level\": \"中/需要管理\",\n    \"resource\": \"犬行为学理论，如Turid Rugaas的平静信号理论；研究者包括Patricia McConnell、Ian Dunbar\"\n  }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 333,
+          "completion_tokens": 191,
+          "total_tokens": 524,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 205
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "12",
+      "original_name": "6. 龇牙：上唇卷起，露出门齿及犬齿，可能伴随低吼。 - [严重警告] - (明确的威胁信号，显示防御性或攻击性意图)",
+      "response": {
+        "id": "be34a5c4-9ccb-442f-a556-360e4ecec3ef",
+        "object": "chat.completion",
+        "created": 1770348139,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"龇牙\",\n        \"category\": \"社交沟通\",\n        \"description\": \"上唇卷起，露出门齿及犬齿，可能伴随低吼声\",\n        \"antecedents\": \"当犬感到威胁、恐惧、资源被侵犯或处于防御状态时\",\n        \"consequences\": \"可能阻止威胁源接近，或引发冲突升级\",\n        \"meaning\": \"可能表示防御性或攻击性意图，是一种明确的威胁信号\",\n        \"evaluation\": \"在威胁情境下属于正常警告行为，但需注意频率和强度是否异常\",\n        \"function\": \"警告潜在威胁，避免直接冲突\",\n        \"intervention_level\": \"中/需要管理\",\n        \"resource\": \"犬行为学中的威胁信号理论；研究者：Roger Abrantes, Patricia McConnell\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 336,
+          "completion_tokens": 183,
+          "total_tokens": 519,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 208
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "13",
+      "original_name": "1. 高举僵硬（伴或不伴颤动）：尾巴高举不动或轻微颤动，身体僵硬。 - [警觉/自信/威胁] - (高度关注、自信或潜在攻击性，需结合整体判断)",
+      "response": {
+        "id": "230c8f79-8cad-492f-94cd-09e880381899",
+        "object": "chat.completion",
+        "created": 1770348149,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"尾巴高举僵硬（伴或不伴颤动）\",\n        \"category\": \"社交沟通\",\n        \"description\": \"尾巴高举不动或轻微颤动，身体僵硬\",\n        \"antecedents\": \"高度关注、自信或潜在攻击性，需结合整体判断\",\n        \"consequences\": \"\",\n        \"meaning\": \"可能表示警觉、自信或威胁\",\n        \"evaluation\": \"正常范围，但需结合整体行为判断\",\n        \"function\": \"\",\n        \"intervention_level\": \"观察\",\n        \"resource\": \"犬行为学基础理论\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 339,
+          "completion_tokens": 132,
+          "total_tokens": 471,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 211
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "14",
+      "original_name": "2. 水平放松：尾巴自然水平延伸，可能轻微摆动。 - [平静/放松] - (处于平和状态)",
+      "response": {
+        "id": "95336c2b-589f-4cff-a0e7-1824a4a9d294",
+        "object": "chat.completion",
+        "created": 1770348156,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"水平放松尾姿\",\n        \"category\": \"情绪表达\",\n        \"description\": \"尾巴自然水平延伸，可能轻微摆动\",\n        \"antecedents\": \"处于平和状态\",\n        \"consequences\": \"\",\n        \"meaning\": \"可能表示平静或放松\",\n        \"evaluation\": \"正常范围\",\n        \"function\": \"\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"犬类肢体语言理论\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 321,
+          "completion_tokens": 109,
+          "total_tokens": 430,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 193
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "15",
+      "original_name": "3. 中等高度摇摆：尾巴以中等高度、放松状态摆动。 - [友好/高兴] - (最常见的友好问候信号)",
+      "response": {
+        "id": "703310ab-18a9-42bb-86a1-121696869035",
+        "object": "chat.completion",
+        "created": 1770348163,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"behavior\": {\n    \"name\": \"中等高度摇摆\",\n    \"category\": \"社交沟通\",\n    \"description\": \"尾巴以中等高度、放松状态摆动\",\n    \"antecedents\": \"社交互动，如遇到熟悉的人、狗或其他动物\",\n    \"consequences\": \"可能促进友好互动或减少冲突\",\n    \"meaning\": \"可能表示友好或高兴，是常见的友好问候信号\",\n    \"evaluation\": \"正常行为，在社交场景中常见\",\n    \"function\": \"传达友好意图，促进社交联系\",\n    \"intervention_level\": \"无/观察\",\n    \"resource\": \"犬行为学理论，如Turid Rugaas的平静信号理论\"\n  }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 323,
+          "completion_tokens": 150,
+          "total_tokens": 473,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 195
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "16",
+      "original_name": "4. 快速摇尾（臀部摇摆）：尾巴高速摇摆，带动整个臀部扭动。 - [兴奋/高兴] - (极度兴奋和快乐)",
+      "response": {
+        "id": "a45daf82-c036-4519-befd-90d5176f6e0e",
+        "object": "chat.completion",
+        "created": 1770348171,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"快速摇尾（臀部摇摆）\",\n        \"category\": \"情绪表达\",\n        \"description\": \"尾巴高速摇摆，带动整个臀部扭动\",\n        \"antecedents\": \"与主人重逢、准备玩耍、获得食物奖励等积极刺激场景\",\n        \"consequences\": \"\",\n        \"meaning\": \"可能表示极度兴奋和快乐\",\n        \"evaluation\": \"正常犬类行为，属于积极情绪表达的正常范围\",\n        \"function\": \"社交沟通中的积极信号传递\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"犬类肢体语言研究（如Turid Rugaas的平静信号理论）、动物行为学基础理论\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 327,
+          "completion_tokens": 158,
+          "total_tokens": 485,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 199
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "17",
+      "original_name": "5. 夹尾：尾巴紧贴腹部下方。 - [恐惧/紧张/屈服] - (表示强烈的不安全感、恐惧或顺从)",
+      "response": {
+        "id": "245d8fa0-300f-4229-b4a8-fe1b9bbadb2e",
+        "object": "chat.completion",
+        "created": 1770348179,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"夹尾\",\n        \"category\": \"情绪表达\",\n        \"description\": \"尾巴紧贴腹部下方\",\n        \"antecedents\": \"可能由威胁、压力、陌生环境或社交冲突等触发\",\n        \"consequences\": \"可能减少社交互动或引发回避行为\",\n        \"meaning\": \"可能表示强烈的不安全感、恐惧或顺从\",\n        \"evaluation\": \"在应激或威胁情境下属于正常范围，但频繁出现可能提示长期焦虑\",\n        \"function\": \"社交信号，表达屈服或回避意图\",\n        \"intervention_level\": \"中/需要管理\",\n        \"resource\": \"犬行为学中的恐惧-焦虑-应激模型，参考研究者如Roger Mugford、Patricia McConnell\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 325,
+          "completion_tokens": 168,
+          "total_tokens": 493,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 197
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "18",
+      "original_name": "1. 耳朵前竖：耳朵向前竖起、转动以捕捉声音。 - [警觉/好奇] - (高度关注前方目标)",
+      "response": {
+        "id": "7ec19d4b-dd8e-42cd-a2e3-60a5d9c956ba",
+        "object": "chat.completion",
+        "created": 1770348189,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"耳前竖\",\n        \"category\": \"生物本能\",\n        \"description\": \"耳朵向前竖起并转动以捕捉声音\",\n        \"antecedents\": \"前方出现目标或声音刺激\",\n        \"consequences\": \"\",\n        \"meaning\": \"可能表示警觉或好奇，高度关注前方目标\",\n        \"evaluation\": \"正常犬类行为，属于听觉定向反应\",\n        \"function\": \"增强听觉感知，定位声源\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"犬类行为学基础理论、听觉定向行为研究\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 323,
+          "completion_tokens": 137,
+          "total_tokens": 460,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 195
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "19",
+      "original_name": "2. 耳朵后贴（飞机耳）：耳朵向后平贴于头部两侧。 - [恐惧/顺从/友好] - (可能表示恐惧、顺从，或在极高兴时出现的“友好耳朵”)",
+      "response": {
+        "id": "9408a53e-ec9c-4346-ac23-5de2aa3de2ad",
+        "object": "chat.completion",
+        "created": 1770348197,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"耳朵后贴（飞机耳）\",\n        \"category\": \"情绪表达\",\n        \"description\": \"耳朵向后平贴于头部两侧\",\n        \"antecedents\": \"恐惧、顺从或极高兴的情境\",\n        \"consequences\": \"\",\n        \"meaning\": \"可能表示恐惧、顺从，或在极高兴时出现的友好姿态\",\n        \"evaluation\": \"正常犬类情绪表达行为，需结合其他身体语言综合判断\",\n        \"function\": \"社交沟通中的情绪信号传递\",\n        \"intervention_level\": \"观察\",\n        \"resource\": \"犬类身体语言理论、Turid Rugaas的平静信号理论\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 337,
+          "completion_tokens": 151,
+          "total_tokens": 488,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 209
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "20",
+      "original_name": "3. 鲸鱼眼（眼白露出）：头部不动，眼睛斜向转动，露出眼白。 - [紧张/焦虑] - (感到压力、不适，试图避免直接冲突)",
+      "response": {
+        "id": "d40d3381-7d9d-4f45-93d7-38b485d94d37",
+        "object": "chat.completion",
+        "created": 1770348205,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"behavior\": {\n    \"name\": \"鲸鱼眼\",\n    \"category\": \"情绪表达\",\n    \"description\": \"头部保持不动，眼睛斜向转动，露出眼白\",\n    \"antecedents\": \"感到压力、不适，试图避免直接冲突\",\n    \"consequences\": \"\",\n    \"meaning\": \"可能表示紧张或焦虑\",\n    \"evaluation\": \"在压力情境下常见，属于正常情绪反应范围\",\n    \"function\": \"社交回避\",\n    \"intervention_level\": \"低/自我调节\",\n    \"resource\": \"犬行为学中的压力信号理论，如Turid Rugaas的平静信号研究\"\n  }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 335,
+          "completion_tokens": 140,
+          "total_tokens": 475,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 207
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "21",
+      "original_name": "1. 搜索/凝视：抬头、嗅闻空气，目光锁定目标。",
+      "response": {
+        "id": "0361914c-e117-4fe7-a687-f4c30e95ec0a",
+        "object": "chat.completion",
+        "created": 1770348213,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"behavior\": {\n    \"name\": \"定向搜索行为\",\n    \"category\": \"生物本能\",\n    \"description\": \"犬抬头、嗅闻空气，目光锁定特定目标\",\n    \"antecedents\": \"环境中出现未知气味、声音或视觉刺激，如远处动物、食物源或潜在威胁\",\n    \"consequences\": \"可能引发进一步探索、追踪、吠叫或回避行为\",\n    \"meaning\": \"可能表示犬在评估环境中的潜在资源或威胁，基于感官输入进行信息收集\",\n    \"evaluation\": \"正常范围，属于犬类自然探索和生存本能的一部分，常见于户外或新环境中\",\n    \"function\": \"环境监测和资源定位\",\n    \"intervention_level\": \"无/观察\",\n    \"resource\": \"基于犬类行为学理论，如John Bradshaw的犬类认知研究，强调嗅觉和视觉在犬探索行为中的作用\"\n  }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 311,
+          "completion_tokens": 193,
+          "total_tokens": 504,
+          "prompt_tokens_details": {
+            "cached_tokens": 64
+          },
+          "prompt_cache_hit_tokens": 64,
+          "prompt_cache_miss_tokens": 247
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "22",
+      "original_name": "2. 跟踪/潜行：身体压低，缓慢无声地接近目标。",
+      "response": {
+        "id": "8e808a93-28bb-4f8b-b974-af3a0cc6d199",
+        "object": "chat.completion",
+        "created": 1770348223,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"跟踪/潜行\",\n        \"category\": \"生物本能\",\n        \"description\": \"身体压低，缓慢无声地接近目标\",\n        \"antecedents\": \"目标出现（如猎物、移动物体或感兴趣的对象）\",\n        \"consequences\": \"可能接近目标以观察、捕猎或互动\",\n        \"meaning\": \"可能表示捕猎本能、好奇心或谨慎接近\",\n        \"evaluation\": \"在犬类中常见，属于正常捕食序列的一部分，但需结合整体行为评估\",\n        \"function\": \"捕猎或探索行为\",\n        \"intervention_level\": \"观察、低/自我调节\",\n        \"resource\": \"捕食行为理论（如Coppinger等）、犬类行为学（如Overall）\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 311,
+          "completion_tokens": 174,
+          "total_tokens": 485,
+          "prompt_tokens_details": {
+            "cached_tokens": 64
+          },
+          "prompt_cache_hit_tokens": 64,
+          "prompt_cache_miss_tokens": 247
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "23",
+      "original_name": "3. 追逐：高速奔跑追赶移动物体（球、车、动物）。",
+      "response": {
+        "id": "68c43061-014f-4ff4-8d86-1a16a18a4bc7",
+        "object": "chat.completion",
+        "created": 1770348231,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"behavior\": {\n    \"name\": \"追逐行为\",\n    \"category\": \"生物本能\",\n    \"description\": \"犬高速奔跑追赶移动物体，如球、车辆或其他动物\",\n    \"antecedents\": \"移动物体出现，如球被抛出、车辆行驶或动物奔跑\",\n    \"consequences\": \"可能捕获物体、追逐失败或引发其他行为\",\n    \"meaning\": \"可能源于捕食本能、游戏需求或探索行为\",\n    \"evaluation\": \"在安全环境下，适度追逐属于正常犬类行为；若追逐危险物体或失控，需关注\",\n    \"function\": \"满足本能需求、锻炼或社交互动\",\n    \"intervention_level\": \"中/需要管理\",\n    \"resource\": \"犬行为学理论，如捕食序列；研究者包括John Bradshaw\"\n  }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 311,
+          "completion_tokens": 175,
+          "total_tokens": 486,
+          "prompt_tokens_details": {
+            "cached_tokens": 64
+          },
+          "prompt_cache_hit_tokens": 64,
+          "prompt_cache_miss_tokens": 247
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "24",
+      "original_name": "4. 扑抓：用前肢和嘴扑向并抓住目标。",
+      "response": {
+        "id": "6f2b3a81-b2a3-4daf-af5b-1a01bfb7924d",
+        "object": "chat.completion",
+        "created": 1770348240,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"扑抓\",\n        \"category\": \"生物本能\",\n        \"description\": \"犬用前肢和嘴扑向并抓住目标\",\n        \"antecedents\": \"目标物移动或具有吸引力，如玩具、猎物或移动物体\",\n        \"consequences\": \"成功抓住目标或目标逃脱\",\n        \"meaning\": \"可能源于捕猎本能或游戏行为\",\n        \"evaluation\": \"在游戏或捕猎情境中属于正常行为，但需注意目标选择和环境安全\",\n        \"function\": \"捕猎、游戏或资源获取\",\n        \"intervention_level\": \"观察、低/自我调节\",\n        \"resource\": \"犬行为学中的捕猎行为理论，参考研究者如John Bradshaw\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 311,
+          "completion_tokens": 168,
+          "total_tokens": 479,
+          "prompt_tokens_details": {
+            "cached_tokens": 64
+          },
+          "prompt_cache_hit_tokens": 64,
+          "prompt_cache_miss_tokens": 247
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "25",
+      "original_name": "5. 咬住/摇晃：咬住目标并猛烈摇晃头部（对玩具表现为玩耍）。",
+      "response": {
+        "id": "a097a67f-a369-4534-882f-274488209cb8",
+        "object": "chat.completion",
+        "created": 1770348249,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"behavior\": {\n    \"name\": \"咬住并摇晃\",\n    \"category\": \"生物本能\",\n    \"description\": \"犬用嘴咬住目标物体，并通过猛烈摇晃头部来施加力量\",\n    \"antecedents\": \"当犬接触到玩具或其他可咬物体时，可能触发此行为\",\n    \"consequences\": \"可能导致物体损坏或玩耍互动\",\n    \"meaning\": \"可能源于捕猎本能，用于模拟捕杀猎物或作为玩耍行为\",\n    \"evaluation\": \"在玩耍场景中属于正常行为，但需监控以避免过度或针对不当目标\",\n    \"function\": \"释放能量、满足本能需求或进行社交互动\",\n    \"intervention_level\": \"观察、低/自我调节\",\n    \"resource\": \"基于犬类行为学理论，如捕猎序列（predatory sequence）和玩耍行为研究\"\n  }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 315,
+          "completion_tokens": 184,
+          "total_tokens": 499,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 187
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "26",
+      "original_name": "6. 分解/摄取：撕咬并吞咽（对食物或猎物）。",
+      "response": {
+        "id": "8cd60c0d-15c2-4949-959a-5981d024ce73",
+        "object": "chat.completion",
+        "created": 1770348259,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"behavior\": {\n    \"name\": \"撕咬并吞咽\",\n    \"category\": \"生物本能\",\n    \"description\": \"犬用牙齿撕裂物体（如食物或猎物）并随后吞咽的过程\",\n    \"antecedents\": \"面对食物或猎物时\",\n    \"consequences\": \"食物或猎物被消耗，可能满足饥饿或捕食需求\",\n    \"meaning\": \"可能反映饥饿、捕食本能或资源获取行为\",\n    \"evaluation\": \"在正常进食或捕食情境下属于正常行为，但过度或在不适当对象上出现可能需关注\",\n    \"function\": \"满足营养需求或本能捕食\",\n    \"intervention_level\": \"无/观察\",\n    \"resource\": \"基于动物行为学理论，如Konrad Lorenz的捕食行为研究\"\n  }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 311,
+          "completion_tokens": 173,
+          "total_tokens": 484,
+          "prompt_tokens_details": {
+            "cached_tokens": 64
+          },
+          "prompt_cache_hit_tokens": 64,
+          "prompt_cache_miss_tokens": 247
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "27",
+      "original_name": "1. 守护行为（护食/护玩具）：在资源旁出现身体僵硬、低吼、快速摄食、侧身遮挡等。 - [本能/防御] - (保护有价值的资源免受剥夺)",
+      "response": {
+        "id": "1d6bfbb3-19b6-42f2-833d-dada3561016d",
+        "object": "chat.completion",
+        "created": 1770348267,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"资源守护行为\",\n        \"category\": \"生物本能\",\n        \"description\": \"当犬只感知到其拥有的资源（如食物、玩具）可能被剥夺时，表现出身体僵硬、低吼、快速摄食、侧身遮挡等可观察行为。\",\n        \"antecedents\": \"在资源（如食物碗、玩具）旁出现潜在威胁（如人或其他动物靠近）。\",\n        \"consequences\": \"可能成功保护资源，但也可能引发冲突或加剧守护行为。\",\n        \"meaning\": \"可能反映了犬只对资源价值的认知和防御本能，旨在防止资源被剥夺。\",\n        \"evaluation\": \"在犬类行为中属于常见本能反应，但过度或攻击性表现可能超出正常范围，需结合具体情境评估。\",\n        \"function\": \"保护有价值的资源免受剥夺。\",\n        \"intervention_level\": \"中/需要管理\",\n        \"resource\": \"基于犬行为学中的资源守护理论，参考研究者如Ian Dunbar、Patricia McConnell的相关研究。\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 339,
+          "completion_tokens": 233,
+          "total_tokens": 572,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 211
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "28",
+      "original_name": "2. 埋藏：用鼻子和前爪刨地，将食物或玩具掩盖。 - [本能/储存] - (源自储存多余食物的本能)",
+      "response": {
+        "id": "8c43b716-d103-48ae-9161-6884ad375fc7",
+        "object": "chat.completion",
+        "created": 1770348278,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"埋藏行为\",\n        \"category\": \"生物本能\",\n        \"description\": \"犬用鼻子和前爪刨地，将食物或玩具等物品掩盖起来\",\n        \"antecedents\": \"当犬获得食物、玩具或其他物品时，特别是在资源充足或环境中有其他犬存在的情况下\",\n        \"consequences\": \"物品被部分或完全掩盖，可能被遗忘或后续被挖掘出来\",\n        \"meaning\": \"可能源自储存多余食物的本能，用于保护资源以备将来使用\",\n        \"evaluation\": \"正常犬类行为，常见于许多犬种，特别是在资源丰富的环境中\",\n        \"function\": \"资源储存和保护\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"犬类本能行为理论，Konrad Lorenz的动物行为学研究\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 327,
+          "completion_tokens": 182,
+          "total_tokens": 509,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 199
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "29",
+      "original_name": "3. 转圈（排便前）：排便前在原地转圈。 - [本能/准备] - (踏平草地、检查环境安全的本能残留)",
+      "response": {
+        "id": "40864587-1f8a-420e-8955-884a0b719ce0",
+        "object": "chat.completion",
+        "created": 1770348287,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"behavior\": {\n    \"name\": \"排便前转圈\",\n    \"category\": \"生物本能\",\n    \"description\": \"犬只在排便前在原地转圈，可能伴随踏平草地或检查环境的行为。\",\n    \"antecedents\": \"排便需求触发，通常在草地或户外环境中。\",\n    \"consequences\": \"排便行为随后发生。\",\n    \"meaning\": \"可能是踏平草地、检查环境安全的本能残留，用于准备排便区域。\",\n    \"evaluation\": \"正常行为，常见于犬类，符合生物本能。\",\n    \"function\": \"准备排便环境，可能涉及领地标记或安全确认。\",\n    \"intervention_level\": \"无/观察\",\n    \"resource\": \"犬行为学中的本能行为理论，基于研究者如John Bradshaw或Patricia McConnell的共识。\"\n  }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 328,
+          "completion_tokens": 179,
+          "total_tokens": 507,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 200
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "30",
+      "original_name": "4. 抓挠地面（排便后）：后腿向后刨地。 - [本能/标记] - (通过足部腺体气味和视觉痕迹强化领地标记)",
+      "response": {
+        "id": "5b0befc1-b255-4024-afe5-874032f9fcad",
+        "object": "chat.completion",
+        "created": 1770348296,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"地面抓挠行为\",\n        \"category\": \"生物本能\",\n        \"description\": \"犬在排便后，用后腿向后刨地，留下抓痕和地面扰动\",\n        \"antecedents\": \"排便行为完成后\",\n        \"consequences\": \"通过足部腺体释放气味标记，同时留下视觉痕迹\",\n        \"meaning\": \"可能是一种领地标记行为，通过气味和视觉信号强化领地宣示\",\n        \"evaluation\": \"正常犬类行为，常见于多种犬种，属于本能性标记行为\",\n        \"function\": \"领地标记与信息传递\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"犬类行为学中的标记行为理论；研究者：Raymond Coppinger, John Bradshaw等关于犬类本能行为的研究\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 331,
+          "completion_tokens": 185,
+          "total_tokens": 516,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 203
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "31",
+      "original_name": "1. 抬腿排尿（公犬常见）：将后腿抬起，对垂直物体排尿。 - [本能/气味标记] - (留下更高、更持久的气味标记，宣告存在和领地)",
+      "response": {
+        "id": "71d9cf94-87b2-475a-81d3-e69afc1a8db9",
+        "object": "chat.completion",
+        "created": 1770348305,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"抬腿排尿\",\n        \"category\": \"生物本能\",\n        \"description\": \"犬只抬起后腿，对垂直物体（如树木、柱子、墙壁）排尿，尿液通常呈喷射状，位置较高\",\n        \"antecedents\": \"进入新环境、遇到其他犬只的气味标记、领地边界、社交互动后、性成熟（公犬常见）\",\n        \"consequences\": \"在垂直表面留下气味标记，气味可能更持久、位置更高，影响其他犬只的行为\",\n        \"meaning\": \"可能用于气味标记以宣告存在、划定领地、传递社交信息（如性别、健康状况）或响应环境刺激\",\n        \"evaluation\": \"正常范围：公犬性成熟后的常见行为，尤其在户外标记时；异常情况：过度频繁、在室内发生、伴随焦虑或攻击性\",\n        \"function\": \"气味标记\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"犬行为学中的气味标记理论（如R. Coppinger, J. Bradshaw的研究）、领地行为研究\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 338,
+          "completion_tokens": 241,
+          "total_tokens": 579,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 210
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "32",
+      "original_name": "2. 频繁标记（散步时）：走几步就在不同地点少量排尿。 - [社交/信息覆盖] - (“阅读”并“回复”其他犬只留下的气味信息)",
+      "response": {
+        "id": "1d0ab5c2-2cf4-4a6e-af92-3d6cbee17470",
+        "object": "chat.completion",
+        "created": 1770348316,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"气味标记行为\",\n        \"category\": \"社交沟通\",\n        \"description\": \"犬只在散步过程中，频繁地在不同地点（如树木、电线杆、墙角等）少量排尿，通常伴随嗅闻行为。\",\n        \"antecedents\": \"在户外散步时，遇到其他犬只留下的气味标记区域（如尿液、粪便气味）。\",\n        \"consequences\": \"覆盖或叠加自身气味信息于原有标记上，可能影响后续其他犬只对该区域的“阅读”。\",\n        \"meaning\": \"可能是一种社交沟通行为，旨在“阅读”环境中其他犬只留下的化学信息（如性别、健康状况、社会地位），并通过自身标记“回复”或声明存在。\",\n        \"evaluation\": \"在犬类行为学中，气味标记是常见的正常社交行为，尤其在未绝育公犬中更为频繁，但绝育犬和母犬也可能有此行为。若不影响健康或造成过度焦虑，通常视为正常范围。\",\n        \"function\": \"信息交换与领地/社交状态宣示。\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"犬类化学通讯理论（如 pheromone communication），参考研究者：John Bradshaw、Patricia McConnell 等对犬类社交行为的论述。\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 333,
+          "completion_tokens": 283,
+          "total_tokens": 616,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 205
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "33",
+      "original_name": "1. 刨窝/转圈（睡觉前）：睡觉前刨垫子或转圈。 - [本能/筑巢] - (整理睡眠区域，源自祖先踏平草丛的本能)",
+      "response": {
+        "id": "2997586d-090e-4a89-97dc-4c88ba8455fe",
+        "object": "chat.completion",
+        "created": 1770348330,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"筑巢行为\",\n        \"category\": \"生物本能\",\n        \"description\": \"犬在准备休息前，用前爪刨抓睡眠区域的垫子或地面，并可能伴随转圈动作\",\n        \"antecedents\": \"准备睡觉或休息时\",\n        \"consequences\": \"\",\n        \"meaning\": \"可能源自祖先踏平草丛、整理睡眠区域的本能行为\",\n        \"evaluation\": \"正常犬类行为，在适度范围内无需干预\",\n        \"function\": \"整理睡眠区域，创造舒适的休息环境\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"犬类本能行为理论，Konrad Lorenz的动物行为学研究\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 336,
+          "completion_tokens": 159,
+          "total_tokens": 495,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 208
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "34",
+      "original_name": "2. 舔舐（自我清洁）：安静地舔舐自己的毛发、爪部。 - [自我照料] - (正常清洁行为，若过度可能预示焦虑或皮肤病)",
+      "response": {
+        "id": "eab3d8bf-5c4c-4900-a0bf-fe2d34be33ea",
+        "object": "chat.completion",
+        "created": 1770348338,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"自我舔舐\",\n        \"category\": \"生物本能\",\n        \"description\": \"犬安静地舔舐自己的毛发、爪部等身体部位\",\n        \"antecedents\": \"毛发脏污、皮肤瘙痒、身体不适、无聊或焦虑时\",\n        \"consequences\": \"清洁毛发、缓解瘙痒、自我安抚\",\n        \"meaning\": \"可能为正常清洁行为，若过度可能预示焦虑或皮肤病\",\n        \"evaluation\": \"正常清洁行为，但需观察频率和持续时间是否在正常范围内\",\n        \"function\": \"自我清洁、皮肤护理、自我安抚\",\n        \"intervention_level\": \"观察、低/自我调节\",\n        \"resource\": \"犬行为学基础理论、动物行为学共识\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 334,
+          "completion_tokens": 172,
+          "total_tokens": 506,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 206
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "35",
+      "original_name": "1. 追逐游戏：互相追逐或追逐移动玩具。",
+      "response": {
+        "id": "baf2609f-4102-450e-bdd7-fff0787e98fa",
+        "object": "chat.completion",
+        "created": 1770348347,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"behavior\": {\n    \"name\": \"追逐行为\",\n    \"category\": \"生物本能\",\n    \"description\": \"犬只主动追逐其他犬只或移动物体，如玩具、车辆或动物，表现为快速奔跑、定向移动和视觉追踪。\",\n    \"antecedents\": \"在开放或封闭环境中，出现快速移动的刺激物，如其他犬只奔跑、玩具被抛出或滚动、车辆经过等。\",\n    \"consequences\": \"可能包括捕获目标、游戏互动、能量消耗，或导致过度兴奋、冲突或危险情况（如追逐车辆）。\",\n    \"meaning\": \"可能源于捕食本能、游戏动机或社交互动需求，用于释放能量或建立社交联系。\",\n    \"evaluation\": \"在适度、可控的游戏中属于正常行为；若频繁、不可控或针对危险目标（如车辆），可能超出正常范围。\",\n    \"function\": \"释放能量、满足本能需求、促进社交或游戏互动。\",\n    \"intervention_level\": \"观察、低/自我调节\",\n    \"resource\": \"基于动物行为学理论，参考研究者如John Bradshaw和Ian Dunbar对犬类本能和游戏行为的研究。\"\n  }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 307,
+          "completion_tokens": 254,
+          "total_tokens": 561,
+          "prompt_tokens_details": {
+            "cached_tokens": 64
+          },
+          "prompt_cache_hit_tokens": 64,
+          "prompt_cache_miss_tokens": 243
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "36",
+      "original_name": "2. 力量游戏：拔河、拉扯玩具。",
+      "response": {
+        "id": "0b1b86bd-c6bb-451c-bf06-3b0eac4c91ca",
+        "object": "chat.completion",
+        "created": 1770348359,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"behavior\": {\n    \"name\": \"拔河游戏\",\n    \"category\": \"社交沟通\",\n    \"description\": \"犬与人类或其他犬只通过拉扯玩具或绳索进行互动，表现为咬住物体并施加力量，伴随身体移动和可能的低吼声。\",\n    \"antecedents\": \"玩具或绳索被提供，犬处于兴奋或游戏状态，人类或其他犬只参与互动。\",\n    \"consequences\": \"犬可能获得玩具控制权、增强社交联系或释放能量；若管理不当，可能导致资源守卫或过度兴奋。\",\n    \"meaning\": \"可能表达社交互动需求、建立信任或练习捕猎本能。\",\n    \"evaluation\": \"在适度控制下属于正常游戏行为，常见于幼犬和成年犬；需避免过度竞争或攻击性。\",\n    \"function\": \"促进社交技能、能量消耗和服从训练。\",\n    \"intervention_level\": \"低/自我调节\",\n    \"resource\": \"基于犬行为学理论，如Ian Dunbar的社交化研究和Patricia McConnell的沟通理论。\"\n  }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 306,
+          "completion_tokens": 230,
+          "total_tokens": 536,
+          "prompt_tokens_details": {
+            "cached_tokens": 64
+          },
+          "prompt_cache_hit_tokens": 64,
+          "prompt_cache_miss_tokens": 242
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "37",
+      "original_name": "3. 角色扮演游戏：模拟捕食序列（扑、咬、摇晃），但会自我限制咬合力。",
+      "response": {
+        "id": "025133df-627d-437b-b876-97b0f6b1a601",
+        "object": "chat.completion",
+        "created": 1770348370,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"behavior\": {\n    \"name\": \"模拟捕食游戏\",\n    \"category\": \"生物本能\",\n    \"description\": \"犬模拟捕食序列，包括扑、咬和摇晃动作，但自我限制咬合力以避免伤害。\",\n    \"antecedents\": \"在玩耍或互动场景中，如与主人、其他犬或玩具互动时触发。\",\n    \"consequences\": \"可能增强犬的社交技能、满足本能需求，或作为能量释放方式。\",\n    \"meaning\": \"可能表达犬的玩耍欲望、捕食本能或社交互动需求。\",\n    \"evaluation\": \"在正常范围内，常见于幼犬和成年犬的玩耍行为，若过度或伴随攻击性则需关注。\",\n    \"function\": \"满足本能、社交学习或娱乐。\",\n    \"intervention_level\": \"低/自我调节\",\n    \"resource\": \"基于犬行为学理论，如Patricia McConnell和Ian Dunbar的研究。\"\n  }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 319,
+          "completion_tokens": 207,
+          "total_tokens": 526,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 191
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "38",
+      "original_name": "4. 游戏性吠叫/扑跳：高频、短促的吠叫，伴随弹跳式扑向玩伴。",
+      "response": {
+        "id": "fdb0a926-3b6c-4252-aaa5-229d7bb0432d",
+        "object": "chat.completion",
+        "created": 1770348381,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"游戏性吠叫与扑跳\",\n        \"category\": \"社交沟通\",\n        \"description\": \"高频、短促的吠叫，伴随弹跳式扑向玩伴\",\n        \"antecedents\": \"与玩伴（人或犬）互动时，特别是在游戏开始或进行中\",\n        \"consequences\": \"可能引发玩伴的回应性游戏行为，如追逐或互动\",\n        \"meaning\": \"可能表达兴奋、邀请游戏或维持社交互动\",\n        \"evaluation\": \"在游戏场景中属于正常犬类行为，但需注意频率和强度是否过度\",\n        \"function\": \"社交邀请与互动维持\",\n        \"intervention_level\": \"观察、低/自我调节\",\n        \"resource\": \"犬类行为学中的游戏行为理论（如Bekoff的研究）、社交沟通理论\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 322,
+          "completion_tokens": 191,
+          "total_tokens": 513,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 194
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "39",
+      "original_name": "1. 踱步：在固定路线上反复、无目的地行走。 - [焦虑/刻板] - (内心冲突、无法放松的表现)",
+      "response": {
+        "id": "a403460f-3786-4e58-8246-6b82cd8c6fd2",
+        "object": "chat.completion",
+        "created": 1770348390,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"behavior\": {\n    \"name\": \"踱步\",\n    \"category\": \"情绪表达\",\n    \"description\": \"犬在固定路线上反复、无目的地行走\",\n    \"antecedents\": \"内心冲突、无法放松的表现\",\n    \"consequences\": \"\",\n    \"meaning\": \"可能表示焦虑或刻板行为\",\n    \"evaluation\": \"在焦虑或压力情境下常见，但持续或加剧可能超出正常范围\",\n    \"function\": \"\",\n    \"intervention_level\": \"中/需要管理\",\n    \"resource\": \"基于犬行为学中焦虑和刻板行为理论，如研究者Temple Grandin或Karen Overall的工作\"\n  }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 326,
+          "completion_tokens": 142,
+          "total_tokens": 468,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 198
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "40",
+      "original_name": "2. 过度舔舐/啃咬（自身）：反复舔舐或啃咬特定部位（如爪子）。 - [焦虑/医学问题] - (可能源于过敏、疼痛，也可能是压力释放的转移行为",
+      "response": {
+        "id": "c342c02e-ec49-4c32-bd41-8d2225ac48b8",
+        "object": "chat.completion",
+        "created": 1770348399,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"过度舔舐/啃咬（自身）\",\n        \"category\": \"情绪表达\",\n        \"description\": \"犬反复舔舐或啃咬自身特定部位（如爪子）的行为\",\n        \"antecedents\": \"可能由过敏、疼痛、压力或无聊等触发\",\n        \"consequences\": \"可能导致皮肤损伤、感染或行为强化\",\n        \"meaning\": \"可能源于医学问题（如过敏、疼痛）或情绪问题（如焦虑、压力释放的转移行为）\",\n        \"evaluation\": \"超出正常梳理范围，需评估医学和情绪因素\",\n        \"function\": \"可能作为缓解不适或压力的自我调节机制\",\n        \"intervention_level\": \"中/需要管理\",\n        \"resource\": \"基于犬行为学中的压力转移理论和医学-行为关联研究（如Overall, 2013）\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 342,
+          "completion_tokens": 194,
+          "total_tokens": 536,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 214
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "41",
+      "original_name": "3. 强迫性追逐/转圈：无外部触发地反复追逐尾巴或光影。 - [刻板行为/强迫症] - (可能源于无聊、压力或神经性问题)",
+      "response": {
+        "id": "25ca8150-b69e-400f-9b40-c695c7f5ac32",
+        "object": "chat.completion",
+        "created": 1770348409,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"behavior\": {\n    \"name\": \"刻板行为/强迫症\",\n    \"category\": \"情绪表达\",\n    \"description\": \"无外部触发地反复追逐尾巴或光影\",\n    \"antecedents\": \"可能源于无聊、压力或神经性问题\",\n    \"consequences\": \"\",\n    \"meaning\": \"可能表示犬只处于无聊、压力状态或存在神经性问题\",\n    \"evaluation\": \"超出正常范围，属于异常行为\",\n    \"function\": \"\",\n    \"intervention_level\": \"中/需要管理\",\n    \"resource\": \"犬行为学中的刻板行为和强迫症理论，如研究者Karen Overall的相关研究\"\n  }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 334,
+          "completion_tokens": 139,
+          "total_tokens": 473,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 206
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "42",
+      "original_name": "4. 破坏性行为（独处时）：撕咬家具、挖门等。 - [分离焦虑/无聊] - (独处压力过大或精力无处发泄)",
+      "response": {
+        "id": "eb54fcd9-0d76-43f9-ad61-a9148402f6b7",
+        "object": "chat.completion",
+        "created": 1770348416,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"破坏性行为（独处时）\",\n        \"category\": \"情绪表达\",\n        \"description\": \"犬只在独处时表现出撕咬家具、挖门等破坏性行为\",\n        \"antecedents\": \"犬只被单独留在家中或环境中缺乏人类陪伴\",\n        \"consequences\": \"家具损坏、门框损伤等财产破坏\",\n        \"meaning\": \"可能反映分离焦虑或无聊导致的压力过大、精力无处发泄\",\n        \"evaluation\": \"在独处时出现破坏性行为属于异常行为，需要评估犬只的焦虑水平和环境丰富度\",\n        \"function\": \"可能作为缓解焦虑或消耗多余精力的方式\",\n        \"intervention_level\": \"中/需要管理\",\n        \"resource\": \"分离焦虑理论、犬只行为学（如Patricia McConnell、Ian Dunbar的研究）\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 331,
+          "completion_tokens": 193,
+          "total_tokens": 524,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 203
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "43",
+      "original_name": "5. 食欲改变（拒食/异食）：压力性拒食，或吃非食物物品（土、粪便）。 - [应激/行为问题] - (需先排除医学原因)",
+      "response": {
+        "id": "8fdbc511-8530-4656-994f-4cb6af12c6e8",
+        "object": "chat.completion",
+        "created": 1770348426,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"食欲异常（厌食症/异食癖）\",\n        \"category\": \"情绪表达\",\n        \"description\": \"犬只出现食欲显著改变，包括拒绝进食（厌食症）或摄入非食物物质如土壤、粪便等（异食癖）。\",\n        \"antecedents\": \"压力事件（如环境变化、分离焦虑、社交冲突）、医学问题（需先排除）、营养缺乏或行为习得。\",\n        \"consequences\": \"体重下降、营养不良、胃肠道问题（如异物阻塞）、行为问题加剧。\",\n        \"meaning\": \"可能反映压力、焦虑、无聊或潜在医学状况，需结合具体情境分析。\",\n        \"evaluation\": \"超出正常范围，属于行为问题，需评估医学和情境因素。\",\n        \"function\": \"可能作为应对压力的方式（如压力性拒食），或探索/自我刺激行为（如异食癖）。\",\n        \"intervention_level\": \"中/需要管理\",\n        \"resource\": \"基于动物行为学理论（如压力反应模型）、研究者如John Bradshaw、Karen Overall的临床观察。\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 336,
+          "completion_tokens": 249,
+          "total_tokens": 585,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 208
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "44",
+      "original_name": "1. 警觉吠叫：急促、洪亮、有停顿。 - [报警] - (“有情况！”)",
+      "response": {
+        "id": "75efee4e-09ab-4101-a450-120c0056ded7",
+        "object": "chat.completion",
+        "created": 1770348437,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"警觉吠叫\",\n        \"category\": \"生物本能\",\n        \"description\": \"急促、洪亮、有停顿的吠叫\",\n        \"antecedents\": \"感知到潜在威胁或异常情况（如陌生人接近、异常声响）\",\n        \"consequences\": \"可能引起注意、警告同伴或驱赶威胁\",\n        \"meaning\": \"可能表示犬只感知到环境中的潜在威胁，试图发出警报\",\n        \"evaluation\": \"在感知威胁时属于正常行为，但频繁或过度吠叫可能需关注\",\n        \"function\": \"警报功能，用于警告同伴或主人\",\n        \"intervention_level\": \"观察\",\n        \"resource\": \"犬行为学中的警报行为理论（如Scott & Fuller, 1965）\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 319,
+          "completion_tokens": 176,
+          "total_tokens": 495,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 191
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "45",
+      "original_name": "2. 需求吠叫：有目的性地对着人叫，可能伴随注视目标物。 - [请求] - (“我要那个/出去玩！”)",
+      "response": {
+        "id": "aafea8f1-600c-41cd-87b2-d39a734ae15d",
+        "object": "chat.completion",
+        "created": 1770348446,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n  \"behavior\": {\n    \"name\": \"需求吠叫\",\n    \"category\": \"社交沟通\",\n    \"description\": \"犬只对着人发出有目的性的吠叫，可能伴随注视目标物，如玩具、食物或门。\",\n    \"antecedents\": \"犬只看到或感知到目标物（如玩具、食物、门），并希望获取或外出。\",\n    \"consequences\": \"可能获得目标物或外出机会，或未得到回应而停止吠叫。\",\n    \"meaning\": \"可能表示犬只在请求获取物品、食物或外出玩耍。\",\n    \"evaluation\": \"在犬类社交沟通中常见，但过度吠叫可能影响生活，需评估频率和情境。\",\n    \"function\": \"通过吠叫传达需求，以获取资源或关注。\",\n    \"intervention_level\": \"中/需要管理\",\n    \"resource\": \"基于犬行为学理论，如Ian Dunbar和Patricia McConnell的研究，强调犬类沟通和需求表达。\"\n  }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 326,
+          "completion_tokens": 218,
+          "total_tokens": 544,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 198
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "46",
+      "original_name": "3. 玩耍吠叫：高亢、短促、有节奏。 - [兴奋] - (“好玩！继续！”)",
+      "response": {
+        "id": "ba9b1cfd-6e0e-41d6-9f82-4eef4234a503",
+        "object": "chat.completion",
+        "created": 1770348457,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"玩耍吠叫\",\n        \"category\": \"社交沟通\",\n        \"description\": \"犬在玩耍时发出高亢、短促、有节奏的吠叫声，通常伴随兴奋的身体语言如摇尾、跳跃或玩耍姿势。\",\n        \"antecedents\": \"与其他犬或人类进行互动游戏时，如追逐、拉扯玩具或模拟打斗。\",\n        \"consequences\": \"可能维持或增强玩耍互动，促进社交联系。\",\n        \"meaning\": \"可能表达兴奋和邀请继续玩耍的意图，类似于人类在游戏中的笑声。\",\n        \"evaluation\": \"在玩耍情境下属于正常行为，符合犬类社交沟通的自然模式。\",\n        \"function\": \"促进社交互动和游戏维持。\",\n        \"intervention_level\": \"无/观察\",\n        \"resource\": \"犬行为学中的社交信号理论，参考研究者如Patricia McConnell和Stanley Coren对犬类沟通的研究。\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 321,
+          "completion_tokens": 213,
+          "total_tokens": 534,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 193
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "47",
+      "original_name": "4. 焦虑吠叫：单调、重复、可能带哀鸣。 - [压力] - (“我好紧张/孤独”)",
+      "response": {
+        "id": "ea8fb5ff-46c9-4d45-a1ac-5a6b01adfa13",
+        "object": "chat.completion",
+        "created": 1770348467,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"焦虑吠叫\",\n        \"category\": \"情绪表达\",\n        \"description\": \"单调、重复的吠叫声，可能伴随哀鸣声\",\n        \"antecedents\": \"压力情境，如分离、环境变化、噪音或社交隔离\",\n        \"consequences\": \"可能引起主人关注或环境变化，但通常无法缓解焦虑\",\n        \"meaning\": \"可能表达紧张、孤独或不安的情绪\",\n        \"evaluation\": \"在压力情境下属于正常情绪反应，但频繁或持续发生可能表明适应不良\",\n        \"function\": \"情绪释放或寻求关注\",\n        \"intervention_level\": \"中/需要管理\",\n        \"resource\": \"分离焦虑理论（如Overall, 1997）、犬情绪表达研究（如Horowitz, 2009）\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 321,
+          "completion_tokens": 181,
+          "total_tokens": 502,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 193
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "48",
+      "original_name": "5. 哀鸣/呜咽：高音调、连续的声音。 - [沟通] - (可能表示兴奋、期待、焦虑、疼痛或屈服)",
+      "response": {
+        "id": "b1c323ff-511d-4b4f-92c3-5410c610cc15",
+        "object": "chat.completion",
+        "created": 1770348476,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"哀鸣/呜咽\",\n        \"category\": \"社交沟通\",\n        \"description\": \"高音调、连续的声音\",\n        \"antecedents\": \"\",\n        \"consequences\": \"\",\n        \"meaning\": \"可能表示兴奋、期待、焦虑、疼痛或屈服\",\n        \"evaluation\": \"正常范围取决于频率、强度和情境\",\n        \"function\": \"沟通需求或情绪状态\",\n        \"intervention_level\": \"观察\",\n        \"resource\": \"犬行为学理论，如Turid Rugaas的平静信号理论\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 328,
+          "completion_tokens": 129,
+          "total_tokens": 457,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 200
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    },
+    {
+      "id": "49",
+      "original_name": "6. 嚎叫：长而悠远的声音。 - [联络] - (远程沟通、回应特定声音（警笛）、表达孤独)",
+      "response": {
+        "id": "170d83ab-ba7b-499b-9ecc-0570837dc869",
+        "object": "chat.completion",
+        "created": 1770348483,
+        "model": "deepseek-chat",
+        "choices": [
+          {
+            "index": 0,
+            "message": {
+              "role": "assistant",
+              "content": "{\n    \"behavior\": {\n        \"name\": \"嚎叫\",\n        \"category\": \"社交沟通\",\n        \"description\": \"犬发出长而悠远的声音，通常持续数秒至数十秒，音调相对稳定，可传播较远距离。\",\n        \"antecedents\": \"听到特定声音（如警笛、其他犬的嚎叫）、长时间独处、感知到远处同类或人类活动。\",\n        \"consequences\": \"可能引发其他犬的回应嚎叫、吸引人类注意、缓解孤独感或传达位置信息。\",\n        \"meaning\": \"可能用于远程沟通、回应环境刺激、表达分离焦虑或维持群体联系。\",\n        \"evaluation\": \"在犬类中属于正常行为，尤其在特定触发条件下；但频繁或过度的嚎叫可能提示潜在问题（如焦虑、环境不适）。\",\n        \"function\": \"联络与群体协调\",\n        \"intervention_level\": \"观察、低/自我调节\",\n        \"resource\": \"犬行为学中的沟通理论（如Bekoff, 2001）、分离焦虑研究（如Overall, 1997）、狼群行为类比（如Mech, 1970）\"\n    }\n}"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 325,
+          "completion_tokens": 255,
+          "total_tokens": 580,
+          "prompt_tokens_details": {
+            "cached_tokens": 128
+          },
+          "prompt_cache_hit_tokens": 128,
+          "prompt_cache_miss_tokens": 197
+        },
+        "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache"
+      }
+    }
+  ]
+}

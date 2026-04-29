@@ -1,20 +1,19 @@
 import os
-import sys
 import re
 from typing import List, Dict, Any, Optional, Generator
-from transformers import TextIteratorStreamer
 from threading import Thread
 
-# 将项目根目录添加到路径，以便导入 src 模块
-current_dir = os.path.dirname(os.path.abspath(__file__))
-project_root = current_dir
-sys.path.insert(0, project_root)
-
-# 导入现有组件
-from src.vector_store_chroma import ChromaVectorStore
-from src.json_loader import VetRAGDataLoader
-from transformers import AutoModelForCausalLM, AutoTokenizer, TextStreamer
 import torch
+from transformers import (
+    AutoModelForCausalLM,
+    AutoTokenizer,
+    TextIteratorStreamer,
+    TextStreamer,
+)
+
+from .vector_store_chroma import ChromaVectorStore
+from .json_loader import VetRAGDataLoader
+from .core.config import SYSTEM_PROMPT_VET
 
 
 class QwenGenerator:
@@ -168,15 +167,7 @@ class RAGInterface:
             context_parts.append(f"[相关文档] {content}")
         context = "\n\n".join(context_parts)
 
-        system_msg = (
-            "你是一个专业的兽医助手，同时也需要以温暖、共情的态度回答宠物主人的情感困惑。\n"
-            "要求：\n"
-            "1. 回答应简洁、清晰，直接针对问题，不要添加无关信息。\n"
-            "2. 不要输出参考资料中的原始格式（如 JSON、代码块、Markdown 表格）。\n"
-            "3. 不要添加免责声明、来源说明或注释。\n"
-            "4. 回答应使用自然、流畅的段落，每段不超过 3 句话。\n"
-            "5. 如果参考资料与问题不甚相关，请从你的语料库中进行适当分析，不要自行编造。"
-        )
+        system_msg = SYSTEM_PROMPT_VET
         prompt = self.generator.build_chat_prompt(
             system=system_msg,
             user=question,
@@ -209,15 +200,8 @@ class RAGInterface:
             context_parts.append(f"[相关文档] {content}")
         context = "\n\n".join(context_parts)
 
-        # ========== 修改：使用对话模板构建 prompt ==========
-        system_msg = (
-            "你是一个专业的兽医助手。请根据以下参考资料，用中文回答用户的问题。\n"
-            "要求：\n"
-            "1. 回答应简洁、清晰，直接针对问题，不要添加无关信息。\n"
-            "2. 不要输出参考资料中的原始格式（如 JSON、代码块、Markdown 表格）。\n"
-            "3. 不要添加免责声明、来源说明或注释，也请不要自行编造。\n"
-            "4. 回答应使用自然、流畅的段落，每段不超过 3 句话。以总结段落收尾，收尾后不要继续生成内容。"
-        )
+        # ========== 使用统一系统提示词构建 prompt ==========
+        system_msg = SYSTEM_PROMPT_VET
         prompt = self.generator.build_chat_prompt(
             system=system_msg,
             user=question,

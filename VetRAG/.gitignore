@@ -1,0 +1,44 @@
+# =============================================================
+# VetRAG 本地 .gitignore
+# =============================================================
+
+# --- 运行时数据（可重建） ---
+chroma_db/
+logs/
+*.pkl
+*.jsonl
+rag_state.json
+
+# --- 本地模型文件（体积大） ---
+models/
+models_finetuned/
+
+# --- 测试临时文件 ---
+temp_test_chroma/
+temp_*/
+*.tmp
+*.temp
+
+# --- Python 字节码 ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- 环境变量 ---
+.env
+.env.local
+
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Jupyter ---
+.ipynb_checkpoints/

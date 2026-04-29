@@ -162,7 +162,38 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-data_process/
+# 环境配置文件
+.env
+VetRAG/.env
+
+# 项目配置文件（如果不想跟踪）
+VetRAG/pyproject.toml
+VetRAG/conda-environment.yml
+
+# 测试和临时目录
+temp/
+VetRAG/temp/
+
+# 日志目录
+logs/
+VetRAG/logs/
+
+# RAG state 和缓存文件
+VetRAG/rag_state.json
+VetRAG/chunks_cache.pkl
+VetRAG/incremental_state/
+semantic_scores.jsonl
+
+# 增量状态
+**/incremental_state/
+**/rag_state.json
+**/chunks_cache.pkl
+**/processed_ids.pkl
+**/raw_chunks.pkl
+
+# 导出文件
+**/exports/
+**/semantic_scores.jsonl
 
 # Python 缓存和编译文件
 *.pyc

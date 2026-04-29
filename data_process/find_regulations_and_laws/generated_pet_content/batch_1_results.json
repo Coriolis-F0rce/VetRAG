@@ -1,0 +1,202 @@
+{
+  "vaccine_schedule": {
+    "content_type": "幼犬疫苗时间表",
+    "data": [
+      {
+        "age": "6-8周",
+        "vaccine_name": "犬瘟热、犬细小病毒、犬腺病毒2型、犬副流感病毒疫苗（DHPP或DA2PP）",
+        "disease_protected": [
+          "犬瘟热",
+          "犬细小病毒",
+          "犬腺病毒2型（传染性肝炎和呼吸道疾病）",
+          "犬副流感病毒"
+        ],
+        "importance": "核心",
+        "notes": "首次接种，通常在6-8周龄开始。幼犬可能仍从母体获得抗体，影响疫苗效果，需后续加强。",
+        "repeat_interval": "每3-4周重复一次，直到16周龄"
+      },
+      {
+        "age": "10-12周",
+        "vaccine_name": "犬瘟热、犬细小病毒、犬腺病毒2型、犬副流感病毒疫苗（DHPP或DA2PP）",
+        "disease_protected": [
+          "犬瘟热",
+          "犬细小病毒",
+          "犬腺病毒2型（传染性肝炎和呼吸道疾病）",
+          "犬副流感病毒"
+        ],
+        "importance": "核心",
+        "notes": "第二次接种，加强免疫。确保幼犬在母体抗体减弱后建立保护。",
+        "repeat_interval": "每3-4周重复一次，直到16周龄"
+      },
+      {
+        "age": "14-16周",
+        "vaccine_name": "犬瘟热、犬细小病毒、犬腺病毒2型、犬副流感病毒疫苗（DHPP或DA2PP）",
+        "disease_protected": [
+          "犬瘟热",
+          "犬细小病毒",
+          "犬腺病毒2型（传染性肝炎和呼吸道疾病）",
+          "犬副流感病毒"
+        ],
+        "importance": "核心",
+        "notes": "第三次接种，通常在16周龄完成基础免疫系列。之后一年加强一次。",
+        "repeat_interval": "一年后加强，之后每1-3年根据兽医建议"
+      },
+      {
+        "age": "12周或以上",
+        "vaccine_name": "狂犬病疫苗",
+        "disease_protected": [
+          "狂犬病"
+        ],
+        "importance": "核心（法律要求）",
+        "notes": "首次接种，通常在12周龄或以上，根据当地法规。狂犬病疫苗是法律强制接种的。",
+        "repeat_interval": "一年后加强，之后每1-3年根据疫苗类型和法规"
+      },
+      {
+        "age": "6-8周或根据风险",
+        "vaccine_name": "博德特氏菌疫苗（犬窝咳）",
+        "disease_protected": [
+          "博德特氏菌感染（犬窝咳）"
+        ],
+        "importance": "非核心",
+        "notes": "建议用于社交频繁、寄养或高风险环境的幼犬。有注射和鼻内两种形式。",
+        "repeat_interval": "每年或根据风险加强"
+      },
+      {
+        "age": "根据风险",
+        "vaccine_name": "钩端螺旋体病疫苗",
+        "disease_protected": [
+          "钩端螺旋体病"
+        ],
+        "importance": "非核心",
+        "notes": "建议用于接触野生动物、积水或农村地区的幼犬。需在6-8周后开始，系列接种两次，间隔2-4周。",
+        "repeat_interval": "每年加强"
+      },
+      {
+        "age": "根据风险",
+        "vaccine_name": "莱姆病疫苗",
+        "disease_protected": [
+          "莱姆病"
+        ],
+        "importance": "非核心",
+        "notes": "建议用于蜱虫高发地区的幼犬。系列接种两次，间隔2-4周。",
+        "repeat_interval": "每年加强"
+      }
+    ],
+    "general_notes": "1. 所有时间表应个体化，根据幼犬健康、品种和当地疾病风险由兽医调整。2. 核心疫苗对所有犬只推荐，非核心疫苗基于生活方式和地理位置决定。3. 接种前确保幼犬健康，无发烧或疾病。4. 幼犬在完成基础免疫系列前，应避免接触未接种犬或高风险环境。5. 记录接种日期和疫苗类型，便于后续加强。",
+    "data_sources": [
+      "美国动物医院协会（AAHA）犬只疫苗接种指南",
+      "世界小动物兽医协会（WSAVA）疫苗接种指南"
+    ],
+    "last_updated": "2023年",
+    "metadata": {
+      "content_id": "vaccine_schedule",
+      "generated_at": "2026-02-06T15:13:20.389961",
+      "prompt_length": 390,
+      "temperature": 0.2
+    }
+  },
+  "joint_care_guide": {
+    "content_type": "老年犬关节护理指南",
+    "common_joint_problems": [
+      {
+        "problem": "骨关节炎",
+        "symptoms": [
+          "跛行或步态僵硬",
+          "活动后关节肿胀",
+          "起身或躺下困难",
+          "关节触痛或抗拒触摸",
+          "活动量减少"
+        ],
+        "risk_factors": [
+          "年龄增长（常见于7岁以上犬）",
+          "大型或巨型犬种",
+          "肥胖",
+          "关节损伤史",
+          "遗传因素"
+        ]
+      },
+      {
+        "problem": "髋关节发育不良",
+        "symptoms": [
+          "后肢摇摆步态",
+          "跳跃或爬楼梯困难",
+          "肌肉萎缩（尤其后腿）",
+          "关节活动时有摩擦音",
+          "运动后疼痛加剧"
+        ],
+        "risk_factors": [
+          "遗传易感性（如德国牧羊犬、拉布拉多）",
+          "快速生长期营养过剩",
+          "肥胖",
+          "过度运动"
+        ]
+      },
+      {
+        "problem": "十字韧带损伤",
+        "symptoms": [
+          "突发性跛行",
+          "关节不稳定",
+          "承重时疼痛",
+          "关节肿胀",
+          "活动范围受限"
+        ],
+        "risk_factors": [
+          "年龄相关韧带退化",
+          "肥胖",
+          "关节结构异常",
+          "突然剧烈运动"
+        ]
+      }
+    ],
+    "daily_care_recommendations": {
+      "exercise": "保持规律、低冲击运动，如短距离牵绳散步或游泳，避免跳跃、急转等高强度活动。建议分多次短时运动，避免单次长时间疲劳。",
+      "weight_management": "维持理想体重以减轻关节负荷，可通过兽医评估体重指数（BCS），调整饮食热量摄入。肥胖犬减重可显著改善关节症状。",
+      "environment_adjustments": "提供防滑地板（如地毯、垫子），设置缓坡或台阶帮助上下家具，使用抬高式食水碗减少颈部压力，保持温暖干燥睡眠环境。"
+    },
+    "nutritional_supplements": [
+      {
+        "supplement": "葡萄糖胺和软骨素",
+        "benefits": [
+          "支持软骨健康，可能减缓退化",
+          "减轻关节炎症和疼痛"
+        ],
+        "dosage_notes": "剂量需根据体重和产品浓度调整，一般建议每日分次给予，具体需遵循兽医或产品说明。"
+      },
+      {
+        "supplement": "Omega-3脂肪酸（如鱼油）",
+        "benefits": [
+          "抗炎作用，缓解关节肿胀",
+          "改善关节活动性"
+        ],
+        "dosage_notes": "常见剂量为EPA+DHA每日每公斤体重20-50毫克，需选择宠物专用产品，避免过量导致消化问题。"
+      },
+      {
+        "supplement": "绿唇贻贝提取物",
+        "benefits": [
+          "含天然抗炎成分",
+          "可能促进关节润滑"
+        ],
+        "dosage_notes": "剂量依产品而异，通常按体重计算，建议从低剂量开始并监测反应。"
+      }
+    ],
+    "when_to_see_vet": [
+      "出现持续跛行或步态异常超过24小时",
+      "关节明显肿胀、发热或触痛",
+      "食欲下降、精神萎靡伴随关节症状",
+      "日常活动能力突然下降",
+      "疑似疼痛表现（如呜咽、舔咬关节）"
+    ],
+    "data_sources": [
+      "American Veterinary Medical Association (AVMA) - Osteoarthritis in Dogs",
+      "VCA Animal Hospitals - Canine Arthritis Management",
+      "Cornell University College of Veterinary Medicine - Joint Supplements for Dogs"
+    ],
+    "disclaimer": "此为一般信息，具体治疗需咨询兽医。",
+    "metadata": {
+      "content_id": "joint_care_guide",
+      "generated_at": "2026-02-06T15:13:48.827817",
+      "prompt_length": 620,
+      "temperature": 0.2
+    }
+  }
+}
