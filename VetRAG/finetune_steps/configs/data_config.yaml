@@ -1,0 +1,48 @@
+# ============================================================
+#  数据配置 — Alpaca 格式训练集
+# ============================================================
+
+data:
+  # 训练 / 验证集文件（JSONL，每行一个 JSON，含 "text" 字段）
+  train_file: "datas/train.jsonl"
+  val_file:   "datas/val.jsonl"
+
+  # 数据集基本信息（可在预处理后更新）
+  num_train_samples: null    # 动态从文件读取
+  num_val_samples:   null    # 动态从文件读取
+
+# ── Alpaca 模板 ────────────────────────────────────────────
+# 微调脚本使用该模板将原始数据转换为 model 输入格式
+alpaca_template: |
+  Below is an instruction that describes a task, paired with an input that provides further context.
+  Write a response that appropriately completes the request.
+
+  ### Instruction:
+  {instruction}
+
+  ### Input:
+  {input}
+
+  ### Response:
+  {output}
+
+# ── 预处理选项 ─────────────────────────────────────────────
+preprocessing:
+  # assistant 之前的内容 label 设为 -100（不计算 loss）
+  mask_user_loss: true
+
+  # 截断策略
+  truncation:
+    enabled: true
+    max_length: 2048
+    strategy: "tail"    # "head" | "tail" — 超出时截断哪端
+
+  # 标签字段名（Alpaca 格式）
+  text_field: "text"
+
+# ── 验证集划分（训练前可选执行） ───────────────────────────
+split:
+  # 若 val_file 不存在，按此比例自动划分
+  train_ratio: 0.95
+  val_ratio:   0.05
+  shuffle_seed: 42

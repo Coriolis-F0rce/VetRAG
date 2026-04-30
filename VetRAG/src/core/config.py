@@ -19,13 +19,14 @@ STATIC_DIR: Path = PROJECT_ROOT / "static"
 
 # ---------- 模型路径 ----------
 # 从环境变量读取，支持覆盖
+# ★ Qwen3-1.7B（AutoDL ModelScope）
 Qwen3_MODEL_PATH: Path = Path(os.getenv(
     "Qwen3_MODEL_PATH",
-    str(MODELS_DIR / "Qwen3-0.6B" / "qwen" / "Qwen3-0___6B")
+    "/root/autodl-tmp/huggingface/models/Qwen3-1.7B"
 ))
 QWEN3_FINETUNED_PATH: Path = Path(os.getenv(
     "QWEN3_FINETUNED_PATH",
-    str(FINETUNED_DIR / "qwen3-finetuned")
+    str(FINETUNED_DIR / "qwen3-1.7b-vet-finetuned")
 ))
 QWEN3_FINETUNED_PATH_V1: Path = Path(os.getenv(
     "QWEN3_FINETUNED_PATH_V1",

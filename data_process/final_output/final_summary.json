@@ -1,0 +1,38 @@
+{
+  "total_entries": 31410,
+  "duplicates_removed": 125,
+  "by_source": {
+    "s1_merged_faq": 16552,
+    "s2_disease_qa": 973,
+    "s3_expanded": 955,
+    "s4_augmented": 12999,
+    "s5_safety": 56
+  },
+  "by_category": {
+    "饮食安全": 25,
+    "用药安全": 18,
+    "急救误区": 27,
+    "日常护理": 24,
+    "行为与环境": 19,
+    "医疗干预": 32,
+    "unknown": 28653,
+    "preventive_care": 217,
+    "急诊急救": 195,
+    "伦理与法律": 102,
+    "情感支持": 126,
+    "disease_knowledge": 973,
+    "behavior_knowledge": 126,
+    "daily_care": 30,
+    "surgery_info": 567,
+    "breed_info": 220,
+    "safety": 50,
+    "format": 6
+  },
+  "sources": [
+    "D:\\Backup\\PythonProject2\\data_process\\find_faq\\merged_output\\s1_merged_all.json",
+    "D:\\Backup\\PythonProject2\\data_process\\find_diseases\\s2_disease_qa.json",
+    "D:\\Backup\\PythonProject2\\data_process\\s3_expanded_output\\s3_expanded_all.json",
+    "D:\\Backup\\PythonProject2\\data_process\\s4_augmented_output\\s4_final.json",
+    "D:\\Backup\\PythonProject2\\data_process\\s5_safety_output\\s5_safety_qa.json"
+  ]
+}

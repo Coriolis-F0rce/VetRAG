@@ -1,0 +1,65 @@
+# ============================================================
+#  QLoRA 微调配置 — Qwen3-1.7B（AutoDL）
+# ============================================================
+
+# ── 模型 ──────────────────────────────────────────────────
+model:
+  name: "Qwen3-1.7B"
+  path: "/root/autodl-tmp/huggingface/models/Qwen3-1.7B"
+  revision: "master"
+  trust_remote_code: true
+
+# ── 量化 ──────────────────────────────────────────────────
+quantization:
+  enabled: true
+  load_in_4bit: true
+  bnb_4bit_quant_type: "nf4"
+  bnb_4bit_compute_dtype: "bfloat16"
+  bnb_4bit_use_double_quant: true
+
+# ── LoRA ──────────────────────────────────────────────────
+lora:
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  bias: "none"
+  task_type: "CAUSAL_LM"
+  target_modules:
+    - "q_proj"
+    - "k_proj"
+    - "v_proj"
+    - "o_proj"
+    - "gate_proj"
+    - "up_proj"
+    - "down_proj"
+
+# ── 训练超参数 ─────────────────────────────────────────────
+training:
+  output_dir: "/root/autodl-tmp/huggingface/models/qwen3-1.7b-vet-finetuned"
+  num_train_epochs: 3
+  per_device_train_batch_size: 8       # 32GB vGPU 档位
+  per_device_eval_batch_size: 8
+  gradient_accumulation_steps: 4        # 有效 batch = 32
+  learning_rate: 2.0e-4
+  warmup_ratio: 0.03
+  lr_scheduler_type: "cosine"
+  weight_decay: 0.01
+  max_seq_length: 2048
+  bf16: true
+  tf32: true
+  optim: "paged_adamw_32bit"
+  gradient_checkpointing: true
+  warmup_steps: null          # null 表示由 warmup_ratio 计算
+  logging_steps: 10
+  eval_strategy: "steps"
+  eval_steps: 200
+  save_strategy: "steps"
+  save_steps: 200
+  save_total_limit: 2
+  load_best_model_at_end: true
+  metric_for_best_model: "eval_loss"
+  greater_is_better: false
+  report_to: "none"
+  seed: 42
+  remove_unused_columns: false
+  packing: false

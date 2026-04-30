@@ -1,0 +1,23 @@
+{
+  "step": "S1 - 合并去重",
+  "raw_total": 23239,
+  "after_filter": 23234,
+  "after_hash_dedup": 20262,
+  "after_inst_dedup": 16552,
+  "removed_by_filter": 5,
+  "removed_by_hash_dup": 2972,
+  "removed_by_inst_dup": 3710,
+  "by_category": {
+    "preventive_care": 207,
+    "unknown": 15892,
+    "伦理与法律": 100,
+    "医疗干预": 14,
+    "急救误区": 11,
+    "急诊急救": 180,
+    "情感支持": 114,
+    "日常护理": 10,
+    "用药安全": 8,
+    "行为与环境": 7,
+    "饮食安全": 9
+  }
+}

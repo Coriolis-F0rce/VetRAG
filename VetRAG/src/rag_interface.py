@@ -1,5 +1,6 @@
 import os
 import re
+import sys
 from typing import List, Dict, Any, Optional, Generator
 from threading import Thread
 
@@ -243,11 +244,22 @@ if __name__ == "__main__":
 
     # ========== 配置路径（请根据实际情况修改） ==========
     CHROMA_DIR = "./chroma_db"
-    path_comfirm = input("请选择后端模型:\n1：“原qwen3-0.6B”\n2：“微调的qwen3-0.6B”\n")
+
+    path_comfirm = input(
+        "请选择后端模型:\n"
+        "1：原 Qwen3-0.6B\n"
+        "2：微调的 Qwen3-0.6B\n"
+        "3：Qwen3-1.7B（AutoDL）\n"
+        "4：微调的 Qwen3-1.7B\n"
+    )
     if path_comfirm == "1":
         MODEL_PATH = r"D:\Backup\PythonProject2\VetRAG\models\Qwen3-0.6B\qwen\Qwen3-0___6B"
     elif path_comfirm == "2":
         MODEL_PATH = r"D:\Backup\PythonProject2\VetRAG\models_finetuned\qwen3-finetuned"
+    elif path_comfirm == "3":
+        MODEL_PATH = "/root/autodl-tmp/huggingface/models/Qwen3-1.7B"
+    elif path_comfirm == "4":
+        MODEL_PATH = "/root/autodl-tmp/huggingface/models/qwen3-1.7b-vet-finetuned"
     else:
         print("invalid path!")
         sys.exit()

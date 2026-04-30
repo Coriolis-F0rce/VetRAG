@@ -55,11 +55,45 @@
 - [x] **添加 `.gitignore`** — 确认包含所有必要的忽略规则
 - [x] **目录清理** — 删除测试残留目录，规范化本地 `.gitignore`
 
+### 五、训练数据扩充
+
+- [x] **S1 合并去重** — `data_process/merge_and_dedup.py`：合并 `augmented_output` + `new_augmented_output`，从 23,239 条去重至 16,552 条有效数据
+- [x] **S2 疾病知识→问答对** — `data_process/qa_from_diseases.py`：基于 123 种疾病生成 973 条模板问答（8 种模板/病）
+- [x] **S3 新话题扩充** — `data_process/expand_topics.py`：品种（220）+ 行为（126）+ 手术（579）+ 日常养护（30）= 955 条
+- [x] **S4 指令多样化** — `data_process/multi_augment.py`：采样 500 条做 API 增强（同义改写、句式变换、视角转换、情感变化、噪声注入），最终合并三个运行版本共 12,999 条
+- [x] **S5 安全/格式 QA** — `data_process/safety_qa.py`：56 条通用安全/格式 QA
+- [x] **S6 最终合并** — `data_process/final_merge.py`：合并 S1-S5，去重后 18,524 条，输出 JSON + JSONL
+
+> 最终训练集：**31,410 条** — `data_process/final_output/final_training_data.json` / `final_training_data_alpaca.jsonl`
+
 ## 代码修改完成后
 
 1. **先运行验证** — 确认修改后项目能正常启动或测试通过
 2. **清理临时文件** — 将 `temp/` 中本次产生的临时文件确认无误后删除（或保留说明用途）
 3. **提交 git** — 执行 `git add` → `git commit` → `git push`，commit 信息需清晰描述本次做了什么（如 `feat: 添加 conda 环境配置` / `fix: 修复 WebSocket 连接未清理资源的问题`）
+
+---
+
+## 远程服务器连接信息
+
+> **AutoDL 服务器（SeetaCloud）**
+
+| 项目 | 值 |
+|------|-----|
+| SSH 主机 | `connect.westb.seetacloud.com` |
+| SSH 端口 | `31783` |
+| 用户名 | `root` |
+| 密码 | `YE++CVGoWBve` |
+
+> **AutoDL 本地模型路径**：`/root/autodl-tmp/huggingface/models/Qwen3-1.7B`
+>
+> **训练数据路径**（上传后）：`/root/data/final_training_data_alpaca.jsonl`
+>
+> **微调输出路径**：`/root/autodl-tmp/huggingface/models/qwen3-1.7b-vet-finetuned`
+>
+> **合并模型输出路径**：`/root/autodl-tmp/output/Qwen3-1.7B-vetrag-merged`
+>
+> **HuggingFace Hub 仓库**：`MrK-means/Qwen3-1.7B-VetRAG`
 
 ---
 
@@ -69,11 +103,12 @@
 |------|------|------|
 | 前端 | 原生 HTML + SSE | `static/index.html` + `web_api.py` |
 | 后端 | FastAPI + Uvicorn | `web_api.py` |
-| LLM | Qwen3-0.6B（本地） | `rag_interface.py` |
+| LLM | Qwen3-1.7B（AutoDL，本地微调后加载） | `rag_interface.py` |
 | Embedding | BAAI/bge-large-zh-v1.5 | `src/vector_store_chroma.py` |
 | 向量数据库 | ChromaDB | `src/vector_store_chroma.py` |
 | 数据解析 | JSON | `src/json_loader.py` |
-| 微调框架 | PEFT + TRL + BitsAndBytes | `finetune_steps/qlora_finetune.py` |
+| 微调框架 | PEFT + TRL + BitsAndBytes（QLoRA） | `VetRAG/finetune_steps/` |
+| 微调模型 | Qwen3-1.7B（AutoDL ModelScope） | `download_qwen3_1b7.py` |
 | 日志 | loguru | `src/core/logging.py` |
 | 环境管理 | uv / conda | `requirements.txt` / `conda-environment.yml` |
 
@@ -118,3 +153,14 @@ VetRAG/
 ├── .env.example          # 环境变量模板
 ├── .gitignore           # 本地忽略规则
 └── envs/.env.example     # 同上
+data_process/              # 训练数据生成脚本
+├── merge_and_dedup.py     # S1：合并去重
+├── qa_from_diseases.py    # S2：疾病→问答对
+├── expand_topics.py       # S3：新话题扩充
+├── multi_augment.py       # S4：指令多样化（运行中）
+├── safety_qa.py           # S5：安全/格式 QA
+├── final_merge.py         # S6：最终合并导出
+└── final_output/          # 最终训练集输出
+    ├── final_training_data.json
+    ├── final_training_data_alpaca.jsonl
+    └── final_summary.json
