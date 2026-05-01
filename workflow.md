@@ -1,6 +1,8 @@
 # 工作规范
 
-> **任务追踪** — 所有当前执行中的任务和待办事项见 [TODO.md](TODO.md)，每次开始工作前同步更新该项目。
+> **进度追踪**
+> - 进行中的任务和待办事项见 [TODO.md](TODO.md)
+> - 已完成的工作成果记录见 [accomplishments.md](accomplishments.md)
 
 ## 每次开始工作前
 
@@ -9,62 +11,21 @@
 3. **同步 TODO.md** — 查看 [TODO.md](TODO.md) 中的任务状态，确认本次工作内容和优先级
 4. **临时文件规范** — 所有临时文件（测试脚本、日志、备份等）统一放入 `temp/` 目录，文件名需标注用途（如 `temp_read_docx.py`、`temp_debug.log`），禁止散落在项目根目录
 
-## 项目目标
+## 项目进度总览
 
-### 一、配置管理
-
-- [x] **创建 `requirements.txt`** — 扫描所有 Python 文件的 `import` 语句，整理出所有第三方依赖及其版本号
-- [x] **创建 `pyproject.toml`** — 使用现代 Python 打包标准，定义项目元数据、依赖范围（生产依赖 vs 开发依赖）
-- [x] **创建 `.env.example`** — 整理所有环境变量模板，存入 `envs/` 目录
-- [x] **创建 `conda-environment.yml`** — 补充 conda 环境配置文件，兼容 uv / conda / pip 多环境管理
-- [x] **集中配置模块** — 创建 `src/core/config.py`，统一管理所有配置读取
-- [x] **统一日志配置** — 创建 `src/core/logging.py`，集中配置 loguru 日志格式和级别
-
-### 二、测试文件
-
-- [x] **创建 `tests/` 目录结构** — 按模块划分测试目录（`tests/core/`、`tests/rag/`、`tests/api/`）
-- [x] **编写 JSON 数据解析测试** — 针对 `src/json_loader.py` 的各解析方法编写单元测试，覆盖正常文件、异常文件（格式错误、空数据）场景
-- [x] **编写 Embedding 服务测试** — 测试 ChromaDB 连接、文本向量化、向量搜索功能
-- [x] **编写 RAG Pipeline 测试** — 测试检索→生成的完整链路，覆盖无结果、少结果、多结果等场景
-- [x] **编写 FastAPI 接口测试** — 使用 `pytest` + `TestClient` 测试所有 API 端点
-- [x] **配置 `pytest.ini`** — 定义测试发现路径、过滤规则、覆盖率报告配置
-- [x] **配置 GitHub Actions CI** — 创建 `.github/workflows/ci.yml`，包含 lint（ruff）+ 测试 + 覆盖率报告
-
-> 测试结果：79/79 全部通过（pytest 8.3.4 / Python 3.13）
-
-### 三、配置文档（README）
-
-- [x] **创建 `README.md`** — 项目说明文档，包含以下章节：
-  - 项目简介（是什么、解决什么问题）
-  - 系统架构图（文字版）
-  - 环境要求（Python 版本、RAM、GPU）
-  - 快速开始（安装依赖 → 启动服务 → 上传文档 → 提问）
-  - 各模块说明（backend / frontend / rag）
-  - 环境变量说明表
-  - 常见问题（FAQ）
-  - 贡献指南
-- [x] **创建 `docs/` 目录** — 按模块存放详细技术文档（如 `docs/api.md`、`docs/rag_pipeline.md`）
-- [x] **创建 `CHANGELOG.md`** — 记录版本变更历史
-
-### 四、项目结构调整
-
-- [x] **创建 `src/core/` 目录** — 将核心业务代码（配置和日志）统一收口为 `src/core/` 包结构
-- [x] **规范化导入路径** — 统一使用 `from src.core.config` 或 `from src.json_loader` 的绝对导入方式，`rag_interface.py` 移入 `src/`，移除所有裸导入和 `sys.path` hack
-- [x] **分离配置层** — 在 `src/core/config.py` 中集中管理所有配置加载逻辑，禁止在业务代码中直接读取环境变量
-- [x] **Docker 配置完善** — 创建 `Dockerfile`（Python 3.11-slim）+ `docker-compose.yml`（API + Jupyter）+ `.dockerignore`
-- [x] **添加 `.gitignore`** — 确认包含所有必要的忽略规则
-- [x] **目录清理** — 删除测试残留目录，规范化本地 `.gitignore`
-
-### 五、训练数据扩充
-
-- [x] **S1 合并去重** — `data_process/merge_and_dedup.py`：合并 `augmented_output` + `new_augmented_output`，从 23,239 条去重至 16,552 条有效数据
-- [x] **S2 疾病知识→问答对** — `data_process/qa_from_diseases.py`：基于 123 种疾病生成 973 条模板问答（8 种模板/病）
-- [x] **S3 新话题扩充** — `data_process/expand_topics.py`：品种（220）+ 行为（126）+ 手术（579）+ 日常养护（30）= 955 条
-- [x] **S4 指令多样化** — `data_process/multi_augment.py`：采样 500 条做 API 增强（同义改写、句式变换、视角转换、情感变化、噪声注入），最终合并三个运行版本共 12,999 条
-- [x] **S5 安全/格式 QA** — `data_process/safety_qa.py`：56 条通用安全/格式 QA
-- [x] **S6 最终合并** — `data_process/final_merge.py`：合并 S1-S5，去重后 18,524 条，输出 JSON + JSONL
-
-> 最终训练集：**31,410 条** — `data_process/final_output/final_training_data.json` / `final_training_data_alpaca.jsonl`
+| 模块 | 状态 | 详情 |
+|------|------|------|
+| 配置管理 | ✅ 完成 | 见 [accomplishments.md](accomplishments.md#一-配置管理) |
+| 测试文件 | ✅ 完成 | 79/79 测试通过，见 [accomplishments.md](accomplishments.md#二-测试文件) |
+| 配置文档（README） | ✅ 完成 | 见 [accomplishments.md](accomplishments.md#三-配置文档readme) |
+| 项目结构调整 | ✅ 完成 | 见 [accomplishments.md](accomplishments.md#四-项目结构调整) |
+| 训练数据扩充 | ✅ 完成 | 31,410 条，见 [accomplishments.md](accomplishments.md#五-训练数据扩充) |
+| QLoRA 微调流水线 | ✅ 完成 | eval_acc 71.6%，见 [accomplishments.md](accomplishments.md#六-qloRA-微调流水线--qwen3-17b) |
+| 本地模型部署 | ✅ 完成 | 见 [accomplishments.md](accomplishments.md#七-本地模型部署) |
+| RAG 优化 | 🔄 进行中 | 见 [TODO.md](TODO.md#当前进行中) |
+| 多轮对话优化 | ⏳ 待启动 | 见 [TODO.md](TODO.md#1-多轮对话优化) |
+| 模型压缩与加速 | ⏳ 待启动 | 见 [TODO.md](TODO.md#2-模型压缩与加速) |
+| 上线准备 | ⏳ 待启动 | 见 [TODO.md](TODO.md#3-上线准备) |
 
 ## 代码修改完成后
 
