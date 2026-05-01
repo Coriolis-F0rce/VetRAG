@@ -24,8 +24,8 @@ class VetRAGPipeline:
         # 导入模块
         print("导入模块...")
         try:
-            from .json_loader import VetRAGDataLoader
-            from .vector_store_chroma import ChromaVectorStore
+            from json_loader import VetRAGDataLoader
+            from vector_store_chroma import ChromaVectorStore
 
             self.loader = VetRAGDataLoader()
             self.vector_store = ChromaVectorStore(

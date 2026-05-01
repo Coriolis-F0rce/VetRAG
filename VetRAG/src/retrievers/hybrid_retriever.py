@@ -6,7 +6,7 @@
     其中 k = 60（经验最优常数），i 为各检索系统的编号
 
 使用方式：
-    from src.retrievers import HybridRetriever
+    from retrievers import HybridRetriever
 
     hr = HybridRetriever(chroma_collection=collection, embed_fn=embed_fn)
     hr.build_index(documents, chunk_ids, metadatas)
@@ -17,7 +17,7 @@ import logging
 from typing import List, Dict, Any, Optional, Callable, Tuple
 from dataclasses import dataclass
 
-from src.retrievers.bm25_index import BM25Retriever, BM25Result
+from retrievers.bm25_index import BM25Retriever, BM25Result
 
 logger = logging.getLogger(__name__)
 

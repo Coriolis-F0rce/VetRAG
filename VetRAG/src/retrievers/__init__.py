@@ -6,10 +6,10 @@ retrievers — 检索策略模块
 - Hybrid Retriever（Dense HNSW + BM25 + RRF 融合）
 
 导入方式：
-    from src.retrievers import HybridRetriever, BM25Retriever
+    from retrievers import HybridRetriever, BM25Retriever
 """
-from src.retrievers.bm25_index import BM25Retriever
-from src.retrievers.hybrid_retriever import HybridRetriever
+from retrievers.bm25_index import BM25Retriever
+from retrievers.hybrid_retriever import HybridRetriever
 
 __all__ = [
     "BM25Retriever",

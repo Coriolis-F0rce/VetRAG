@@ -1,6 +1,7 @@
 import os
 import re
 import sys
+from pathlib import Path
 from typing import List, Dict, Any, Optional, Generator
 from threading import Thread
 
@@ -13,9 +14,9 @@ from transformers import (
 )
 from peft import PeftModel
 
-from .vector_store_chroma import ChromaVectorStore
-from .json_loader import VetRAGDataLoader
-from .core.config import (
+from vector_store_chroma import ChromaVectorStore
+from json_loader import VetRAGDataLoader
+from core.config import (
     SYSTEM_PROMPT_VET,
     Qwen3_BASE_MODEL_PATH,
     QWEN3_FINETUNED_PATH,
@@ -24,7 +25,7 @@ from .core.config import (
     HYBRID_BM25_WEIGHT,
     USE_DOMAIN_GUARD,
 )
-from .core.domain_guard import DomainGuard
+from core.domain_guard import DomainGuard
 
 
 class QwenGenerator:

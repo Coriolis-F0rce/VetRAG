@@ -280,6 +280,13 @@ rag = RAGInterface(use_domain_guard=False)
 - 训练数据 31,410 条上传至 AutoDL
 - 模型上传至 HuggingFace Hub：`MrK-means/Qwen3-1.7B-VetRAG`
 
+### 2026-05-01（凌晨）
+- 完成全链路测试脚本 `src/test_full_chain.py`
+  - 修复 ChromaDB 路径错误：`test_full_chain.py` 原硬编码 `./chroma_db`（指向 `src/chroma_db`），更正为使用 `config.CHROMA_DIR`（指向 `VetRAG/chroma_db`，含 858 篇文档）
+  - 修复报告输出路径：从不存在的 `VetRAG/VetRAG/full_chain_test_report.json` 修正为 `VetRAG/full_chain_test_report.json`
+  - 实测结果：向量库 858 篇文档，召回正常（sim 0.50~0.59），Domain Guard 通过
+  - 发现问题：模型生成答案未引用检索文档内容；Domain Guard 分类标签持续输出 `'error'`
+
 ### 2026-04-30（夜）
 - 完成配置管理全部 7 项任务（requirements.txt / pyproject.toml / conda-environment.yml / .env.example / config.py / logging.py / .gitignore）
 - 模型下载、数据上传、OOM 调参、训练提交

@@ -10,7 +10,7 @@ import logging
 from datetime import datetime
 import pickle
 
-from src.retrievers import HybridRetriever
+from retrievers import HybridRetriever
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
