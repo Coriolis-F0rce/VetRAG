@@ -11,17 +11,23 @@ from transformers import (
     TextIteratorStreamer,
     TextStreamer,
 )
+from peft import PeftModel
 
 from .vector_store_chroma import ChromaVectorStore
 from .json_loader import VetRAGDataLoader
-from .core.config import SYSTEM_PROMPT_VET
+from .core.config import (
+    SYSTEM_PROMPT_VET,
+    Qwen3_BASE_MODEL_PATH,
+    QWEN3_FINETUNED_PATH,
+)
 
 
 class QwenGenerator:
-    def __init__(self, model_path: str, device: str = None):
+    def __init__(self, model_path: str, device: str = None, base_model_path: str = None):
         if device is None:
             device = "cuda" if torch.cuda.is_available() else "cpu"
         self.device = device
+        self.model_path = model_path
 
         print(f"正在加载生成模型: {model_path}")
         self.tokenizer = AutoTokenizer.from_pretrained(
@@ -32,14 +38,34 @@ class QwenGenerator:
         if self.tokenizer.pad_token is None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
 
-        self.model = AutoModelForCausalLM.from_pretrained(
-            model_path,
-            torch_dtype=torch.float16 if device == "cuda" else torch.float32,
-            device_map="auto" if device == "cuda" else None,
-            trust_remote_code=True
-        )
-        if device == "cpu":
-            self.model = self.model.to(device)
+        adapter_config_path = os.path.join(model_path, "adapter_config.json")
+        if os.path.exists(adapter_config_path):
+            if base_model_path is None:
+                import json
+                with open(adapter_config_path, "r") as f:
+                    adapter_cfg = json.load(f)
+                base_model_path = adapter_cfg.get("base_model_name_or_path", "")
+            print(f"检测到 LoRA adapter，加载基础模型: {base_model_path}")
+            base_model = AutoModelForCausalLM.from_pretrained(
+                base_model_path,
+                torch_dtype=torch.float16 if device == "cuda" else torch.float32,
+                device_map="auto" if device == "cuda" else None,
+                trust_remote_code=True,
+            )
+            self.model = PeftModel.from_pretrained(base_model, model_path)
+            print("LoRA adapter 加载完成，可训练参数:")
+            self.model.print_trainable_parameters()
+        else:
+            print(f"加载完整模型（非 LoRA）: {model_path}")
+            self.model = AutoModelForCausalLM.from_pretrained(
+                model_path,
+                torch_dtype=torch.float16 if device == "cuda" else torch.float32,
+                device_map="auto" if device == "cuda" else None,
+                trust_remote_code=True
+            )
+            if device == "cpu":
+                self.model = self.model.to(device)
+
         self.model.eval()
 
         self.generation_config = {
@@ -84,6 +110,8 @@ class QwenGenerator:
         with torch.no_grad():
             outputs = self.model.generate(**inputs, **gen_kwargs)
         answer = self.tokenizer.decode(outputs[0][inputs.input_ids.shape[1]:], skip_special_tokens=True)
+        # 去除 Qwen3 think 标签内容
+        answer = answer.replace("<think>\n\n\n\n\n\n\n\n\n\n</think>", "").replace("<think>", "").replace("</think>", "")
         return answer.strip()
 
     def async_stream_generate(self, prompt: str, **kwargs):
@@ -107,9 +135,12 @@ class RAGInterface:
         self,
         chroma_persist_dir: str = "./chroma_db",
         generator_model_path: Optional[str] = None,
+        generator_base_model_path: Optional[str] = None,
         collection_name: str = "veterinary_rag",
         embedding_model_name: str = "BAAI/bge-large-zh-v1.5"
     ):
+        if generator_model_path is None:
+            generator_model_path = str(QWEN3_FINETUNED_PATH)
         self.chroma_persist_dir = chroma_persist_dir
         self.generator_model_path = generator_model_path
 
@@ -122,7 +153,7 @@ class RAGInterface:
 
         self.loader = VetRAGDataLoader()
         self.generator = None
-        self.generator = QwenGenerator(generator_model_path)
+        self.generator = QwenGenerator(generator_model_path, base_model_path=generator_base_model_path)
         stats = self.vector_store.get_collection_stats()
         print(f"当前向量库包含 {stats['document_count']} 个文档")
 
@@ -250,16 +281,30 @@ if __name__ == "__main__":
         "1：原 Qwen3-0.6B\n"
         "2：微调的 Qwen3-0.6B\n"
         "3：Qwen3-1.7B（AutoDL）\n"
-        "4：微调的 Qwen3-1.7B\n"
+        "4：微调的 Qwen3-1.7B（本地 LoRA，需先下载基础模型）\n"
+        "5：Qwen3-1.7B 基础模型（本地，无微调）\n"
+        "6：微调的 Qwen3-1.7B（本地合并后完整权重）"
     )
+    BASE_PATH = str(Qwen3_BASE_MODEL_PATH)
+    FINETUNED_PATH = str(QWEN3_FINETUNED_PATH)
     if path_comfirm == "1":
         MODEL_PATH = r"D:\Backup\PythonProject2\VetRAG\models\Qwen3-0.6B\qwen\Qwen3-0___6B"
+        BASE_MODEL_PATH = None
     elif path_comfirm == "2":
         MODEL_PATH = r"D:\Backup\PythonProject2\VetRAG\models_finetuned\qwen3-finetuned"
+        BASE_MODEL_PATH = None
     elif path_comfirm == "3":
         MODEL_PATH = "/root/autodl-tmp/huggingface/models/Qwen3-1.7B"
+        BASE_MODEL_PATH = None
     elif path_comfirm == "4":
-        MODEL_PATH = "/root/autodl-tmp/huggingface/models/qwen3-1.7b-vet-finetuned"
+        MODEL_PATH = r"D:\Backup\PythonProject2\VetRAG\models_finetuned\qwen3-1.7b-vet-finetuned"
+        BASE_MODEL_PATH = BASE_PATH
+    elif path_comfirm == "5":
+        MODEL_PATH = BASE_PATH
+        BASE_MODEL_PATH = None
+    elif path_comfirm == "6":
+        MODEL_PATH = FINETUNED_PATH
+        BASE_MODEL_PATH = None
     else:
         print("invalid path!")
         sys.exit()
@@ -268,7 +313,8 @@ if __name__ == "__main__":
     # 初始化接口
     rag = RAGInterface(
         chroma_persist_dir=CHROMA_DIR,
-        generator_model_path=MODEL_PATH
+        generator_model_path=MODEL_PATH,
+        generator_base_model_path=BASE_MODEL_PATH
     )
 
     print("\n输入问题开始问答，输入 'quit' 退出。")

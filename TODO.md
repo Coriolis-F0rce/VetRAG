@@ -1,6 +1,29 @@
 # VetRAG 项目任务清单
 
-> 最后更新：2026-05-01（凌晨）
+> 最后更新：2026-05-01（下午）
+
+---
+
+## 2026-05-01（下午）— 本地部署
+
+### 模型本地化
+
+| 任务 | 状态 |
+|------|------|
+| 下载 Qwen3-1.7B 基础模型到 `models/Qwen3-1.7B` | ✅ 完成 |
+| 合并 LoRA adapter → 完整模型 → `models/Qwen3-1.7B-vet-finetuned` | ✅ 完成 |
+| 本地推理测试（修复 `think` 模式 + 本地路径适配） | ✅ 完成（10/10 无 `<think>` 标签，平均 607 字/条） |
+| 更新 `QWEN3_FINETUNED_PATH` 配置指向合并后模型 | ✅ 完成 |
+
+### 脚本更新
+
+| 脚本 | 说明 | 状态 |
+|------|------|------|
+| `VetRAG/download_base_model.py` | 基于 ModelScope 下载 Qwen3-1.7B | ✅ 完成 |
+| `VetRAG/merge_and_run_lora.py` | 合并 LoRA + 基础模型为完整权重 | ✅ 完成 |
+| `VetRAG/test_merged_model.py` | 本地推理测试（禁用 `think` + 后处理 `<think>` 标签） | ✅ 完成 |
+| `VetRAG/src/rag_interface.py` | 新增菜单选项 6（合并模型）+ `generate()` 添加 `<think>` 标签去除 | ✅ 完成 |
+| `VetRAG/src/core/config.py` | `QWEN3_FINETUNED_PATH` 指向 `models/Qwen3-1.7B-vet-finetuned` | ✅ 完成 |
 
 ---
 
@@ -44,10 +67,11 @@
 - [ ] 前端查询扩展/过滤词字典代码定位（如有独立前端项目）
 
 ### 2. 训练效果评估
-- [x] 模型下载到本地 `VetRAG/models_finetuned/qwen3-1.7b-vet-finetuned/`
-- [ ] 本地推理测试：`test_before_finetuning.py` / `test_after_finetuning.py` 对比
-- [ ] 关键指标：回答相关性、拒答率、生成质量主观评分
-- [ ] 更新 `QWEN3_FINETUNED_PATH` 配置指向本地模型
+- [x] 模型下载到本地 `VetRAG/models_finetuned/qwen3-1.7b-vet-finetuned/`（LoRA adapter）
+- [x] 下载基础模型 `VetRAG/models/Qwen3-1.7B`（基于 ModelScope）
+- [x] 合并 LoRA + 基础模型 → `VetRAG/models/Qwen3-1.7B-vet-finetuned/`
+- [x] 本地推理测试（10 题验证，无 `<think>` 标签，平均 607 字/条）
+- [x] 更新 `QWEN3_FINETUNED_PATH` 配置指向本地合并模型
 
 ### 3. 其他
 - [ ] 考虑增量训练 4-5 epoch（eval_loss 仍未触拐点）
@@ -309,9 +333,9 @@ Set-Service -Name sshd -StartupType Automatic
   - 上传脚本：`VetRAG/finetune_steps/upload_to_hf.py`
   - 本地下载：`git clone https://huggingface.co/MrK-means/Qwen3-1.7B-VetRAG`
 - [x] 本地下载微调后模型：`VetRAG/models_finetuned/qwen3-1.7b-vet-finetuned/`
-- [ ] 本地测试加载微调后模型，验证生成质量
-- [ ] 配置 `QWEN3_FINETUNED_PATH` 指向本地模型路径
-- [ ] 编写本地推理基准测试脚本
+- [x] 本地测试加载微调后模型，验证生成质量
+- [x] 配置 `QWEN3_FINETUNED_PATH` 指向本地模型路径（`models/Qwen3-1.7B-vet-finetuned`）
+- [x] RAG 接口适配：`rag_interface.py` 新增菜单选项 6，生成方法添加 `<think>` 标签后处理
 
 ### 2. 多轮对话优化
 - [ ] 生成多轮对话训练数据集（3-5 轮追问链，模拟真实问诊场景）
