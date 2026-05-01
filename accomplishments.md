@@ -193,7 +193,59 @@ results = store.search("犬瘟热治疗", use_hybrid=True)  # RRF 融合结果
 
 ---
 
+## 九、领域边界守卫（Domain Guard）
+
+> 完成日期：2026-05-02
+
+### 背景
+
+当前 `query()` / `query_stream()` 直接将用户 query 送入检索流程，对于"前沿物理化学"、"量子力学"等与宠物医疗无关的问题仍能召回到弱相关文档，导致模型强行回答、跑偏方向。
+
+### 技术方案
+
+在检索之前插入一层 LLM 零样本分类（Guard），判断 query 是否属于宠物狗领域：
+
+```
+用户 query → [Domain Guard] → [是] 继续 RAG 流程
+                        → [否] 直接返回友好拒绝语，跳过检索和生成
+```
+
+- 分类 prompt 仅要求回复"是"或"否"（2-3 tokens），token 消耗极低
+- 分类异常时保守放行（`error` → 视为"是"），不影响正常流程
+- Guard 默认启用，通过 `USE_DOMAIN_GUARD` 环境变量可关断
+
+### 关键文件
+
+|| 文件 | 说明 |
+|------|------|------|
+| `src/core/domain_guard.py` | DomainGuard 类，零样本分类 + 拒绝语生成 |
+| `src/core/config.py` | 新增 `USE_DOMAIN_GUARD` 配置项（默认 true） |
+| `src/rag_interface.py` | `query()` / `query_stream()` 集成 Guard 预检查 |
+| `tests/rag/test_domain_guard.py` | 21 个测试用例，覆盖正常/异常/边界场景 |
+
+### 使用方式
+
+```python
+# 默认启用（USE_DOMAIN_GUARD=true）
+rag = RAGInterface()  # 自动初始化 DomainGuard
+
+# 禁用
+rag = RAGInterface(use_domain_guard=False)
+```
+
+---
+
 ## 执行记录
+
+### 2026-05-02（凌晨）
+- 完成领域边界守卫（Domain Guard）LLM 零样本分类
+  - 新增 `src/core/domain_guard.py`（DomainGuard 类，零样本分类 + 拒绝语）
+  - 新增 `USE_DOMAIN_GUARD` 配置项（config.py，默认 true）
+  - `query()` 和 `query_stream()` 集成 Guard 预检查，非宠物狗问题直接拒绝
+  - 范围限定为宠物狗（拒绝猫、其他宠物及一切非狗问题）
+  - 新增 21 个测试用例（test_domain_guard.py），21/21 通过
+  - 更新 `SYSTEM_PROMPT_VET` 为宠物狗专属提示词
+  - 完成混合检索评估与调优（30 条标注语料，RRF dw=0.6/bw=0.4，NDCG@5 +3.6pt）
 
 ### 2026-05-01（晚上）
 - 完成 RAG 混合检索重构（Hybrid Search）

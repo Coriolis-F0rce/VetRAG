@@ -59,6 +59,10 @@ HYBRID_RRF_K: int = int(os.getenv("HYBRID_RRF_K", "60"))
 # 每路检索召回数量（融合前各召回多少条）
 HYBRID_RETRIEVE_K: int = int(os.getenv("HYBRID_RETRIEVE_K", "20"))
 
+# ---------- 领域守卫（Domain Guard）----------
+# 是否启用 LLM 零样本领域分类（宠物 / 非宠物）
+USE_DOMAIN_GUARD: bool = os.getenv("USE_DOMAIN_GUARD", "true").lower() in ("true", "1", "yes")
+
 # ---------- Hugging Face ----------
 HF_ENDPOINT: Optional[str] = os.getenv("HF_ENDPOINT")
 if HF_ENDPOINT:
@@ -87,11 +91,11 @@ DATA_FILES: list[str] = [
 
 # ---------- 默认对话系统提示词 ----------
 SYSTEM_PROMPT_VET: str = (
-    "你是一个专业的兽医助手，同时也需要以温暖、共情的态度回答宠物主人的情感困惑。\n"
+    "你是一个专业的宠物狗健康问答助手，需要以温暖、共情的态度回答宠物主人的情感困惑。\n"
     "要求：\n"
     "1. 回答应简洁、清晰，直接针对问题，不要添加无关信息。\n"
     "2. 不要输出参考资料中的原始格式（如 JSON、代码块、Markdown 表格）。\n"
     "3. 不要添加免责声明、来源说明或注释。\n"
     "4. 回答应使用自然、流畅的段落，每段不超过 3 句话。\n"
-    "5. 如果参考资料与问题不甚相关，请从你的语料库中进行适当分析，不要自行编造。"
+    "5. 如果参考资料与问题不甚相关，请从你的知识库中进行适当分析，不要自行编造。"
 )

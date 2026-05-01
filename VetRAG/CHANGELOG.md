@@ -2,18 +2,28 @@
 
 所有重要的版本变更都会记录在此文件中。格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 规范。
 
-## [Unreleased] - 2026-04-29
+## [Unreleased] - 2026-05-02
 
 > 本版本正在开发中。
 
 ### 添加
+- **领域边界守卫**（Domain Guard）：LLM 零样本分类过滤非宠物狗问题
+  - 新增 `src/core/domain_guard.py`（DomainGuard 类）
+  - 新增 `USE_DOMAIN_GUARD` 配置项（默认 true）
+  - `query()` 和 `query_stream()` 集成 Guard 预检查
+  - 新增 21 个测试用例（test_domain_guard.py）
+- **RAG 混合检索**（Hybrid Search）：Dense HNSW + BM25 + RRF 融合
+  - 新增 `src/retrievers/bm25_index.py`（jieba 中文分词 + BM25Okapi）
+  - 新增 `src/retrievers/hybrid_retriever.py`（RRF 融合）
+  - 重构 `src/vector_store_chroma.py`：集成混合检索，向后兼容
+  - 新增 `USE_HYBRID_SEARCH` 等 5 个配置项
 - 文档结构：`README.md`、`docs/api.md`、`docs/rag_pipeline.md`、`CHANGELOG.md`
 - 项目依赖管理：`requirements.txt`、`pyproject.toml`、`conda-environment.yml`
 - 集中配置模块：`src/core/config.py`
 - 统一日志模块：`src/core/logging.py`
-- 完整测试套件：79 个测试用例（pytest 8.3.4，Python 3.13）
+- 完整测试套件：100+ 个测试用例（pytest 8.3.4，Python 3.13）
 - GitHub Actions CI 工作流：lint（ruff）+ 测试 + 覆盖率报告
-- Docker 部署配置：`Dockerfile`（Python 3.11-slim，预下载 BGE 模型）+ `docker-compose.yml`（API + Jupyter）+ `.dockerignore`
+- Docker 部署配置：`Dockerfile`（Python 3.11-slim）+ `docker-compose.yml`
 - 本地忽略规则：`VetRAG/.gitignore`
 
 ### 修复
@@ -21,13 +31,15 @@
 - CI workflow 路径问题：ruff 检查路径、pytest 工作目录、coverage 上报路径
 - vector_store Integration tests：`pytest.importorskip()` 替代 `patch()` 避免未安装时报错
 - API 无效 JSON 测试：改用 `pytest.raises` 正确捕获异常
+- BM25Ok API 兼容性问题（`okapi BM25` 参数差异）
+- HybridRetriever RRF 融合字段名 bug（`doc_id` → `id`）
 
 ### 重构
-- 导入规范化：`rag_interface.py` 移入 `src/`，所有模块统一 `from src.xxx` 相对导入，移除裸导入和 `sys.path` hack
-- 配置集中化：`web_api.py` 改用 `CHROMA_PERSIST_DIR`/`QWEN3_FINETUNED_PATH`/`SYSTEM_PROMPT_VET`，消除硬编码路径
-- `src/rag_pipeline.py`：修复懒加载导入（`vector_store_chroma_bge` → `vector_store_chroma`），改用相对导入
-- `build_index.py`：重写为直接组件调用，修复不存在的方法（`build_from_files`/`save`）
-- `run.py` / `build_index.py`：修正 `sys.path` 指向父目录层级
+- 导入规范化：`rag_interface.py` 移入 `src/`，所有模块统一 `from src.xxx` 相对导入
+- 配置集中化：`web_api.py` 改用 `CHROMA_PERSIST_DIR`/`QWEN3_FINETUNED_PATH`
+- `src/rag_pipeline.py`：修复懒加载导入，改用相对导入
+- `build_index.py`：重写为直接组件调用，修复不存在的方法
+- `SYSTEM_PROMPT_VET`：改为宠物狗专属提示词
 
 ---
 

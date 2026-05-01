@@ -16,8 +16,10 @@ from .config import (
     LOG_FILE,
     DATA_FILES,
     SYSTEM_PROMPT_VET,
+    USE_DOMAIN_GUARD,
 )
 from .logging import logger
+from .domain_guard import DomainGuard
 
 __all__ = [
     "PROJECT_ROOT",
@@ -36,5 +38,7 @@ __all__ = [
     "LOG_FILE",
     "DATA_FILES",
     "SYSTEM_PROMPT_VET",
+    "USE_DOMAIN_GUARD",
     "logger",
+    "DomainGuard",
 ]

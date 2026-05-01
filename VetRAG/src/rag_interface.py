@@ -22,7 +22,9 @@ from .core.config import (
     USE_HYBRID_SEARCH,
     HYBRID_DENSE_WEIGHT,
     HYBRID_BM25_WEIGHT,
+    USE_DOMAIN_GUARD,
 )
+from .core.domain_guard import DomainGuard
 
 
 class QwenGenerator:
@@ -144,12 +146,14 @@ class RAGInterface:
         use_hybrid: bool = USE_HYBRID_SEARCH,
         dense_weight: float = HYBRID_DENSE_WEIGHT,
         bm25_weight: float = HYBRID_BM25_WEIGHT,
+        use_domain_guard: bool = USE_DOMAIN_GUARD,
     ):
         if generator_model_path is None:
             generator_model_path = str(QWEN3_FINETUNED_PATH)
         self.chroma_persist_dir = chroma_persist_dir
         self.generator_model_path = generator_model_path
         self.use_hybrid = use_hybrid
+        self.use_domain_guard = use_domain_guard
 
         print(f"加载向量数据库: {chroma_persist_dir}")
         self.vector_store = ChromaVectorStore(
@@ -164,6 +168,13 @@ class RAGInterface:
         self.loader = VetRAGDataLoader()
         self.generator = None
         self.generator = QwenGenerator(generator_model_path, base_model_path=generator_base_model_path)
+
+        # 初始化领域守卫
+        self.domain_guard = DomainGuard(
+            generator=self.generator,
+            enabled=use_domain_guard,
+        )
+
         stats = self.vector_store.get_collection_stats()
         print(f"当前向量库包含 {stats['document_count']} 个文档")
 
@@ -177,6 +188,12 @@ class RAGInterface:
         return text.strip()
 
     def query_stream(self, question: str, top_k: int = 5, similarity_threshold: float = 0.4):
+        # 领域守卫：非宠物问题直接拒绝
+        rejection = self.domain_guard.check_and_respond(question)
+        if rejection:
+            print(f"\n[Domain Guard] {rejection}")
+            return
+
         search_results = self.vector_store.search(question, n_results=top_k)
         all_retrieved = search_results.get("results", [])
 
@@ -193,7 +210,7 @@ class RAGInterface:
             print(f"   预览: {preview}\n")
 
         if not valid_docs:
-            default_answer = "抱歉，我只擅长回答宠物健康、护理、疾病等方面的问题。如果您有关于狗狗的疑问，欢迎提出！"
+            default_answer = "抱歉，我只擅长回答宠物狗健康、护理、疾病等方面的问题。如果您有关于狗狗的疑问，欢迎提出！"
             print(f"答案：{default_answer}")
             return
 
@@ -222,6 +239,17 @@ class RAGInterface:
         print()
 
     def query(self, question: str, top_k: int = 5) -> Dict[str, Any]:
+        # 领域守卫：非宠物问题直接拒绝
+        rejection = self.domain_guard.check_and_respond(question)
+        if rejection:
+            return {
+                "question": question,
+                "answer": rejection,
+                "retrieved": [],
+                "generated": False,
+                "rejected_by_guard": True,
+            }
+
         search_results = self.vector_store.search(question, n_results=top_k)
         retrieved = search_results.get("results", [])
 
@@ -242,7 +270,6 @@ class RAGInterface:
             context_parts.append(f"[相关文档] {content}")
         context = "\n\n".join(context_parts)
 
-        # ========== 使用统一系统提示词构建 prompt ==========
         system_msg = SYSTEM_PROMPT_VET
         prompt = self.generator.build_chat_prompt(
             system=system_msg,

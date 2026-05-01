@@ -15,9 +15,12 @@
   - 新增 `USE_HYBRID_SEARCH` 等 5 个配置项（config.py）
   - 新增 5 个测试用例（test_vector_store.py），19/19 通过
   - 依赖：rank-bm25>=0.12.0, jieba>=0.42.1
+- [x] **领域边界过滤**：LLM 零样本分类，非宠物狗问题直接拒绝
+  - 新增 `src/core/domain_guard.py` — DomainGuard 模块
+  - 新增 `USE_DOMAIN_GUARD` 配置项（config.py），默认开启
+  - `query()` 和 `query_stream()` 集成 Guard，提前过滤
+  - 新增 21 个测试用例（test_domain_guard.py），21/21 通过
 - [ ] 查询扩展逻辑排查：用户反映"前沿物理化学"等学术问题跑偏到 AI/ML 领域
-- [ ] 领域边界过滤：非宠物问题应拒绝回答或友好引导
-- [ ] 前端查询扩展/过滤词字典代码定位（如有独立前端项目）
 
 ---
 
