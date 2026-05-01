@@ -459,7 +459,7 @@ class ChromaVectorStore:
         """从 ChromaDB 中提取所有文档，构建 BM25 索引（用于已有数据迁移）"""
         print("从 ChromaDB 提取数据构建 BM25 索引...")
         all_data = self.collection.get(
-            include=["documents", "metadatas", "ids"]
+            include=["documents", "metadatas"]
         )
 
         if not all_data.get("ids"):
