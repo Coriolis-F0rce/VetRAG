@@ -204,6 +204,15 @@ results = store.search("犬瘟热治疗", use_hybrid=True)  # RRF 融合结果
   - 新增 5 个测试（TestHybridSearch），全部通过
   - 新增 `VetRAG/knowledge.md`：ChromaDB 分析 + 混合检索选型文档
 
+### 2026-05-02（凌晨）
+- 完成混合检索评估与调参
+  - 构建评估语料库（30 条标注查询 + 相关性标签）
+  - 网格搜索最优 RRF 权重：Dense=0.6, BM25=0.4，NDCG@5 提升 3.6pt
+  - 修复 `BM25Ok` API 兼容性问题（`okapi BM25` 参数差异）
+  - 修复 `hybrid_retriever.py` RRF 融合字段名 bug（`doc_id` → `id`）
+  - 19/19 测试全部通过
+  - 完善 `VetRAG/knowledge.md`：ChromaDB 存储分析 / RRF 权重调优 / 网格搜索方法论 / 开放问题
+
 ### 2026-05-01（下午）
 - 完成 QLoRA 微调流水线本地部署全部工作
 - 基础模型（ModelScope）+ LoRA adapter 均已下载至本地
