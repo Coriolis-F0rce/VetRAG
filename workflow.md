@@ -26,6 +26,7 @@
 | 多轮对话优化 | ⏳ 待启动 | 见 [TODO.md](TODO.md#1-多轮对话优化) |
 | 模型压缩与加速 | ⏳ 待启动 | 见 [TODO.md](TODO.md#2-模型压缩与加速) |
 | 上线准备 | ⏳ 待启动 | 见 [TODO.md](TODO.md#3-上线准备) |
+| **RAG 混合检索** | ✅ 完成 | 见 [accomplishments.md](accomplishments.md#八-rag-混合检索hybrid-search) |
 
 ## 代码修改完成后
 

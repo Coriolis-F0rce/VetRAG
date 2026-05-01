@@ -1,0 +1,18 @@
+feat: 实现 RAG 混合检索（Dense HNSW + BM25 + RRF 融合）
+
+新增文件：
+- src/retrievers/__init__.py         — retrievers 模块导出
+- src/retrievers/bm25_index.py      — BM25 关键词检索（jieba 分词 + BM25Okapi）
+- src/retrievers/hybrid_retriever.py — HybridRetriever：双路召回 + RRF 融合
+- knowledge.md                       — ChromaDB 分析 + 混合检索技术选型文档
+
+修改文件：
+- src/vector_store_chroma.py  — 集成混合检索，新增 use_hybrid/dense_weight/bm25_weight 参数，向后兼容
+- src/rag_interface.py         — 传递混合检索配置到 ChromaVectorStore
+- src/core/config.py           — 新增 USE_HYBRID_SEARCH 等 5 个配置项
+- requirements.txt              — 新增 rank-bm25>=0.12.0, jieba>=0.42.1
+- tests/rag/test_vector_store.py — 新增 5 个混合检索测试（全部通过）
+- tests/conftest.py            — 全局共享 temp_chroma_dir fixture
+- workflow.md                  — 更新项目进度总览
+- accomplishments.md           — 新增第八章：RAG 混合检索
+- TODO.md                      — 更新当前进行中状态

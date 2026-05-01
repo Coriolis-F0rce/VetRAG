@@ -5,14 +5,17 @@ from pathlib import Path
 import pytest
 
 project_root = Path(__file__).resolve().parents[1]
-# __file__ = D:\Backup\PythonProject2\VetRAG\tests\conftest.py
-# parents[0] = VetRAG/tests/, [1] = VetRAG/, [2] = PythonProject2/
-# project_root = D:\Backup\PythonProject2\VetRAG
-# src/ lives at project_root / "src"
-# data/ lives at project_root / "data"
 sys.path.insert(0, str(project_root))
 
 DATA_DIR = project_root / "data"
+
+
+@pytest.fixture
+def temp_chroma_dir(tmp_path):
+    """可复用的临时 ChromaDB 目录（跨测试类可用）"""
+    chroma_dir = tmp_path / "test_chroma"
+    chroma_dir.mkdir()
+    return str(chroma_dir)
 
 
 @pytest.fixture

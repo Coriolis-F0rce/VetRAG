@@ -153,7 +153,56 @@
 
 ---
 
+## 八、RAG 混合检索（Hybrid Search）
+
+> 完成日期：2026-05-01（晚上）
+
+### 背景
+
+当前 `ChromaVectorStore.search()` 仅有 Dense 向量检索（HNSW + BGE 嵌入），对短查询和专业术语精确匹配能力不足。宠物医疗场景有大量专有病名，用户查询也存在口语化与文档用词差异的问题。
+
+### 技术方案
+
+| 组件 | 实现 | 说明 |
+|------|------|------|
+| Dense 检索 | ChromaDB HNSW（原有） | BAAI/bge-large-zh-v1.5，1024 维，余弦距离 |
+| Sparse 检索 | BM25Okapi + jieba 分词 | 关键词精确匹配，中文友好 |
+| 融合算法 | RRF（Reciprocal Rank Fusion） | `RRF = w1/(k+r1) + w2/(k+r2)`，k=60 |
+| 权重配置 | `dense_weight=0.7, bm25_weight=0.3` | 通过环境变量可调 |
+
+### 关键文件
+
+| 文件 | 说明 |
+|------|------|
+| `src/retrievers/bm25_index.py` | BM25 索引构建、查询、持久化（pickle） |
+| `src/retrievers/hybrid_retriever.py` | HybridRetriever：双路召回 + RRF 融合 |
+| `src/retrievers/__init__.py` | 模块导出 |
+| `src/vector_store_chroma.py` | 新增 `use_hybrid` 参数，向后兼容 |
+| `src/core/config.py` | 新增 `USE_HYBRID_SEARCH` 等 5 个配置项 |
+| `knowledge.md` | ChromaDB 分析 + 混合检索技术选型文档 |
+
+### 使用方式
+
+```python
+# 启用混合检索
+from src.core.config import USE_HYBRID_SEARCH
+store = ChromaVectorStore(use_hybrid=True, dense_weight=0.7, bm25_weight=0.3)
+store.add_chunks(chunks)  # 自动构建 BM25 索引
+results = store.search("犬瘟热治疗", use_hybrid=True)  # RRF 融合结果
+```
+
+---
+
 ## 执行记录
+
+### 2026-05-01（晚上）
+- 完成 RAG 混合检索重构（Hybrid Search）
+  - 新增 `src/retrievers/bm25_index.py`（jieba 中文分词 + BM25Okapi 索引）
+  - 新增 `src/retrievers/hybrid_retriever.py`（RRF 融合，Dense+BM25 双路召回）
+  - 重构 `src/vector_store_chroma.py`：集成混合检索，保留纯 Dense 模式
+  - 新增配置项 `USE_HYBRID_SEARCH` 等（5 个环境变量配置）
+  - 新增 5 个测试（TestHybridSearch），全部通过
+  - 新增 `VetRAG/knowledge.md`：ChromaDB 分析 + 混合检索选型文档
 
 ### 2026-05-01（下午）
 - 完成 QLoRA 微调流水线本地部署全部工作

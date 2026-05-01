@@ -82,12 +82,6 @@ class TestChromaVectorStoreIntegration:
     """需要 ChromaDB 但不需要模型的集成测试"""
 
     @pytest.fixture
-    def temp_chroma_dir(self, tmp_path):
-        chroma_dir = tmp_path / "test_chroma"
-        chroma_dir.mkdir()
-        return str(chroma_dir)
-
-    @pytest.fixture
     def mock_embedding_model(self):
         """返回一个 Mock 的 embedding 模型"""
         mock_model = MagicMock()
@@ -145,6 +139,123 @@ class TestChromaVectorStoreIntegration:
         stats = store.get_collection_stats()
         assert stats["document_count"] == 42
         assert stats["collection_name"] == "veterinary_rag"
+        assert "use_hybrid" in stats
+        assert "dense_weight" in stats
+        assert "bm25_weight" in stats
+
+
+class TestHybridSearch:
+    """测试混合检索功能"""
+
+    def test_hybrid_retriever_init(self):
+        """HybridRetriever 可以正常实例化（不含 ChromaDB 依赖）"""
+        pytest.importorskip("chromadb")
+        from src.retrievers import HybridRetriever
+        from src.retrievers.bm25_index import BM25Retriever
+
+        mock_collection = MagicMock()
+        mock_collection.count.return_value = 0
+        mock_embed_fn = lambda q: [0.1] * 1024
+
+        hr = HybridRetriever(
+            chroma_collection=mock_collection,
+            embed_fn=mock_embed_fn,
+            persist_dir="./test_hybrid",
+            dense_weight=0.7,
+            bm25_weight=0.3,
+        )
+        assert hr._dense_weight == 0.7
+        assert hr._bm25_weight == 0.3
+        assert hr._bm25_retriever is None  # 延迟初始化
+
+    def test_bm25_retriever_tokenize_chinese(self):
+        """BM25Retriever 中文 jieba 分词正常工作"""
+        pytest.importorskip("rank_bm25")
+        pytest.importorskip("jieba")
+        from src.retrievers import BM25Retriever
+
+        retriever = BM25Retriever(persist_dir="./test_bm25", tokenize_lang="zh")
+        docs = [
+            "犬瘟热是一种犬类传染病，症状包括发热咳嗽",
+            "猫瘟热是由细小病毒引起的，症状包括呕吐腹泻",
+            "髋关节发育不良是大型犬常见的遗传性疾病",
+        ]
+        result = retriever.build_index(
+            documents=docs,
+            chunk_ids=["c0", "c1", "c2"],
+            metadatas=[{}, {}, {}],
+        )
+        assert result["added"] == 3
+
+        hits = retriever.search("犬瘟热", top_k=2)
+        assert len(hits) == 2
+        assert hits[0].bm25_score >= 0
+        assert hits[0].chunk_id in ("c0", "c1", "c2")
+
+    def test_rrf_fusion(self):
+        """RRF 融合能将两个检索结果合并并重新排序"""
+        pytest.importorskip("chromadb")
+        from src.retrievers import HybridRetriever
+
+        mock_collection = MagicMock()
+        mock_collection.count.return_value = 3
+        mock_collection.query.return_value = {
+            "ids": [["c0", "c1", "c2"]],
+            "documents": [["犬瘟热治疗方案", "犬瘟热症状", "犬瘟热预防"]],
+            "metadatas": [[{}, {}, {}]],
+            "distances": [[0.1, 0.15, 0.2]],
+        }
+        mock_embed_fn = lambda q: [0.1] * 1024
+
+        hr = HybridRetriever(
+            chroma_collection=mock_collection,
+            embed_fn=mock_embed_fn,
+            persist_dir="./test_rrf",
+        )
+        hr.build_index(
+            documents=["犬瘟热治疗方案", "犬瘟热症状", "犬瘟热预防"],
+            chunk_ids=["c0", "c1", "c2"],
+            metadatas=[{}, {}, {}],
+        )
+
+        raw = hr.search("犬瘟热", top_k=3, use_hybrid=True, return_raw=True)
+        assert raw["total_results"] == 3
+        for r in raw["results"]:
+            assert "rrf_score" in r
+            assert r["rank"] > 0
+        # Dense-only 模式
+        dense_only = hr.search("犬瘟热", top_k=2, use_hybrid=False)
+        assert "rrf_score" not in dense_only["results"][0]
+
+    def test_bm25_result_dataclass(self):
+        """BM25Result 数据类字段正确"""
+        from src.retrievers.bm25_index import BM25Result
+        r = BM25Result(
+            chunk_id="c1",
+            document="犬瘟热是一种传染病",
+            metadata={"source_file": "diseases.json"},
+            bm25_score=1.5,
+            rank=1,
+        )
+        assert r.chunk_id == "c1"
+        assert r.bm25_score == 1.5
+        assert r.rank == 1
+        assert r.to_dict()["bm25_score"] == 1.5
+
+    def test_chroma_vector_store_hybrid_flag(self, temp_chroma_dir):
+        """ChromaVectorStore 接受 hybrid 参数"""
+        pytest.importorskip("chromadb")
+        from src.vector_store_chroma import ChromaVectorStore
+        store = ChromaVectorStore(
+            persist_directory=temp_chroma_dir,
+            use_hybrid=True,
+            dense_weight=0.6,
+            bm25_weight=0.4,
+        )
+        assert store.use_hybrid is True
+        assert store.dense_weight == 0.6
+        assert store.bm25_weight == 0.4
+        assert store._hybrid_retriever is None  # 延迟初始化
 
 
 class TestDocumentCleaning:

@@ -15,6 +15,10 @@ chromadb>=0.4.22
 # Embedding 模型
 sentence-transformers>=2.5.0
 
+# 混合检索（BM25 关键词检索）
+rank-bm25>=0.12.0
+jieba>=0.42.1
+
 # LLM 模型（Qwen3）
 transformers>=4.40.0
 torch>=2.0.0

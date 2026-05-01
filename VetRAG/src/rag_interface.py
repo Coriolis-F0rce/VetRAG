@@ -19,6 +19,9 @@ from .core.config import (
     SYSTEM_PROMPT_VET,
     Qwen3_BASE_MODEL_PATH,
     QWEN3_FINETUNED_PATH,
+    USE_HYBRID_SEARCH,
+    HYBRID_DENSE_WEIGHT,
+    HYBRID_BM25_WEIGHT,
 )
 
 
@@ -137,18 +140,25 @@ class RAGInterface:
         generator_model_path: Optional[str] = None,
         generator_base_model_path: Optional[str] = None,
         collection_name: str = "veterinary_rag",
-        embedding_model_name: str = "BAAI/bge-large-zh-v1.5"
+        embedding_model_name: str = "BAAI/bge-large-zh-v1.5",
+        use_hybrid: bool = USE_HYBRID_SEARCH,
+        dense_weight: float = HYBRID_DENSE_WEIGHT,
+        bm25_weight: float = HYBRID_BM25_WEIGHT,
     ):
         if generator_model_path is None:
             generator_model_path = str(QWEN3_FINETUNED_PATH)
         self.chroma_persist_dir = chroma_persist_dir
         self.generator_model_path = generator_model_path
+        self.use_hybrid = use_hybrid
 
         print(f"加载向量数据库: {chroma_persist_dir}")
         self.vector_store = ChromaVectorStore(
             persist_directory=chroma_persist_dir,
             collection_name=collection_name,
-            model_name=embedding_model_name
+            model_name=embedding_model_name,
+            use_hybrid=use_hybrid,
+            dense_weight=dense_weight,
+            bm25_weight=bm25_weight,
         )
 
         self.loader = VetRAGDataLoader()

@@ -47,6 +47,18 @@ CHROMA_COLLECTION_NAME: str = os.getenv("CHROMA_COLLECTION_NAME", "veterinary_ra
 BGE_MODEL_NAME: str = os.getenv("BGE_MODEL_NAME", "BAAI/bge-large-zh-v1.5")
 BGE_MODEL_FALLBACK: str = os.getenv("BGE_MODEL_FALLBACK", "paraphrase-multilingual-MiniLM-L12-v2")
 
+# ---------- 混合检索（Hybrid Search）----------
+# 是否启用混合检索（Dense HNSW + BM25 + RRF）
+USE_HYBRID_SEARCH: bool = os.getenv("USE_HYBRID_SEARCH", "false").lower() in ("true", "1", "yes")
+# Dense 向量检索权重（RRF 融合中使用）
+HYBRID_DENSE_WEIGHT: float = float(os.getenv("HYBRID_DENSE_WEIGHT", "0.7"))
+# BM25 关键词检索权重
+HYBRID_BM25_WEIGHT: float = float(os.getenv("HYBRID_BM25_WEIGHT", "0.3"))
+# RRF 融合常数（经验最优值）
+HYBRID_RRF_K: int = int(os.getenv("HYBRID_RRF_K", "60"))
+# 每路检索召回数量（融合前各召回多少条）
+HYBRID_RETRIEVE_K: int = int(os.getenv("HYBRID_RETRIEVE_K", "20"))
+
 # ---------- Hugging Face ----------
 HF_ENDPOINT: Optional[str] = os.getenv("HF_ENDPOINT")
 if HF_ENDPOINT:
