@@ -133,14 +133,23 @@
 
 **响应格式：**
 
+首个 token 随 `docs` 字段附带检索到的文档元数据：
+
 ```
-data: {"token": "当"}
+data: {"token": "当", "docs": [{"similarity": 0.85, "source": "diseases.json", "preview": "犬瘟热会导致..."}]}
 data: {"token": "狗"}
 data: {"token": "狗"}
-data: {"token": "发"}
 ...
 data: [DONE]
 ```
+
+`docs` 字段说明：
+
+| 字段 | 类型 | 说明 |
+|------|------|------|
+| `similarity` | float | 相似度分值 |
+| `source` | str | 来源文件名 |
+| `preview` | str | 文档前 120 字预览 |
 
 **错误响应：**
 
@@ -152,6 +161,24 @@ data: {"error": "问题不能为空"}
 
 ```bash
 curl -N "http://localhost:8000/stream?question=金毛的寿命有多长"
+```
+
+---
+
+## 领域守卫（Domain Guard）
+
+`/stream` 和 `POST /query` 端点在检索前均经过领域守卫检查：
+
+- **宠物相关问题** — 正常进入 RAG 流程
+- **非宠物问题** — 直接返回友好拒绝语，不进行检索和生成
+
+`/stream` 端点的拒绝响应示例：
+
+```
+data: {"token": "抱"}
+data: {"token": "歉"}
+...
+data: [DONE]
 ```
 
 ---
@@ -178,8 +205,8 @@ API 启用全通 CORS（`Access-Control-Allow-Origin: *`），支持跨域请求
 
 - 对话输入框
 - 发送按钮
-- 流式回答展示区域
-- 相似文档展示区（可折叠）
-- 响应时间统计
+- 流式回答展示区域（打字机动画）
+- 相似文档展示区（可折叠，默认收起，收到回答后自动展开）
+- 响应时间统计（回答完成后显示耗时和字数）
 
 UI 使用 SSE 与 `/stream` 端点交互，无需额外配置。

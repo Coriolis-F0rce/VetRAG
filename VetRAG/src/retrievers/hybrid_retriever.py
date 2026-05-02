@@ -17,7 +17,7 @@ import logging
 from typing import List, Dict, Any, Optional, Callable, Tuple
 from dataclasses import dataclass
 
-from retrievers.bm25_index import BM25Retriever, BM25Result
+from src.retrievers.bm25_index import BM25Retriever, BM25Result
 
 logger = logging.getLogger(__name__)
 

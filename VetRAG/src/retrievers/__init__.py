@@ -8,8 +8,8 @@ retrievers — 检索策略模块
 导入方式：
     from retrievers import HybridRetriever, BM25Retriever
 """
-from retrievers.bm25_index import BM25Retriever
-from retrievers.hybrid_retriever import HybridRetriever
+from src.retrievers.bm25_index import BM25Retriever
+from src.retrievers.hybrid_retriever import HybridRetriever
 
 __all__ = [
     "BM25Retriever",

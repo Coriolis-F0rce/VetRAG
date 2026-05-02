@@ -49,6 +49,7 @@ tokenizer = AutoTokenizer.from_pretrained(
     trust_remote_code=True
 )
 tokenizer.pad_token = tokenizer.eos_token
+tokenizer.padding_side = "left"
 
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_PATH,

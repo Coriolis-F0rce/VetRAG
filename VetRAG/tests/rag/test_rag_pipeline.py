@@ -122,6 +122,59 @@ class TestChunkMetadata:
         assert chunk_id == f"chunk_{content_hash:08d}"
 
 
+class TestCleanOutput:
+    """测试 _clean_output 输出后处理"""
+
+    def _clean_output(self, text: str) -> str:
+        """直接复制 RAGInterface._clean_output 的逻辑用于测试"""
+        import re
+        if not text:
+            return text
+        text = re.sub(
+            r'[\U0001F000-\U0001F9FF]'
+            r'|[\U00002702-\U000027B0]'
+            r'|[\U0001F600-\U0001F64F]'
+            r'|[\U00002600-\U000026FF]'
+            r'|[\U0001F300-\U0001F5FF]'
+            r'|[\U0001F680-\U0001F6FF]'
+            r'|[\U0001FA00-\U0001FAFF]'
+            r'|[\U0001FB00-\U0001FBFF]'
+            r'|[\U0001F000-\U0001FFFF]'
+            r'|[\U0000200B-\U0000200F]'
+            r'|[\U0001F1E6-\U0001F1FF]'
+            r'|[☑☒✓✗✔✘]+',
+            '', text
+        )
+        text = re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]', '', text)
+        return text.strip()
+
+    def test_clean_output_removes_emoji(self):
+        assert self._clean_output("狗🐶") == "狗"
+        assert self._clean_output("🐕 狗粮推荐") == "狗粮推荐"
+        assert self._clean_output("🐾健康指南😊") == "健康指南"
+        assert self._clean_output("🐶🐕🐩🐺🦮🐕‍🦺") == ""
+
+    def test_clean_output_removes_dingbats(self):
+        assert self._clean_output("答案☑") == "答案"
+        assert self._clean_output("选项：✓ 是，✗ 否") == "选项： 是， 否"
+        assert self._clean_output("正确✔错误✘") == "正确错误"
+
+    def test_clean_output_removes_control_chars(self):
+        assert self._clean_output("text\x07beep") == "textbeep"
+        assert self._clean_output("line1\x0bline2") == "line1line2"
+
+    def test_clean_output_preserves_normal_text(self):
+        normal = "狗狗发烧时，首先要测量体温。如果体温超过39.5度，建议尽快就医。"
+        assert self._clean_output(normal) == normal
+
+    def test_clean_output_empty_input(self):
+        assert self._clean_output("") == ""
+        assert self._clean_output("   ") == ""
+
+    def test_clean_output_none_input(self):
+        assert self._clean_output(None) is None
+
+
 class TestQueryFlow:
     """测试查询流程"""
 

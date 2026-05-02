@@ -301,7 +301,157 @@ HYBRID_BM25_WEIGHT=0.4
 
 ---
 
-## 六、开放问题与后续研究
+## 六、FastAPI SSE 流式输出问题排查与修复
+
+> 修复日期：2026-05-02
+
+### 6.1 问题现象
+
+前端使用 `EventSource`（SSE）订阅 `/stream` 接口，回答总是等模型完整生成后才一次性显示，而非逐字流式输出。
+
+### 6.2 根本原因
+
+原实现中，`QwenGenerator.async_stream_generate()` 的核心逻辑是：
+
+```python
+def async_stream_generate(self, prompt: str, **kwargs):
+    streamer = TextIteratorStreamer(self.tokenizer, ...)
+    thread = Thread(target=self.model.generate, kwargs={**inputs, **gen_kwargs})
+    thread.start()
+
+    # 阻塞迭代：等 streamer 吐出数据
+    for text in streamer:
+        yield text
+```
+
+问题在于这个 `for` 循环是**同步阻塞迭代**——它在 FastAPI 的 `async def event_generator()` 中被 `for token in rag.generator.async_stream_generate(prompt)` 调用时，整个事件循环被卡在 `q.get(timeout=60)` 上。`TextIteratorStreamer` 通过内部队列通信，当队列有新 token 时 `q.get()` 返回，主线程才继续并 `yield`。
+
+但更深层的问题是：当这个生成器在 FastAPI `async` 函数中运行时，Python 的 GIL 使得阻塞迭代与异步事件循环产生竞争。`q.get(timeout=60)` 每 60 秒才触发一次超时，期间 SSE 连接虽然保持但没有任何数据发送给客户端，直到生成全部完成后才一次性 flush 所有数据。
+
+### 6.3 修复方案：asyncio.Queue + async for（最终版）
+
+```python
+# rag_interface.py
+import asyncio
+from queue import Queue
+from threading import Thread
+
+class QwenGenerator:
+    async def async_stream_generate(self, prompt: str, **kwargs) -> AsyncGenerator[str, None]:
+        q: asyncio.Queue = asyncio.Queue()
+
+        def generate():
+            try:
+                inputs = self.tokenizer(prompt, return_tensors="pt", truncation=True, max_length=2048).to(self.device)
+                streamer = TextIteratorStreamer(self.tokenizer, skip_prompt=True, skip_special_tokens=True)
+                gen_kwargs = {**self.generation_config, **kwargs, "streamer": streamer}
+                thread = Thread(target=self.model.generate, kwargs={**dict(inputs), **gen_kwargs}, daemon=True)
+                thread.start()
+                try:
+                    for token in streamer:
+                        q.put_nowait(token)
+                finally:
+                    thread.join()
+            except Exception as e:
+                q.put_nowait(e)
+            else:
+                q.put_nowait(None)
+
+        thread = Thread(target=generate, daemon=True)
+        thread.start()
+
+        while True:
+            token = await asyncio.wait_for(q.get(), timeout=60)
+            if token is None:
+                break
+            if isinstance(token, Exception):
+                raise token
+            yield token
+```
+
+```python
+# web_api.py
+async def event_generator():
+    async for token in rag.generator.async_stream_generate(prompt):
+        clean_token = rag._clean_output(token)
+        yield f"data: {json.dumps({'token': clean_token})}\n\n"
+    yield "data: [DONE]\n\n"
+```
+
+关键点：
+1. **`asyncio.Queue` 替代 `queue.Queue`**：跨线程通信 + 事件循环无缝衔接，`put_nowait` 非阻塞放入，`await q.get()` 异步等待
+2. **在 `generate()` 中显式迭代 `streamer`**：`streamer` 本身通过内部队列通信，必须在后台线程中显式迭代它并将 token 放入 `asyncio.Queue`
+3. **`None` 替代 `StopIteration` 作为结束哨兵**：避免 Python 生成器协议对 `StopIteration` 的特殊处理导致的意外行为
+4. **`async for` 直接迭代**：FastAPI `async def` 中用 `async for` 迭代真正的 `AsyncGenerator`，每个 `yield` 不阻塞事件循环
+
+### 6.4 调试经验
+
+- `run_in_executor` + `next(gen)` 的问题：线程池线程无法从 `TextIteratorStreamer` 的阻塞队列中及时获取 token，导致串行化
+- `asyncio.from_thread.run()` 的问题：只能在已有事件循环的线程中调用，从普通 Thread 调用会失败
+- `queue.Queue` 阻塞迭代的问题：60 秒超时期间整个线程被卡死，FastAPI 事件循环无法介入
+- `StopIteration` 作为值的问题：`yield StopIteration` 会触发 PEP 479 转换，且 `_clean_output(StopIteration)` 会报错
+
+```python
+from queue import Queue, Empty
+from threading import Thread
+
+def async_stream_generate(self, prompt: str, **kwargs):
+    q: Queue = Queue()
+
+    def generate():
+        try:
+            inputs = self.tokenizer(prompt, return_tensors="pt", ...).to(self.device)
+            streamer = TextIteratorStreamer(...)
+            gen_kwargs = {**self.generation_config, **kwargs, "streamer": streamer}
+            self.model.generate(**dict(inputs), **gen_kwargs)
+        except Exception as e:
+            q.put(StopIteration(e))
+
+    thread = Thread(target=generate, daemon=True)
+    thread.start()
+
+    while True:
+        try:
+            token = q.get(timeout=60)
+            if isinstance(token, StopIteration):
+                raise token.args[0]
+            yield token
+        except Empty:
+            yield StopIteration
+            break
+```
+
+关键点：
+1. **后台线程运行模型生成**，不阻塞主线程
+2. **`TextIteratorStreamer` 自动将 token 放入队列**（内部机制），主线程通过 `q.get()` 异步获取
+3. **`yield` 不阻塞事件循环**，FastAPI 的 `StreamingResponse` 能及时将每个 token 推送给客户端
+4. **`daemon=True`** 确保进程退出时自动回收线程
+
+### 6.4 相关文件
+
+| 文件 | 改动 |
+|------|------|
+| `src/rag_interface.py` | `async_stream_generate()` 重构为 Queue 模式，新增 `from queue import Queue, Empty` |
+| `web_api.py` | `event_generator()` 中 `for token in rag.generator.async_stream_generate(prompt)` 保持不变（生成器同步，迭代不阻塞） |
+
+### 6.5 验证方法
+
+```bash
+# 手动测试 SSE 流式输出
+curl -N "http://localhost:5002/stream?question=狗狗发烧怎么办&top_k=5&threshold=0.0"
+```
+
+正常情况下应看到 `data: {"token": "x"...}` 逐行输出，而非等待数秒后一次性全部返回。
+
+### 6.6 教训总结
+
+- 在 FastAPI 异步上下文中使用同步生成器时，确保生成器内部不阻塞事件循环
+- `Thread` + `Queue` 是将 CPU/GPU 密集型任务（模型推理）从异步事件循环中解耦的标准模式
+- `TextIteratorStreamer` 本身就是队列生产者，调用方只需从其队列中异步消费即可
+
+---
+
+## 七、开放问题与后续研究
 
 - [ ] **扩大语料评估**：当前仅 12 篇文档 / 10 条查询，建议在正式语料库上验证
 - [ ] **Cross-Encoder Reranking**：RRF 融合后用 Cross-Encoder（如 mteb/reranker）进一步重排

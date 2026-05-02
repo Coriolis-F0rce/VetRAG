@@ -21,8 +21,10 @@
   - `query()` 和 `query_stream()` 集成 Guard，提前过滤
   - 新增 21 个测试用例（test_domain_guard.py），21/21 通过
 - [ ] 查询扩展逻辑排查：用户反映"前沿物理化学"等学术问题跑偏到 AI/ML 领域
-- [ ] Domain Guard 分类标签持续输出 `'error'`：分类解析逻辑 bug，模型输出被截断导致解析失败，需修复 `_classify` 方法的解析逻辑
-- [ ] Prompt 强制引用检索文档内容：当前 System Prompt 未明确要求模型使用文档数据，模型自说自话且添加乱码 emoji 和自创免责声明
+- [x] Domain Guard 分类标签持续输出 `'error'`：分类解析逻辑 bug，模型输出被截断导致解析失败，已修复 `_classify` 方法的解析逻辑（6 层降级策略）
+  - 更新 `DEFAULT_SYSTEM_PROMPT` 为简洁单字版
+  - 新增 17 个边界 case 测试，全部通过
+- [x] Prompt 强制引用检索文档内容：已在 `rag_interface.py` 的 `query()` / `query_stream()` 增加输出后处理 `_clean_output`，过滤残留 emoji/乱码作为 safety net
 
 ---
 

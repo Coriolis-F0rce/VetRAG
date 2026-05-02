@@ -155,6 +155,128 @@
             margin-top: 8px;
             padding-bottom: 6px;
         }
+        /* 相似文档面板 */
+        .docs-panel {
+            background: white;
+            border-top: 1px solid #eef2f6;
+            max-height: 220px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .docs-panel.collapsed .docs-list {
+            display: none;
+        }
+        .docs-panel.collapsed #toggleDocs::before {
+            content: "展开";
+        }
+        .docs-panel:not(.collapsed) #toggleDocs::before {
+            content: "收起";
+        }
+        .docs-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 28px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1e3c5c;
+            cursor: pointer;
+            user-select: none;
+        }
+        #toggleDocs {
+            background: none;
+            border: 1px solid #d4e2f0;
+            color: #1e4f7a;
+            font-size: 0.78rem;
+            padding: 3px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .docs-list {
+            padding: 0 28px 14px;
+            overflow-y: auto;
+            max-height: 170px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .doc-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 14px;
+            background: #f7f9fc;
+            border-radius: 12px;
+            border: 1px solid #eef2f6;
+            font-size: 0.82rem;
+        }
+        .doc-meta {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            min-width: 52px;
+        }
+        .doc-source {
+            background: #1e6f9f;
+            color: white;
+            font-size: 0.72rem;
+            padding: 2px 7px;
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+        .doc-similarity {
+            color: #888;
+            font-size: 0.75rem;
+        }
+        .doc-preview {
+            color: #555;
+            line-height: 1.5;
+            flex: 1;
+        }
+        /* 响应时间统计条 */
+        .stats-bar {
+            text-align: center;
+            padding: 6px 28px 8px;
+            background: rgba(249,250,252,0.6);
+            font-size: 0.78rem;
+            color: #8a9aa8;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        .stats-bar span::before {
+            content: "";
+        }
+        /* 加载指示器（打字动画） */
+        .typing-indicator {
+            display: none;
+            padding: 14px 20px;
+        }
+        .typing-indicator.active {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+        .typing-dots {
+            display: flex;
+            gap: 5px;
+        }
+        .typing-dots span {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #b0bec5;
+            animation: bounce 1.2s infinite;
+        }
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+            40% { transform: translateY(-7px); opacity: 1; }
+        }
     </style>
 </head>
 <body>
@@ -164,6 +286,20 @@
             <span class="badge">智能 · 专业 · 共情</span>
         </div>
         <div class="chat-messages" id="chatMessages"></div>
+        <div class="docs-panel collapsed" id="docsPanel">
+            <div class="docs-header" id="docsHeader">
+                <span>相关文档 (<span id="docCount">0</span>)</span>
+                <button id="toggleDocs">收起</button>
+            </div>
+            <div class="docs-list" id="docsList"></div>
+        </div>
+        <div class="stats-bar" id="statsBar">
+            <span id="responseTime"></span>
+            <span id="tokenCount"></span>
+        </div>
+        <div class="typing-indicator" id="typingIndicator">
+            <div class="typing-dots"><span></span><span></span><span></span></div>
+        </div>
         <div class="chat-input-area">
             <input type="text" id="questionInput" placeholder="例如：狗狗便秘怎么办？" autofocus>
             <button id="sendBtn">发送</button>
@@ -176,11 +312,21 @@
             const chatMessages = document.getElementById('chatMessages');
             const questionInput = document.getElementById('questionInput');
             const sendBtn = document.getElementById('sendBtn');
+            const docsPanel = document.getElementById('docsPanel');
+            const docsList = document.getElementById('docsList');
+            const docCount = document.getElementById('docCount');
+            const docsHeader = document.getElementById('docsHeader');
+            const toggleDocs = document.getElementById('toggleDocs');
+            const statsBar = document.getElementById('statsBar');
+            const responseTime = document.getElementById('responseTime');
+            const tokenCount = document.getElementById('tokenCount');
+            const typingIndicator = document.getElementById('typingIndicator');
 
             let eventSource = null;
             let currentAssistantDiv = null;
             let assistantBuffer = '';
             let typingTimer = null;
+            let startTime = null;
 
             function addMessage(role, content) {
                 const messageDiv = document.createElement('div');
@@ -196,6 +342,8 @@
 
             function clearChat() {
                 chatMessages.innerHTML = '';
+                resetDocs();
+                resetStats();
             }
 
             function stopTyping() {
@@ -210,18 +358,16 @@
                 stopTyping();
                 const fullText = assistantBuffer;
                 let displayedLength = 0;
-                // 先清空气泡内容（但保留引用）
                 currentAssistantDiv.textContent = '';
                 typingTimer = setInterval(() => {
                     if (displayedLength < fullText.length) {
-                        // 每次增加一个字符
                         displayedLength++;
                         currentAssistantDiv.textContent = fullText.substring(0, displayedLength);
                         chatMessages.scrollTop = chatMessages.scrollHeight;
                     } else {
                         stopTyping();
                     }
-                }, 30); // 30ms 一个字符，可调节
+                }, 30);
             }
 
             function resetForNewQuestion() {
@@ -232,19 +378,54 @@
                     eventSource.close();
                     eventSource = null;
                 }
+                resetDocs();
+                resetStats();
+            }
+
+            function resetDocs() {
+                docsList.innerHTML = '';
+                docCount.textContent = '0';
+                docsPanel.classList.add('collapsed');
+            }
+
+            function resetStats() {
+                responseTime.textContent = '';
+                tokenCount.textContent = '';
+                statsBar.style.display = 'none';
+            }
+
+            function showDocs(docs) {
+                docsList.innerHTML = '';
+                docs.forEach(function(doc) {
+                    const item = document.createElement('div');
+                    item.className = 'doc-item';
+                    item.innerHTML =
+                        '<div class="doc-meta">' +
+                            '<span class="doc-source">' + (doc.source || '未知') + '</span>' +
+                            '<span class="doc-similarity">' + (doc.similarity || 0).toFixed(2) + '</span>' +
+                        '</div>' +
+                        '<div class="doc-preview">' + doc.preview + '</div>';
+                    docsList.appendChild(item);
+                });
+                docCount.textContent = docs.length;
+                docsPanel.classList.remove('collapsed');
+            }
+
+            function showStats(tokens, ms) {
+                const seconds = (ms / 1000).toFixed(1);
+                responseTime.textContent = '响应时间: ' + seconds + 's';
+                tokenCount.textContent = '生成 ' + tokens + ' 字';
+                statsBar.style.display = 'flex';
             }
 
             function sendQuestion() {
                 const question = questionInput.value.trim();
                 if (!question) return;
 
-                // 显示用户消息
                 addMessage('user', question);
                 questionInput.value = '';
-
                 resetForNewQuestion();
 
-                // 创建助手消息占位符（空气泡，稍后填充）
                 const assistantDiv = document.createElement('div');
                 assistantDiv.className = 'message assistant';
                 const bubbleDiv = document.createElement('div');
@@ -254,26 +435,30 @@
                 currentAssistantDiv = bubbleDiv;
                 chatMessages.scrollTop = chatMessages.scrollHeight;
 
-                // 建立 SSE 连接
-                const url = `/stream?question=${encodeURIComponent(question)}&top_k=3&threshold=0.5`;
+                startTime = Date.now();
+                const url = '/stream?question=' + encodeURIComponent(question) + '&top_k=3&threshold=0.5';
                 eventSource = new EventSource(url);
 
                 eventSource.onmessage = function(event) {
                     if (event.data === '[DONE]') {
                         eventSource.close();
                         eventSource = null;
-                        // 确保所有内容显示完毕
+                        stopTyping();
                         if (currentAssistantDiv && assistantBuffer.length > 0) {
                             currentAssistantDiv.textContent = assistantBuffer;
                         }
-                        stopTyping();
+                        if (startTime) {
+                            showStats(assistantBuffer.length, Date.now() - startTime);
+                        }
                         return;
                     }
                     try {
                         const data = JSON.parse(event.data);
                         if (data.token) {
                             assistantBuffer += data.token;
-                            // 如果当前没有打字定时器，启动
+                            if (data.docs && data.docs.length > 0) {
+                                showDocs(data.docs);
+                            }
                             if (!typingTimer) {
                                 startTyping();
                             }
@@ -294,22 +479,23 @@
                 };
             }
 
-            // 事件绑定
             sendBtn.addEventListener('click', sendQuestion);
-            questionInput.addEventListener('keypress', (e) => {
+            questionInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') sendQuestion();
             });
 
-            // 可选：Ctrl+Shift+C 清空聊天
-            window.addEventListener('keydown', (e) => {
+            docsHeader.addEventListener('click', function() {
+                docsPanel.classList.toggle('collapsed');
+            });
+
+            window.addEventListener('keydown', function(e) {
                 if (e.ctrlKey && e.shiftKey && e.key === 'C') {
                     clearChat();
                 }
             });
 
-            // 初始化欢迎语
-            window.addEventListener('load', () => {
-                addMessage('assistant', '🐶 您好！我是您的兽医助手，可以解答宠物健康、护理、疾病等问题。有什么可以帮您的吗？');
+            window.addEventListener('load', function() {
+                addMessage('assistant', '您好！我是您的兽医助手，可以解答宠物健康、护理、疾病等问题。有什么可以帮您的吗？');
             });
         })();
     </script>

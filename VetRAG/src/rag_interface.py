@@ -1,8 +1,11 @@
 import os
 import re
 import sys
+import asyncio
 from pathlib import Path
-from typing import List, Dict, Any, Optional, Generator
+from typing import List, Dict, Any, Optional, Generator, AsyncGenerator
+from threading import Thread
+from queue import Queue, Empty
 from threading import Thread
 
 import torch
@@ -14,9 +17,9 @@ from transformers import (
 )
 from peft import PeftModel
 
-from vector_store_chroma import ChromaVectorStore
-from json_loader import VetRAGDataLoader
-from core.config import (
+from src.vector_store_chroma import ChromaVectorStore
+from src.json_loader import VetRAGDataLoader
+from src.core.config import (
     SYSTEM_PROMPT_VET,
     Qwen3_BASE_MODEL_PATH,
     QWEN3_FINETUNED_PATH,
@@ -25,7 +28,7 @@ from core.config import (
     HYBRID_BM25_WEIGHT,
     USE_DOMAIN_GUARD,
 )
-from core.domain_guard import DomainGuard
+from src.core.domain_guard import DomainGuard
 
 
 class QwenGenerator:
@@ -39,7 +42,6 @@ class QwenGenerator:
         self.tokenizer = AutoTokenizer.from_pretrained(
             model_path,
             trust_remote_code=True,
-            padding_side="left"
         )
         if self.tokenizer.pad_token is None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
@@ -55,10 +57,11 @@ class QwenGenerator:
             base_model = AutoModelForCausalLM.from_pretrained(
                 base_model_path,
                 torch_dtype=torch.float16 if device == "cuda" else torch.float32,
-                device_map="auto" if device == "cuda" else None,
                 trust_remote_code=True,
             )
+            base_model = base_model.to(device)
             self.model = PeftModel.from_pretrained(base_model, model_path)
+            self.model = self.model.to(device)
             print("LoRA adapter 加载完成，可训练参数:")
             self.model.print_trainable_parameters()
         else:
@@ -66,11 +69,10 @@ class QwenGenerator:
             self.model = AutoModelForCausalLM.from_pretrained(
                 model_path,
                 torch_dtype=torch.float16 if device == "cuda" else torch.float32,
-                device_map="auto" if device == "cuda" else None,
+                device_map=None,
                 trust_remote_code=True
             )
-            if device == "cpu":
-                self.model = self.model.to(device)
+            self.model = self.model.to(device)
 
         self.model.eval()
 
@@ -120,21 +122,46 @@ class QwenGenerator:
         answer = answer.replace("<think>\n\n\n\n\n\n\n\n\n\n</think>", "").replace("<think>", "").replace("</think>", "")
         return answer.strip()
 
-    def async_stream_generate(self, prompt: str, **kwargs):
+    async def async_stream_generate(self, prompt: str, **kwargs) -> AsyncGenerator[str, None]:
         """
-        异步生成器，逐字返回生成的 token（用于流式输出）
+        异步生成器，在后台线程中运行模型生成，通过 asyncio.Queue 将 token 传递到
+        事件循环，支持 FastAPI 流式 SSE。
         """
-        inputs = self.tokenizer(prompt, return_tensors="pt", truncation=True, max_length=2048).to(self.device)
-        streamer = TextIteratorStreamer(self.tokenizer, skip_prompt=True, skip_special_tokens=True)
-        gen_kwargs = {**self.generation_config, **kwargs, "streamer": streamer}
+        q: asyncio.Queue = asyncio.Queue()
 
-        # 在后台线程中运行生成
-        thread = Thread(target=self.model.generate, kwargs={**inputs, **gen_kwargs})
+        def generate():
+            try:
+                inputs = self.tokenizer(
+                    prompt, return_tensors="pt", truncation=True, max_length=2048
+                ).to(self.device)
+                streamer = TextIteratorStreamer(
+                    self.tokenizer, skip_prompt=True, skip_special_tokens=True
+                )
+                gen_kwargs = {**self.generation_config, **kwargs, "streamer": streamer}
+                thread = Thread(target=self.model.generate, kwargs={**dict(inputs), **gen_kwargs}, daemon=True)
+                thread.start()
+                try:
+                    for token in streamer:
+                        q.put_nowait(token)
+                finally:
+                    thread.join()
+            except Exception as e:
+                q.put_nowait(e)
+            else:
+                q.put_nowait(None)
+
+        thread = Thread(target=generate, daemon=True)
         thread.start()
 
-        # 从 streamer 中迭代输出
-        for text in streamer:
-            yield text
+        while True:
+            token = await asyncio.wait_for(q.get(), timeout=60)
+            if token is None:
+                break
+            if isinstance(token, Exception):
+                raise token
+            yield token
+
+
 
 class RAGInterface:
     def __init__(
@@ -170,10 +197,14 @@ class RAGInterface:
         self.generator = None
         self.generator = QwenGenerator(generator_model_path, base_model_path=generator_base_model_path)
 
-        # 初始化领域守卫
+        # 初始化领域守卫（优先使用基础模型做零样本分类）
+        base_model_for_guard = generator_base_model_path
+        if base_model_for_guard is None:
+            base_model_for_guard = str(Qwen3_BASE_MODEL_PATH)
         self.domain_guard = DomainGuard(
             generator=self.generator,
             enabled=use_domain_guard,
+            base_model_path=base_model_for_guard,
         )
 
         stats = self.vector_store.get_collection_stats()
@@ -186,6 +217,33 @@ class RAGInterface:
         text = re.sub(r'```.*?```', '', text, flags=re.DOTALL)
         # 去除 Markdown 标题符号（可选）
         text = re.sub(r'^#+\s*', '', text, flags=re.MULTILINE)
+        return text.strip()
+
+    def _clean_output(self, text: str) -> str:
+        """
+        对生成结果进行输出后处理，清除残留的 emoji 和乱码。
+        作为 System Prompt 约束的 safety net。
+        """
+        if not text:
+            return text
+        # 过滤 emoji 和常见特殊符号
+        text = re.sub(
+            r'[\U0001F000-\U0001F9FF]'  # emoji
+            r'|[\U00002702-\U000027B0]'  # dingbats
+            r'|[\U0001F600-\U0001F64F]'  # emoticons
+            r'|[\U00002600-\U000026FF]'  # misc symbols
+            r'|[\U0001F300-\U0001F5FF]'  # symbols & pictographs
+            r'|[\U0001F680-\U0001F6FF]'  # transport & map symbols
+            r'|[\U0001FA00-\U0001FAFF]'  # chess, symbols
+            r'|[\U0001FB00-\U0001FBFF]'  # symbols legacy
+            r'|[\U0001F000-\U0001FFFF]'  # full emoji range
+            r'|[\U0000200B-\U0000200F]'  # zero-width chars (ZWSP, ZWNJ, ZWJ, etc.)
+            r'|[\U0001F1E6-\U0001F1FF]'  # regional indicator symbols (flag emojis)
+            r'|[☑☒✓✗✔✘]+',              # 混合勾叉
+            '', text
+        )
+        # 过滤控制字符（换行/空格除外）
+        text = re.sub(r'[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]', '', text)
         return text.strip()
 
     def query_stream(self, question: str, top_k: int = 5, similarity_threshold: float = 0.4):
@@ -236,7 +294,8 @@ class RAGInterface:
         # =================================================
 
         print("答案：", end="", flush=True)
-        self.generator.generate_stream(prompt)
+        for token in self.generator.generate_stream(prompt):
+            print(self._clean_output(token), end="", flush=True)
         print()
 
     def query(self, question: str, top_k: int = 5) -> Dict[str, Any]:
@@ -280,6 +339,7 @@ class RAGInterface:
         # =================================================
 
         answer = self.generator.generate(prompt)
+        answer = self._clean_output(answer)
 
         return {
             "question": question,

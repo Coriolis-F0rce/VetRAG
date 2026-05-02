@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import asyncio
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -52,15 +53,39 @@ async def query(request: Request):
     return result
 
 @app.get("/stream")
-async def stream(question: str, top_k: int = 3, threshold: float = 0.5):
+async def stream(question: str, top_k: int = 5, threshold: float = 0.0):
     if not question:
         return StreamingResponse(
             iter(["data: " + json.dumps({"error": "问题不能为空"}) + "\n\n"]),
             media_type="text/event-stream"
         )
 
+    # 领域守卫：非宠物问题直接流式返回拒绝消息
+    rejection = rag.domain_guard.check_and_respond(question)
+    if rejection:
+        rejection_text = rag._clean_output(rejection)
+
+        async def rejection_generator():
+            for char in rejection_text:
+                yield f"data: {json.dumps({'token': char})}\n\n"
+            yield "data: [DONE]\n\n"
+
+        return StreamingResponse(rejection_generator(), media_type="text/event-stream")
+
     search_results = rag.vector_store.search(question, n_results=top_k)
     all_retrieved = search_results.get("results", [])
+
+    # 所有检索结果都传给前端展示
+    docs_meta = [
+        {
+            "similarity": doc.get("similarity", 0),
+            "source": os.path.basename(doc.get("metadata", {}).get("source_file", "未知")),
+            "preview": doc["document"][:120] + "…" if len(doc["document"]) > 120 else doc["document"],
+        }
+        for doc in all_retrieved
+    ]
+
+    # 仅将高相似度文档加入上下文（防止噪声影响生成）
     valid_docs = [doc for doc in all_retrieved if doc.get("similarity", 0) >= threshold]
 
     context_parts = []
@@ -80,8 +105,14 @@ async def stream(question: str, top_k: int = 3, threshold: float = 0.5):
 
     async def event_generator():
         try:
-            for token in rag.generator.async_stream_generate(prompt):
-                yield f"data: {json.dumps({'token': token})}\n\n"
+            docs_sent = False
+            async for token in rag.generator.async_stream_generate(prompt):
+                clean_token = rag._clean_output(token)
+                if not docs_sent and docs_meta:
+                    docs_sent = True
+                    yield f"data: {json.dumps({'token': clean_token, 'docs': docs_meta})}\n\n"
+                else:
+                    yield f"data: {json.dumps({'token': clean_token})}\n\n"
             yield "data: [DONE]\n\n"
         except Exception as e:
             yield f"data: {json.dumps({'error': str(e)})}\n\n"
@@ -89,4 +120,4 @@ async def stream(question: str, top_k: int = 3, threshold: float = 0.5):
     return StreamingResponse(event_generator(), media_type="text/event-stream")
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=5002)

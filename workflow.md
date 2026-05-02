@@ -36,6 +36,14 @@
 
 ---
 
+## 项目前端启动规定
+
+- 端口固定为 **5002**
+- 启动命令：`python web_api.py`（在 `VetRAG/` 目录下执行）
+- 服务地址：`http://localhost:5002`
+
+---
+
 ## 远程服务器连接信息
 
 > **AutoDL 服务器（SeetaCloud）**

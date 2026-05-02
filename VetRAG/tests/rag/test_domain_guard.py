@@ -99,10 +99,10 @@ class TestDomainGuardUnit:
         assert guard.is_pet_related("猫呕吐怎么办") is True
 
     def test_classify_no_variants(self):
-        """各种"否"的变体都能正确识别"""
+        """各种"否"的变体都能正确识别（不含"不是"/"不"，它们可能表示确认）"""
         from src.core.domain_guard import DomainGuard
 
-        for return_value in ("否", "不是", "不"):
+        for return_value in ("否", "否 ", "否。"):
             mock_gen = MagicMock()
             mock_gen.generate.return_value = return_value
             guard = DomainGuard(generator=mock_gen, enabled=True)
@@ -190,6 +190,71 @@ class TestDomainGuardUnit:
         guard.is_pet_related("测试")
         call_args = mock_gen.generate.call_args[0][0]
         assert custom_prompt in call_args
+
+
+class TestClassifyParsing:
+    """测试 _classify 方法的解析逻辑（各种边界 case）"""
+
+    @pytest.fixture
+    def mock_gen(self):
+        mock = MagicMock()
+        return mock
+
+    def _build_guard(self, mock_gen, return_value: str):
+        mock_gen.generate.return_value = return_value
+        from src.core.domain_guard import DomainGuard
+        return DomainGuard(generator=mock_gen, enabled=True)
+
+    def test_pure_yes(self, mock_gen):
+        assert self._build_guard(mock_gen, "是").is_pet_related("测试") is True
+
+    def test_pure_no(self, mock_gen):
+        assert self._build_guard(mock_gen, "否").is_pet_related("测试") is False
+
+    def test_yes_with_trailing_space(self, mock_gen):
+        assert self._build_guard(mock_gen, "是 ").is_pet_related("测试") is True
+
+    def test_no_with_trailing_space(self, mock_gen):
+        assert self._build_guard(mock_gen, "否 ").is_pet_related("测试") is False
+
+    def test_yes_with_whitespace(self, mock_gen):
+        assert self._build_guard(mock_gen, "  是  ").is_pet_related("测试") is True
+
+    def test_no_with_whitespace(self, mock_gen):
+        assert self._build_guard(mock_gen, "  否  ").is_pet_related("测试") is False
+
+    def test_yes_with_period(self, mock_gen):
+        assert self._build_guard(mock_gen, "是。").is_pet_related("测试") is True
+
+    def test_yes_with_question_mark(self, mock_gen):
+        assert self._build_guard(mock_gen, "是？").is_pet_related("测试") is True
+
+    def test_yes_with_exclamation(self, mock_gen):
+        assert self._build_guard(mock_gen, "是！").is_pet_related("测试") is True
+
+    def test_no_with_comma(self, mock_gen):
+        assert self._build_guard(mock_gen, "否，").is_pet_related("测试") is False
+
+    def test_yes_with_explanation(self, mock_gen):
+        assert self._build_guard(mock_gen, "是，这是关于狗的。").is_pet_related("测试") is True
+
+    def test_no_with_explanation(self, mock_gen):
+        assert self._build_guard(mock_gen, "不是，跟宠物无关。").is_pet_related("测试") is False
+
+    def test_yes_in_xml_tag(self, mock_gen):
+        assert self._build_guard(mock_gen, "<result>是</result>").is_pet_related("测试") is True
+
+    def test_no_in_xml_tag(self, mock_gen):
+        assert self._build_guard(mock_gen, "<result>否</result>").is_pet_related("测试") is False
+
+    def test_yes_in_xml_tag_with_spaces(self, mock_gen):
+        assert self._build_guard(mock_gen, "  <result>  是  </result>  ").is_pet_related("测试") is True
+
+    def test_yes_leading_with_quotes(self, mock_gen):
+        assert self._build_guard(mock_gen, "'是'").is_pet_related("测试") is True
+
+    def test_no_leading_with_quotes(self, mock_gen):
+        assert self._build_guard(mock_gen, '"否"').is_pet_related("测试") is False
 
 
 class TestDomainGuardIntegration:
