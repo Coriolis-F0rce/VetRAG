@@ -1,22 +1,24 @@
+import json
 import os
 import sys
-import json
+
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(current_dir)
 sys.path.insert(0, project_root)
 sys.path.insert(0, os.path.join(project_root, "src"))
 
+from src.core.config import BGE_MODEL_NAME, CHROMA_PERSIST_DIR
 from src.json_loader import VetRAGDataLoader
 from src.vector_store_chroma import ChromaVectorStore
-from src.core.config import CHROMA_PERSIST_DIR, BGE_MODEL_NAME
+
 
 EXPECTED_PHARMA_SCHEMA = "1.0"
 
 
 def _validate_pharma_schema(file_path: str):
     """校验 pharmaceuticals.json 的 schema_version 与当前代码兼容。"""
-    with open(file_path, "r", encoding="utf-8") as f:
+    with open(file_path, encoding="utf-8") as f:
         data = json.load(f)
     version = data.get("schema_version") if isinstance(data, dict) else None
     if version is None:

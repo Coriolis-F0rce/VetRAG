@@ -1,8 +1,8 @@
 # cleanup_enhanced.py - 增强版清理脚本
 
 import os
-import shutil
 import platform
+import shutil
 from datetime import datetime
 
 
@@ -193,7 +193,7 @@ class Cleanup:
                             else:
                                 os.remove(item_path)
                             cleaned_files += 1
-                    except:
+                    except Exception:
                         continue
 
         self.log_action(
@@ -229,7 +229,7 @@ class Cleanup:
     def _get_dir_size(self, path: str) -> str:
         """获取目录大小"""
         total_size = 0
-        for dirpath, dirnames, filenames in os.walk(path):
+        for dirpath, _dirnames, filenames in os.walk(path):
             for filename in filenames:
                 filepath = os.path.join(dirpath, filename)
                 if os.path.exists(filepath):

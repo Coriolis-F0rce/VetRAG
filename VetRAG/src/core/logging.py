@@ -3,11 +3,11 @@
 使用 loguru，所有模块统一从此导入 logger
 """
 import sys
-from pathlib import Path
 
 from loguru import logger as _logger
 
-from .config import LOG_LEVEL, LOG_FILE, LOGS_DIR, PROJECT_ROOT
+from .config import LOG_FILE, LOG_LEVEL, LOGS_DIR, PROJECT_ROOT
+
 
 # 移除 loguru 默认的 handler（会重复输出）
 _logger.remove()
@@ -31,10 +31,7 @@ _logger.add(
 )
 
 # 文件 handler
-if LOG_FILE:
-    _log_path = PROJECT_ROOT / LOG_FILE
-else:
-    _log_path = LOGS_DIR / "vetrag.log"
+_log_path = PROJECT_ROOT / LOG_FILE if LOG_FILE else LOGS_DIR / "vetrag.log"
 
 _log_path.parent.mkdir(parents=True, exist_ok=True)
 

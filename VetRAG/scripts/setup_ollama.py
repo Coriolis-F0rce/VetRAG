@@ -9,10 +9,11 @@ Ollama 模型导入脚本 — 将 Modelfiles 导入到本地 Ollama。
          基础模型可通过 --pull-base 拉取，或在 Ollama 中已存在。
 """
 
+import argparse
 import subprocess
 import sys
-import argparse
 from pathlib import Path
+
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 MODELFILES_DIR = PROJECT_ROOT / "scripts" / "modelfiles"
@@ -101,7 +102,7 @@ def main():
         print(f"   Modelfile: {modelfile_path}")
 
         if not modelfile_path.exists():
-            print(f"  [WARN]  Modelfile 不存在，跳过")
+            print("  [WARN]  Modelfile 不存在，跳过")
             continue
 
         # 对于 GGUF 类型模型，检查 GGUF 文件是否存在
@@ -114,7 +115,7 @@ def main():
                         gguf_path = (modelfile_path.parent / gguf_path).resolve()
                     if not gguf_path.exists():
                         print(f"  [WARN]  GGUF 文件不存在: {gguf_path}")
-                        print(f"     请先运行 scripts/convert_to_gguf.py")
+                        print("     请先运行 scripts/convert_to_gguf.py")
                         continue
 
         if args.dry_run:

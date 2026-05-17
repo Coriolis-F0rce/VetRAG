@@ -9,13 +9,12 @@ A/B 实验运行脚本
     python eval/run_ab.py --judge_method rule                   # 只用规则打分（不用 LLM）
 """
 
-import os
-import sys
-import json
 import argparse
-from pathlib import Path
+import json
+import sys
 from datetime import datetime
-from typing import Optional
+from pathlib import Path
+
 
 _eval_dir = Path(__file__).resolve().parent.parent
 _project_root = _eval_dir.parent
@@ -24,18 +23,15 @@ sys.path.insert(0, str(_project_root / "src"))
 
 from eval.ab_experiment import ExperimentMode, run_single_experiment, summarize
 from eval.llm_judge import JudgeScorer
-from src.vector_store_chroma import ChromaVectorStore
 from src.core.config import CHROMA_DIR
+from src.vector_store_chroma import ChromaVectorStore
 
 
-def load_testset(path: Optional[str] = None) -> list[dict]:
+def load_testset(path: str | None = None) -> list[dict]:
     """加载测试集。"""
-    if path is None:
-        path = _project_root / "eval" / "datasets" / "testset.json"
-    else:
-        path = Path(path)
+    path = _project_root / "eval" / "datasets" / "testset.json" if path is None else Path(path)
 
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, encoding="utf-8") as f:
         data = json.load(f)
     return data if isinstance(data, list) else data.get("questions", data)
 
@@ -256,7 +252,7 @@ def main():
     scored = run_judgment(all_results, scorer, judge_model_name, args.judge_method)
 
     # 生成报告
-    report = generate_report(scored, output_dir, timestamp)
+    generate_report(scored, output_dir, timestamp)
 
     # 保存详细评分结果
     detail_file = output_dir / f"scored_{timestamp}.json"

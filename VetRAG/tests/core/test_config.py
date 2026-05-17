@@ -1,9 +1,7 @@
 """测试核心配置和日志模块"""
-import os
 import sys
 from pathlib import Path
 
-import pytest
 
 project_root = Path(__file__).resolve().parents[1]
 # __file__ = D:\Backup\PythonProject2\VetRAG\tests\core\test_config.py
@@ -27,19 +25,19 @@ class TestConfig:
         assert DATA_DIR.is_dir()
 
     def test_model_paths_are_paths(self):
-        from src.core.config import Qwen3_MODEL_PATH, QWEN3_FINETUNED_PATH, QWEN3_FINETUNED_PATH_V1
+        from src.core.config import QWEN3_FINETUNED_PATH, QWEN3_FINETUNED_PATH_V1, Qwen3_MODEL_PATH
         assert isinstance(Qwen3_MODEL_PATH, Path)
         assert isinstance(QWEN3_FINETUNED_PATH, Path)
         assert isinstance(QWEN3_FINETUNED_PATH_V1, Path)
 
     def test_chroma_config_defaults(self):
-        from src.core.config import CHROMA_PERSIST_DIR, CHROMA_COLLECTION_NAME
+        from src.core.config import CHROMA_COLLECTION_NAME, CHROMA_PERSIST_DIR
         assert isinstance(CHROMA_PERSIST_DIR, str)
         assert isinstance(CHROMA_COLLECTION_NAME, str)
         assert CHROMA_COLLECTION_NAME == "veterinary_rag"
 
     def test_bge_model_config(self):
-        from src.core.config import BGE_MODEL_NAME, BGE_MODEL_FALLBACK
+        from src.core.config import BGE_MODEL_FALLBACK, BGE_MODEL_NAME
         assert BGE_MODEL_NAME == "BAAI/bge-large-zh-v1.5"
         assert BGE_MODEL_FALLBACK == "paraphrase-multilingual-MiniLM-L12-v2"
 
@@ -56,7 +54,7 @@ class TestConfig:
         assert len(SYSTEM_PROMPT_VET) > 10
 
     def test_api_config_defaults(self):
-        from src.core.config import API_HOST, API_PORT, API_CORS_ORIGINS
+        from src.core.config import API_CORS_ORIGINS, API_HOST, API_PORT
         assert API_HOST == "0.0.0.0"
         assert API_PORT == 8000
         assert API_CORS_ORIGINS == "*"

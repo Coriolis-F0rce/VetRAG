@@ -1,16 +1,16 @@
 # vector_store_chroma.py
 
+import logging
 import os
-import numpy as np
-from typing import List, Dict, Any, Optional
+import pickle
+from datetime import datetime
+
 import chromadb
 from chromadb.config import Settings
 from sentence_transformers import SentenceTransformer
-import logging
-from datetime import datetime
-import pickle
 
 from src.retrievers import HybridRetriever
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -88,7 +88,7 @@ class ChromaVectorStore:
         self.processed_ids = self._load_processed_ids()
 
         # 初始化混合检索器（延迟初始化，首次 build_index 时才真正创建）
-        self._hybrid_retriever: Optional[HybridRetriever] = None
+        self._hybrid_retriever: HybridRetriever | None = None
 
         print(f"初始化完成，当前文档数: {self.collection.count()}")
         if self.use_hybrid:
@@ -100,7 +100,7 @@ class ChromaVectorStore:
             try:
                 with open(self.processed_ids_file, 'rb') as f:
                     return pickle.load(f)
-            except:
+            except Exception:
                 pass
         return set()
 
@@ -112,7 +112,7 @@ class ChromaVectorStore:
         except Exception as e:
             print(f"警告: 保存处理ID失败: {e}")
 
-    def create_embeddings(self, texts: List[str]) -> List[List[float]]:
+    def create_embeddings(self, texts: list[str]) -> list[list[float]]:
         """
         批量创建嵌入向量
 
@@ -156,7 +156,7 @@ class ChromaVectorStore:
 
             return embeddings.tolist()
 
-    def create_query_embedding(self, query: str) -> List[float]:
+    def create_query_embedding(self, query: str) -> list[float]:
         """
         创建查询嵌入向量
 
@@ -180,7 +180,7 @@ class ChromaVectorStore:
             embedding = embedding / np.linalg.norm(embedding)
             return embedding.tolist()
 
-    def add_chunks(self, chunks: List[Dict], batch_size: int = 50) -> Dict:
+    def add_chunks(self, chunks: list[dict], batch_size: int = 50) -> dict:
         """
         添加文档块到向量库
 
@@ -302,7 +302,7 @@ class ChromaVectorStore:
             "current_total": current_total
         }
 
-    def add_json_file(self, file_path: str, loader) -> Dict:
+    def add_json_file(self, file_path: str, loader) -> dict:
         """
         添加单个JSON文件到向量库
 
@@ -318,7 +318,7 @@ class ChromaVectorStore:
 
         try:
             print(f"加载文件: {file_path}")
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(file_path, encoding='utf-8') as f:
                 import json
                 data = json.load(f)
 
@@ -344,10 +344,10 @@ class ChromaVectorStore:
         except Exception as e:
             return {"success": False, "error": str(e)}
 
-    def search(self, query: str, n_results: int = 5, filters: Dict = None,
-               use_hybrid: Optional[bool] = None,
-               dense_weight: Optional[float] = None,
-               bm25_weight: Optional[float] = None) -> Dict:
+    def search(self, query: str, n_results: int = 5, filters: dict = None,
+               use_hybrid: bool | None = None,
+               dense_weight: float | None = None,
+               bm25_weight: float | None = None) -> dict:
         """
         语义搜索
 
@@ -412,10 +412,10 @@ class ChromaVectorStore:
         self,
         query: str,
         n_results: int,
-        dense_weight: Optional[float],
-        bm25_weight: Optional[float],
-        filters: Dict = None,
-    ) -> Dict:
+        dense_weight: float | None,
+        bm25_weight: float | None,
+        filters: dict = None,
+    ) -> dict:
         """混合检索（Dense HNSW + BM25 + RRF 融合）"""
         if self._hybrid_retriever is None:
             print("混合检索器未初始化，退化为纯 Dense 检索")
@@ -477,7 +477,7 @@ class ChromaVectorStore:
         )
         print(f"[OK] BM25 索引构建完成（{len(docs)} 篇文档）")
 
-    def get_collection_stats(self) -> Dict:
+    def get_collection_stats(self) -> dict:
         """获取集合统计信息"""
         stats = {
             "collection_name": self.collection_name,
@@ -527,7 +527,7 @@ class ChromaVectorStore:
             print(f"[ERR] 清空集合失败: {e}")
             return False
 
-    def cleanup(self, remove_persist_dir: bool = False) -> Dict:
+    def cleanup(self, remove_persist_dir: bool = False) -> dict:
         """
         清理向量库
 

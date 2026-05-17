@@ -29,6 +29,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+
 _project_root = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(_project_root))
 sys.path.insert(0, str(_project_root / "src"))
@@ -70,7 +71,7 @@ def load_latest_result(results_dir: Path, prefix: str) -> list[dict]:
         raise FileNotFoundError(f"未找到匹配 {pattern} 的结果文件")
     latest = files[0]
     print(f"  使用结果文件: {latest}")
-    with open(latest, "r", encoding="utf-8") as f:
+    with open(latest, encoding="utf-8") as f:
         data = json.load(f)
     # 支持 run_ab.py 输出格式（顶层有 "results" 键）；也支持顶层为 list 的格式
     return data.get("results", data) if isinstance(data, dict) else data
@@ -96,7 +97,7 @@ def load_results(
             else:
                 path = prefix
             print(f"  [{group}] 加载: {path}")
-            with open(path, "r", encoding="utf-8") as f:
+            with open(path, encoding="utf-8") as f:
                 data = json.load(f)
             loaded[group] = data.get("results", data) if isinstance(data, dict) else data
         else:
@@ -110,7 +111,7 @@ def load_results(
 
 def load_testset(path: Path) -> list[dict]:
     """加载测试集。"""
-    with open(path, "r", encoding="utf-8") as f:
+    with open(path, encoding="utf-8") as f:
         data = json.load(f)
     if isinstance(data, list):
         return data

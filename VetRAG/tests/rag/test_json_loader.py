@@ -8,6 +8,7 @@ from pathlib import Path
 
 import pytest
 
+
 project_root = Path(__file__).resolve().parents[2]
 # __file__ = D:\Backup\PythonProject2\VetRAG\tests\rag\test_json_loader.py
 # parents[0] = VetRAG/tests/rag/, [1] = VetRAG/tests/, [2] = VetRAG/
@@ -49,7 +50,7 @@ class TestParseBehaviors:
 
     def test_parse_behavior_real_file(self, behaviors_file):
         loader = VetRAGDataLoader()
-        with open(behaviors_file, "r", encoding="utf-8") as f:
+        with open(behaviors_file, encoding="utf-8") as f:
             data = json.load(f)
         chunks = loader._parse_behaviors(data, str(behaviors_file))
         assert len(chunks) > 0
@@ -106,7 +107,7 @@ class TestParseBreeds:
 
     def test_parse_breed_real_file(self, breeds_file):
         loader = VetRAGDataLoader()
-        with open(breeds_file, "r", encoding="utf-8") as f:
+        with open(breeds_file, encoding="utf-8") as f:
             data = json.load(f)
         chunks = loader._parse_breeds(data, str(breeds_file))
         assert len(chunks) > 0
@@ -149,7 +150,7 @@ class TestParseDiseases:
 
     def test_parse_disease_real_file(self, diseases_file):
         loader = VetRAGDataLoader()
-        with open(diseases_file, "r", encoding="utf-8") as f:
+        with open(diseases_file, encoding="utf-8") as f:
             data = json.load(f)
         chunks = loader._parse_diseases(data, str(diseases_file))
         assert len(chunks) > 0
@@ -213,7 +214,7 @@ class TestParseCare:
 
     def test_parse_real_care_file(self, cares_file):
         loader = VetRAGDataLoader()
-        with open(cares_file, "r", encoding="utf-8") as f:
+        with open(cares_file, encoding="utf-8") as f:
             data = json.load(f)
         chunks = loader._parse_cleaned_dog_care(data, "cares.json")
         assert len(chunks) > 0
@@ -252,7 +253,7 @@ class TestParseSurgeries:
 
     def test_parse_surgery_real_file(self, surgeries_file):
         loader = VetRAGDataLoader()
-        with open(surgeries_file, "r", encoding="utf-8") as f:
+        with open(surgeries_file, encoding="utf-8") as f:
             data = json.load(f)
         chunks = loader._parse_surgeries(data, str(surgeries_file))
         assert len(chunks) > 0
@@ -297,5 +298,5 @@ class TestLoadAllFiles:
             str(surgeries_file)
         ])
         assert len(chunks) > 0
-        content_types = set(c.get("content_type", "") for c in chunks)
+        content_types = {c.get("content_type", "") for c in chunks}
         assert len(content_types) > 1

@@ -10,9 +10,10 @@ domain_guard.py - 领域边界守卫（LLM 零样本分类，基于 Ollama）
 """
 
 import re
-from typing import Optional, Literal
+from typing import Literal
 
 import ollama
+
 from .logging import logger
 
 
@@ -48,7 +49,7 @@ class DomainGuard:
     def __init__(
         self,
         guard_model_name: str = "vetrag-qwen3-1.7b-base",
-        system_prompt: Optional[str] = None,
+        system_prompt: str | None = None,
         enabled: bool = True,
     ):
         """
@@ -151,7 +152,7 @@ class DomainGuard:
         result = self._classify(query)
         return result in ("是", "error")
 
-    def check_and_respond(self, query: str) -> Optional[str]:
+    def check_and_respond(self, query: str) -> str | None:
         """
         检查 query 并返回拒绝语（如果不相关）。
 
@@ -166,6 +167,6 @@ class DomainGuard:
             )
         return None
 
-    def check_and_respond_stream(self, query: str) -> Optional[str]:
+    def check_and_respond_stream(self, query: str) -> str | None:
         """流式版本的检查（与同步版本行为一致）。"""
         return self.check_and_respond(query)

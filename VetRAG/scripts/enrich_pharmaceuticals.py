@@ -14,6 +14,7 @@ from pathlib import Path
 import httpx
 from tqdm import tqdm
 
+
 _project_root = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(_project_root))
 
@@ -154,7 +155,7 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="只统计不执行")
     args = parser.parse_args()
 
-    with open(INPUT, "r", encoding="utf-8") as f:
+    with open(INPUT, encoding="utf-8") as f:
         data = json.load(f)
 
     if isinstance(data, dict) and "drugs" in data:

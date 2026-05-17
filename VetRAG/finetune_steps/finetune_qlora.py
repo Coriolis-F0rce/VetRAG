@@ -10,21 +10,21 @@ QLoRA 微调脚本 — Qwen3-1.7B
   5. 保存 adapter 权重
 """
 import os
-import sys
+import subprocess
 import time
-import torch
 from pathlib import Path
+
+import torch
+from datasets import load_dataset
+from peft import LoraConfig, get_peft_model
 from transformers import (
     AutoConfig,
-    AutoTokenizer,
     AutoModelForCausalLM,
+    AutoTokenizer,
     BitsAndBytesConfig,
 )
 from trl import SFTConfig, SFTTrainer
-from peft import LoraConfig, get_peft_model
-from datasets import load_dataset
-from transformers import AutoModelForCausalLM
-import subprocess
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ★★★  必改配置区  ★★★
@@ -245,7 +245,7 @@ def _post_train_automation(tokenizer):
     except Exception as e:
         print(f"  ⚠️  上传失败: {e}")
         print("  模型已保存在本地，上传失败不影响后续。请手动上传：")
-        print(f"  python upload_to_hf.py")
+        print("  python upload_to_hf.py")
         return  # 上传失败不关机，给手动补救机会
 
     # 4. 关机

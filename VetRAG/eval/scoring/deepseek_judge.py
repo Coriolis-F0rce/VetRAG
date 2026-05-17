@@ -13,10 +13,10 @@ DeepSeek LLM-as-Judge 评分器
 """
 
 import json
-import re
 import os
-import time
 import random
+import re
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any
 
@@ -158,7 +158,7 @@ class DeepSeekJudge(JudgeBase):
 
         # 构建发给 DeepSeek 的匿名 prompt（不暴露 A/B/C/D）
         answer_lines = []
-        for idx, (group_key, content) in enumerate(ordered_groups, start=1):
+        for idx, (_group_key, content) in enumerate(ordered_groups, start=1):
             answer_lines.append(f"回答{idx}：\n{content}")
         answer_blocks = "\n\n".join(answer_lines)
 
@@ -397,7 +397,7 @@ class DeepSeekJudge(JudgeBase):
                     time.sleep(wait)
                     continue
                 raise
-            except Exception as e:
+            except Exception:
                 if attempt < self.max_retries - 1:
                     time.sleep(2 ** attempt)
                     continue

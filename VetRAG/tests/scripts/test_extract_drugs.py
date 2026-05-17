@@ -1,15 +1,15 @@
 """Golden file test for scripts/extract_drugs.py"""
 import json
 import sys
-from pathlib import Path
 from collections import defaultdict
+from pathlib import Path
 
-import pytest
 
 project_root = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(project_root))
 
-from scripts.extract_drugs import split_drug_names, normalize_drug_name
+from scripts.extract_drugs import normalize_drug_name, split_drug_names
+
 
 FIXTURE_DIR = Path(__file__).resolve().parent.parent / "fixtures"
 MINI_DISEASES = FIXTURE_DIR / "mini_diseases.json"
@@ -87,25 +87,25 @@ class TestExtractDrugsGolden:
         assert normalize_drug_name("Amoxicillin-Clavulanate") == "Amoxicillin-Clavulanate"
         # Parentheses content is stripped
         result = normalize_drug_name("Balanced Solution (with additives)")
-        assert "Balanced Solution" == result
+        assert result == "Balanced Solution"
 
     def test_golden_extraction(self):
-        with open(MINI_DISEASES, "r", encoding="utf-8") as f:
+        with open(MINI_DISEASES, encoding="utf-8") as f:
             diseases = json.load(f)
-        with open(GOLDEN_FILE, "r", encoding="utf-8") as f:
+        with open(GOLDEN_FILE, encoding="utf-8") as f:
             expected = json.load(f)
 
         result = _extract_drugs_from_diseases(diseases)
 
         assert len(result) == len(expected), f"drug count: {len(result)} != {len(expected)}"
-        for i, (r, e) in enumerate(zip(result, expected)):
+        for i, (r, e) in enumerate(zip(result, expected, strict=False)):
             assert r["drug_name"] == e["drug_name"], f"drug {i}: name mismatch"
             assert r["drug_class"] == e["drug_class"], f"drug {i}: class mismatch"
             assert r["dosages"] == e["dosages"], f"drug {i}: dosage mismatch"
             assert r["indications"] == e["indications"], f"drug {i}: indications mismatch"
 
     def test_golden_not_empty(self):
-        with open(GOLDEN_FILE, "r", encoding="utf-8") as f:
+        with open(GOLDEN_FILE, encoding="utf-8") as f:
             data = json.load(f)
         assert len(data) > 0
         for drug in data:

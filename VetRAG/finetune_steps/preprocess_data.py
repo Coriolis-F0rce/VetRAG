@@ -2,9 +2,10 @@
 将 VetRAG 原始训练数据转换为 Alpaca/SFT 格式 JSONL
 支持两种输入格式：JSON 数组 或 JSONL
 """
-import json
 import argparse
+import json
 from pathlib import Path
+
 from tqdm import tqdm
 
 
@@ -87,11 +88,11 @@ def convert_file(
     # ── 读取 ──
     print(f"[preprocess] 读取: {input_path}")
     if input_format == "json":
-        with open(input_path, "r", encoding="utf-8") as f:
+        with open(input_path, encoding="utf-8") as f:
             raw_data = json.load(f)
     else:
         raw_data = []
-        with open(input_path, "r", encoding="utf-8") as f:
+        with open(input_path, encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
                 if line:
@@ -132,8 +133,8 @@ def split_train_val(
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    with open(jsonl_path, "r", encoding="utf-8") as f:
-        lines = [json.loads(l) for l in f if l.strip()]
+    with open(jsonl_path, encoding="utf-8") as f:
+        lines = [json.loads(line) for line in f if line.strip()]
 
     random.seed(seed)
     random.shuffle(lines)

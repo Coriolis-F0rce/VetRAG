@@ -17,9 +17,11 @@
   huggingface-cli download <你的用户名>/Qwen3-1.7B-VetRAG
 """
 import os
-import torch
 from pathlib import Path
+
+import torch
 from huggingface_hub import HfApi, login
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ★★★  必改配置区  ★★★
@@ -68,8 +70,8 @@ def check_paths():
 # ─────────────────────────────────────────────────────────────────────────────
 
 def merge_and_upload():
-    from transformers import AutoTokenizer, AutoModelForCausalLM
     from peft import PeftModel
+    from transformers import AutoModelForCausalLM, AutoTokenizer
 
     print("=" * 60)
     print("  HuggingFace 模型上传流程")
@@ -81,7 +83,7 @@ def merge_and_upload():
 
     # 登录 HF
     if HF_TOKEN:
-        print(f"\n[登录] HuggingFace ...")
+        print("\n[登录] HuggingFace ...")
         login(token=HF_TOKEN)
     else:
         print("[登录] 使用缓存的 HF 凭证 ...")
@@ -119,12 +121,12 @@ def merge_and_upload():
         commit_message="Upload merged Qwen3-1.7B VetRAG fine-tuned model",
     )
     print(f"\n{'=' * 60}")
-    print(f"  ✅ 上传完成！")
+    print("  ✅ 上传完成！")
     print(f"  仓库地址：https://huggingface.co/{HF_REPO_ID}")
     print(f"{'=' * 60}")
-    print(f"\n本地下载命令：")
+    print("\n本地下载命令：")
     print(f"  git clone https://huggingface.co/{HF_REPO_ID}")
-    print(f"\n或使用 huggingface-cli：")
+    print("\n或使用 huggingface-cli：")
     print(f"  huggingface-cli download {HF_REPO_ID}")
 
 

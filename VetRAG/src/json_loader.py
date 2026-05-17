@@ -1,15 +1,13 @@
 """兽医RAG系统架构：1. 数据加载模块 - 加载所有JSON文件2. 数据解析模块 - 解析不同格式的JSON结构3. 文本分块模块 - 将长文本分割为适合检索的块4. 向量化模块 - 使用嵌入模型生成向量5. 向量存储模块 - 存储和检索向量6. 检索模块 - 相似度搜索和结果融合7. 接口模块 - 提供查询接口"""
 
-import os
 import json
-import re
-from typing import List, Dict, Any, Optional, Tuple
-from dataclasses import dataclass
-from pathlib import Path
-import hashlib
-import numpy as np
-from datetime import datetime
 import logging
+import os
+from dataclasses import dataclass
+from typing import Any
+
+import numpy as np
+
 
 # 设置日志
 logging.basicConfig(level=logging.INFO)
@@ -19,8 +17,8 @@ logger = logging.getLogger(__name__)
 class DocumentChunk:
     id: str
     content: str
-    metadata: Dict[str, Any]
-    embedding: Optional[np.ndarray] = None
+    metadata: dict[str, Any]
+    embedding: np.ndarray | None = None
     source_file: str = ""
     content_type: str = ""
     chunk_index: int = 0
@@ -34,22 +32,22 @@ class VetRAGDataLoader:
         self.documents = []
         self.content_type_stats = {}
 
-    def load_all_files(self, file_paths: List[str]) -> List[Dict]:
+    def load_all_files(self, file_paths: list[str]) -> list[dict]:
         """加载并解析所有JSON文件"""
         all_chunks = []
         for file_path in file_paths:
             if not os.path.exists(file_path):
                 raise FileNotFoundError(f"File not found: {file_path}")
             try:
-                with open(file_path, 'r', encoding='utf-8') as f:
+                with open(file_path, encoding='utf-8') as f:
                     data = json.load(f)
                 chunks = self._parse_file_based_on_type(os.path.basename(file_path), data, file_path)
                 all_chunks.extend(chunks)
             except json.JSONDecodeError as e:
-                raise ValueError(f"Invalid JSON format in {file_path}: {str(e)}")
+                raise ValueError(f"Invalid JSON format in {file_path}: {e}") from e
         return all_chunks
 
-    def _parse_file_based_on_type(self, filename: str, data: Dict, file_path: str) -> List[Dict]:
+    def _parse_file_based_on_type(self, filename: str, data: dict, file_path: str) -> list[dict]:
         filename_lower = filename.lower()
         if "cleaned_dog_care_data" in filename_lower or "cares.json" in filename_lower:
             return self._parse_cleaned_dog_care(data, file_path)
@@ -67,7 +65,7 @@ class VetRAGDataLoader:
             # 通用解析
             return self._parse_generic(data, file_path)
 
-    def _parse_pharmaceuticals(self, data: Dict | list, source_file: str) -> List[Dict]:
+    def _parse_pharmaceuticals(self, data: dict | list, source_file: str) -> list[dict]:
         """解析药物数据，兼容 v0（从 diseases 提取）和 v1（完整专论）两种格式。"""
         chunks = []
 
@@ -178,7 +176,7 @@ class VetRAGDataLoader:
 
         return chunks
 
-    def _parse_generic(self, data: Dict, source_file: str) -> List[Dict]:
+    def _parse_generic(self, data: dict, source_file: str) -> list[dict]:
         chunks = []
         try:
             content = json.dumps(data, ensure_ascii=False, indent=2)
@@ -189,11 +187,11 @@ class VetRAGDataLoader:
                 "content_type": "generic"
             }
             chunks.append(chunk)
-        except:
+        except Exception:
             pass
         return chunks
 
-    def _parse_cleaned_dog_care(self, data: Dict, source_file: str) -> List[Dict]:
+    def _parse_cleaned_dog_care(self, data: dict, source_file: str) -> list[dict]:
         chunks = []
 
         if not isinstance(data.get("results"), dict):
@@ -288,7 +286,7 @@ class VetRAGDataLoader:
 
         return chunks
 
-    def _parse_vaccine_schedule(self, vaccine_data: Dict, source_file: str) -> List[Dict]:
+    def _parse_vaccine_schedule(self, vaccine_data: dict, source_file: str) -> list[dict]:
         chunks = []
 
         if not isinstance(vaccine_data, dict):
@@ -303,7 +301,7 @@ class VetRAGDataLoader:
         data_sources = vaccine_data.get("data_sources", [])
         last_updated = vaccine_data.get("last_updated", "")
 
-        for i, vaccine in enumerate(vaccines):
+        for _i, vaccine in enumerate(vaccines):
             if not isinstance(vaccine, dict):
                 continue
 
@@ -334,7 +332,7 @@ class VetRAGDataLoader:
             metadata = {
                 "content_type": "cares",
                 "category": "vaccine_schedule",
-                "sub_category": f"疫苗",
+                "sub_category": "疫苗",
                 "vaccine_type": vaccine_name,
                 "age_group": age,
                 "importance_level": importance,
@@ -350,7 +348,7 @@ class VetRAGDataLoader:
 
         return chunks
 
-    def _parse_joint_care_guide(self, joint_care_data: Dict, source_file: str) -> List[Dict]:
+    def _parse_joint_care_guide(self, joint_care_data: dict, source_file: str) -> list[dict]:
         """解析关节护理指南 - 分为2-3个语义块"""
         chunks = []
 
@@ -493,7 +491,7 @@ class VetRAGDataLoader:
 
         return chunks
 
-    def _parse_diseases(self, data: Dict, source_file: str) -> List[Dict]:
+    def _parse_diseases(self, data: dict, source_file: str) -> list[dict]:
         """解析疾病数据 - 分为4个语义块"""
         chunks = []
 
@@ -655,7 +653,7 @@ class VetRAGDataLoader:
             # 紧急阈值
             emergency_threshold = disease.get("emergency_threshold", "")
             if emergency_threshold:
-                chunk2_parts.append(f"\n紧急就医阈值（出现以下情况需立即就医）:")
+                chunk2_parts.append("\n紧急就医阈值（出现以下情况需立即就医）:")
                 chunk2_parts.append(f"  {emergency_threshold}")
 
             # 紧急指南
@@ -802,7 +800,7 @@ class VetRAGDataLoader:
 
         return chunks
 
-    def _parse_breeds(self, data: Dict, source_file: str) -> List[Dict]:
+    def _parse_breeds(self, data: dict, source_file: str) -> list[dict]:
         """解析犬种数据 - 完整版本"""
         chunks = []
 
@@ -845,17 +843,14 @@ class VetRAGDataLoader:
         # 4. 处理breeds字段
         elif isinstance(data, dict) and 'breeds' in data:
             breeds_data = data['breeds']
-            if isinstance(breeds_data, list):
-                breeds_list = breeds_data
-            else:
-                breeds_list = [breeds_data]
+            breeds_list = breeds_data if isinstance(breeds_data, list) else [breeds_data]
 
         # 5. 如果以上都不匹配，尝试将整个data作为犬种数据
         elif isinstance(data, dict):
             breeds_list = [data]
 
         if not breeds_list:
-            print(f"警告: 无法从数据中提取犬种信息")
+            print("警告: 无法从数据中提取犬种信息")
             return chunks
 
         print(f"找到 {len(breeds_list)} 个犬种数据")
@@ -1053,7 +1048,7 @@ class VetRAGDataLoader:
 
         return chunks
 
-    def _parse_behaviors(self, data: Dict, source_file: str) -> List[Dict]:
+    def _parse_behaviors(self, data: dict, source_file: str) -> list[dict]:
         """解析行为数据 - 修复版本"""
         chunks = []
 
@@ -1122,7 +1117,7 @@ class VetRAGDataLoader:
 
         return chunks
 
-    def _parse_surgeries(self, data: Dict, source_file: str) -> List[Dict]:
+    def _parse_surgeries(self, data: dict, source_file: str) -> list[dict]:
         """解析手术数据 - 语义分块版本"""
         chunks = []
 

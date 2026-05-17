@@ -1,10 +1,9 @@
 # simple_rag_pipeline.py - 简化版RAG管道
 
-import os
 import json
-from datetime import datetime
-from typing import List, Dict, Any
+import os
 import pickle
+from datetime import datetime
 
 
 class VetRAGPipeline:
@@ -46,13 +45,13 @@ class VetRAGPipeline:
         self.state = self._load_state()
         self.chunks_cache = self._load_chunks_cache()
 
-    def _load_state(self) -> Dict:
+    def _load_state(self) -> dict:
         """加载系统状态"""
         if os.path.exists(self.state_file):
             try:
-                with open(self.state_file, 'r', encoding='utf-8') as f:
+                with open(self.state_file, encoding='utf-8') as f:
                     return json.load(f)
-            except:
+            except Exception:
                 pass
 
         # 初始状态
@@ -70,13 +69,13 @@ class VetRAGPipeline:
         with open(self.state_file, 'w', encoding='utf-8') as f:
             json.dump(self.state, f, ensure_ascii=False, indent=2)
 
-    def _load_chunks_cache(self) -> List[Dict]:
+    def _load_chunks_cache(self) -> list[dict]:
         """加载chunks缓存"""
         if os.path.exists(self.chunks_cache_file):
             try:
                 with open(self.chunks_cache_file, 'rb') as f:
                     return pickle.load(f)
-            except:
+            except Exception:
                 pass
         return []
 
@@ -88,7 +87,7 @@ class VetRAGPipeline:
         except Exception as e:
             print(f"警告: 保存缓存失败: {e}")
 
-    def load_data_files(self, file_names: List[str] = None) -> Dict:
+    def load_data_files(self, file_names: list[str] = None) -> dict:
         """
         加载数据文件
 
@@ -114,7 +113,7 @@ class VetRAGPipeline:
                 continue
 
             try:
-                with open(file_path, 'r', encoding='utf-8') as f:
+                with open(file_path, encoding='utf-8') as f:
                     data = json.load(f)
 
                 # 解析文件
@@ -154,7 +153,7 @@ class VetRAGPipeline:
             "chunks": all_chunks
         }
 
-    def build_vector_index(self, chunks: List[Dict] = None) -> Dict:
+    def build_vector_index(self, chunks: list[dict] = None) -> dict:
         """
         构建向量索引
 
@@ -186,7 +185,7 @@ class VetRAGPipeline:
 
         return result
 
-    def query(self, question: str, top_k: int = 5) -> Dict:
+    def query(self, question: str, top_k: int = 5) -> dict:
         """
         查询
 
@@ -224,7 +223,7 @@ class VetRAGPipeline:
 
         return results
 
-    def add_new_json_file(self, file_path: str) -> Dict:
+    def add_new_json_file(self, file_path: str) -> dict:
         """
         添加新的JSON文件
 
@@ -241,7 +240,7 @@ class VetRAGPipeline:
 
         # 加载文件
         try:
-            with open(file_path, 'r', encoding='utf-8') as f:
+            with open(file_path, encoding='utf-8') as f:
                 data = json.load(f)
 
             # 解析为chunks
@@ -276,7 +275,7 @@ class VetRAGPipeline:
         except Exception as e:
             return {"success": False, "error": str(e)}
 
-    def batch_add_json_files(self, file_paths: List[str]) -> List[Dict]:
+    def batch_add_json_files(self, file_paths: list[str]) -> list[dict]:
         """
         批量添加JSON文件
 
@@ -294,7 +293,7 @@ class VetRAGPipeline:
 
         return results
 
-    def get_system_info(self) -> Dict:
+    def get_system_info(self) -> dict:
         """获取系统信息"""
         vector_stats = self.vector_store.get_collection_stats()
 
@@ -310,7 +309,7 @@ class VetRAGPipeline:
             "vector_store": vector_stats
         }
 
-    def cleanup(self, remove_all: bool = False) -> Dict:
+    def cleanup(self, remove_all: bool = False) -> dict:
         """
         清理系统
 
@@ -363,30 +362,26 @@ def main():
     # 检查依赖
     print("检查依赖...")
     try:
-        import chromadb
         print("[OK] chromadb")
-    except:
+    except Exception:
         print("[ERR] chromadb - 请运行: pip install chromadb==0.4.22")
         return
 
     try:
-        from sentence_transformers import SentenceTransformer
         print("[OK] sentence-transformers")
-    except:
+    except Exception:
         print("[ERR] sentence-transformers - 请运行: pip install sentence-transformers")
         return
 
     try:
-        import tqdm
         print("[OK] tqdm")
-    except:
+    except Exception:
         print("[ERR] tqdm - 请运行: pip install tqdm")
         return
 
     try:
-        import numpy as np
         print("[OK] numpy")
-    except:
+    except Exception:
         print("[ERR] numpy - 请运行: pip install numpy")
         return
 
@@ -408,8 +403,8 @@ def main():
             # 重新构建
             print("重新构建向量索引...")
             rag.cleanup(remove_all=True)
-            data_result = rag.load_data_files()
-            vector_result = rag.build_vector_index()
+            rag.load_data_files()
+            rag.build_vector_index()
         else:
             # 使用现有索引
             print("使用现有索引...")
@@ -418,8 +413,8 @@ def main():
     else:
         # 首次构建
         print("\n首次构建向量索引...")
-        data_result = rag.load_data_files()
-        vector_result = rag.build_vector_index()
+        rag.load_data_files()
+        rag.build_vector_index()
 
     # 显示系统信息
     print("\n" + "=" * 60)
@@ -470,7 +465,7 @@ def main():
             if os.path.exists(dir_path) and os.path.isdir(dir_path):
                 # 查找所有JSON文件
                 json_files = []
-                for root, dirs, files in os.walk(dir_path):
+                for root, _dirs, files in os.walk(dir_path):
                     for file in files:
                         if file.endswith('.json'):
                             json_files.append(os.path.join(root, file))
@@ -504,12 +499,12 @@ def main():
 
             if choice == '1':
                 result = rag.cleanup(remove_all=False)
-                print(f"缓存清理完成")
+                print("缓存清理完成")
             elif choice == '2':
                 confirm = input("确认完全清理？这将删除所有向量数据和缓存 (y/n): ").lower()
                 if confirm == 'y':
                     result = rag.cleanup(remove_all=True)
-                    print(f"完全清理完成")
+                    print("完全清理完成")
                 else:
                     print("取消清理")
             else:

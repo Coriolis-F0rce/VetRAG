@@ -8,6 +8,7 @@ from unittest.mock import MagicMock
 
 import pytest
 
+
 project_root = Path(__file__).resolve().parents[1]
 # __file__ = D:\Backup\PythonProject2\VetRAG\tests\rag\test_vector_store.py
 # parents[0] = VetRAG/tests/rag/, [1] = VetRAG/tests/, [2] = VetRAG/
@@ -92,7 +93,7 @@ class TestChromaVectorStoreIntegration:
     def test_init_creates_directory(self, temp_chroma_dir):
         pytest.importorskip("chromadb")
         from src.vector_store_chroma import ChromaVectorStore
-        store = ChromaVectorStore(
+        ChromaVectorStore(
             persist_directory=temp_chroma_dir,
             collection_name="test_collection"
         )
@@ -151,11 +152,11 @@ class TestHybridSearch:
         """HybridRetriever 可以正常实例化（不含 ChromaDB 依赖）"""
         pytest.importorskip("chromadb")
         from src.retrievers import HybridRetriever
-        from src.retrievers.bm25_index import BM25Retriever
 
         mock_collection = MagicMock()
         mock_collection.count.return_value = 0
-        mock_embed_fn = lambda q: [0.1] * 1024
+        def mock_embed_fn(q):
+            return [0.1] * 1024
 
         hr = HybridRetriever(
             chroma_collection=mock_collection,
@@ -205,7 +206,8 @@ class TestHybridSearch:
             "metadatas": [[{}, {}, {}]],
             "distances": [[0.1, 0.15, 0.2]],
         }
-        mock_embed_fn = lambda q: [0.1] * 1024
+        def mock_embed_fn(q):
+            return [0.1] * 1024
 
         hr = HybridRetriever(
             chroma_collection=mock_collection,

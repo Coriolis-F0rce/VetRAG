@@ -3,9 +3,7 @@
 """
 import sys
 from pathlib import Path
-from unittest.mock import MagicMock, patch
 
-import pytest
 
 project_root = Path(__file__).resolve().parents[1]
 # __file__ = D:\Backup\PythonProject2\VetRAG\tests\rag\test_rag_pipeline.py
@@ -113,7 +111,6 @@ class TestChunkMetadata:
 
     def test_chunk_id_generation(self):
         """测试 chunk ID 生成逻辑"""
-        import hashlib
         content = "犬瘟热是一种严重的传染病"
         content_hash = abs(hash(content)) % (10 ** 8)
         chunk_id = f"chunk_{content_hash:08d}"

@@ -5,12 +5,12 @@ BM25 稀疏关键词检索模块
 依赖：pip install rank-bm25 jieba
 """
 
+import logging
 import os
 import pickle
-import logging
-from pathlib import Path
-from typing import List, Dict, Any, Optional
-from dataclasses import dataclass, field
+from dataclasses import dataclass
+from typing import Any
+
 
 logger = logging.getLogger(__name__)
 
@@ -20,11 +20,11 @@ class BM25Result:
     """单条 BM25 检索结果"""
     chunk_id: str
     document: str
-    metadata: Dict[str, Any]
+    metadata: dict[str, Any]
     bm25_score: float
     rank: int
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         return {
             "chunk_id": self.chunk_id,
             "document": self.document,
@@ -77,11 +77,11 @@ class BM25Retriever:
         self._index_file = os.path.join(persist_dir, "bm25_index.pkl")
         self._corpus_file = os.path.join(persist_dir, "bm25_corpus.pkl")
 
-        self._tokenized_corpus: List[List[str]] = []
-        self._chunk_ids: List[str] = []
-        self._documents: List[str] = []
-        self._metadatas: List[Dict[str, Any]] = []
-        self._bm25: Optional[Any] = None  # rank_bm25.BM25Ok
+        self._tokenized_corpus: list[list[str]] = []
+        self._chunk_ids: list[str] = []
+        self._documents: list[str] = []
+        self._metadatas: list[dict[str, Any]] = []
+        self._bm25: Any | None = None  # rank_bm25.BM25Ok
 
         self._load_index()
 
@@ -89,7 +89,7 @@ class BM25Retriever:
     # 分词
     # ------------------------------------------------------------------
 
-    def _tokenize(self, text: str) -> List[str]:
+    def _tokenize(self, text: str) -> list[str]:
         """对文本进行分词"""
         if self.tokenize_lang == "zh":
             import jieba
@@ -103,11 +103,11 @@ class BM25Retriever:
 
     def build_index(
         self,
-        documents: List[str],
-        chunk_ids: List[str],
-        metadatas: Optional[List[Dict[str, Any]]] = None,
+        documents: list[str],
+        chunk_ids: list[str],
+        metadatas: list[dict[str, Any]] | None = None,
         incremental: bool = False,
-    ) -> Dict[str, int]:
+    ) -> dict[str, int]:
         """
         构建或更新 BM25 索引。
 
@@ -136,9 +136,9 @@ class BM25Retriever:
 
     def _rebuild_index(
         self,
-        documents: List[str],
-        chunk_ids: List[str],
-        metadatas: List[Dict[str, Any]],
+        documents: list[str],
+        chunk_ids: list[str],
+        metadatas: list[dict[str, Any]],
     ):
         """全量重建 BM25 索引"""
         logger.info(f"BM25: 全量重建索引，共 {len(documents)} 篇文档")
@@ -157,9 +157,9 @@ class BM25Retriever:
 
     def _add_to_index(
         self,
-        documents: List[str],
-        chunk_ids: List[str],
-        metadatas: List[Dict[str, Any]],
+        documents: list[str],
+        chunk_ids: list[str],
+        metadatas: list[dict[str, Any]],
     ):
         """增量追加文档到现有索引"""
         logger.info(f"BM25: 增量追加 {len(documents)} 篇文档")
@@ -177,10 +177,10 @@ class BM25Retriever:
 
     def add_documents(
         self,
-        documents: List[str],
-        chunk_ids: List[str],
-        metadatas: Optional[List[Dict[str, Any]]] = None,
-    ) -> Dict[str, int]:
+        documents: list[str],
+        chunk_ids: list[str],
+        metadatas: list[dict[str, Any]] | None = None,
+    ) -> dict[str, int]:
         """
         增量添加文档（便捷封装，等价于 build_index(incremental=True)）
         """
@@ -194,7 +194,7 @@ class BM25Retriever:
         self,
         query: str,
         top_k: int = 5,
-    ) -> List[BM25Result]:
+    ) -> list[BM25Result]:
         """
         执行 BM25 关键词检索。
 
@@ -241,7 +241,7 @@ class BM25Retriever:
 
         try:
             with open(self._index_file, "rb") as f:
-                index_data = pickle.load(f)
+                pickle.load(f)  # validate pickle is readable, data accessed via corpus
             with open(self._corpus_file, "rb") as f:
                 corpus_data = pickle.load(f)
 
@@ -305,7 +305,7 @@ class BM25Retriever:
         """当前索引中的文档数量"""
         return len(self._documents)
 
-    def get_stats(self) -> Dict[str, Any]:
+    def get_stats(self) -> dict[str, Any]:
         """返回检索器统计信息"""
         return {
             "document_count": self.document_count,

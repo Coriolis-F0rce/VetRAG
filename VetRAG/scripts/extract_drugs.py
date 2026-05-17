@@ -6,8 +6,9 @@
 import json
 import re
 import sys
-from pathlib import Path
 from collections import defaultdict
+from pathlib import Path
+
 
 _project_root = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(_project_root))
@@ -38,7 +39,7 @@ def normalize_drug_name(name: str) -> str:
 
 
 def main():
-    with open(DISEASES_FILE, "r", encoding="utf-8") as f:
+    with open(DISEASES_FILE, encoding="utf-8") as f:
         data = json.load(f)
     diseases = data if isinstance(data, list) else data.get("diseases", [])
 

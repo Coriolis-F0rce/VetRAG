@@ -1,20 +1,29 @@
+import json
 import os
 import sys
-import json
-import asyncio
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse, StreamingResponse
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
+
 import uvicorn
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse, StreamingResponse
+from fastapi.staticfiles import StaticFiles
+
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(current_dir)
 sys.path.insert(0, project_root)
 sys.path.insert(0, os.path.join(project_root, "src"))
 
+from src.core.config import (
+    API_HOST,
+    API_PORT,
+    CHROMA_PERSIST_DIR,
+    OLLAMA_GENERATOR_MODEL,
+    OLLAMA_GUARD_MODEL,
+    SYSTEM_PROMPT_VET,
+)
 from src.rag_interface import RAGInterface
-from src.core.config import CHROMA_PERSIST_DIR, OLLAMA_GENERATOR_MODEL, OLLAMA_GUARD_MODEL, SYSTEM_PROMPT_VET, API_HOST, API_PORT
+
 
 rag = RAGInterface(
     chroma_persist_dir=CHROMA_PERSIST_DIR,
@@ -37,7 +46,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 @app.get("/", response_class=HTMLResponse)
 async def read_root():
     # 直接返回 static/index.html 的内容
-    with open(os.path.join("static", "index.html"), "r", encoding="utf-8") as f:
+    with open(os.path.join("static", "index.html"), encoding="utf-8") as f:
         html = f.read()
     return HTMLResponse(content=html)
 

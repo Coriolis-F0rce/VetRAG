@@ -1,14 +1,16 @@
-import torch
 from pathlib import Path
+
+import torch
+from datasets import load_dataset
+from peft import LoraConfig, get_peft_model
 from transformers import (
     AutoConfig,
-    AutoTokenizer,
     AutoModelForCausalLM,
+    AutoTokenizer,
     BitsAndBytesConfig,
 )
-from peft import LoraConfig, get_peft_model
-from trl import SFTTrainer, SFTConfig
-from datasets import load_dataset
+from trl import SFTConfig, SFTTrainer
+
 
 # ---------- 路径定义 ----------
 MODEL_PATH = Path(r"D:\Backup\PythonProject2\VetRAG\models\Qwen3-0.6B\qwen\Qwen3-0___6B").resolve()

@@ -14,10 +14,12 @@
 """
 
 import logging
-from typing import List, Dict, Any, Optional, Callable, Tuple
+from collections.abc import Callable
 from dataclasses import dataclass
+from typing import Any
 
-from src.retrievers.bm25_index import BM25Retriever, BM25Result
+from src.retrievers.bm25_index import BM25Result, BM25Retriever
+
 
 logger = logging.getLogger(__name__)
 
@@ -32,24 +34,24 @@ class HybridResult:
     """
     chunk_id: str
     document: str
-    metadata: Dict[str, Any]
+    metadata: dict[str, Any]
     # Dense 分数
-    dense_score: Optional[float] = None
-    dense_rank: Optional[int] = None
+    dense_score: float | None = None
+    dense_rank: int | None = None
     # BM25 分数
-    bm25_score: Optional[float] = None
-    bm25_rank: Optional[int] = None
+    bm25_score: float | None = None
+    bm25_rank: int | None = None
     # 融合分数
     rrf_score: float = 0.0
     rank: int = 0
     # 用于调试的各路排名
-    _ranks: Dict[str, int] = None
+    _ranks: dict[str, int] = None
 
     def __post_init__(self):
         if self._ranks is None:
             self._ranks = {}
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         return {
             "chunk_id": self.chunk_id,
             "document": self.document,
@@ -94,7 +96,7 @@ class HybridRetriever:
     def __init__(
         self,
         chroma_collection: Any,
-        embed_fn: Callable[[str], List[float]],
+        embed_fn: Callable[[str], list[float]],
         persist_dir: str = "./chroma_db",
         dense_weight: float = 0.7,
         bm25_weight: float = 0.3,
@@ -118,7 +120,7 @@ class HybridRetriever:
         self._bm25_weight = bm25_weight
         self._default_top_k = default_top_k
 
-        self._bm25_retriever: Optional[BM25Retriever] = None
+        self._bm25_retriever: BM25Retriever | None = None
         self._index_built: bool = False
 
     # ------------------------------------------------------------------
@@ -127,11 +129,11 @@ class HybridRetriever:
 
     def build_index(
         self,
-        documents: List[str],
-        chunk_ids: List[str],
-        metadatas: Optional[List[Dict[str, Any]]] = None,
+        documents: list[str],
+        chunk_ids: list[str],
+        metadatas: list[dict[str, Any]] | None = None,
         incremental: bool = False,
-    ) -> Dict[str, int]:
+    ) -> dict[str, int]:
         """
         构建 BM25 索引（同时需要 ChromaDB 侧已通过 ChromaVectorStore.add_chunks 添加文档）。
 
@@ -170,10 +172,10 @@ class HybridRetriever:
 
     def add_documents(
         self,
-        documents: List[str],
-        chunk_ids: List[str],
-        metadatas: Optional[List[Dict[str, Any]]] = None,
-    ) -> Dict[str, int]:
+        documents: list[str],
+        chunk_ids: list[str],
+        metadatas: list[dict[str, Any]] | None = None,
+    ) -> dict[str, int]:
         """
         增量添加文档到 BM25 索引。
 
@@ -192,11 +194,11 @@ class HybridRetriever:
         self,
         query: str,
         top_k: int = 5,
-        dense_weight: Optional[float] = None,
-        bm25_weight: Optional[float] = None,
+        dense_weight: float | None = None,
+        bm25_weight: float | None = None,
         use_hybrid: bool = True,
         return_raw: bool = False,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         执行混合检索。
 
@@ -226,7 +228,7 @@ class HybridRetriever:
         query: str,
         top_k: int,
         return_raw: bool,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """仅使用 Dense 向量检索（保持与原 ChromaVectorStore.search 兼容）"""
         query_embedding = self._embed_fn(query)
 
@@ -251,10 +253,10 @@ class HybridRetriever:
         self,
         query: str,
         top_k: int,
-        dense_weight: Optional[float],
-        bm25_weight: Optional[float],
+        dense_weight: float | None,
+        bm25_weight: float | None,
         return_raw: bool,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         混合检索核心流程：
 
@@ -277,7 +279,7 @@ class HybridRetriever:
         dense_formatted = self._format_chroma_results(dense_results, include_rrf_fields=True)
 
         # BM25 检索
-        bm25_hits: List[BM25Result] = []
+        bm25_hits: list[BM25Result] = []
         if self._bm25_retriever is not None and self._bm25_retriever.document_count > 0:
             bm25_hits = self._bm25_retriever.search(query, top_k=retrieve_k)
         else:
@@ -313,13 +315,13 @@ class HybridRetriever:
 
     def _rrf_fuse(
         self,
-        dense_results: List[Dict],
-        dense_ranks: Dict[str, int],
-        bm25_hits: List[BM25Result],
-        bm25_ranks: Dict[str, int],
+        dense_results: list[dict],
+        dense_ranks: dict[str, int],
+        bm25_hits: list[BM25Result],
+        bm25_ranks: dict[str, int],
         dense_weight: float,
         bm25_weight: float,
-    ) -> List[Dict]:
+    ) -> list[dict]:
         """
         Reciprocal Rank Fusion 实现。
 
@@ -342,7 +344,7 @@ class HybridRetriever:
         retrieve_k = max(len(dense_results), len(bm25_hits), 1)
         missing_rank = retrieve_k + 1
 
-        scored: Dict[str, float] = {}
+        scored: dict[str, float] = {}
         for chunk_id in all_chunk_ids:
             rrf = 0.0
             if chunk_id in dense_ranks:
@@ -403,13 +405,13 @@ class HybridRetriever:
     # 辅助方法
     # ------------------------------------------------------------------
 
-    def _embed_fn_single(self, query: str) -> List[float]:
+    def _embed_fn_single(self, query: str) -> list[float]:
         """包装 _embed_fn，支持单字符串输入"""
         if isinstance(query, str):
             return self._embed_fn(query)
         return self._embed_fn(query)
 
-    def _format_chroma_results(self, results: Dict, include_rrf_fields: bool = False) -> List[Dict]:
+    def _format_chroma_results(self, results: dict, include_rrf_fields: bool = False) -> list[dict]:
         """将 ChromaDB query 结果格式化为统一字典列表
 
         Args:
@@ -443,13 +445,13 @@ class HybridRetriever:
             formatted.append(entry)
         return formatted
 
-    def _build_dense_rank_dict(self, results: List[Dict]) -> Dict[str, int]:
+    def _build_dense_rank_dict(self, results: list[dict]) -> dict[str, int]:
         return {r["id"]: r["dense_rank"] for r in results}
 
-    def _build_bm25_rank_dict(self, hits: List[BM25Result]) -> Dict[str, int]:
+    def _build_bm25_rank_dict(self, hits: list[BM25Result]) -> dict[str, int]:
         return {h.chunk_id: h.rank for h in hits}
 
-    def get_stats(self) -> Dict[str, Any]:
+    def get_stats(self) -> dict[str, Any]:
         """返回检索器统计信息"""
         return {
             "index_built": self._index_built,

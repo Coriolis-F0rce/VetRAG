@@ -1,24 +1,22 @@
 import os
 import re
-import sys
-import asyncio
-from pathlib import Path
-from typing import List, Dict, Any, Optional, Generator, AsyncGenerator
+from collections.abc import AsyncGenerator
+from typing import Any
 
 import ollama
 
-from src.vector_store_chroma import ChromaVectorStore
-from src.json_loader import VetRAGDataLoader
 from src.core.config import (
-    SYSTEM_PROMPT_VET,
+    HYBRID_BM25_WEIGHT,
+    HYBRID_DENSE_WEIGHT,
     OLLAMA_GENERATOR_MODEL,
     OLLAMA_GUARD_MODEL,
-    USE_HYBRID_SEARCH,
-    HYBRID_DENSE_WEIGHT,
-    HYBRID_BM25_WEIGHT,
+    SYSTEM_PROMPT_VET,
     USE_DOMAIN_GUARD,
+    USE_HYBRID_SEARCH,
 )
 from src.core.domain_guard import DomainGuard
+from src.json_loader import VetRAGDataLoader
+from src.vector_store_chroma import ChromaVectorStore
 
 
 # Ollama 生成参数映射（transformers → Ollama）
@@ -70,10 +68,7 @@ class QwenGenerator:
         messages = []
         if system:
             messages.append({"role": "system", "content": system})
-        if context:
-            user_content = f"参考资料：\n{context}\n\n问题：{user}"
-        else:
-            user_content = user
+        user_content = f"参考资料：\n{context}\n\n问题：{user}" if context else user
         messages.append({"role": "user", "content": user_content})
         # 拼接为可读的 prompt 字符串
         parts = []
@@ -92,10 +87,7 @@ class QwenGenerator:
         messages = []
         if system:
             messages.append({"role": "system", "content": system})
-        if context:
-            user_content = f"参考资料：\n{context}\n\n问题：{user}"
-        else:
-            user_content = user
+        user_content = f"参考资料：\n{context}\n\n问题：{user}" if context else user
         messages.append({"role": "user", "content": user_content})
         return messages
 
@@ -156,8 +148,8 @@ class RAGInterface:
     def __init__(
         self,
         chroma_persist_dir: str = "./chroma_db",
-        generator_model_name: Optional[str] = None,
-        guard_model_name: Optional[str] = None,
+        generator_model_name: str | None = None,
+        guard_model_name: str | None = None,
         collection_name: str = "veterinary_rag",
         embedding_model_name: str = "BAAI/bge-large-zh-v1.5",
         use_hybrid: bool = USE_HYBRID_SEARCH,
@@ -285,7 +277,7 @@ class RAGInterface:
             print(self._clean_output(token), end="", flush=True)
         print()
 
-    def query(self, question: str, top_k: int = 5) -> Dict[str, Any]:
+    def query(self, question: str, top_k: int = 5) -> dict[str, Any]:
         # 领域守卫：非宠物问题直接拒绝
         rejection = self.domain_guard.check_and_respond(question)
         if rejection:
@@ -335,16 +327,16 @@ class RAGInterface:
             "generated": True
         }
 
-    def add_new_data(self, file_path: str) -> Dict:
+    def add_new_data(self, file_path: str) -> dict:
         if not os.path.exists(file_path):
             return {"success": False, "error": "文件不存在"}
         result = self.vector_store.add_json_file(file_path, self.loader)
         return result
 
-    def add_chunks(self, chunks: List[Dict]) -> Dict:
+    def add_chunks(self, chunks: list[dict]) -> dict:
         return self.vector_store.add_chunks(chunks)
 
-    def get_stats(self) -> Dict:
+    def get_stats(self) -> dict:
         vector_stats = self.vector_store.get_collection_stats()
         return {
             "vector_store": vector_stats,

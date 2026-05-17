@@ -13,18 +13,17 @@ LLM-as-Judge 评估器
 
 import json
 import re
-import numpy as np
-from pathlib import Path
-from typing import Optional
 
+import numpy as np
 import ollama
 import torch
-from transformers import AutoModel, AutoTokenizer as BgeTokenizer
+from transformers import AutoModel
+from transformers import AutoTokenizer as BgeTokenizer
 
 
 # ---------- BGE 语义相似度（全局单例） ----------
-_bge_model: Optional[AutoModel] = None
-_bge_tokenizer: Optional[BgeTokenizer] = None
+_bge_model: AutoModel | None = None
+_bge_tokenizer: BgeTokenizer | None = None
 
 
 def _load_bge():
@@ -123,10 +122,7 @@ class JudgeScorer:
         # 2. 关键词覆盖（参考答案中的词有多少出现在回答中）
         ref_kw = _extract_keywords(reference)
         ans_kw = _extract_keywords(answer)
-        if ref_kw:
-            kw_coverage = len(ref_kw & ans_kw) / len(ref_kw)
-        else:
-            kw_coverage = 1.0
+        kw_coverage = len(ref_kw & ans_kw) / len(ref_kw) if ref_kw else 1.0
 
         # 3. 规则打分
         scores = {}
@@ -165,10 +161,7 @@ class JudgeScorer:
         # relevance：回答长度和关键词匹配
         q_kw = _extract_keywords(question)
         a_kw = _extract_keywords(answer)
-        if q_kw:
-            kw_match = len(q_kw & a_kw) / len(q_kw)
-        else:
-            kw_match = 0.5
+        kw_match = len(q_kw & a_kw) / len(q_kw) if q_kw else 0.5
 
         # 回答长度（过短说明不完整）
         answer_len = len(answer.strip())

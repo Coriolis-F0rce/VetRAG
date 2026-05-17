@@ -12,16 +12,16 @@ A/B 实验驱动模块
     python eval/ab_experiment.py
 """
 
+import json
 import os
 import re
 import sys
-import json
 import time
-import asyncio
 import traceback
+from datetime import datetime
 from enum import Enum
 from pathlib import Path
-from datetime import datetime
+
 
 # 确保项目路径可用
 _project_root = Path(__file__).resolve().parent.parent
@@ -30,12 +30,11 @@ sys.path.insert(0, str(_project_root / "src"))
 import ollama
 
 from src.core.config import (
+    CHROMA_DIR,
     OLLAMA_GENERATOR_MODEL,
     OLLAMA_GUARD_MODEL,
     SYSTEM_PROMPT_VET,
-    CHROMA_DIR,
 )
-from src.rag_interface import RAGInterface
 from src.vector_store_chroma import ChromaVectorStore
 
 
@@ -132,10 +131,7 @@ def generate_with_rag(
         retrieval_info["context_preview"] = context[:300]
 
     # 构建消息
-    if context:
-        user_content = f"参考资料：\n{context}\n\n问题：{question}"
-    else:
-        user_content = question
+    user_content = f"参考资料：\n{context}\n\n问题：{question}" if context else question
 
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT_VET},
@@ -357,7 +353,7 @@ def main():
     # 加载问题
     if args.questions:
         if os.path.exists(args.questions):
-            with open(args.questions, "r", encoding="utf-8") as f:
+            with open(args.questions, encoding="utf-8") as f:
                 questions = json.load(f)
         else:
             questions = json.loads(args.questions)

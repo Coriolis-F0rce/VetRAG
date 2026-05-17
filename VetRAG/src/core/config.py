@@ -4,7 +4,7 @@
 """
 import os
 from pathlib import Path
-from typing import Optional
+
 
 # ---------- 路径 ----------
 _VETRAG_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -76,7 +76,7 @@ HYBRID_RETRIEVE_K: int = int(os.getenv("HYBRID_RETRIEVE_K", "20"))
 USE_DOMAIN_GUARD: bool = os.getenv("USE_DOMAIN_GUARD", "true").lower() in ("true", "1", "yes")
 
 # ---------- Hugging Face ----------
-HF_ENDPOINT: Optional[str] = os.getenv("HF_ENDPOINT")
+HF_ENDPOINT: str | None = os.getenv("HF_ENDPOINT")
 if HF_ENDPOINT:
     os.environ["HF_ENDPOINT"] = HF_ENDPOINT
 
@@ -87,7 +87,7 @@ API_CORS_ORIGINS: str = os.getenv("API_CORS_ORIGINS", "*")
 
 # ---------- 日志 ----------
 LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
-LOG_FILE: Optional[Path] = None
+LOG_FILE: Path | None = None
 _log_file_env = os.getenv("LOG_FILE")
 if _log_file_env:
     LOG_FILE = PROJECT_ROOT / _log_file_env

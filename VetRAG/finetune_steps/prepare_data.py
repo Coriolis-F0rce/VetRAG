@@ -19,7 +19,7 @@ def load_json_files(file_pattern):
     samples = []
     for file_path in glob(file_pattern):
         print(f"读取文件: {file_path}")
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(file_path, encoding='utf-8') as f:
             content = f.read().strip()
             if content.startswith('['):
                 data = json.loads(content)

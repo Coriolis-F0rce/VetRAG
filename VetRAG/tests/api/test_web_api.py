@@ -8,6 +8,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
+
 project_root = Path(__file__).resolve().parents[1]
 # __file__ = D:\Backup\PythonProject2\VetRAG\tests\api\test_web_api.py
 # parents[0] = VetRAG/tests/api/, [1] = VetRAG/tests/, [2] = VetRAG/
@@ -68,8 +69,9 @@ def app_client(mock_rag_interface):
                 with patch("src.rag_interface.QwenGenerator"):
                     with patch("src.core.config.CHROMA_PERSIST_DIR", "./temp_test_chroma"):
                         with patch("src.core.config.QWEN3_FINETUNED_PATH", "./temp_test_model"):
-                            from scripts.web_api import app
                             from fastapi.testclient import TestClient
+
+                            from scripts.web_api import app
                             with TestClient(app) as client:
                                 yield client
 

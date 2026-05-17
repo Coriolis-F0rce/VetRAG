@@ -1,12 +1,10 @@
 # incremental_manager.py - 增量更新和状态管理
 
-import os
-import json
 import hashlib
-import pickle
+import json
+import os
+from dataclasses import asdict, dataclass
 from datetime import datetime
-from typing import List, Dict, Any, Set
-from dataclasses import dataclass, asdict
 from pathlib import Path
 
 
@@ -21,7 +19,7 @@ class FileStatus:
     chunks_count: int
     added_count: int
     skipped_count: int
-    content_types: List[str]
+    content_types: list[str]
     success: bool
     error: str = ""
 
@@ -40,13 +38,13 @@ class IncrementalManager:
         # 加载状态
         self.state = self._load_state()
 
-    def _load_state(self) -> Dict:
+    def _load_state(self) -> dict:
         """加载系统状态"""
         if os.path.exists(self.state_file):
             try:
-                with open(self.state_file, 'r', encoding='utf-8') as f:
+                with open(self.state_file, encoding='utf-8') as f:
                     return json.load(f)
-            except:
+            except Exception:
                 pass
 
         # 初始状态
@@ -77,10 +75,10 @@ class IncrementalManager:
 
         if os.path.exists(status_file):
             try:
-                with open(status_file, 'r', encoding='utf-8') as f:
+                with open(status_file, encoding='utf-8') as f:
                     data = json.load(f)
                     return FileStatus(**data)
-            except:
+            except Exception:
                 pass
 
         # 创建新状态
@@ -142,19 +140,16 @@ class IncrementalManager:
 
         # 检查修改时间
         current_mtime = os.stat(file_path).st_mtime
-        if current_mtime > status.modified_time:
-            return True
+        return current_mtime > status.modified_time
 
-        return False
-
-    def get_new_or_modified_files(self, file_paths: List[str]) -> List[str]:
+    def get_new_or_modified_files(self, file_paths: list[str]) -> list[str]:
         """获取新的或修改过的文件"""
         return [
             file_path for file_path in file_paths
             if self.is_file_modified(file_path)
         ]
 
-    def get_system_stats(self) -> Dict:
+    def get_system_stats(self) -> dict:
         """获取系统统计信息"""
         return {
             "system_info": {
@@ -178,7 +173,7 @@ class IncrementalManager:
 
         for status_file in Path(self.file_status_dir).glob("*.json"):
             try:
-                with open(status_file, 'r', encoding='utf-8') as f:
+                with open(status_file, encoding='utf-8') as f:
                     data = json.load(f)
 
                 processed_time = data.get("processed_time", "")
@@ -187,7 +182,7 @@ class IncrementalManager:
                     if processed_dt.timestamp() < cutoff_time:
                         os.remove(status_file)
                         removed_count += 1
-            except:
+            except Exception:
                 continue
 
         print(f"清理了 {removed_count} 个旧状态文件")
