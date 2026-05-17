@@ -26,10 +26,19 @@ jobs:
           python -m pip install --upgrade pip
           pip install torch --extra-index-url https://download.pytorch.org/whl/cpu
           pip install -r requirements-lock.txt
+          pip install mypy bandit
 
       - name: Ruff check
         working-directory: VetRAG
         run: ruff check .
+
+      - name: Mypy type check
+        working-directory: VetRAG
+        run: mypy src/ --ignore-missing-imports --no-error-summary
+
+      - name: Bandit security scan
+        working-directory: VetRAG
+        run: bandit -r src/ -f txt --skip B101
 
       - name: Run tests
         working-directory: VetRAG

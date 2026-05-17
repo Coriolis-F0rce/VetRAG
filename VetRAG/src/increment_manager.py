@@ -67,11 +67,11 @@ class IncrementalManager:
     def calculate_file_hash(self, file_path: str) -> str:
         """计算文件哈希值"""
         with open(file_path, 'rb') as f:
-            return hashlib.md5(f.read()).hexdigest()
+            return hashlib.md5(f.read(), usedforsecurity=False).hexdigest()
 
     def get_file_status(self, file_path: str) -> FileStatus:
         """获取文件状态"""
-        status_file = os.path.join(self.file_status_dir, f"{hashlib.md5(file_path.encode()).hexdigest()}.json")
+        status_file = os.path.join(self.file_status_dir, f"{hashlib.md5(file_path.encode(), usedforsecurity=False).hexdigest()}.json")
 
         if os.path.exists(status_file):
             try:
@@ -100,7 +100,7 @@ class IncrementalManager:
         """保存文件状态"""
         status_file = os.path.join(
             self.file_status_dir,
-            f"{hashlib.md5(status.file_path.encode()).hexdigest()}.json"
+            f"{hashlib.md5(status.file_path.encode(), usedforsecurity=False).hexdigest()}.json"
         )
 
         with open(status_file, 'w', encoding='utf-8') as f:
