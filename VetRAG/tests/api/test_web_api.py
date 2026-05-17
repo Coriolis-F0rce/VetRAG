@@ -68,7 +68,7 @@ def app_client(mock_rag_interface):
                 with patch("src.rag_interface.QwenGenerator"):
                     with patch("src.core.config.CHROMA_PERSIST_DIR", "./temp_test_chroma"):
                         with patch("src.core.config.QWEN3_FINETUNED_PATH", "./temp_test_model"):
-                            from web_api import app
+                            from scripts.web_api import app
                             from fastapi.testclient import TestClient
                             with TestClient(app) as client:
                                 yield client

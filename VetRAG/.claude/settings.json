@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [],
+    "deny": [
+      "Edit(./data/**)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "paths": ["src/**/*.py", "scripts/**/*.py", "eval/**/*.py"],
+        "command": "ruff check --quiet \"$CLAUDE_FILE_PATH\" 2>&1 || true"
+      }
+    ]
+  }
+}

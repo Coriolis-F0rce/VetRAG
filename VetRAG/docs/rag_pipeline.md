@@ -20,11 +20,12 @@ VetRAGDataLoader.load_all_files()
     ▼
 _parse_file_based_on_type()
     │
-    ├── behaviors.json  → _parse_behaviors()
-    ├── breeds.json    → _parse_breeds()
-    ├── cares.json     → _parse_cleaned_dog_care()
-    ├── diseases.json  → _parse_diseases()
-    └── surgeries.json → _parse_surgeries()
+    ├── behaviors.json       → _parse_behaviors()
+    ├── breeds.json          → _parse_breeds()
+    ├── cares.json           → _parse_cleaned_dog_care()
+    ├── diseases.json        → _parse_diseases()
+    ├── surgeries.json       → _parse_surgeries()
+    └── pharmaceuticals.json → _parse_pharmaceuticals()
     │
     ▼ (List[Dict] chunks)
 ChromaVectorStore.add_chunks()
@@ -75,6 +76,18 @@ ChromaDB Persistent Storage
 | Chunk 1 | 手术概述 + 适应症 + 术前准备 |
 | Chunk 2 | 术后护理 + 并发症 + 预后 + 费用 |
 
+**药学数据（pharmaceuticals）** — 每种药物 1 个 chunk：
+
+| 字段 | 说明 |
+|------|------|
+| drug_name / drug_name_en | 中英文药名 |
+| drug_class / mechanism | 药物分类与作用机制 |
+| indications / dosages | 适应症与剂量 |
+| contraindications / side_effects | 禁忌与副作用 |
+| drug_interactions / monitoring | 药物相互作用与监测建议 |
+
+metadata：drug_name、drug_class、indication_count、dosage_available、has_contraindications、has_interactions
+
 ### 去重机制
 
 每个 chunk 通过内容 hash 生成唯一 ID：
@@ -111,10 +124,16 @@ def _clean_document(text):
 用户问题
     │
     ▼
+DomainGuard 领域过滤（Ollama 零样本分类）
+    │
+    ├── 宠物问题 → 继续
+    └── 非宠物问题 → 返回友好拒绝语
+    │
+    ▼
 ChromaVectorStore.search(query, n_results=5)
     │
     ├── create_query_embedding(query)
-    ├── cosine similarity search
+    ├── cosine similarity search（可选 BM25 + RRF 混合检索）
     ▼
 结果过滤（threshold >= 0.5）
     │
@@ -126,20 +145,17 @@ ChromaVectorStore.search(query, n_results=5)
 context = "参考资料：\n[相关文档1]\n\n[相关文档2]\n\n..."
     │
     ▼
-QwenGenerator.build_chat_prompt()
+Ollama API 调用（Qwen3-1.7B）
     │
     ├── system: SYSTEM_PROMPT_VET
     ├── context: 检索到的文档
     └── user: 用户问题
     │
     ▼
-Qwen3 LLM 本地推理
-    │
-    ├── streaming: SSE token 流
-    └── non-streaming: 完整字符串
+答案清洗（_clean_text 13 步后处理）
     │
     ▼
-返回响应
+流式/非流式返回
 ```
 
 ### 相似度阈值
@@ -186,21 +202,22 @@ SYSTEM_PROMPT_VET = """
 | `_parse_file_based_on_type()` | 根据文件名派发到对应解析器 |
 | `_parse_diseases()` | 疾病语义分块（4 chunks/病） |
 | `_parse_surgeries()` | 手术语义分块（2 chunks/手术） |
+| `_parse_pharmaceuticals()` | 药物专论分块（1 chunk/药，兼容 v0/v1） |
 
 ### `ChromaVectorStore`
 
 | 方法 | 说明 |
 |------|------|
 | `add_chunks(chunks, batch_size=50)` | 批量添加文档 |
-| `search(query, n_results, filters)` | 语义检索 |
+| `search(query, n_results, filters)` | 语义/混合检索 |
 | `get_collection_stats()` | 获取集合统计 |
 | `clear_collection()` | 清空集合 |
 
-### `QwenGenerator`
+### `QwenGenerator`（Ollama 后端）
 
 | 方法 | 说明 |
 |------|------|
 | `build_chat_prompt(system, user, context)` | 构建聊天模板 |
-| `generate(prompt)` | 非流式生成 |
+| `generate(prompt)` | 非流式生成（Ollama REST API） |
 | `generate_stream(prompt)` | 生成器流式 |
-| `async_stream_generate(prompt)` | 异步 SSE 流（Web API 用） |
+| `async_stream_generate(prompt)` | 异步 SSE 流（asyncio.Queue + Ollama） |

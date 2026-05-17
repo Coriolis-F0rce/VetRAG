@@ -1,0 +1,7 @@
+# Qwen3-0.6B 基础模型（从 Ollama 官方库拉取）
+FROM qwen3:0.6b
+
+# 生成参数（对应原 transformers generation_config）
+PARAMETER temperature 0.0
+PARAMETER num_predict 512
+PARAMETER repeat_penalty 1.2

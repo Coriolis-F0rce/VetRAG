@@ -2,44 +2,43 @@
 
 所有重要的版本变更都会记录在此文件中。格式遵循 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 规范。
 
-## [Unreleased] - 2026-05-02
+## [Unreleased] - 2026-05-17
 
 > 本版本正在开发中。
 
 ### 添加
-- **领域边界守卫**（Domain Guard）：LLM 零样本分类过滤非宠物狗问题
-  - 新增 `src/core/domain_guard.py`（DomainGuard 类）
-  - 新增 `USE_DOMAIN_GUARD` 配置项（默认 true）
-  - `query()` 和 `query_stream()` 集成 Guard 预检查
-  - 新增 21 个测试用例（test_domain_guard.py）
-- **RAG 混合检索**（Hybrid Search）：Dense HNSW + BM25 + RRF 融合
-  - 新增 `src/retrievers/bm25_index.py`（jieba 中文分词 + BM25Okapi）
-  - 新增 `src/retrievers/hybrid_retriever.py`（RRF 融合）
-  - 重构 `src/vector_store_chroma.py`：集成混合检索，向后兼容
-  - 新增 `USE_HYBRID_SEARCH` 等 5 个配置项
-- 文档结构：`README.md`、`docs/api.md`、`docs/rag_pipeline.md`、`CHANGELOG.md`
-- 项目依赖管理：`requirements.txt`、`pyproject.toml`、`conda-environment.yml`
-- 集中配置模块：`src/core/config.py`
-- 统一日志模块：`src/core/logging.py`
-- 完整测试套件：100+ 个测试用例（pytest 8.3.4，Python 3.13）
-- GitHub Actions CI 工作流：lint（ruff）+ 测试 + 覆盖率报告
-- Docker 部署配置：`Dockerfile`（Python 3.11-slim）+ `docker-compose.yml`
-- 本地忽略规则：`VetRAG/.gitignore`
+- **Ollama 推理迁移**：LLM 推理从 transformers 本地加载迁移到 Ollama API
+  - QwenGenerator 改为通过 Ollama REST API 调用
+  - DomainGuard 独立使用 Ollama 基础模型（零样本分类）
+  - 模型从 Qwen3-0.6B 升级到 Qwen3-1.7B
+  - 新增 `OLLAMA_GENERATOR_MODEL`、`OLLAMA_GUARD_MODEL`、`OLLAMA_BASE_URL` 配置项
+  - 模型命名规范 `vetrag-{base}-{variant}`
+- **犬科药学知识库**：331 种药物独立 chunk 到 ChromaDB（1189 chunks 总计）
+  - 新增 `scripts/extract_drugs.py`：从 diseases.json 治疗数据提取药物列表
+  - 新增 `scripts/enrich_pharmaceuticals.py`：通过 DeepSeek API 补全药理字段（机制、禁忌、副作用、相互作用、监测）
+  - 新增 `data/pharmaceuticals.json`：331 种药物，14 字段全 v1 格式
+  - `src/json_loader.py` 新增 `_parse_pharmaceuticals()` 方法，兼容 v0/v1 格式
+  - 药物 chunk metadata 包含 drug_name、drug_class、indication_count、dosage_available
+- **DeepSeek LLM-as-Judge**：匿名 4 答案对比评分体系
+  - 5 维度打分（accuracy、relevance、completeness、format、safety）+ 推理 + 对比 + 胜者
+  - ThreadPoolExecutor 并行评分（默认 15 workers），50 题从 ~4 分钟降至 ~14 秒
+  - `eval/scoring/deepseek_judge.py`：`score_all_parallel()` 方法
+  - `eval/scripts/run_deepseek_judge.py`：`--workers` / `--sequential` / `--testset` 参数
+- **A/B 实验框架**：4 组对比（微调+/-RAG，基础+/-RAG）
+  - `eval/datasets/testset_50.json`：50 条犬科药学测试用例
+  - `eval/scripts/run_ab_experiment.py`：A/B 实验驱动
+  - `eval/results/`：原始答案 + 评分 + 汇总报告
+- **答案清洗管线**：`_clean_text` 13 步后处理（移除 think 标签、代码块、JSON、Markdown、emoji、免责声明、去重等）
+- **全局配置**：Claude Code 权限配置全局化到 `~/.claude/settings.json`，新项目无需重新配置
+- **workflow.md**：开发工作流参考文档
 
 ### 修复
-- 测试路径问题：修正 `conftest.py` 和所有测试文件的 `parents[N]` 路径解析（Windows 下行为）
-- CI workflow 路径问题：ruff 检查路径、pytest 工作目录、coverage 上报路径
-- vector_store Integration tests：`pytest.importorskip()` 替代 `patch()` 避免未安装时报错
-- API 无效 JSON 测试：改用 `pytest.raises` 正确捕获异常
-- BM25Ok API 兼容性问题（`okapi BM25` 参数差异）
-- HybridRetriever RRF 融合字段名 bug（`doc_id` → `id`）
+- FastAPI SSE 流式输出阻塞问题：`queue.Queue` → `asyncio.Queue` + `async for`
+- DeepSeek Judge 只评分 10 题而非 50 题：默认 testset 参数修正
 
 ### 重构
-- 导入规范化：`rag_interface.py` 移入 `src/`，所有模块统一 `from src.xxx` 相对导入
-- 配置集中化：`web_api.py` 改用 `CHROMA_PERSIST_DIR`/`QWEN3_FINETUNED_PATH`
-- `src/rag_pipeline.py`：修复懒加载导入，改用相对导入
-- `build_index.py`：重写为直接组件调用，修复不存在的方法
-- `SYSTEM_PROMPT_VET`：改为宠物狗专属提示词
+- 项目 `.claude/settings.json` 精简为仅项目特定配置（ruff hook + data/ 保护）
+- 文件规范化：`pharmaceuticals_v0.json` → `pharmaceuticals.json`（删除冗余模板）
 
 ---
 

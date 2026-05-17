@@ -61,9 +61,122 @@ class VetRAGDataLoader:
             return self._parse_behaviors(data, file_path)
         elif "surgery" in filename_lower or "surgeries" in filename_lower:
             return self._parse_surgeries(data, file_path)
+        elif "pharmaceutical" in filename_lower or "drug" in filename_lower:
+            return self._parse_pharmaceuticals(data, file_path)
         else:
             # 通用解析
             return self._parse_generic(data, file_path)
+
+    def _parse_pharmaceuticals(self, data: Dict | list, source_file: str) -> List[Dict]:
+        """解析药物数据，兼容 v0（从 diseases 提取）和 v1（完整专论）两种格式。"""
+        chunks = []
+
+        if isinstance(data, list):
+            drugs = data
+        elif isinstance(data, dict) and "drugs" in data:
+            drugs = data["drugs"]
+        else:
+            return chunks
+
+        for i, drug in enumerate(drugs):
+            if not isinstance(drug, dict):
+                continue
+
+            drug_name = drug.get("drug_name", f"drug_{i}")
+
+            # ── 构建内容文本 ──
+            parts = [f"药物: {drug_name}"]
+
+            # 英文名
+            if drug.get("drug_name_en"):
+                parts.append(f"英文名: {drug['drug_name_en']}")
+
+            # 药物类别
+            drug_class = drug.get("drug_class", [])
+            if isinstance(drug_class, list) and drug_class:
+                parts.append(f"药物类别: {'、'.join(drug_class)}")
+            elif isinstance(drug_class, str) and drug_class:
+                parts.append(f"药物类别: {drug_class}")
+
+            # 作用机制（v1）
+            if drug.get("mechanism"):
+                parts.append(f"作用机制: {drug['mechanism']}")
+
+            # 适应症
+            indications = drug.get("indications", [])
+            if indications:
+                parts.append(f"适应症: {'、'.join(indications)}")
+
+            # 剂量信息
+            dosage_canine = drug.get("dosage_canine", {})
+            if isinstance(dosage_canine, dict) and dosage_canine.get("standard"):
+                parts.append(f"犬标准剂量: {dosage_canine['standard']}")
+                by_weight = dosage_canine.get("by_weight", [])
+                if by_weight:
+                    parts.append("按体重剂量:")
+                    for bw in by_weight:
+                        parts.append(f"  {bw.get('weight_kg', '')}: {bw.get('dosage', '')}")
+            else:
+                # v0 格式：从 dosages 数组取
+                dosages = drug.get("dosages", [])
+                if dosages:
+                    parts.append(f"参考剂量: {'; '.join(dosages)}")
+
+            # 给药途径
+            routes = drug.get("routes", [])
+            if routes:
+                parts.append(f"给药途径: {'、'.join(routes)}")
+
+            # 频率
+            frequencies = drug.get("frequencies", [])
+            if frequencies:
+                parts.append(f"给药频率: {'、'.join(frequencies)}")
+
+            # 禁忌症（v1）
+            contraindications = drug.get("contraindications", [])
+            if contraindications:
+                parts.append(f"禁忌症: {'、'.join(contraindications)}")
+
+            # 副作用（v1）
+            side_effects = drug.get("side_effects", [])
+            if side_effects:
+                se_lines = []
+                for se in side_effects:
+                    freq = f"({se.get('frequency', '')})" if se.get("frequency") else ""
+                    se_lines.append(f"{se.get('effect', '')}{freq}")
+                parts.append(f"不良反应: {'; '.join(se_lines)}")
+
+            # 药物相互作用（v1）
+            interactions = drug.get("drug_interactions", [])
+            if interactions:
+                parts.append(f"药物相互作用: {'; '.join(interactions)}")
+
+            # 监测建议（v1）
+            if drug.get("monitoring"):
+                parts.append(f"用药监测: {drug['monitoring']}")
+
+            content = "\n".join(parts)
+
+            # ── 构建元数据 ──
+            metadata = {
+                "content_type": "pharmaceuticals",
+                "drug_name": drug_name,
+                "drug_class": "/".join(drug_class) if isinstance(drug_class, list) else drug_class,
+                "indication_count": len(indications),
+                "dosage_available": bool(dosages) or bool(dosage_canine),
+                "has_contraindications": bool(contraindications),
+                "has_interactions": bool(interactions),
+                "source_file": source_file,
+            }
+
+            chunks.append({
+                "content": content,
+                "metadata": metadata,
+                "source_file": source_file,
+                "content_type": "pharmaceuticals",
+            })
+
+        return chunks
 
     def _parse_generic(self, data: Dict, source_file: str) -> List[Dict]:
         chunks = []

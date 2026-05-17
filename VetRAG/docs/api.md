@@ -1,14 +1,14 @@
 # API 参考文档
 
-本文档描述 VetRAG Web API 的所有端点。服务启动后，也可通过 `http://localhost:8000/docs` 访问 Swagger UI 交互式文档。
+本文档描述 VetRAG Web API 的所有端点。服务启动后，也可通过 `http://localhost:5002/docs` 访问 Swagger UI 交互式文档。
 
 ## 基础信息
 
 | 项目 | 值 |
 |------|-----|
-| 基础 URL | `http://localhost:8000` |
-| API 文档 | `http://localhost:8000/docs` |
-| OpenAPI JSON | `http://localhost:8000/openapi.json` |
+| 基础 URL | `http://localhost:5002` |
+| API 文档 | `http://localhost:5002/docs` |
+| OpenAPI JSON | `http://localhost:5002/openapi.json` |
 
 ---
 
@@ -50,7 +50,7 @@
     "metadata": { ... }
   },
   "generator_loaded": true,
-  "generator_model": "D:\\Backup\\PythonProject2\\VetRAG\\models_finetuned\\qwen3-finetuned"
+  "generator_model": "vetrag-qwen3-1.7b-vet (Ollama)"
 }
 ```
 
@@ -160,7 +160,7 @@ data: {"error": "问题不能为空"}
 **curl 示例：**
 
 ```bash
-curl -N "http://localhost:8000/stream?question=金毛的寿命有多长"
+curl -N "http://localhost:5002/stream?question=金毛的寿命有多长"
 ```
 
 ---

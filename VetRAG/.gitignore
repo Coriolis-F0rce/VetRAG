@@ -15,7 +15,8 @@ models_finetuned/
 
 # --- 测试临时文件 ---
 temp_test_chroma/
-temp_*/
+temp/
+eval/results/
 *.tmp
 *.temp
 
@@ -42,3 +43,20 @@ Thumbs.db
 
 # --- Jupyter ---
 .ipynb_checkpoints/
+
+# --- Claude Code 本地配置 ---
+CLAUDE.local.md
+.claude/settings.local.json
+
+# --- Ollama 模型产物 ---
+models_merged/
+models_gguf/
+llama.cpp/
+
+# --- 临时/研究目录 ---
+study_materials/
+veterinary_rag/
+check_format.py
+
+# --- 过时配置 ---
+envs/.env.example

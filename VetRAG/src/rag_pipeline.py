@@ -33,9 +33,9 @@ class VetRAGPipeline:
                 model_name="BAAI/bge-large-zh-v1.5"
             )
 
-            print("✓ 模块导入成功")
+            print("[OK] 模块导入成功")
         except ImportError as e:
-            print(f"✗ 模块导入失败: {e}")
+            print(f"[ERR] 模块导入失败: {e}")
             raise
 
         # 状态文件
@@ -110,7 +110,7 @@ class VetRAGPipeline:
 
         for file_path in file_paths:
             if not os.path.exists(file_path):
-                print(f"✗ 文件不存在: {file_path}")
+                print(f"[ERR] 文件不存在: {file_path}")
                 continue
 
             try:
@@ -127,10 +127,10 @@ class VetRAGPipeline:
                     content_stats[content_type] = content_stats.get(content_type, 0) + 1
 
                 all_chunks.extend(chunks)
-                print(f"✓ {filename}: {len(chunks)} 个chunks")
+                print(f"[OK] {filename}: {len(chunks)} 个chunks")
 
             except Exception as e:
-                print(f"✗ 加载失败 {file_path}: {e}")
+                print(f"[ERR] 加载失败 {file_path}: {e}")
 
         # 保存到缓存
         self.chunks_cache = all_chunks
@@ -141,7 +141,7 @@ class VetRAGPipeline:
         self.state["total_chunks"] = len(all_chunks)
         self._save_state()
 
-        print(f"✓ 成功加载 {len(all_chunks)} 个文本块")
+        print(f"[OK] 成功加载 {len(all_chunks)} 个文本块")
 
         # 显示内容类型分布
         print("\n内容类型分布:")
@@ -182,7 +182,7 @@ class VetRAGPipeline:
         self.state["vector_index_stats"] = result
         self._save_state()
 
-        print(f"✓ 成功向量化 {result}")
+        print(f"[OK] 成功向量化 {result}")
 
         return result
 
@@ -202,7 +202,7 @@ class VetRAGPipeline:
         results = self.vector_store.search(question, n_results=top_k)
 
         if "error" in results:
-            print(f"✗ 查询失败: {results['error']}")
+            print(f"[ERR] 查询失败: {results['error']}")
             return results
 
         print(f"找到 {results['total_results']} 个相关结果:")
@@ -345,7 +345,7 @@ class VetRAGPipeline:
             shutil.rmtree(self.persist_dir)
             results.append({"action": "remove_persist_dir", "success": True})
 
-        print("✓ 系统清理完成")
+        print("[OK] 系统清理完成")
 
         return {
             "success": True,
@@ -364,30 +364,30 @@ def main():
     print("检查依赖...")
     try:
         import chromadb
-        print("✓ chromadb")
+        print("[OK] chromadb")
     except:
-        print("✗ chromadb - 请运行: pip install chromadb==0.4.22")
+        print("[ERR] chromadb - 请运行: pip install chromadb==0.4.22")
         return
 
     try:
         from sentence_transformers import SentenceTransformer
-        print("✓ sentence-transformers")
+        print("[OK] sentence-transformers")
     except:
-        print("✗ sentence-transformers - 请运行: pip install sentence-transformers")
+        print("[ERR] sentence-transformers - 请运行: pip install sentence-transformers")
         return
 
     try:
         import tqdm
-        print("✓ tqdm")
+        print("[OK] tqdm")
     except:
-        print("✗ tqdm - 请运行: pip install tqdm")
+        print("[ERR] tqdm - 请运行: pip install tqdm")
         return
 
     try:
         import numpy as np
-        print("✓ numpy")
+        print("[OK] numpy")
     except:
-        print("✗ numpy - 请运行: pip install numpy")
+        print("[ERR] numpy - 请运行: pip install numpy")
         return
 
     # 初始化系统
@@ -395,7 +395,7 @@ def main():
     try:
         rag = VetRAGPipeline(data_dir="data", persist_dir="./chroma_db")
     except Exception as e:
-        print(f"✗ 初始化失败: {e}")
+        print(f"[ERR] 初始化失败: {e}")
         return
 
     # 检查是否已有向量索引
@@ -459,11 +459,11 @@ def main():
             if os.path.exists(file_path):
                 result = rag.add_new_json_file(file_path)
                 if result["success"]:
-                    print(f"✓ 添加成功: {result.get('added', 0)} 个新增文档")
+                    print(f"[OK] 添加成功: {result.get('added', 0)} 个新增文档")
                 else:
-                    print(f"✗ 添加失败: {result.get('error', '未知错误')}")
+                    print(f"[ERR] 添加失败: {result.get('error', '未知错误')}")
             else:
-                print(f"✗ 文件不存在: {file_path}")
+                print(f"[ERR] 文件不存在: {file_path}")
 
         elif user_input.startswith('批量添加 '):
             dir_path = user_input[5:].strip()
@@ -480,11 +480,11 @@ def main():
                     results = rag.batch_add_json_files(json_files)
 
                     total_added = sum(r.get('added', 0) for r in results if r.get('success', False))
-                    print(f"✓ 批量添加完成: 总计新增 {total_added} 个文档")
+                    print(f"[OK] 批量添加完成: 总计新增 {total_added} 个文档")
                 else:
                     print("没有找到JSON文件")
             else:
-                print(f"✗ 目录不存在: {dir_path}")
+                print(f"[ERR] 目录不存在: {dir_path}")
 
         elif user_input == '状态':
             info = rag.get_system_info()

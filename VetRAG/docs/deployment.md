@@ -23,16 +23,21 @@ source venv/bin/activate      # Linux/macOS
 # 3. 安装依赖
 pip install -r requirements.txt
 
-# 4. 配置环境变量
+# 4. 安装并启动 Ollama
+# 从 https://ollama.com 下载安装
+ollama serve
+ollama pull qwen3:1.7b     # 基础模型
+
+# 5. 配置环境变量
 cp envs/.env.example .env
-# 编辑 .env，填入模型实际路径
+# 编辑 .env，设置模型名和路径
 
-# 5. 构建向量索引（首次）
-python build_index.py
+# 6. 构建向量索引（首次）
+python scripts/build_index.py
 
-# 6. 启动服务
-python web_api.py
-# 访问 http://localhost:8000
+# 7. 启动服务
+python scripts/web_api.py
+# 访问 http://localhost:5002
 ```
 
 ### 1.2 conda 部署
@@ -40,8 +45,8 @@ python web_api.py
 ```bash
 conda env create -f conda-environment.yml
 conda activate vetrag
-python build_index.py
-python web_api.py
+python scripts/build_index.py
+python scripts/web_api.py
 ```
 
 ### 1.3 Docker 部署
@@ -51,9 +56,8 @@ python web_api.py
 ```bash
 cd VetRAG
 
-# 准备本地模型（可选，用于挂载到容器内）
-# 将 Qwen3 微调模型放在 models_finetuned/qwen3-finetuned/
-# 修改 docker-compose.yml 中的模型挂载路径
+# 确保 Ollama 运行在宿主机（Docker 内通过 host 网络访问）
+# 或使用单独的 Ollama 容器
 ```
 
 #### 构建并启动
@@ -61,9 +65,6 @@ cd VetRAG
 ```bash
 # 仅 API 服务
 docker-compose up -d vetrag-api
-
-# API + Jupyter Notebook（调试用）
-docker-compose up -d
 
 # 查看日志
 docker-compose logs -f vetrag-api
@@ -76,10 +77,10 @@ docker-compose down
 
 ```bash
 # 健康检查
-curl http://localhost:8000/stats
+curl http://localhost:5002/stats
 
 # 预期输出：
-# {"vector_store": {"collection_name": "veterinary_rag", "document_count": ...}, ...}
+# {"vector_store": {"collection_name": "veterinary_rag", "document_count": 1189}, ...}
 ```
 
 #### docker-compose.yml 配置说明
@@ -88,6 +89,8 @@ curl http://localhost:8000/stats
 services:
   vetrag-api:
     environment:
+      # Ollama 服务地址（宿主机）
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
       # 向量库持久化路径（容器内）
       CHROMA_PERSIST_DIR: /app/chroma_db
       # 向量模型
@@ -95,8 +98,6 @@ services:
       # HuggingFace 镜像（国内加速）
       HF_ENDPOINT: https://hf-mirror.com
     volumes:
-      # 取消注释并填入实际路径：
-      # - /path/to/models:/app/models
       # 向量数据库持久化（重建后数据不丢失）
       - ./chroma_db:/app/chroma_db
 ```
@@ -107,13 +108,12 @@ services:
 
 ```
 VetRAG/
-├── models/                    # Qwen3 基础模型（可选，web_api.py 默认使用微调版）
-│   └── Qwen3-0.6B/...
-├── models_finetuned/          # 微调模型（web_api.py 默认使用）
-│   └── qwen3-finetuned/
 ├── chroma_db/                # 向量数据库（首次构建自动创建）
 ├── logs/                     # 日志目录
-└── data/                     # 知识库 JSON
+├── data/                     # 知识库 JSON（6 个文件 + pharmaceuticals.json）
+├── models_merged/            # 合并后完整权重（不提交 Git）
+├── models_gguf/              # GGUF 文件（不提交 Git）
+└── Ollama 模型注册表         # 由 Ollama 管理，不在此目录
 ```
 
 ---
@@ -122,16 +122,17 @@ VetRAG/
 
 ### 2.1 评价指标体系
 
-VetRAG 采用**语义余弦相似度**作为核心量化指标，衡量生成内容与参考答案在语义向量空间中的接近程度。
+VetRAG 提供两层评估体系：
 
-| 指标 | 说明 | 计算方式 |
-|------|------|---------|
-| **语义余弦相似度** | 生成回答与参考答案的语义接近程度 | `cosine(embed(gen), embed(ref))`，嵌入模型为 BGE-large-zh-v1.5 |
-| 均值（Mean） | 1027 条测试样本的相似度均值 | - |
-| 中位数（Median） | 相似度分布的中位数 | - |
-| 标准差（Std） | 相似度分布的离散程度 | - |
+**规则评分**（BGE 语义相似度 + 关键词覆盖率 + 格式检测）和 **LLM-as-Judge**（DeepSeek 5 维度匿名对比）。
 
-> **注意**：微调对比评价由 `finetune_steps/test_before_finetuning.py`（原始模型）和 `test_after_finetuning.py`（微调模型）自动完成，两者使用相同的测试数据、相同的生成参数和相同的嵌入模型，确保对比公平。
+| 评估方式 | 工具 | 说明 |
+|---------|------|------|
+| 语义余弦相似度 | BGE-large-zh-v1.5 | 生成 vs 参考答案的向量距离 |
+| A/B 实验 | `eval/scripts/run_ab_experiment.py` | 4 组对比（微调±RAG vs 基础±RAG） |
+| DeepSeek Judge | `eval/scripts/run_deepseek_judge.py` | 5 维度匿名评分（accuracy/relevance/completeness/format/safety） |
+
+> 微调对比历史脚本已移入 `temp/`（`test_before_finetuning.py`、`test_after_finetuning.py`）。
 
 ### 2.2 微调效果评估（基础模型 vs 微调模型）
 
@@ -146,13 +147,16 @@ VetRAG 采用**语义余弦相似度**作为核心量化指标，衡量生成内
 #### 评估流程
 
 ```bash
-cd VetRAG/finetune_steps
+cd VetRAG
 
-# 1. 评估原始模型
-python test_before_finetuning.py
+# 1. 评估原始模型（历史脚本在 temp/）
+python temp/test_before_finetuning.py
 
 # 2. 评估微调模型
-python test_after_finetuning.py
+python temp/test_after_finetuning.py
+
+# 3. A/B 实验（当前推荐）
+python eval/scripts/run_ab_experiment.py
 ```
 
 #### 评估脚本原理
@@ -190,11 +194,11 @@ similarities.append(sim)
 
 ```bash
 # 方法 1：使用命令行工具
-python run.py
+python scripts/run.py
 # 输入: /stats  查看向量库文档数
 
 # 方法 2：调用 API
-curl http://localhost:8000/stats
+curl http://localhost:5002/stats
 
 # 方法 3：直接验证向量库
 python -c "
@@ -216,12 +220,12 @@ for r in result['results']:
 
 ```bash
 # 测试问题（来自 data/diseases.json）
-curl -X POST http://localhost:8000/query \
+curl -X POST http://localhost:5002/query \
   -H "Content-Type: application/json" \
   -d '{"question": "犬瘟热的症状有哪些？", "top_k": 5}'
 
 # 测试流式输出
-curl -N "http://localhost:8000/stream?question=犬瘟热的症状有哪些&top_k=5"
+curl -N "http://localhost:5002/stream?question=犬瘟热的症状有哪些&top_k=5"
 ```
 
 **验证要点**：
@@ -258,7 +262,10 @@ RAG 系统在 1027 条测试集上的端到端语义相似度：
 
 #### 定期回归测试
 
-建议每周或每次更新向量库后，重新运行 `test_after_finetuning.py`，监控指标漂移。
+建议每周或每次更新向量库后：
+1. 运行 `python eval/scripts/run_ab_experiment.py` 检查各组表现
+2. 运行 `python eval/scripts/run_deepseek_judge.py` 检查评分趋势
+3. 对比历史结果（`eval/results/summary_*.json`），监控指标漂移
 
 ---
 
@@ -274,50 +281,38 @@ pip install -r requirements.txt
 
 ```bash
 # 重建向量索引
-python build_index.py
+python scripts/build_index.py
 
 # 检查 data/ 目录是否包含 JSON 文件
 ls data/
 ```
 
-### 模型加载失败（OOM 或路径错误）
+### 模型加载失败
 
 ```bash
-# 确认 .env 中路径正确
-# Windows 示例：
-QWEN3_FINETUNED_PATH=D:\\Backup\\PythonProject2\\VetRAG\\models_finetuned\\qwen3-finetuned
+# 确认 Ollama 正在运行
+ollama list
 
-# GPU 显存不足时，使用 CPU 推理（仅测试用）
-# 修改 rag_interface.py 中 device 为 cpu
+# 确认模型已拉取
+ollama pull qwen3:1.7b
+
+# 确认 .env 或环境变量中模型名正确
+OLLAMA_GENERATOR_MODEL=vetrag-qwen3-1.7b-vet
+OLLAMA_GUARD_MODEL=qwen3:1.7b
 ```
 
-### Docker 容器内无法访问 GPU
+### Docker 容器内无法访问 Ollama
 
-宿主机需要安装 nvidia-container-toolkit：
-
-```bash
-# Linux
-distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
-curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
-curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | \
-    sudo tee /etc/apt/sources.list.d/nvidia-docker.list
-sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit
-sudo systemctl restart docker
-```
-
-`docker-compose.yml` 中 GPU 加速：
+Docker 容器通过 `host.docker.internal` 访问宿主机 Ollama：
 
 ```yaml
 services:
   vetrag-api:
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
+    environment:
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
 ```
+
+Linux 需要添加 `--add-host=host.docker.internal:host-gateway`。
 
 ### 向量检索结果不准确
 

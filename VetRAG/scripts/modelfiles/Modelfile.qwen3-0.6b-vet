@@ -1,0 +1,7 @@
+# Qwen3-0.6B 微调模型（兽医领域 LoRA 微调，r=8）
+# GGUF 文件由 scripts/convert_to_gguf.py 生成
+FROM D:\Backup\PythonProject2\VetRAG\models_gguf\qwen3-0.6b-vet-finetuned.gguf
+
+PARAMETER temperature 0.0
+PARAMETER num_predict 512
+PARAMETER repeat_penalty 1.2

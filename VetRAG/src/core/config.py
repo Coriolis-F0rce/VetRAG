@@ -39,6 +39,18 @@ QWEN3_FINETUNED_PATH_V1: Path = Path(os.getenv(
     str(FINETUNED_DIR / "qwen3-finetuned1")
 ))
 
+# ---------- Ollama 模型名 ----------
+# 生成模型（回答问题的模型）
+OLLAMA_GENERATOR_MODEL: str = os.getenv(
+    "OLLAMA_GENERATOR_MODEL",
+    "vetrag-qwen3-1.7b-vet"  # 默认使用微调后的 1.7B
+)
+# 护卫模型（领域分类用的基础模型）
+OLLAMA_GUARD_MODEL: str = os.getenv(
+    "OLLAMA_GUARD_MODEL",
+    "qwen3:1.7b"
+)
+
 # ---------- ChromaDB ----------
 CHROMA_PERSIST_DIR: str = os.getenv("CHROMA_PERSIST_DIR", str(CHROMA_DIR))
 CHROMA_COLLECTION_NAME: str = os.getenv("CHROMA_COLLECTION_NAME", "veterinary_rag")
@@ -86,6 +98,7 @@ DATA_FILES: list[str] = [
     "breeds.json",
     "cares.json",
     "diseases.json",
+    "pharmaceuticals.json",
     "surgeries.json",
 ]
 

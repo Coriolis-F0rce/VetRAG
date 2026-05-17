@@ -55,18 +55,18 @@ class ChromaVectorStore:
         try:
             # 使用sentence-transformers加载BGE模型
             self.embedding_model = SentenceTransformer(model_name)
-            print("✓ BGE模型加载完成")
+            print("[OK] BGE模型加载完成")
 
             # 测试模型
             test_embedding = self.embedding_model.encode(["测试"], normalize_embeddings=True)
             print(f"模型维度: {test_embedding.shape[1]}")
 
         except Exception as e:
-            print(f"✗ BGE模型加载失败: {e}")
+            print(f"[ERR] BGE模型加载失败: {e}")
             # 回退到MiniLM
             print("尝试加载MiniLM模型...")
             self.embedding_model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
-            print("✓ 回退到MiniLM模型")
+            print("[OK] 回退到MiniLM模型")
 
         # 创建或获取集合
         try:
@@ -78,9 +78,9 @@ class ChromaVectorStore:
                     "created_at": datetime.now().isoformat()
                 }
             )
-            print(f"✓ 集合 '{collection_name}' 已加载/创建")
+            print(f"[OK] 集合 '{collection_name}' 已加载/创建")
         except Exception as e:
-            print(f"✗ 集合创建失败: {e}")
+            print(f"[ERR] 集合创建失败: {e}")
             raise
 
         # 加载已处理的文档ID集合
@@ -92,7 +92,7 @@ class ChromaVectorStore:
 
         print(f"初始化完成，当前文档数: {self.collection.count()}")
         if self.use_hybrid:
-            print(f"✓ 混合检索已启用（Dense={dense_weight}, BM25={bm25_weight}）")
+            print(f"[OK] 混合检索已启用（Dense={dense_weight}, BM25={bm25_weight}）")
 
     def _load_processed_ids(self) -> set:
         """加载已处理的文档ID集合"""
@@ -275,7 +275,7 @@ class ChromaVectorStore:
                 print(f"  批次 {i // batch_size + 1}: 成功添加 {len(batch_ids)} 个文档")
 
             except Exception as e:
-                print(f"✗ 批次处理失败: {e}")
+                print(f"[ERR] 批次处理失败: {e}")
                 skipped_count += len(batch_texts)
                 continue
 
@@ -290,10 +290,10 @@ class ChromaVectorStore:
                 chunk_ids=bm25_ids,
                 metadatas=bm25_metas,
             )
-            print(f"✓ BM25 索引已更新（+{len(bm25_docs)} 篇文档）")
+            print(f"[OK] BM25 索引已更新（+{len(bm25_docs)} 篇文档）")
 
         current_total = self.collection.count()
-        print(f"✓ 添加完成: {added_count} 新增, {skipped_count} 跳过, 当前总数: {current_total}")
+        print(f"[OK] 添加完成: {added_count} 新增, {skipped_count} 跳过, 当前总数: {current_total}")
 
         return {
             "added": added_count,
@@ -475,7 +475,7 @@ class ChromaVectorStore:
             metadatas=metas,
             incremental=False,
         )
-        print(f"✓ BM25 索引构建完成（{len(docs)} 篇文档）")
+        print(f"[OK] BM25 索引构建完成（{len(docs)} 篇文档）")
 
     def get_collection_stats(self) -> Dict:
         """获取集合统计信息"""
@@ -518,13 +518,13 @@ class ChromaVectorStore:
             if self._hybrid_retriever is not None:
                 self._hybrid_retriever._bm25_retriever.clear()
                 self._hybrid_retriever._bm25_retriever.remove_persist()
-                print("✓ BM25 索引已清空")
+                print("[OK] BM25 索引已清空")
 
-            print("✓ 集合已清空并重新创建")
+            print("[OK] 集合已清空并重新创建")
             return True
 
         except Exception as e:
-            print(f"✗ 清空集合失败: {e}")
+            print(f"[ERR] 清空集合失败: {e}")
             return False
 
     def cleanup(self, remove_persist_dir: bool = False) -> Dict:

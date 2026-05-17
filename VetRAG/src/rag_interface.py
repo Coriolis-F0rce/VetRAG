@@ -4,25 +4,15 @@ import sys
 import asyncio
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Generator, AsyncGenerator
-from threading import Thread
-from queue import Queue, Empty
-from threading import Thread
 
-import torch
-from transformers import (
-    AutoModelForCausalLM,
-    AutoTokenizer,
-    TextIteratorStreamer,
-    TextStreamer,
-)
-from peft import PeftModel
+import ollama
 
 from src.vector_store_chroma import ChromaVectorStore
 from src.json_loader import VetRAGDataLoader
 from src.core.config import (
     SYSTEM_PROMPT_VET,
-    Qwen3_BASE_MODEL_PATH,
-    QWEN3_FINETUNED_PATH,
+    OLLAMA_GENERATOR_MODEL,
+    OLLAMA_GUARD_MODEL,
     USE_HYBRID_SEARCH,
     HYBRID_DENSE_WEIGHT,
     HYBRID_BM25_WEIGHT,
@@ -31,61 +21,52 @@ from src.core.config import (
 from src.core.domain_guard import DomainGuard
 
 
+# Ollama 生成参数映射（transformers → Ollama）
+_GENERATION_PARAM_MAP = {
+    "max_new_tokens": "num_predict",
+    "temperature": "temperature",
+    "repetition_penalty": "repeat_penalty",
+    "top_p": "top_p",
+    "top_k": "top_k",
+}
+
+
 class QwenGenerator:
-    def __init__(self, model_path: str, device: str = None, base_model_path: str = None):
-        if device is None:
-            device = "cuda" if torch.cuda.is_available() else "cpu"
-        self.device = device
-        self.model_path = model_path
+    """基于 Ollama 的 LLM 生成器，替代原来的 transformers 直接加载。"""
 
-        print(f"正在加载生成模型: {model_path}")
-        self.tokenizer = AutoTokenizer.from_pretrained(
-            model_path,
-            trust_remote_code=True,
-        )
-        if self.tokenizer.pad_token is None:
-            self.tokenizer.pad_token = self.tokenizer.eos_token
+    def __init__(self, model_name: str, host: str = None):
+        self.model_name = model_name
+        self.host = host  # Ollama 服务地址，None 表示默认 http://localhost:11434
 
-        adapter_config_path = os.path.join(model_path, "adapter_config.json")
-        if os.path.exists(adapter_config_path):
-            if base_model_path is None:
-                import json
-                with open(adapter_config_path, "r") as f:
-                    adapter_cfg = json.load(f)
-                base_model_path = adapter_cfg.get("base_model_name_or_path", "")
-            print(f"检测到 LoRA adapter，加载基础模型: {base_model_path}")
-            base_model = AutoModelForCausalLM.from_pretrained(
-                base_model_path,
-                torch_dtype=torch.float16 if device == "cuda" else torch.float32,
-                trust_remote_code=True,
-            )
-            base_model = base_model.to(device)
-            self.model = PeftModel.from_pretrained(base_model, model_path)
-            self.model = self.model.to(device)
-            print("LoRA adapter 加载完成，可训练参数:")
-            self.model.print_trainable_parameters()
-        else:
-            print(f"加载完整模型（非 LoRA）: {model_path}")
-            self.model = AutoModelForCausalLM.from_pretrained(
-                model_path,
-                torch_dtype=torch.float16 if device == "cuda" else torch.float32,
-                device_map=None,
-                trust_remote_code=True
-            )
-            self.model = self.model.to(device)
+        print(f"[Ollama] 使用模型: {model_name}")
 
-        self.model.eval()
-
+        # Ollama 生成默认参数（对应原 generation_config）
         self.generation_config = {
-            "max_new_tokens": 512,
-            "do_sample": False,
-            "repetition_penalty": 1.2,
-            "no_repeat_ngram_size": 3,
-            "eos_token_id": self.tokenizer.eos_token_id,
-            "pad_token_id": self.tokenizer.pad_token_id,
+            "num_predict": 512,
+            "temperature": 0.0,  # 0.0 = greedy decoding (对应 do_sample=False)
+            "repeat_penalty": 1.2,
         }
 
+    def _build_options(self, **kwargs) -> dict:
+        """将 generation_config + kwargs 转换为 Ollama options 字典"""
+        options = dict(self.generation_config)
+        for tf_name, ollama_name in _GENERATION_PARAM_MAP.items():
+            if tf_name in kwargs:
+                options[ollama_name] = kwargs.pop(tf_name)
+        # 剩余未知参数直接传入
+        options.update(kwargs)
+        return options
+
+    def _get_client(self):
+        """获取同步 Ollama 客户端"""
+        return ollama.Client(host=self.host) if self.host else ollama
+
+    def _get_async_client(self):
+        """获取异步 Ollama 客户端"""
+        return ollama.AsyncClient(host=self.host) if self.host else ollama.AsyncClient()
+
     def build_chat_prompt(self, system: str, user: str, context: str = None) -> str:
+        """构建对话 prompt（保持与旧版兼容的字符串输出）"""
         messages = []
         if system:
             messages.append({"role": "system", "content": system})
@@ -94,72 +75,80 @@ class QwenGenerator:
         else:
             user_content = user
         messages.append({"role": "user", "content": user_content})
-        return self.tokenizer.apply_chat_template(
-            messages,
-            tokenize=False,
-            add_generation_prompt=True
-        )
+        # 拼接为可读的 prompt 字符串
+        parts = []
+        for msg in messages:
+            role = msg["role"]
+            content = msg["content"]
+            if role == "system":
+                parts.append(f"<|im_start|>system\n{content}<|im_end|>")
+            elif role == "user":
+                parts.append(f"<|im_start|>user\n{content}<|im_end|>")
+        parts.append("<|im_start|>assistant\n")
+        return "\n".join(parts)
+
+    def build_chat_messages(self, system: str, user: str, context: str = None) -> list:
+        """构建 Ollama chat 格式的消息列表（Qwen3 原生支持）"""
+        messages = []
+        if system:
+            messages.append({"role": "system", "content": system})
+        if context:
+            user_content = f"参考资料：\n{context}\n\n问题：{user}"
+        else:
+            user_content = user
+        messages.append({"role": "user", "content": user_content})
+        return messages
+
     # =================================================
 
-    def generate_stream(self, prompt: str, **kwargs):
-        inputs = self.tokenizer(prompt, return_tensors="pt", truncation=True, max_length=2048).to(self.device)
-        gen_kwargs = {**self.generation_config, **kwargs}
-        streamer = TextStreamer(self.tokenizer, skip_prompt=True, skip_special_tokens=True)
-        with torch.no_grad():
-            self.model.generate(
-                **inputs,
-                streamer=streamer,
-                **gen_kwargs
-            )
-
     def generate(self, prompt: str, **kwargs) -> str:
-        inputs = self.tokenizer(prompt, return_tensors="pt", truncation=True, max_length=2048).to(self.device)
-        gen_kwargs = {**self.generation_config, **kwargs}
-        with torch.no_grad():
-            outputs = self.model.generate(**inputs, **gen_kwargs)
-        answer = self.tokenizer.decode(outputs[0][inputs.input_ids.shape[1]:], skip_special_tokens=True)
-        # 去除 Qwen3 think 标签内容
-        answer = answer.replace("<think>\n\n\n\n\n\n\n\n\n\n</think>", "").replace("<think>", "").replace("</think>", "")
+        """同步生成（非流式），返回完整回答"""
+        options = self._build_options(**kwargs)
+        client = self._get_client()
+        response = client.generate(
+            model=self.model_name,
+            prompt=prompt,
+            stream=False,
+            options=options,
+            think=False,
+        )
+        answer = response["response"].strip()
+        # 去除 Qwen3 think 标签残留
+        answer = answer.replace("<think>", "").replace("</think>", "")
         return answer.strip()
+
+    def generate_stream(self, prompt: str, **kwargs):
+        """同步流式生成（直接打印到控制台）"""
+        options = self._build_options(**kwargs)
+        client = self._get_client()
+        for chunk in client.generate(
+            model=self.model_name,
+            prompt=prompt,
+            stream=True,
+            options=options,
+            think=False,
+        ):
+            if not chunk.get("done"):
+                print(chunk["response"], end="", flush=True)
+        print()  # 结尾换行
 
     async def async_stream_generate(self, prompt: str, **kwargs) -> AsyncGenerator[str, None]:
         """
-        异步生成器，在后台线程中运行模型生成，通过 asyncio.Queue 将 token 传递到
-        事件循环，支持 FastAPI 流式 SSE。
+        异步流式生成器，通过 Ollama AsyncClient 逐 token 产出，
+        供 FastAPI SSE 端点使用。
         """
-        q: asyncio.Queue = asyncio.Queue()
-
-        def generate():
-            try:
-                inputs = self.tokenizer(
-                    prompt, return_tensors="pt", truncation=True, max_length=2048
-                ).to(self.device)
-                streamer = TextIteratorStreamer(
-                    self.tokenizer, skip_prompt=True, skip_special_tokens=True
-                )
-                gen_kwargs = {**self.generation_config, **kwargs, "streamer": streamer}
-                thread = Thread(target=self.model.generate, kwargs={**dict(inputs), **gen_kwargs}, daemon=True)
-                thread.start()
-                try:
-                    for token in streamer:
-                        q.put_nowait(token)
-                finally:
-                    thread.join()
-            except Exception as e:
-                q.put_nowait(e)
-            else:
-                q.put_nowait(None)
-
-        thread = Thread(target=generate, daemon=True)
-        thread.start()
-
-        while True:
-            token = await asyncio.wait_for(q.get(), timeout=60)
-            if token is None:
-                break
-            if isinstance(token, Exception):
-                raise token
-            yield token
+        options = self._build_options(**kwargs)
+        async_client = self._get_async_client()
+        response = await async_client.generate(
+            model=self.model_name,
+            prompt=prompt,
+            stream=True,
+            options=options,
+            think=False,
+        )
+        async for chunk in response:
+            if not chunk.get("done"):
+                yield chunk["response"]
 
 
 
@@ -167,8 +156,8 @@ class RAGInterface:
     def __init__(
         self,
         chroma_persist_dir: str = "./chroma_db",
-        generator_model_path: Optional[str] = None,
-        generator_base_model_path: Optional[str] = None,
+        generator_model_name: Optional[str] = None,
+        guard_model_name: Optional[str] = None,
         collection_name: str = "veterinary_rag",
         embedding_model_name: str = "BAAI/bge-large-zh-v1.5",
         use_hybrid: bool = USE_HYBRID_SEARCH,
@@ -176,10 +165,10 @@ class RAGInterface:
         bm25_weight: float = HYBRID_BM25_WEIGHT,
         use_domain_guard: bool = USE_DOMAIN_GUARD,
     ):
-        if generator_model_path is None:
-            generator_model_path = str(QWEN3_FINETUNED_PATH)
+        if generator_model_name is None:
+            generator_model_name = OLLAMA_GENERATOR_MODEL
         self.chroma_persist_dir = chroma_persist_dir
-        self.generator_model_path = generator_model_path
+        self.generator_model_name = generator_model_name
         self.use_hybrid = use_hybrid
         self.use_domain_guard = use_domain_guard
 
@@ -195,16 +184,14 @@ class RAGInterface:
 
         self.loader = VetRAGDataLoader()
         self.generator = None
-        self.generator = QwenGenerator(generator_model_path, base_model_path=generator_base_model_path)
+        self.generator = QwenGenerator(generator_model_name)
 
-        # 初始化领域守卫（优先使用基础模型做零样本分类）
-        base_model_for_guard = generator_base_model_path
-        if base_model_for_guard is None:
-            base_model_for_guard = str(Qwen3_BASE_MODEL_PATH)
+        # 初始化领域守卫（使用 Ollama 基础模型做零样本分类）
+        if guard_model_name is None:
+            guard_model_name = OLLAMA_GUARD_MODEL
         self.domain_guard = DomainGuard(
-            generator=self.generator,
+            guard_model_name=guard_model_name,
             enabled=use_domain_guard,
-            base_model_path=base_model_for_guard,
         )
 
         stats = self.vector_store.get_collection_stats()
@@ -362,7 +349,7 @@ class RAGInterface:
         return {
             "vector_store": vector_stats,
             "generator_loaded": self.generator is not None,
-            "generator_model": self.generator_model_path
+            "generator_model": self.generator_model_name,
         }
 
 
@@ -371,48 +358,35 @@ if __name__ == "__main__":
     print("兽医 RAG 问答系统（检索 + 生成，流式输出）")
     print("=" * 60)
 
-    # ========== 配置路径（请根据实际情况修改） ==========
     CHROMA_DIR = "./chroma_db"
 
-    path_comfirm = input(
-        "请选择后端模型:\n"
-        "1：原 Qwen3-0.6B\n"
-        "2：微调的 Qwen3-0.6B\n"
-        "3：Qwen3-1.7B（AutoDL）\n"
-        "4：微调的 Qwen3-1.7B（本地 LoRA，需先下载基础模型）\n"
-        "5：Qwen3-1.7B 基础模型（本地，无微调）\n"
-        "6：微调的 Qwen3-1.7B（本地合并后完整权重）"
-    )
-    BASE_PATH = str(Qwen3_BASE_MODEL_PATH)
-    FINETUNED_PATH = str(QWEN3_FINETUNED_PATH)
-    if path_comfirm == "1":
-        MODEL_PATH = r"D:\Backup\PythonProject2\VetRAG\models\Qwen3-0.6B\qwen\Qwen3-0___6B"
-        BASE_MODEL_PATH = None
-    elif path_comfirm == "2":
-        MODEL_PATH = r"D:\Backup\PythonProject2\VetRAG\models_finetuned\qwen3-finetuned"
-        BASE_MODEL_PATH = None
-    elif path_comfirm == "3":
-        MODEL_PATH = "/root/autodl-tmp/huggingface/models/Qwen3-1.7B"
-        BASE_MODEL_PATH = None
-    elif path_comfirm == "4":
-        MODEL_PATH = r"D:\Backup\PythonProject2\VetRAG\models_finetuned\qwen3-1.7b-vet-finetuned"
-        BASE_MODEL_PATH = BASE_PATH
-    elif path_comfirm == "5":
-        MODEL_PATH = BASE_PATH
-        BASE_MODEL_PATH = None
-    elif path_comfirm == "6":
-        MODEL_PATH = FINETUNED_PATH
-        BASE_MODEL_PATH = None
-    else:
-        print("invalid path!")
-        sys.exit()
-    # =================================================
+    # Ollama 模型选择（需先在 Ollama 中创建这些模型）
+    MODEL_OPTIONS = {
+        "1": ("vetrag-qwen3-0.6b-base", "vetrag-qwen3-1.7b-base"),
+        "2": ("vetrag-qwen3-0.6b-vet", "vetrag-qwen3-1.7b-base"),
+        "3": ("vetrag-qwen3-0.6b-vet1", "vetrag-qwen3-1.7b-base"),
+        "4": ("vetrag-qwen3-1.7b-base", "vetrag-qwen3-1.7b-base"),
+        "5": ("vetrag-qwen3-1.7b-vet", "vetrag-qwen3-1.7b-base"),
+    }
 
-    # 初始化接口
+    choice = input(
+        "请选择生成模型 (Ollama):\n"
+        "1：Qwen3-0.6B 基础\n"
+        "2：Qwen3-0.6B 微调\n"
+        "3：Qwen3-0.6B 微调 v1\n"
+        "4：Qwen3-1.7B 基础\n"
+        "5：Qwen3-1.7B 微调\n"
+    )
+    if choice in MODEL_OPTIONS:
+        gen_model, guard_model = MODEL_OPTIONS[choice]
+    else:
+        print("无效选择，使用默认: vetrag-qwen3-0.6b-vet")
+        gen_model, guard_model = "vetrag-qwen3-0.6b-vet", "vetrag-qwen3-1.7b-base"
+
     rag = RAGInterface(
         chroma_persist_dir=CHROMA_DIR,
-        generator_model_path=MODEL_PATH,
-        generator_base_model_path=BASE_MODEL_PATH
+        generator_model_name=gen_model,
+        guard_model_name=guard_model,
     )
 
     print("\n输入问题开始问答，输入 'quit' 退出。")
@@ -428,7 +402,7 @@ if __name__ == "__main__":
         elif user_input.startswith("/stats"):
             stats = rag.get_stats()
             print(f"向量库文档数: {stats['vector_store']['document_count']}")
-            print(f"生成模型已加载: {stats['generator_loaded']}")
+            print(f"生成模型: {stats['generator_model']}")
             continue
         elif user_input.startswith("/add "):
             file_path = user_input[5:].strip()
