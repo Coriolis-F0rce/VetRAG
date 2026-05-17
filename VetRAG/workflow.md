@@ -208,4 +208,4 @@ GitHub Actions 自动运行（`.github/workflows/ci.yml`）：
 | `CHROMA_PERSIST_DIR` | `./chroma_db` | 向量库路径 |
 | `BGE_MODEL_NAME` | `BAAI/bge-large-zh-v1.5` | Embedding 模型 |
 | `USE_HYBRID_SEARCH` | `false` | 启用混合检索 |
-| `API_PORT` | `8000` | Web 服务端口（web_api.py 当前硬编码 5002，待统一） |
+| `API_PORT` | `5002` | Web 服务端口 |

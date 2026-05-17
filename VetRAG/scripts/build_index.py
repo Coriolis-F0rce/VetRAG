@@ -1,5 +1,6 @@
 import os
 import sys
+import json
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(current_dir)
@@ -9,6 +10,21 @@ sys.path.insert(0, os.path.join(project_root, "src"))
 from src.json_loader import VetRAGDataLoader
 from src.vector_store_chroma import ChromaVectorStore
 from src.core.config import CHROMA_PERSIST_DIR, BGE_MODEL_NAME
+
+EXPECTED_PHARMA_SCHEMA = "1.0"
+
+
+def _validate_pharma_schema(file_path: str):
+    """校验 pharmaceuticals.json 的 schema_version 与当前代码兼容。"""
+    with open(file_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    version = data.get("schema_version") if isinstance(data, dict) else None
+    if version is None:
+        print("警告：pharmaceuticals.json 缺少 schema_version，请尽快升级数据格式。")
+    elif version != EXPECTED_PHARMA_SCHEMA:
+        print(f"错误：pharmaceuticals.json schema_version={version}，期望={EXPECTED_PHARMA_SCHEMA}")
+        print("请运行 scripts/enrich_pharmaceuticals.py 重新生成数据。")
+        sys.exit(1)
 
 
 def main():
@@ -28,6 +44,11 @@ def main():
         for f in missing:
             print(f"  - {f}")
         sys.exit(1)
+
+    # 校验数据格式
+    pharma_path = os.path.join(data_dir, "pharmaceuticals.json")
+    if os.path.exists(pharma_path):
+        _validate_pharma_schema(pharma_path)
 
     loader = VetRAGDataLoader()
     all_chunks = loader.load_all_files(file_paths)

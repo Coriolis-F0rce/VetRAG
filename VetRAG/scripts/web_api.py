@@ -14,7 +14,7 @@ sys.path.insert(0, project_root)
 sys.path.insert(0, os.path.join(project_root, "src"))
 
 from src.rag_interface import RAGInterface
-from src.core.config import CHROMA_PERSIST_DIR, OLLAMA_GENERATOR_MODEL, OLLAMA_GUARD_MODEL, SYSTEM_PROMPT_VET
+from src.core.config import CHROMA_PERSIST_DIR, OLLAMA_GENERATOR_MODEL, OLLAMA_GUARD_MODEL, SYSTEM_PROMPT_VET, API_HOST, API_PORT
 
 rag = RAGInterface(
     chroma_persist_dir=CHROMA_PERSIST_DIR,
@@ -123,4 +123,4 @@ async def stream(question: str, top_k: int = 5, threshold: float = 0.0):
     return StreamingResponse(event_generator(), media_type="text/event-stream")
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=5002)
+    uvicorn.run(app, host=API_HOST, port=API_PORT)

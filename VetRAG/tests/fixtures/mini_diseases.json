@@ -1,0 +1,69 @@
+[
+  {
+    "disease_name": "犬瘟热",
+    "disease_type": "病毒性传染病",
+    "treatment": [
+      {
+        "category": "支持疗法",
+        "name": "静脉输液纠正脱水",
+        "drug": "乳酸林格氏液或生理盐水",
+        "dosage": "60-90 ml/kg/天",
+        "route": "静脉",
+        "frequency": "持续输注"
+      },
+      {
+        "category": "抗感染",
+        "name": "控制继发细菌感染",
+        "drug": "阿莫西林克拉维酸钾",
+        "dosage": "12.5-25 mg/kg",
+        "route": "口服或皮下注射",
+        "frequency": "每12小时一次"
+      }
+    ]
+  },
+  {
+    "disease_name": "沙门氏菌病（又被称为：犬伤寒）",
+    "disease_type": "细菌性传染病",
+    "treatment": [
+      {
+        "category": "抗菌治疗",
+        "name": "根据药敏试验使用抗生素",
+        "drug": "阿莫西林-克拉维酸/恩诺沙星/头孢噻呋",
+        "dosage": "12.5-25 mg/kg / 5-20 mg/kg / 2.2 mg/kg",
+        "route": "口服/皮下注射",
+        "frequency": "每12小时/每24小时",
+        "duration": "4-6周"
+      },
+      {
+        "category": "支持治疗",
+        "name": "补液与电解质平衡",
+        "drug": "平衡电解质溶液（如乳酸林格氏液）",
+        "dosage": "60-90 ml/kg/天",
+        "route": "静脉输液",
+        "frequency": "根据脱水调整"
+      }
+    ]
+  },
+  {
+    "disease_name": "结核病",
+    "disease_type": "细菌性传染病",
+    "treatment": [
+      {
+        "category": "药物治疗",
+        "name": "多药联合长期治疗",
+        "drug": "利福平、异烟肼、乙胺丁醇或氟喹诺酮类",
+        "dosage": "利福平10-20 mg/kg，异烟肼10-20 mg/kg，乙胺丁醇15-25 mg/kg",
+        "route": "口服",
+        "frequency": "每日一次"
+      },
+      {
+        "category": "支持疗法",
+        "name": "营养与对症支持",
+        "drug": "保肝药物、止咳药等",
+        "dosage": "根据具体药物和症状",
+        "route": "口服或注射",
+        "frequency": "根据医嘱"
+      }
+    ]
+  }
+]

@@ -82,7 +82,7 @@ if HF_ENDPOINT:
 
 # ---------- API ----------
 API_HOST: str = os.getenv("API_HOST", "0.0.0.0")
-API_PORT: int = int(os.getenv("API_PORT", "8000"))
+API_PORT: int = int(os.getenv("API_PORT", "5002"))
 API_CORS_ORIGINS: str = os.getenv("API_CORS_ORIGINS", "*")
 
 # ---------- 日志 ----------

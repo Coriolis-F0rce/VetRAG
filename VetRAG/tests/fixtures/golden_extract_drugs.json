@@ -1,0 +1,250 @@
+[
+  {
+    "drug_name": "乙胺丁醇或氟喹诺酮类",
+    "drug_class": [
+      "药物治疗"
+    ],
+    "indications": [
+      "结核病"
+    ],
+    "dosages": [
+      "利福平10-20 mg/kg，异烟肼10-20 mg/kg，乙胺丁醇15-25 mg/kg"
+    ],
+    "routes": [
+      "口服"
+    ],
+    "frequencies": [
+      "每日一次"
+    ],
+    "durations": [],
+    "treatment_names": [
+      "多药联合长期治疗"
+    ]
+  },
+  {
+    "drug_name": "乳酸林格氏液或生理盐水",
+    "drug_class": [
+      "支持疗法"
+    ],
+    "indications": [
+      "犬瘟热"
+    ],
+    "dosages": [
+      "60-90 ml/kg/天"
+    ],
+    "routes": [
+      "静脉"
+    ],
+    "frequencies": [
+      "持续输注"
+    ],
+    "durations": [],
+    "treatment_names": [
+      "静脉输液纠正脱水"
+    ]
+  },
+  {
+    "drug_name": "保肝药物",
+    "drug_class": [
+      "支持疗法"
+    ],
+    "indications": [
+      "结核病"
+    ],
+    "dosages": [
+      "根据具体药物和症状"
+    ],
+    "routes": [
+      "口服或注射"
+    ],
+    "frequencies": [
+      "根据医嘱"
+    ],
+    "durations": [],
+    "treatment_names": [
+      "营养与对症支持"
+    ]
+  },
+  {
+    "drug_name": "利福平",
+    "drug_class": [
+      "药物治疗"
+    ],
+    "indications": [
+      "结核病"
+    ],
+    "dosages": [
+      "利福平10-20 mg/kg，异烟肼10-20 mg/kg，乙胺丁醇15-25 mg/kg"
+    ],
+    "routes": [
+      "口服"
+    ],
+    "frequencies": [
+      "每日一次"
+    ],
+    "durations": [],
+    "treatment_names": [
+      "多药联合长期治疗"
+    ]
+  },
+  {
+    "drug_name": "头孢噻呋",
+    "drug_class": [
+      "抗菌治疗"
+    ],
+    "indications": [
+      "沙门氏菌病（又被称为：犬伤寒）"
+    ],
+    "dosages": [
+      "12.5-25 mg/kg / 5-20 mg/kg / 2.2 mg/kg"
+    ],
+    "routes": [
+      "口服/皮下注射"
+    ],
+    "frequencies": [
+      "每12小时/每24小时"
+    ],
+    "durations": [
+      "4-6周"
+    ],
+    "treatment_names": [
+      "根据药敏试验使用抗生素"
+    ]
+  },
+  {
+    "drug_name": "平衡电解质溶液",
+    "drug_class": [
+      "支持治疗"
+    ],
+    "indications": [
+      "沙门氏菌病（又被称为：犬伤寒）"
+    ],
+    "dosages": [
+      "60-90 ml/kg/天"
+    ],
+    "routes": [
+      "静脉输液"
+    ],
+    "frequencies": [
+      "根据脱水调整"
+    ],
+    "durations": [],
+    "treatment_names": [
+      "补液与电解质平衡"
+    ]
+  },
+  {
+    "drug_name": "异烟肼",
+    "drug_class": [
+      "药物治疗"
+    ],
+    "indications": [
+      "结核病"
+    ],
+    "dosages": [
+      "利福平10-20 mg/kg，异烟肼10-20 mg/kg，乙胺丁醇15-25 mg/kg"
+    ],
+    "routes": [
+      "口服"
+    ],
+    "frequencies": [
+      "每日一次"
+    ],
+    "durations": [],
+    "treatment_names": [
+      "多药联合长期治疗"
+    ]
+  },
+  {
+    "drug_name": "恩诺沙星",
+    "drug_class": [
+      "抗菌治疗"
+    ],
+    "indications": [
+      "沙门氏菌病（又被称为：犬伤寒）"
+    ],
+    "dosages": [
+      "12.5-25 mg/kg / 5-20 mg/kg / 2.2 mg/kg"
+    ],
+    "routes": [
+      "口服/皮下注射"
+    ],
+    "frequencies": [
+      "每12小时/每24小时"
+    ],
+    "durations": [
+      "4-6周"
+    ],
+    "treatment_names": [
+      "根据药敏试验使用抗生素"
+    ]
+  },
+  {
+    "drug_name": "止咳药等",
+    "drug_class": [
+      "支持疗法"
+    ],
+    "indications": [
+      "结核病"
+    ],
+    "dosages": [
+      "根据具体药物和症状"
+    ],
+    "routes": [
+      "口服或注射"
+    ],
+    "frequencies": [
+      "根据医嘱"
+    ],
+    "durations": [],
+    "treatment_names": [
+      "营养与对症支持"
+    ]
+  },
+  {
+    "drug_name": "阿莫西林-克拉维酸",
+    "drug_class": [
+      "抗菌治疗"
+    ],
+    "indications": [
+      "沙门氏菌病（又被称为：犬伤寒）"
+    ],
+    "dosages": [
+      "12.5-25 mg/kg / 5-20 mg/kg / 2.2 mg/kg"
+    ],
+    "routes": [
+      "口服/皮下注射"
+    ],
+    "frequencies": [
+      "每12小时/每24小时"
+    ],
+    "durations": [
+      "4-6周"
+    ],
+    "treatment_names": [
+      "根据药敏试验使用抗生素"
+    ]
+  },
+  {
+    "drug_name": "阿莫西林克拉维酸钾",
+    "drug_class": [
+      "抗感染"
+    ],
+    "indications": [
+      "犬瘟热"
+    ],
+    "dosages": [
+      "12.5-25 mg/kg"
+    ],
+    "routes": [
+      "口服或皮下注射"
+    ],
+    "frequencies": [
+      "每12小时一次"
+    ],
+    "durations": [],
+    "treatment_names": [
+      "控制继发细菌感染"
+    ]
+  }
+]

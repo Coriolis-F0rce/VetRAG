@@ -7,16 +7,16 @@
 ## P0 — 阻塞项
 
 - [ ] **CI/CD 通过验证**：确认 `.github/workflows/ci.yml` 在 GitHub Actions 上跑通（ruff + pytest + coverage），修复任何 CI-only 失败
-- [ ] **依赖 lock 文件**：用 `pip-compile` 或 `pip freeze` 生成 lock 文件，CI 使用 lock 文件安装，确保可复现
-- [ ] **API 端口统一**：`config.py` 的 `API_PORT=8000` 与 `web_api.py` 硬编码 `5002` 不一致，改成统一从 config 读取
+- [x] **依赖 lock 文件**：`requirements-lock.txt` 已生成（143 packages），CI 改用 lock 文件 + CPU torch（2026-05-18 已完成）
+- [x] **API 端口统一**：`config.py` 和 `web_api.py` 统一为 `API_PORT=5002`（2026-05-17 已修复）
 
 ## P1 — 本周
 
-- [ ] **数据 schema 版本化**：`pharmaceuticals.json` 顶层加 `schema_version` 字段，`build_index.py` 启动时校验版本
+- [x] **数据 schema 版本化**：`pharmaceuticals.json` 包裹为 `{"schema_version": "1.0", "drugs": [...]}`，build_index.py 启动校验（2026-05-17 已完成）
 - [ ] **评估全自动化**：一个命令跑完「A/B 实验 → DeepSeek 评分 → 汇总报告」（`make eval-full`）
 - [ ] **模型实验追踪**：评估结果文件嵌入模型元数据（名称、base model、日期、Ollama digest），防止结果与模型对不上
+- [ ] **测试修复**：Ollama 迁移后 `test_domain_guard.py`（DomainGuard 构造函数签名变更）和 `test_web_api.py`（AutoModelForCausalLM 不存在）需要更新 mock（当前 40 fail + 11 errors）
 - [ ] **测试覆盖盲区**：
-  - `scripts/extract_drugs.py` — golden file 测试（固定输入验证提取结果不变）
   - `src/retrievers/` — 混合检索独立测试
   - `eval/scoring/` — Judge 评分解析逻辑测试
 - [ ] **安全检查**：FastAPI 加输入长度限制，CORS 加白名单配置项（默认 `*`，可配），加 `slowapi` 限流

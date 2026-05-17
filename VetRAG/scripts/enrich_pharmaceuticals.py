@@ -155,7 +155,15 @@ def main():
     args = parser.parse_args()
 
     with open(INPUT, "r", encoding="utf-8") as f:
-        drugs = json.load(f)
+        data = json.load(f)
+
+    if isinstance(data, dict) and "drugs" in data:
+        drugs = data["drugs"]
+    elif isinstance(data, list):
+        drugs = data
+    else:
+        print("错误：无法识别的数据格式")
+        return
 
     # 统计需要补全的
     need_enrich = sum(1 for d in drugs if not d.get("mechanism"))
@@ -176,8 +184,9 @@ def main():
     err = sum(1 for d in enriched if d.get("_enrich_error"))
     print(f"\n补全完成: 成功 {ok}，失败 {err}")
 
+    output_data = {"schema_version": "1.0", "drugs": enriched}
     with open(OUTPUT, "w", encoding="utf-8") as f:
-        json.dump(enriched, f, ensure_ascii=False, indent=2)
+        json.dump(output_data, f, ensure_ascii=False, indent=2)
     print(f"已保存: {OUTPUT}")
 
 
