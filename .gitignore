@@ -166,8 +166,7 @@ cython_debug/
 .env
 VetRAG/.env
 
-# 项目配置文件（如果不想跟踪）
-VetRAG/pyproject.toml
+# 项目配置文件（选择性跟踪）
 VetRAG/conda-environment.yml
 
 # 测试和临时目录

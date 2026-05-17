@@ -44,7 +44,7 @@ class TestConfig:
     def test_data_files_list(self):
         from src.core.config import DATA_FILES
         assert isinstance(DATA_FILES, list)
-        assert len(DATA_FILES) == 5
+        assert len(DATA_FILES) == 6
         assert "behaviors.json" in DATA_FILES
         assert "diseases.json" in DATA_FILES
 
@@ -56,7 +56,7 @@ class TestConfig:
     def test_api_config_defaults(self):
         from src.core.config import API_CORS_ORIGINS, API_HOST, API_PORT
         assert API_HOST == "0.0.0.0"
-        assert API_PORT == 8000
+        assert API_PORT == 5002
         assert API_CORS_ORIGINS == "*"
 
     def test_log_level_default(self):
