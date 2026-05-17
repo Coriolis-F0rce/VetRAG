@@ -2,66 +2,43 @@ name: CI
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   pull_request:
-    branches: [main, master]
+    branches: [main]
 
 jobs:
-  lint:
-    name: Lint (ruff)
+  lint-and-test:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.10"
-
-      - name: Install ruff
-        run: pip install ruff>=0.4.0
-
-      - name: Run ruff
-        run: ruff check src/ tests/ --output-format=text
-
-  test:
-    name: Test (Python ${{ matrix.python-version }})
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.10", "3.11", "3.12"]
-      fail-fast: false
+    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.11"
           cache: pip
-          cache-dependency-path: requirements.txt
+          cache-dependency-path: VetRAG/requirements-lock.txt
 
       - name: Install dependencies
+        working-directory: VetRAG
         run: |
-          pip install -r requirements.txt
-          pip install pytest pytest-cov pytest-mock httpx
+          python -m pip install --upgrade pip
+          pip install torch --extra-index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements-lock.txt
+
+      - name: Ruff check
+        working-directory: VetRAG
+        run: ruff check .
 
       - name: Run tests
         working-directory: VetRAG
-        run: pytest tests/ -v --tb=short --cov=src --cov-report=xml --cov-report=html
+        run: python -m pytest tests/ -v --cov=src --cov-report=term --cov-report=xml
 
       - name: Upload coverage
+        if: always()
         uses: actions/upload-artifact@v4
-        if: matrix.python-version == '3.11'
         with:
           name: coverage-report
-          path: VetRAG/htmlcov/
+          path: VetRAG/coverage.xml
           retention-days: 7
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        if: matrix.python-version == '3.11'
-        with:
-          files: ./VetRAG/coverage.xml
-          fail_ci_if_error: false
