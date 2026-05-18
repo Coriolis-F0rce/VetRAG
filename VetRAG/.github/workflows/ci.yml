@@ -9,7 +9,7 @@ on:
 jobs:
   lint-and-test:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     steps:
       - uses: actions/checkout@v4
@@ -27,6 +27,12 @@ jobs:
 
       - name: Ruff check
         run: ruff check .
+
+      - name: Type check (mypy)
+        run: mypy src/ --config-file=pyproject.toml
+
+      - name: Security scan (bandit)
+        run: bandit -c pyproject.toml -r src/
 
       - name: Run tests
         run: python -m pytest tests/ -v --cov=src --cov-report=term --cov-report=xml

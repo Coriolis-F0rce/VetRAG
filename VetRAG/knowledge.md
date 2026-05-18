@@ -341,9 +341,9 @@ HYBRID_BM25_WEIGHT=0.4
 | 安全扫描 | — | bandit（历史有，ci.yml 未配） |
 | CD | — | web_api.py 无自动部署；Ollama 模型需手动管理 |
 
-### 17.3 待修复：mypy + bandit 回归
+### 17.3 mypy + bandit 已恢复（2026-05-18）
 
-历史 commit `9be50b8` 曾添加过 mypy 类型检查 + bandit 安全扫描，但在后续 CI 修复中被移除后未恢复。这是 CI 配置债务，应在 ci.yml 中恢复这两步。
+从 `9be50b8` 恢复，当前 CI 流水线步骤：ruff → mypy → bandit → pytest。bandit 当前 0 issues，mypy 配置在 `pyproject.toml` 中（忽略测试/脚本目录，宽松模式）。
 
 ---
 
