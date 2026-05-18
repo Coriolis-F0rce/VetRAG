@@ -1,13 +1,11 @@
 """
-测试 RAG Pipeline 模块
+测试 RAG 接口模块
 """
 import sys
 from pathlib import Path
 
 
-project_root = Path(__file__).resolve().parents[1]
-# __file__ = D:\Backup\PythonProject2\VetRAG\tests\rag\test_rag_pipeline.py
-# parents[0] = VetRAG/tests/rag/, [1] = VetRAG/tests/, [2] = VetRAG/
+project_root = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(project_root))
 
 
@@ -78,15 +76,14 @@ class TestRAGPipelineUnit:
 
 
 class TestRAGPipelineIntegration:
-    """需要部分组件的集成测试"""
+    """RAGInterface 方法签名测试"""
 
-    def test_load_data_files_method_exists(self):
-        """确认方法存在（签名测试）"""
-        from src.rag_pipeline import VetRAGPipeline
-        assert hasattr(VetRAGPipeline, "load_data_files")
-        assert hasattr(VetRAGPipeline, "build_vector_index")
-        assert hasattr(VetRAGPipeline, "query")
-        assert hasattr(VetRAGPipeline, "get_system_info")
+    def test_rag_interface_methods_exist(self):
+        from src.rag_interface import RAGInterface
+        assert hasattr(RAGInterface, "query")
+        assert hasattr(RAGInterface, "query_stream")
+        assert hasattr(RAGInterface, "add_new_data")
+        assert hasattr(RAGInterface, "get_stats")
 
 
 class TestChunkMetadata:
@@ -197,3 +194,59 @@ class TestQueryFlow:
         assert "retrieved" in answer
         assert "generated" in answer
         assert answer["generated"] is True
+
+
+class TestCleanFormat:
+    """测试 _clean_format 对微调模型格式退化的修复"""
+
+    @staticmethod
+    def _clean(text: str) -> str:
+        from src.rag_interface import QwenGenerator
+        return QwenGenerator._clean_format(text)
+
+    def test_triple_period_to_paragraph_break(self):
+        assert self._clean("必须就医。。。如果骨折") == "必须就医\n\n如果骨折"
+
+    def test_double_period_to_line_break(self):
+        assert self._clean("限制活动。。包扎固定") == "限制活动\n包扎固定"
+
+    def test_period_before_bold_marker(self):
+        result = self._clean("。**关键词：** 发烧")
+        assert "**关键词：** 发烧" in result
+        assert not result.startswith("。")
+
+    def test_period_before_numbered_list(self):
+        assert self._clean("。1. 限制活动。2. 包扎") == "1. 限制活动\n2. 包扎"
+
+    def test_period_before_chinese_numbered_list(self):
+        assert self._clean("。一、紧急处理。二、药物治疗") == "一、紧急处理\n二、药物治疗"
+
+    def test_leading_period_stripped(self):
+        assert self._clean("。需要带它去医院") == "需要带它去医院"
+
+    def test_leading_filler_stripped(self):
+        result = self._clean("呢。我需要做什么")
+        assert result.startswith("我需要做什么")
+
+    def test_colon_period_to_colon_newline(self):
+        assert self._clean("就医前准备：。携带物品") == "就医前准备：\n携带物品"
+
+    def test_bold_end_period_to_newline(self):
+        result = self._clean("**实用建议：**。立即就医")
+        assert "**实用建议：**\n立即就医" in result or "**实用建议：** 立即就医" in result
+
+    def test_clean_text_unchanged(self):
+        """正常格式的文本不应被破坏"""
+        normal = "您的狗狗骨折了，需要立即就医。请先限制活动，然后尽快前往医院。"
+        assert self._clean(normal) == normal
+
+    def test_mixed_degraded_format(self):
+        degraded = "呢。我需要检查。。。核心要点：。1. 限制活动。。2. 包扎"
+        result = self._clean(degraded)
+        assert result.startswith("我需要检查")
+        assert "\n\n" in result
+        assert "1. 限制活动" in result
+        assert "2. 包扎" in result
+        # 不应该残留连续句号
+        assert "。。" not in result
+        assert "。。。" not in result

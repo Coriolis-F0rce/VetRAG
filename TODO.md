@@ -6,56 +6,110 @@
 
 ## 当前进行中
 
-### 1. RAG 优化
+### 1. A/B 实验框架与评估系统
 
-- [x] **混合检索实现（Hybrid Search）**：Dense HNSW + BM25 + RRF 融合
-  - 新增 `src/retrievers/bm25_index.py` — BM25 关键词索引（jieba 分词）
-  - 新增 `src/retrievers/hybrid_retriever.py` — RRF 融合引擎
-  - 重构 `src/vector_store_chroma.py` — 集成混合检索，向后兼容
-  - 新增 `USE_HYBRID_SEARCH` 等 5 个配置项（config.py）
-  - 新增 5 个测试用例（test_vector_store.py），19/19 通过
-  - 依赖：rank-bm25>=0.12.0, jieba>=0.42.1
-- [x] **领域边界过滤**：LLM 零样本分类，非宠物狗问题直接拒绝
-  - 新增 `src/core/domain_guard.py` — DomainGuard 模块
-  - 新增 `USE_DOMAIN_GUARD` 配置项（config.py），默认开启
-  - `query()` 和 `query_stream()` 集成 Guard，提前过滤
-  - 新增 21 个测试用例（test_domain_guard.py），21/21 通过
-- [ ] 查询扩展逻辑排查：用户反映"前沿物理化学"等学术问题跑偏到 AI/ML 领域
-- [x] Domain Guard 分类标签持续输出 `'error'`：分类解析逻辑 bug，模型输出被截断导致解析失败，已修复 `_classify` 方法的解析逻辑（6 层降级策略）
-  - 更新 `DEFAULT_SYSTEM_PROMPT` 为简洁单字版
-  - 新增 17 个边界 case 测试，全部通过
-- [x] Prompt 强制引用检索文档内容：已在 `rag_interface.py` 的 `query()` / `query_stream()` 增加输出后处理 `_clean_output`，过滤残留 emoji/乱码作为 safety net
+- [x] **评估框架搭建**：`eval/` 目录
+- [x] **测试文件整理**：4 个测试脚本已移入 `temp/`
+- [x] **文档更新**：knowledge.md 新增第八～十节
+- [ ] 实际运行 4 组实验并收集结果
+- [ ] 扩充测试集至 30 条（覆盖 6 类）
+- [ ] 统计显著性分析（Wilcoxon 符号秩检验）
+
+### 2. RAG 优化
+
+- [x] 混合检索实现（Hybrid Search）：Dense + BM25 + RRF
+- [x] 领域边界过滤：Domain Guard 零样本分类
+- [x] Domain Guard 分类解析逻辑修复
+- [x] Prompt 输出后处理 `_clean_output`
+- [ ] 查询扩展逻辑排查："前沿物理化学"等学术问题跑偏
 
 ---
 
-## 远期计划
+## 面试准备与项目重学习（P0）
 
-### 1. 多轮对话优化
+> 当前最高优先级。下一步工作计划。
 
-- [ ] 生成多轮对话训练数据集（3-5 轮追问链，模拟真实问诊场景）
+### 目标
+
+系统梳理 VetRAG 项目全貌，提炼技术亮点与难点，为面试技术问答做准备。
+
+### 任务清单
+
+- [ ] **项目全貌梳理**：完整阅读并理解 `knowledge.md`，整理出项目的技术链路图
+- [ ] **简历内容核对**：对照 `temp/resume_update.md` 与实际代码，确保简历描述与实现一致
+- [ ] **技术难点复盘**：Domain Guard 解析逻辑、FastAPI SSE 流式输出、RRF 融合调参 等关键问题的解决方案
+- [ ] **RAG 核心问题**：向量检索原理、混合检索设计、Domain Guard 分类机制
+- [ ] **QLoRA 微调原理**：4-bit 量化、LoRA Adapter、deepspeed ZeRO
+- [ ] **数据工程**：多源数据清洗、ChatML 格式、7 种数据增强方法
+- [ ] **代码走读**：重点文件 `rag_interface.py`、`vector_store_chroma.py`、`bm25_index.py`、`domain_guard.py`
+
+### 面试可能问到的问题
+
+| 问题类型 | 示例 |
+|----------|------|
+| RAG 原理 | 向量检索 vs 关键词检索的区别？混合检索如何融合？RRF 公式？ |
+| 模型微调 | QLoRA 的核心思想？为何用 4-bit 量化？LoRA 的 r 和 alpha 如何调？ |
+| 系统设计 | 如何提升 RAG 召回质量？Domain Guard 如何实现零样本分类？ |
+| 工程问题 | FastAPI 异步流式输出遇到过什么问题？如何解决 SSE 卡顿？ |
+| 项目深度 | eval_acc 71.6% 如何得出？NDCG@5 0.9512 意味着什么？数据增强具体做了什么？ |
+
+---
+
+## 未来计划（按优先级排序）
+
+### P1 — 多轮对话支持
+
+> 真实问诊场景需要连续追问，单轮 QA 能力不足。
+
+- [ ] 生成多轮对话训练数据集（3-5 轮追问链）
 - [ ] 将现有单轮数据包装为多轮格式（系统 prompt + 单轮 QA）
 - [ ] 修改训练脚本使用 `chat_template` 格式化多轮数据
-- [ ] 第二轮微调（可增量训练，复用当前 LoRA adapter）
+- [ ] 第二轮增量微调（复用当前 LoRA adapter）
 - [ ] RAG 接口改造：`chat(question, session_id)` 支持多轮历史
 - [ ] 多轮对话质量评估（追问相关性、上下文一致性）
 
-### 2. 模型压缩与加速
+### P1 — DPO 偏好对齐
 
-- [ ] 量化微调后模型（Q4_K_M GGUF），适配本地 CPU 推理
-- [ ] 使用 llama.cpp 量化脚本：`quantize` 工具将 fp16 → Q4_K_M
-- [ ] 本地 CPU 推理基准测试（生成速度 / 内存占用）
+> 当前 eval_acc 71.6%，生成质量仍有提升空间。
+
+- [ ] 用微调模型生成对比回答（好/差 pair）
+- [ ] 通过 DeepSeek API 进行偏好标注
+- [ ] 构建约 1000 条偏好对（prompt / chosen / rejected）
+- [ ] 使用 DPO 技术进行第二阶段训练
+- [ ] 评估 DPO 前后回答安全性与实用性差异
+
+### P2 — Cross-Encoder 重排序
+
+> Hybrid Search 召回 Top-20 后，用更强的模型精排 Top-5。
+
+- [ ] 调研适合中文的 Cross-Encoder 模型（如 `BAAI/bge-reranker-large`）
+- [ ] 集成到 `HybridRetriever` 作为 RRF 之后的精排层
+- [ ] 评估重排对 NDCG@5 的提升幅度
+
+### P2 — 性能基准测试
+
+> 当前缺少延迟/Latency 量化指标。
+
+- [ ] 混合检索 vs 纯 Dense 的 P50/P95 延迟
+- [ ] 端到端响应时间（检索 + 生成）
+- [ ] 生成吞吐量（token/s）基准
+- [ ] 建立回归测试：每次改动后自动跑基准，防止性能退化
+
+### P3 — 模型压缩与加速
+
+> Qwen3-1.7B 本地推理约 20-30 token/s，可进一步优化。
+
+- [ ] GGUF Q4 量化（llama.cpp）
+- [ ] 本地 CPU 推理测试（生成速度 / 内存占用）
 - [ ] 验证量化后模型质量损失可接受
 
-### 3. 上线准备
+### P3 — Query Expansion（HyDE）
 
-- [ ] Web UI 多轮对话支持（前端 history 状态管理）
-- [ ] Session 管理后端实现（TTL 过期、session 持久化）
-- [ ] 压力测试（并发连接数、响应延迟）
-- [ ] 部署文档更新（本地部署指南）
+> 口语化查询场景中，用户描述与文档用词差异大。
 
-### 4. 模型训练继续
-
-- [ ] 考虑增量训练 4-5 epoch（eval_loss 仍未触拐点，当前 eval_acc 71.6%）
+- [ ] 用微调模型生成"假设回答文档"
+- [ ] 基于假设文档检索真实文档
+- [ ] 对比 HyDE 前后的召回质量
 
 ---
 
@@ -95,7 +149,7 @@
 {
   "conversations": [
     {"role": "user", "content": "我的猫最近不爱吃东西"},
-    {"role": "assistant", "content": "请问它还有其他症状吗？比如呕吐、腹泻或精神萎靡？"},
+    {"role": "assistant", "content": "请问它还有其他症状吗？..."},
     {"role": "user", "content": "还有点打喷嚏"},
     {"role": "assistant", "content": "..."}
   ]

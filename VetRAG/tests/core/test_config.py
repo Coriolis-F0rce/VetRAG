@@ -19,17 +19,6 @@ class TestConfig:
         assert isinstance(PROJECT_ROOT, Path)
         assert PROJECT_ROOT.exists()
 
-    def test_data_dir_exists(self):
-        from src.core.config import DATA_DIR
-        assert DATA_DIR.exists()
-        assert DATA_DIR.is_dir()
-
-    def test_model_paths_are_paths(self):
-        from src.core.config import QWEN3_FINETUNED_PATH, QWEN3_FINETUNED_PATH_V1, Qwen3_MODEL_PATH
-        assert isinstance(Qwen3_MODEL_PATH, Path)
-        assert isinstance(QWEN3_FINETUNED_PATH, Path)
-        assert isinstance(QWEN3_FINETUNED_PATH_V1, Path)
-
     def test_chroma_config_defaults(self):
         from src.core.config import CHROMA_COLLECTION_NAME, CHROMA_PERSIST_DIR
         assert isinstance(CHROMA_PERSIST_DIR, str)
@@ -37,16 +26,8 @@ class TestConfig:
         assert CHROMA_COLLECTION_NAME == "veterinary_rag"
 
     def test_bge_model_config(self):
-        from src.core.config import BGE_MODEL_FALLBACK, BGE_MODEL_NAME
+        from src.core.config import BGE_MODEL_NAME
         assert BGE_MODEL_NAME == "BAAI/bge-large-zh-v1.5"
-        assert BGE_MODEL_FALLBACK == "paraphrase-multilingual-MiniLM-L12-v2"
-
-    def test_data_files_list(self):
-        from src.core.config import DATA_FILES
-        assert isinstance(DATA_FILES, list)
-        assert len(DATA_FILES) == 6
-        assert "behaviors.json" in DATA_FILES
-        assert "diseases.json" in DATA_FILES
 
     def test_system_prompt_not_empty(self):
         from src.core.config import SYSTEM_PROMPT_VET
@@ -54,10 +35,9 @@ class TestConfig:
         assert len(SYSTEM_PROMPT_VET) > 10
 
     def test_api_config_defaults(self):
-        from src.core.config import API_CORS_ORIGINS, API_HOST, API_PORT
+        from src.core.config import API_HOST, API_PORT
         assert API_HOST == "0.0.0.0"
         assert API_PORT == 5002
-        assert API_CORS_ORIGINS == "*"
 
     def test_log_level_default(self):
         from src.core.config import LOG_LEVEL

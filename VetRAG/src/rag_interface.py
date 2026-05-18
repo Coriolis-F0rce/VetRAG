@@ -32,16 +32,51 @@ _GENERATION_PARAM_MAP = {
 class QwenGenerator:
     """基于 Ollama 的 LLM 生成器，替代原来的 transformers 直接加载。"""
 
+    # 微调模型常见的格式退化模式（用句号替代换行）
+    _FORMAT_FIXES: list[tuple[str, str]] = [
+        # Pass 0: 冒号/括号/加粗结束符后紧跟句号 → 句号是假换行
+        (r'([：:）\)】】])。', r'\1\n'),
+        (r'\*\*。', '**\n'),
+        # Pass 1: 3+ 连续句号 → 段落分隔
+        (r'。{3,}', '\n\n'),
+        # Pass 2: 恰好 2 个连续句号 → 换行
+        (r'。。', '\n'),
+        # Pass 3: 句号后紧跟 Markdown 加粗 → 换行+标题
+        (r'。(\*\*[^*]+\*\*)[：:]', r'\n\1：'),
+        (r'。(\*\*[^*]+\*\*)', r'\n\1'),
+        # Pass 4: 句号后紧跟常见段落关键词 → 换行
+        (r'。(关键词|参考资料|实用建议|常见误区?|核心要点|注意事项?|重要提示'
+         r'|预防|处理|诊断|治疗|护理|预后|术后|并发症|紧急|就医|用药|监测'
+         r'|环境|饮食|携带|准备|步骤|方法|原因|表现|检查|建议|提示|恢复)', r'\n\1'),
+        # Pass 5: 句号后紧跟数字/中文编号 → 换行
+        (r'。(\d+)[\.、）)]', r'\n\1.'),
+        (r'。([一二三四五六七八九十])[、．.]', r'\n\1、'),
+        # Pass 6: 句号后紧跟「一、」「二、」等 → 换行
+        (r'。(一、|二、|三、|四、|五、|六、)', r'\n\1'),
+        # Pass 7: 去除开头的句号/语气词碎片
+        (r'^[。呢啊哦嗯嘛吧吗呀]+\s*', ''),
+        (r'^[。呢啊哦嗯嘛吧吗呀]+\s*', ''),  # 两次处理连续的
+    ]
+
+    @staticmethod
+    def _clean_format(text: str) -> str:
+        """修复微调模型输出中的格式退化（句号替代换行）。"""
+        for pattern, replacement in QwenGenerator._FORMAT_FIXES:
+            text = re.sub(pattern, replacement, text)
+        return text.lstrip('\n')
+
     def __init__(self, model_name: str, host: str = None):
         self.model_name = model_name
         self.host = host  # Ollama 服务地址，None 表示默认 http://localhost:11434
 
         print(f"[Ollama] 使用模型: {model_name}")
 
-        # Ollama 生成默认参数（对应原 generation_config）
+        # Ollama 生成默认参数
+        # temperature=0.05 打破 greedy decoding 的重复循环，
+        # 同时保持输出基本确定性（实际影响 < 1% token 选择）
         self.generation_config = {
             "num_predict": 512,
-            "temperature": 0.0,  # 0.0 = greedy decoding (对应 do_sample=False)
+            "temperature": 0.05,
             "repeat_penalty": 1.2,
         }
 
@@ -107,12 +142,16 @@ class QwenGenerator:
         answer = response["response"].strip()
         # 去除 Qwen3 think 标签残留
         answer = answer.replace("<think>", "").replace("</think>", "")
+        # 修复微调模型的格式退化
+        answer = self._clean_format(answer)
         return answer.strip()
 
     def generate_stream(self, prompt: str, **kwargs):
-        """同步流式生成（直接打印到控制台）"""
+        """同步流式生成（直接打印到控制台），带格式清洗"""
         options = self._build_options(**kwargs)
         client = self._get_client()
+        raw_buffer = ""
+        emitted_len = 0
         for chunk in client.generate(
             model=self.model_name,
             prompt=prompt,
@@ -121,13 +160,27 @@ class QwenGenerator:
             think=False,
         ):
             if not chunk.get("done"):
-                print(chunk["response"], end="", flush=True)
+                raw_buffer += chunk["response"]
+                if len(raw_buffer) >= 3:
+                    cleaned = self._clean_format(raw_buffer)
+                    if len(cleaned) > emitted_len:
+                        new_chars = cleaned[emitted_len:]
+                        print(new_chars, end="", flush=True)
+                        emitted_len = len(cleaned)
+        # flush 剩余
+        cleaned = self._clean_format(raw_buffer)
+        remaining = cleaned[emitted_len:]
+        if remaining:
+            print(remaining, end="", flush=True)
         print()  # 结尾换行
 
     async def async_stream_generate(self, prompt: str, **kwargs) -> AsyncGenerator[str, None]:
         """
         异步流式生成器，通过 Ollama AsyncClient 逐 token 产出，
         供 FastAPI SSE 端点使用。
+
+        内置格式修复缓冲：累积 token 后应用 _clean_format，
+        按字符逐个产出清洗后的内容，对前端透明。
         """
         options = self._build_options(**kwargs)
         async_client = self._get_async_client()
@@ -138,9 +191,23 @@ class QwenGenerator:
             options=options,
             think=False,
         )
+        raw_buffer = ""
+        emitted_len = 0
         async for chunk in response:
             if not chunk.get("done"):
-                yield chunk["response"]
+                raw_buffer += chunk["response"]
+                # 每积累 3+ 字符尝试清洗
+                if len(raw_buffer) >= 3:
+                    cleaned = self._clean_format(raw_buffer)
+                    if len(cleaned) > emitted_len:
+                        new_chars = cleaned[emitted_len:]
+                        for ch in new_chars:
+                            emitted_len += 1
+                            yield ch
+        # flush 剩余
+        cleaned = self._clean_format(raw_buffer)
+        for ch in cleaned[emitted_len:]:
+            yield ch
 
 
 

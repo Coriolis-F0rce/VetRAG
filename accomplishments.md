@@ -235,7 +235,92 @@ rag = RAGInterface(use_domain_guard=False)
 
 ---
 
+## 九、A/B 实验框架与评估系统
+
+> 完成日期：2026-05-04
+
+### 背景
+
+项目此前缺乏系统性的答案质量自动评估机制，微调前后的对比仅依赖 BGE 语义相似度（方法粗糙），无法多维度量化模型能力差异。需要构建 A/B 实验框架，系统对比微调 vs 基础模型在有/无 RAG 时的表现。
+
+### 技术方案
+
+#### 4 组实验设计
+
+| 组 | 模型 | RAG | 目的 |
+|----|------|-----|------|
+| 组1 | 微调 Qwen3-1.7B | 是 | 验证微调 + 知识增强联合效果 |
+| 组2 | 原始 Qwen3-1.7B | 是 | 验证 RAG 对基础模型的效果 |
+| 组3 | 微调 Qwen3-1.7B | 否 | 验证微调模型纯指令遵循能力 |
+| 组4 | 原始 Qwen3-1.7B | 否 | 基础模型基准线 |
+
+#### 4 维度评分体系（1-5 分）
+
+| 维度 | 评分方法 | 有参考答案 |
+|------|----------|------------|
+| **accuracy**（医学准确性） | BGE 语义相似度映射 | 是 |
+| **relevance**（回答相关性） | 问题-回答关键词覆盖率 | 始终 |
+| **completeness**（完整性） | BGE 相似度 + 关键词 + 回答长度 | 有时 |
+| **format**（格式规范性） | 规则引擎（emoji/代码块/免责声明检测） | 始终 |
+
+#### 评分方法
+
+- **规则打分（默认）**：BGE 语义相似度 + 关键词覆盖 + 格式规则，无需外部模型
+- **LLM-as-Judge（可选）**：调用更强的本地模型（如 Qwen3-0.6B）通过结构化 prompt 打分，解析失败时降级为规则打分
+- **hybrid**：同时输出规则和 LLM 两种评分，方便对比
+
+### 关键文件
+
+| 文件 | 说明 |
+|------|------|
+| `eval/llm_judge.py` | LLM-as-Judge 评估器（BGE 相似度 + 规则引擎，4 维度评分） |
+| `eval/ab_experiment.py` | 4 组实验驱动（模型加载 / RAG 模式 / 无 RAG 纯生成） |
+| `eval/testset.json` | 测试数据集（10 条，含参考答案和分类标签） |
+| `eval/run_ab.py` | 入口脚本（运行实验 → 评分 → 汇总报告） |
+| `knowledge.md` | 第八～十节（评估体系 / Judge 设计 / 结果解读指南） |
+
+### 使用方式
+
+```bash
+# 运行全部 4 组实验 + 规则评分
+python eval/run_ab.py
+
+# 只跑 RAG 相关两组
+python eval/run_ab.py --modes finetuned_rag,base_rag
+
+# 使用 LLM-as-Judge 评分
+python eval/run_ab.py --judge_method llm
+
+# 指定测试集
+python eval/run_ab.py --testset eval/testset.json
+```
+
+### 测试文件整理
+
+按照 `workflow.md` 规范，测试脚本统一移入 `temp/`：
+
+| 原路径 | 新路径 |
+|--------|--------|
+| `test_three_examples.py` | `temp/test_three_examples.py` |
+| `src/test_full_chain.py` | `temp/test_full_chain.py` |
+| `finetune_steps/test_before_finetuning.py` | `temp/test_before_finetuning.py` |
+| `finetune_steps/test_after_finetuning.py` | `temp/test_after_finetuning.py` |
+
+---
+
 ## 执行记录
+
+### 2026-05-04（晚）
+- 完成 A/B 实验框架与评估系统搭建
+  - 新增 `eval/llm_judge.py`（BGE 语义相似度 + 关键词覆盖 + 格式规则引擎，4 维度 1-5 分评分）
+  - 新增 `eval/ab_experiment.py`（4 组实验驱动：微调/基础模型 × RAG/无RAG）
+  - 新增 `eval/testset.json`（10 条测试数据，含参考答案和分类标签）
+  - 新增 `eval/run_ab.py`（入口脚本，支持 rule/llm/hybrid 三种评分方法）
+  - 4 个旧测试脚本移入 `temp/` 目录
+  - 更新 `knowledge.md`：新增第八～十节（评估体系 / Judge 设计 / 结果解读指南）
+  - 更新 `TODO.md`：新增 A/B 实验框架任务（进行中）
+  - 更新 `accomplishments.md`：新增第九节 A/B 实验框架成果
+  - 更新 `.gitignore`：`temp/` 和 `eval/results/` 加入忽略列表
 
 ### 2026-05-02（凌晨）
 - 完成领域边界守卫（Domain Guard）LLM 零样本分类
