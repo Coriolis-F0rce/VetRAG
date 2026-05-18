@@ -313,6 +313,40 @@ HYBRID_BM25_WEIGHT=0.4
 
 ---
 
+## 十七、CI/CD 现状与缺口
+
+> 评估日期：2026-05-18
+
+### 17.1 当前 CI：GitHub Actions
+
+配置文件 `.github/workflows/ci.yml`，触发条件：push/PR 到 main。
+
+| 步骤 | 内容 |
+|------|------|
+| 环境 | ubuntu-latest, Python 3.11, CPU PyTorch |
+| 依赖 | `requirements-lock.txt` |
+| Lint | `ruff check .` |
+| 测试 | `python -m pytest tests/ -v --cov=src --cov-report=term --cov-report=xml` |
+| 产物 | 覆盖率 XML，保留 7 天 |
+
+**每次 push 到 main，GitHub 自动在云机器上跑完上述流程。** 运行历史可在仓库 Actions 标签页查看。
+
+### 17.2 缺口
+
+| 维度 | 已有 | 缺失 |
+|------|------|------|
+| 代码风格 | ruff check | mypy 类型检查（历史有，ci.yml 未配） |
+| 单元测试 | 140 个，pytest | 未设最低覆盖率门槛 |
+| 集成测试 | — | 需 Ollama + ChromaDB，GitHub runner 不可用 |
+| 安全扫描 | — | bandit（历史有，ci.yml 未配） |
+| CD | — | web_api.py 无自动部署；Ollama 模型需手动管理 |
+
+### 17.3 待修复：mypy + bandit 回归
+
+历史 commit `9be50b8` 曾添加过 mypy 类型检查 + bandit 安全扫描，但在后续 CI 修复中被移除后未恢复。这是 CI 配置债务，应在 ci.yml 中恢复这两步。
+
+---
+
 ## 六、FastAPI SSE 流式输出问题排查与修复
 
 > 修复日期：2026-05-02
