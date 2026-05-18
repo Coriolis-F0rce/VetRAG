@@ -60,20 +60,13 @@ def mock_rag_interface():
 
 @pytest.fixture
 def app_client(mock_rag_interface):
-    with patch("src.rag_interface.ChromaVectorStore") as mock_cs:
-        mock_cs.return_value.get_collection_stats.return_value = {"document_count": 10}
-        mock_cs.return_value.search.return_value = {"results": []}
-    with patch("src.rag_interface.VetRAGDataLoader"):
-        with patch("src.rag_interface.AutoModelForCausalLM"):
-            with patch("src.rag_interface.AutoTokenizer"):
-                with patch("src.rag_interface.QwenGenerator"):
-                    with patch("src.core.config.CHROMA_PERSIST_DIR", "./temp_test_chroma"):
-                        with patch("src.core.config.QWEN3_FINETUNED_PATH", "./temp_test_model"):
-                            from fastapi.testclient import TestClient
+    with patch("src.rag_interface.RAGInterface", return_value=mock_rag_interface):
+        with patch("src.core.config.CHROMA_PERSIST_DIR", "./temp_test_chroma"):
+            from fastapi.testclient import TestClient
 
-                            from scripts.web_api import app
-                            with TestClient(app) as client:
-                                yield client
+            from scripts.web_api import app
+            with TestClient(app) as client:
+                yield client
 
 
 class TestRootEndpoint:
