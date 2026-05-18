@@ -7,7 +7,7 @@
 VetRAG 是一个专为犬科兽医领域设计的检索增强生成（RAG）系统，旨在帮助宠物主人和兽医从业者快速获取准确的犬类医疗和护理知识。
 
 **核心功能：**
-- 知识库问答：基于 ChromaDB（1189 chunks），精准检索并生成回答
+- 知识库问答：基于 ChromaDB（~1189 chunks），精准检索并生成回答
 - 药学知识库：331 种犬科药物独立索引，含剂量、禁忌、相互作用
 - 流式输出：SSE 实时流式响应，体验流畅
 - 本地推理：Ollama 管理模型，无需云端 API
@@ -115,7 +115,7 @@ cp envs/.env.example .env
 | `OLLAMA_BASE_URL` | Ollama 服务地址 | `http://localhost:11434` |
 | `CHROMA_PERSIST_DIR` | 向量数据库目录 | `./chroma_db` |
 | `BGE_MODEL_NAME` | 向量化模型名称 | `BAAI/bge-large-zh-v1.5` |
-| `API_PORT` | Web 服务端口 | `8000` |
+| `API_PORT` | Web 服务端口 | `5002` |
 
 ### 4. 构建向量索引
 
@@ -208,7 +208,7 @@ VetRAG/
 │   ├── rag_pipeline.md    # Pipeline 技术文档
 │   └── deployment.md      # 部署与效果评价
 │
-└── tests/                  # 单元测试（128 个用例）
+└── tests/                  # 单元测试（140 个用例）
     ├── api/                # FastAPI 接口测试
     ├── core/               # 配置与日志测试
     └── rag/                # JSON / 向量 / Pipeline 测试
@@ -242,7 +242,7 @@ ChromaDB 持久化向量存储封装：
 封装检索与生成的核心接口：
 
 - **查询**：Domain Guard → 混合检索 → 组装上下文 → Ollama 生成 → 流式返回
-- **答案清洗**：`_clean_text` 13 步后处理（移除 think 标签、代码块、emoji、免责声明等）
+- **答案清洗**：`_clean_format` / `_clean_output` 格式清洗（移除 think 标签、代码块、emoji、免责声明等）
 - **系统提示词**：默认使用 `src/core/config.py` 中的 `SYSTEM_PROMPT_VET`
 - **流式推理**：Ollama `/api/generate` + `asyncio.Queue` → SSE 实时流式
 
@@ -289,11 +289,10 @@ curl -N "http://localhost:5002/stream?question=金毛有哪些常见健康问题
 | `CHROMA_PERSIST_DIR` | 字符串 | `./chroma_db` | 向量数据库路径 |
 | `CHROMA_COLLECTION_NAME` | 字符串 | `veterinary_rag` | ChromaDB 集合名 |
 | `BGE_MODEL_NAME` | 字符串 | `BAAI/bge-large-zh-v1.5` | 向量化模型 |
-| `BGE_MODEL_FALLBACK` | 字符串 | `paraphrase-multilingual-MiniLM-L12-v2` | 回退模型 |
 | `HF_ENDPOINT` | URL | - | HuggingFace 镜像（国内推荐） |
 | `USE_HYBRID_SEARCH` | 布尔 | `false` | 启用混合检索 |
 | `API_HOST` | 字符串 | `0.0.0.0` | 服务监听地址 |
-| `API_PORT` | 整数 | `8000` | 服务端口（web_api.py 硬编码 5002） |
+| `API_PORT` | 整数 | `5002` | 服务端口 |
 | `LOG_LEVEL` | 字符串 | `INFO` | 日志级别 |
 
 ## 常见问题
@@ -355,17 +354,22 @@ curl http://localhost:5002/stats
 | 端到端问答质量 | 真实问题验证 + 流式响应检查 | `curl http://localhost:5002/stream` |
 | 生产监控 | A/B 测试、延迟 P50/P95/P99 | 详见 [docs/deployment.md](docs/deployment.md) |
 
-**量化结果**（1027 条测试集，BGE-large-zh-v1.5 嵌入，Qwen3-0.6B）：
+**量化结果**（5 组匿名对比，DeepSeek LLM-as-Judge，50 题测试集）：
 
-| 配置 | 均值 | 中位数 | 标准差 |
-|------|------|-------|--------|
-| 原始 Qwen3-0.6B | 0.8868 | 0.8940 | 0.048 |
-| **QLoRA 微调后** | **0.9344** | **0.9410** | **0.034** |
+| 配置 | FORMAT | RELEVANCE | COMPLETENESS | SAFETY | OVERALL |
+|------|--------|-----------|-------------|--------|---------|
+| E 组（微调+自动清洗） | 4.87 | 3.76 | 4.20 | 4.68 | 4.17 |
+| C 组（基础+自动清洗） | 4.52 | 3.68 | 4.12 | 4.60 | 4.08 |
+| A 组（微调） | 4.30 | 3.52 | 3.84 | 4.52 | 3.94 |
+| B 组（基础） | 3.26 | 3.48 | 3.72 | 4.48 | 3.74 |
+| D 组（微调+清洗+重排序） | 3.15 | 3.44 | 3.56 | 4.44 | 3.65 |
+
+> 详细 badcase 分析与温度选取讨论见 `knowledge.md` 第 16 节。
 
 ## 贡献指南
 
 1. Fork 本仓库，创建功能分支
-2. 编写测试用例（目标 79+）
+2. 编写测试用例（目标 140+）
 3. 运行 `ruff check src/ tests/` 确保无 lint 错误
 4. 提交 Pull Request
 
